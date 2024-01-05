@@ -7,7 +7,7 @@ import vercel from "@astrojs/vercel/serverless";
 // https://astro.build/config
 export default defineConfig({
   integrations: [tailwind(), icon()],
-  output: 'server',
+  output: 'hybrid',
   adapter: vercel({
     speedInsights: {
       enabled: true,
@@ -15,7 +15,7 @@ export default defineConfig({
   }),
 });
 
-console.log(process.env.VERCEL_ANALYTICS_ID, process.env.PUBLIC_VERCEL_ANALYTICS_ID)
+console.log('Check analytics id',process.env.VERCEL_ANALYTICS_ID, process.env.PUBLIC_VERCEL_ANALYTICS_ID)
 if (!process.env.VERCEL_ANALYTICS_ID) {
   process.env.VERCEL_ANALYTICS_ID = process.env.PUBLIC_VERCEL_ANALYTICS_ID
 }
