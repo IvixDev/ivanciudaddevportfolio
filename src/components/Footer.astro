@@ -1,0 +1,62 @@
+---
+const currentYear = new Date().getFullYear();
+import { Icon } from "astro-icon/components";
+---
+
+<footer
+  class="flex flex-col gap-4 justify-center pt-4 pb-6 items-center w-full bottom-0 bg-[radial-gradient(circle_farthest-side,rgba(255,0,182,.15),rgba(255,255,255,0))]"
+>
+  <nav class="flex flex-col justify-center items-center gap-4">
+    <section class="flex flex-row justify-center items-center">
+      <h2>Enlaces</h2>
+      <div class="flex flex-row">
+        <a
+          class="flex items-center whitespace-nowrap justify-center w-full p-2"
+          href="/proyectos">Proyectos</a
+        >
+        <a
+          class="flex items-center whitespace-nowrap justify-center w-full p-2"
+          href="/cv">Curriculum Vitae</a
+        >
+        <a
+          class="flex items-center whitespace-nowrap justify-center w-full p-2"
+          href="/sobremi">Sobre mi</a
+        >
+      </div>
+    </section>
+    <section class="flex flex-row justify-center items-center gap-4">
+      <h2>¡Contacta conmigo!</h2>
+      <div class="flex flex-row gap-4">
+        <a
+          href="https://www.linkedin.com/in/iv%C3%A1n-ciudad-espinar-2195191b2/"
+          target="_blank"
+        >
+          <Icon class="size-6" name="linkedin" />
+        </a>
+        <a href="mailto:ivanciudad98@gmail.com">
+          <Icon class="size-6" name="gmail" />
+        </a>
+        <a href="https://github.com/Srivix">
+          <Icon class="size-6" name="github" />
+        </a>
+        <a href="https://twitter.com/Mrivix">
+          <Icon class="size-6" name="X" />
+        </a>
+        <a href="https://www.instagram.com/sr.ivix/">
+          <Icon class="size-6" name="instagram" />
+        </a>
+      </div>
+    </section>
+  </nav>
+  <p>Creada por &#169;Iván Ciudad Espinar 2024-{currentYear}</p>
+</footer>
+<style>
+  h2,
+  p {
+    color: #c4b5fd;
+  }
+
+  a:hover {
+    color: #c026d3;
+  }
+</style>

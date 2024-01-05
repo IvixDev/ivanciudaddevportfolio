@@ -1,0 +1,82 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<header class="flex justify-center sticky top-0 z-20 bg-[#0f172a] w-full">
+  <div
+    class="flex flex-row justify-between rounded-full bg-[radial-gradient(circle_farthest-side,rgba(255,0,182,.15),rgba(255,255,255,0))] max-w-screen-tablet p-4 tablet:px-8
+    tablet:max-w-screen-laptop laptop:px-16 desktop:max-w-screen-desktop
+    bigDesktop:max-w-screen-bigDesktop place-items-center w-full"
+  >
+    <img
+      src="/logoivan.png"
+      class="rounded-full p-1 bg-white cursor-pointer"
+      width="60px"
+      height="60px"
+      alt="Ivan SVG Logo"
+    />
+    <nav class="hidden tablet:flex flex-row gap-6">
+      <a href="/">Inicio</a>
+      <a href="/proyectos">Proyectos</a>
+      <a href="/cv">Curriculum Vitae</a>
+      <a href="/sobremi">Sobre mi</a>
+    </nav>
+    <div class="flex flex-row gap-3 items-center px-4">
+      <a
+        href="https://www.linkedin.com/in/iv%C3%A1n-ciudad-espinar-2195191b2/"
+        target="_blank"
+      >
+        <Icon class="size-6" name="linkedin" />
+      </a>
+      <a href="mailto:ivanciudad98@gmail.com">
+        <Icon class="size-6" name="gmail" />
+      </a>
+      <a href="https://github.com/Srivix">
+        <Icon class="size-6" name="github" />
+      </a>
+      <a href="https://twitter.com/Mrivix">
+        <Icon class="size-6" name="X" />
+      </a>
+      <a href="https://www.instagram.com/sr.ivix/">
+        <Icon class="size-6" name="instagram" />
+      </a>
+    </div>
+    <Icon
+      data-drawer-target="sidebar-drawer"
+      data-drawer-show="sidebar-drawer"
+      aria-controls="sidebar-drawer"
+      name="menu"
+      class="w-8 h-8 tablet:hidden cursor-pointer"
+    />
+  </div>
+</header>
+
+<!-- drawer component -->
+<nav
+  id="sidebar-drawer"
+  class="flex flex-col justify-center items-center fixed top-[90px] left-0 z-40 overflow-y-auto transition-transform translate-x-full bg-[#0F172A] w-full"
+  tabindex="-1"
+  aria-labelledby="drawer-label"
+>
+  <a class="flex items-center justify-center w-full border-y-[1px] p-2" href="/"
+    >Inicio</a
+  >
+  <a
+    class="flex items-center justify-center w-full border-b-[1px] p-2"
+    href="/proyectos">Proyectos</a
+  >
+  <a
+    class="flex items-center justify-center w-full border-b-[1px] p-2"
+    href="/cv">Curriculum Vitae</a
+  >
+  <a
+    class="flex items-center justify-center w-full border-b-[1px] p-2"
+    href="/sobremi">Sobre mi</a
+  >
+</nav>
+
+<style>
+  a:hover {
+    color: #c026d3;
+  }
+</style>
