@@ -1,5 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
+import { socialMediaLinks } from "../content/layout.consts";
 ---
 
 <header class="flex justify-center sticky top-0 z-20 bg-[#0f172a] w-full">
@@ -22,24 +23,14 @@ import { Icon } from "astro-icon/components";
       <a href="/sobremi">Sobre mi</a>
     </nav>
     <div class="flex flex-row gap-3 items-center px-4">
-      <a
-        href="https://www.linkedin.com/in/iv%C3%A1n-ciudad-espinar-2195191b2/"
-        target="_blank"
-      >
-        <Icon class="size-6" name="linkedin" />
-      </a>
-      <a href="mailto:ivanciudad98@gmail.com">
-        <Icon class="size-6" name="gmail" />
-      </a>
-      <a href="https://github.com/Srivix">
-        <Icon class="size-6" name="github" />
-      </a>
-      <a href="https://twitter.com/Mrivix">
-        <Icon class="size-6" name="X" />
-      </a>
-      <a href="https://www.instagram.com/sr.ivix/">
-        <Icon class="size-6" name="instagram" />
-      </a>
+      {
+        socialMediaLinks &&
+          socialMediaLinks.map((link) => (
+            <a href={link.href} target="_blank">
+              <Icon class="size-6" name={link.name} />
+            </a>
+          ))
+      }
     </div>
     <Icon
       data-drawer-target="sidebar-drawer"

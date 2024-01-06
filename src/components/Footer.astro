@@ -1,6 +1,7 @@
 ---
 const currentYear = new Date().getFullYear();
 import { Icon } from "astro-icon/components";
+import { socialMediaLinks } from "../content/layout.consts";
 ---
 
 <footer
@@ -27,24 +28,14 @@ import { Icon } from "astro-icon/components";
     <section class="flex flex-row justify-center items-center gap-4">
       <h2>¡Contacta conmigo!</h2>
       <div class="flex flex-row gap-4">
-        <a
-          href="https://www.linkedin.com/in/iv%C3%A1n-ciudad-espinar-2195191b2/"
-          target="_blank"
-        >
-          <Icon class="size-6" name="linkedin" />
-        </a>
-        <a href="mailto:ivanciudad98@gmail.com">
-          <Icon class="size-6" name="gmail" />
-        </a>
-        <a href="https://github.com/Srivix">
-          <Icon class="size-6" name="github" />
-        </a>
-        <a href="https://twitter.com/Mrivix">
-          <Icon class="size-6" name="X" />
-        </a>
-        <a href="https://www.instagram.com/sr.ivix/">
-          <Icon class="size-6" name="instagram" />
-        </a>
+        {
+          socialMediaLinks &&
+            socialMediaLinks.map((link) => (
+              <a href={link.href} target="_blank">
+                <Icon class="size-6" name={link.name} />
+              </a>
+            ))
+        }
       </div>
     </section>
   </nav>
