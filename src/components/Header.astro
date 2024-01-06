@@ -1,6 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
-import { socialMediaLinks } from "../content/layout.consts";
+import { headerLinks, socialMediaLinks } from "../content/layout.consts";
 ---
 
 <header class="flex justify-center sticky top-0 z-20 bg-[#0f172a] w-full">
@@ -17,10 +17,10 @@ import { socialMediaLinks } from "../content/layout.consts";
       alt="Ivan SVG Logo"
     />
     <nav class="hidden tablet:flex flex-row gap-6">
-      <a href="/">Inicio</a>
-      <a href="/proyectos">Proyectos</a>
-      <a href="/cv">Curriculum Vitae</a>
-      <a href="/sobremi">Sobre mi</a>
+      {
+        headerLinks &&
+          headerLinks.map((link) => <a href={link.href}>{link.label}</a>)
+      }
     </nav>
     <div class="flex flex-row gap-3 items-center px-4">
       {
@@ -45,25 +45,21 @@ import { socialMediaLinks } from "../content/layout.consts";
 <!-- drawer component -->
 <nav
   id="sidebar-drawer"
-  class="flex flex-col justify-center items-center fixed top-[90px] left-0 z-40 overflow-y-auto transition-transform translate-x-full bg-[#0F172A] w-full"
+  class="flex flex-col justify-center items-center border-t-[1px] fixed top-[90px] left-0 z-40 overflow-y-auto transition-transform translate-x-full bg-[#0F172A] w-full"
   tabindex="-1"
   aria-labelledby="drawer-label"
 >
-  <a class="flex items-center justify-center w-full border-y-[1px] p-2" href="/"
-    >Inicio</a
-  >
-  <a
-    class="flex items-center justify-center w-full border-b-[1px] p-2"
-    href="/proyectos">Proyectos</a
-  >
-  <a
-    class="flex items-center justify-center w-full border-b-[1px] p-2"
-    href="/cv">Curriculum Vitae</a
-  >
-  <a
-    class="flex items-center justify-center w-full border-b-[1px] p-2"
-    href="/sobremi">Sobre mi</a
-  >
+  {
+    headerLinks &&
+      headerLinks.map((link) => (
+        <a
+          class="flex items-center justify-center  w-full border-b-[1px] p-2"
+          href={link.href}
+        >
+          {link.label}
+        </a>
+      ))
+  }
 </nav>
 
 <style>

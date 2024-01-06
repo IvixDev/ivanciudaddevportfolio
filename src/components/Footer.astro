@@ -1,45 +1,44 @@
 ---
 const currentYear = new Date().getFullYear();
 import { Icon } from "astro-icon/components";
-import { socialMediaLinks } from "../content/layout.consts";
+import { footerLinks, socialMediaLinks } from "../content/layout.consts";
 ---
 
 <footer
-  class="flex flex-col gap-4 justify-center pt-4 pb-6 items-center w-full bottom-0 bg-[radial-gradient(circle_farthest-side,rgba(255,0,182,.15),rgba(255,255,255,0))]"
+  class="flex flex-col gap-4 justify-center p-4 items-center w-full bottom-0 bg-[radial-gradient(circle_farthest-side,rgba(255,0,182,.15),rgba(255,255,255,0))]"
 >
   <nav class="flex flex-col justify-center items-center gap-4">
-    <section class="flex flex-row justify-center items-center">
-      <h2>Enlaces</h2>
-      <div class="flex flex-row">
-        <a
-          class="flex items-center whitespace-nowrap justify-center w-full p-2"
-          href="/proyectos">Proyectos</a
-        >
-        <a
-          class="flex items-center whitespace-nowrap justify-center w-full p-2"
-          href="/cv">Curriculum Vitae</a
-        >
-        <a
-          class="flex items-center whitespace-nowrap justify-center w-full p-2"
-          href="/sobremi">Sobre mi</a
-        >
+    <section class="flex flex-row justify-center items-center gap-2">
+      <h2 class="text-sm">Enlaces</h2>
+      <div class="flex flex-row flex-wrap">
+        {
+          footerLinks &&
+            footerLinks.map((link) => (
+              <a
+                class="flex items-center text-sm whitespace-nowrap justify-center p-2"
+                href={link.href}
+              >
+                {link.label}
+              </a>
+            ))
+        }
       </div>
     </section>
     <section class="flex flex-row justify-center items-center gap-4">
-      <h2>¡Contacta conmigo!</h2>
+      <h2 class="text-sm">¡Contacta conmigo!</h2>
       <div class="flex flex-row gap-4">
         {
           socialMediaLinks &&
             socialMediaLinks.map((link) => (
               <a href={link.href} target="_blank">
-                <Icon class="size-6" name={link.name} />
+                <Icon class="size-5" name={link.name} />
               </a>
             ))
         }
       </div>
     </section>
   </nav>
-  <p>Creada por &#169; Iván Ciudad Espinar 2024-{currentYear}</p>
+  <p class="text-sm">Creada por Iván Ciudad &#169;2024-{currentYear}</p>
 </footer>
 <style>
   h2,

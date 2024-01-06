@@ -4,3 +4,16 @@ export const socialMediaLinks = [
   {href: "https://github.com/Srivix", name: "github"},
   {href: "https://x.com/Mrivix", name: "X"},
 ]
+
+export const headerLinks = [
+  {href: "/", label: "Inicio"},
+  {href: "/proyectos", label: "Proyectos"},
+  {href: "/cv", label: "Curriculum Vitae"},
+  {href: "/sobremi", label: "Sobre mi"},
+]
+
+export const footerLinks = [
+  {href: "/proyectos", label: "Proyectos"},
+  {href: "/cv", label: "CV"},
+  {href: "/sobremi", label: "Sobre mi"},
+]
