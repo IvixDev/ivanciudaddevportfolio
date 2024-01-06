@@ -9,17 +9,8 @@ export default defineConfig({
   integrations: [tailwind(), icon()],
   output: 'server',
   adapter: vercel({
-    analytics: true,
     webAnalytics: {
-      enabled: true,
-    },
-    speedInsights: {
       enabled: true,
     },
   }),
 });
-
-console.log('Check analytics id',process.env.VERCEL_ANALYTICS_ID, process.env.PUBLIC_VERCEL_ANALYTICS_ID)
-if (!process.env.VERCEL_ANALYTICS_ID) {
-  process.env.VERCEL_ANALYTICS_ID = process.env.PUBLIC_VERCEL_ANALYTICS_ID
-}
