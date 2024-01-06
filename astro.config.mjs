@@ -9,9 +9,11 @@ export default defineConfig({
   integrations: [tailwind(), icon()],
   output: 'hybrid',
   adapter: vercel({
-    analytics: true,
-    speedInsights: {
+    webAnalytics: {
       enabled: true,
+    },
+    speedInsights: {
+        enabled: true,
     },
   }),
 });
