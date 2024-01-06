@@ -1,5 +1,6 @@
 ---
 import "@fontsource-variable/onest";
+import SpeedInsights from "@vercel/speed-insights";
 import "@fontsource-variable/source-code-pro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
@@ -20,6 +21,13 @@ const { title } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/iconoivansvg.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <script is:inline>
+      function speedInsightsBeforeSend(data) {
+        console.log("Speed Insights before send", data);
+        return data;
+      }
+    </script>
+    <SpeedInsights />
   </head>
   <body
     class="flex flex-col bg-[radial-gradient(circle_farthest-side,rgba(255,0,182,.15),rgba(255,255,255,0))]"
