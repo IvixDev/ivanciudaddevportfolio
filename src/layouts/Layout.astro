@@ -20,10 +20,6 @@ const { title } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/iconoivansvg.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-    <script>
-      import { injectSpeedInsights } from "@vercel/speed-insights";
-      injectSpeedInsights({});
-    </script>
   </head>
   <body
     class="flex flex-col bg-[radial-gradient(circle_farthest-side,rgba(255,0,182,.15),rgba(255,255,255,0))]"
