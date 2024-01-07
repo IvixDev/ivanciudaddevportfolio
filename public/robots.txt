@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ivanciudad.vercel.app/sitemap-index.xml
