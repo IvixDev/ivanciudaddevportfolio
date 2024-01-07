@@ -1,6 +1,10 @@
 ---
 import { Icon } from "astro-icon/components";
 import { headerLinks, socialMediaLinks } from "../content/layout.consts";
+
+const path = Astro.url.pathname;
+const firstSlug = `/${path.split("/")[1]}`;
+console.log(firstSlug);
 ---
 
 <header class="flex justify-center sticky top-0 z-20 bg-[#0f172a] w-full">
@@ -19,7 +23,14 @@ import { headerLinks, socialMediaLinks } from "../content/layout.consts";
     <nav class="hidden tablet:flex flex-row gap-6">
       {
         headerLinks &&
-          headerLinks.map((link) => <a href={link.href}>{link.label}</a>)
+          headerLinks.map((link) => (
+            <a
+              class={firstSlug === link.href ? "text-[#22d3ee]" : ""}
+              href={link.href}
+            >
+              {link.label}
+            </a>
+          ))
       }
     </nav>
     <div class="flex flex-row gap-3 items-center px-4">
@@ -64,6 +75,6 @@ import { headerLinks, socialMediaLinks } from "../content/layout.consts";
 
 <style>
   a:hover {
-    color: #c026d3;
+    color: #98e2ed;
   }
 </style>
