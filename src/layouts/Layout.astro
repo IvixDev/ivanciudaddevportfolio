@@ -5,6 +5,7 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 
 import { SEO } from "astro-seo";
+import SpeedInsights from "@vercel/speed-insights/astro";
 
 interface Props {
   title: string;
@@ -38,7 +39,7 @@ const path = Astro.url.pathname;
       extend={{
         // extending the default link tags
         link: [{ rel: "icon", href: "/favicon.svg" }],
-        // extending the default meta tags
+        // extending the default meta tags<p
         meta: [],
       }}
     />
@@ -55,6 +56,7 @@ const path = Astro.url.pathname;
       content="jc6v25p_IS2V1XvpjgqA-RFfbwxMO8X8YDAUTR2bCGQ"
     />
     <link rel="sitemap" href="/sitemap-index.xml" />
+    <SpeedInsights />
   </head>
   <body
     class="flex flex-col bg-[radial-gradient(circle_farthest-side,rgba(255,0,182,.15),rgba(255,255,255,0))]"
