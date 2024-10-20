@@ -3,24 +3,28 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Inicio | Iván Ciudad Espinar">
-  <main class="flex flex-col items-center w-full">
+  <main class="flex flex-col items-center w-full gap-6">
     <section
-      class="flex flex-col laptop:flex-row justify-start items-center laptop:items-start laptop:justify-center w-full gap-8"
+      class="flex flex-col-reverse tablet:flex-row justify-start items-start tablet:items-end laptop:justify-center gap-8"
     >
-      <img src="fotoivan.png" class="h-[182px] es m-1 aspect-[92/71.33]" />
-      <h1
+      <img src="fotoivan.png" class="hidden tablet:block h-[182px] m-1 aspect-[92/71.33]" />
+      <div class="flex flex-col gap-2">
+        <h1
         class="text-2xl tablet:text-3xl laptop:text-5xl max-w-[400px] tablet:max-w-[500px] laptop:max-w-[800px] font-medium"
-      >
-        Soy <span>Iván Ciudad Espinar</span>
-        desarrollador
-        <span>FullStack</span> e <span>Ingeniero Telemático</span>. <br /> Bienvenido
-        a mi rincón de internet.
+        >
+        Soy <b>Iván Ciudad Espinar</b>, <b>Frontend Senior</b> e <b>Ingeniero Telemático</b>.
       </h1>
-    </section>
+      <img src="fotoivan.png" class="tablet:hidden w-[220px] m-1 aspect-[92/71.33]" />
+      <h2 class="text-xl tablet:text-2xl laptop:text-4xl max-w-[400px] tablet:max-w-[500px] laptop:max-w-[800px] font-medium">
+        Bienvenido a mi rincón de internet.
+      </h2>
+    </div>
+  </section>
+  <hr class=" invisible tablet:visible w-[100%] border-t-2 border-gray-300" />
   </main>
 </Layout>
 <style>
-  span {
+  b {
     font-weight: 800;
     color: #22d3ee;
   }

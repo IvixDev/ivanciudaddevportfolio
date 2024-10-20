@@ -7,13 +7,13 @@ export const socialMediaLinks = [
 
 export const headerLinks = [
   {href: "/", label: "Inicio"},
+  {href: "/sobremi", label: "Sobre mi"},
   {href: "/proyectos", label: "Proyectos"},
   {href: "/cv", label: "Curriculum Vitae"},
-  {href: "/sobremi", label: "Sobre mi"},
 ]
 
 export const footerLinks = [
+  {href: "/sobremi", label: "Sobre mi"},
   {href: "/proyectos", label: "Proyectos"},
   {href: "/cv", label: "CV"},
-  {href: "/sobremi", label: "Sobre mi"},
 ]

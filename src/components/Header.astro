@@ -21,7 +21,7 @@ const firstSlug = `/${path.split("/")[1]}`;
         alt="Ivan SVG Logo"
       />
     </a>
-    <nav class="hidden tablet:flex flex-row gap-6">
+    <nav class="hidden tablet:flex flex-row tablet:gap-3 laptop:gap-6">
       {
         headerLinks &&
           headerLinks.map((link) => (
@@ -47,6 +47,7 @@ const firstSlug = `/${path.split("/")[1]}`;
     <Icon
       data-drawer-target="sidebar-drawer"
       data-drawer-show="sidebar-drawer"
+      data-drawer-placement="top"
       aria-controls="sidebar-drawer"
       name="menu"
       class="w-8 h-8 tablet:hidden cursor-pointer"
@@ -55,24 +56,53 @@ const firstSlug = `/${path.split("/")[1]}`;
 </header>
 
 <!-- drawer component -->
-<nav
-  id="sidebar-drawer"
-  class="flex flex-col justify-center items-center border-t-[1px] fixed top-[90px] left-0 z-40 overflow-y-auto transition-transform translate-x-full bg-[#0F172A] w-full"
+<div id="sidebar-drawer" class="shadow-2xl py-2 border-b-[2px] border-b-[#53116d] bg-[radial-gradient(circle_farthest-side,rgba(255,0,182,.15),rgba(255,255,255,0))] flex flex-col fixed top-0 left-0 right-0 z-40 overflow-y-auto transition-transform -translate-y-full bg-[#0F172A] w-full">
+  <div class="p-4 border-b-[2px] border-b-[#53116d] flex flex-row justify-between items-center">
+    <a href="/">
+      <img
+        src="/logoivan.png"
+        class="rounded-full p-1 bg-white"
+        width="60px"
+        height="60px"
+        alt="Ivan SVG Logo"
+      />
+    </a>
+    <div class="flex flex-row gap-3 items-center px-4">
+      {
+        socialMediaLinks &&
+          socialMediaLinks.map((link) => (
+            <a href={link.href} target="_blank">
+              <Icon class="size-6" name={link.name} />
+            </a>
+          ))
+      }
+    </div>
+    <Icon      
+    data-drawer-target="sidebar-drawer"
+    data-drawer-hide="sidebar-drawer"
+    data-drawer-placement="top"
+    aria-controls="sidebar-drawer"
+    name="close"
+    class="w-8 h-8 tablet:hidden cursor-pointer" />
+  </div>
+  <nav
   tabindex="-1"
   aria-labelledby="drawer-label"
->
+  class="divide-y divide-[#53116d]"
+  >
   {
     headerLinks &&
-      headerLinks.map((link) => (
-        <a
-          class="flex items-center justify-center  w-full border-b-[1px] p-2"
-          href={link.href}
-        >
+    headerLinks.map((link) => (
+      <a
+      class="flex items-center justify-center  w-full p-2"
+      href={link.href}
+      >
           {link.label}
         </a>
       ))
-  }
-</nav>
+    }
+  </nav>  
+</div>
 
 <style>
   a:hover {
