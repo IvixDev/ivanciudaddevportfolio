@@ -38,7 +38,7 @@ const firstSlug = `/${path.split("/")[1]}`;
       {
         socialMediaLinks &&
           socialMediaLinks.map((link) => (
-            <a href={link.href} target="_blank">
+            <a href={link.href} target="_blank" aria-label={link.ariaLabel}>
               <Icon class="size-6" name={link.name} />
             </a>
           ))
@@ -71,7 +71,7 @@ const firstSlug = `/${path.split("/")[1]}`;
       {
         socialMediaLinks &&
           socialMediaLinks.map((link) => (
-            <a href={link.href} target="_blank">
+            <a href={link.href} target="_blank" aria-label={link.ariaLabel}>
               <Icon class="size-6" name={link.name} />
             </a>
           ))
@@ -87,7 +87,7 @@ const firstSlug = `/${path.split("/")[1]}`;
   </div>
   <nav
   tabindex="-1"
-  aria-labelledby="drawer-label"
+  aria-labelledby="sidebar-drwaer"
   class="divide-y divide-[#53116d]"
   >
   {
