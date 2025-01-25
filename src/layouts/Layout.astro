@@ -1,6 +1,4 @@
 ---
-import "@fontsource-variable/onest";
-import "@fontsource-variable/source-code-pro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { ClientRouter } from "astro:transitions";
@@ -84,11 +82,23 @@ const path = Astro.url.pathname;
     </div>
     <Footer />
     <style is:global>
+      @font-face {
+        font-family: "Onest";
+        src: url('/fonts/Onest.woff2') format('woff2');
+        font-weight: normal;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "Source Code Pro";
+        src: url('/fonts/SourceCodePro.woff2') format('woff2');
+        font-weight: normal;
+        font-style: normal;
+      }
       :root {
         color-scheme: light dark;
       }
       html {
-        font-family: "Onest Variable", system-ui, sans-serif;
+        font-family: "Onest", system-ui, sans-serif;
       }
       body {
         width: 100%;
@@ -105,7 +115,7 @@ const path = Astro.url.pathname;
         scrollbar-width: none; /* Firefox */
       }
       p {
-        font-family: "Source Code Pro Variable";
+        font-family: "Source Code Pro";
       }
       .layout-height {
         min-height: calc(100vh - (92px + 124px));
