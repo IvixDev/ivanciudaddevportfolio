@@ -1,0 +1,80 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Inicio | Iván Ciudad Espinar">
+  <main class="flex flex-col items-center w-full gap-10">
+    <section
+      class="flex flex-col-reverse tablet:flex-row justify-start items-start tablet:items-end laptop:justify-center gap-8"
+    >
+      <img src="fotoivan.webp" alt="Foto Iván Ciudad" class="hidden tablet:block h-[182px] m-1 aspect-[10/8.81]" />
+      <div class="flex flex-col gap-2">
+        <h1
+        class="text-2xl tablet:text-3xl laptop:text-5xl max-w-[400px] tablet:max-w-[500px] laptop:max-w-[800px] font-medium"
+        >
+        Soy <b>Iván Ciudad Espinar</b>, <b>Frontend Senior</b> e <b>Ingeniero Telemático</b>.
+      </h1>
+      <img src="fotoivan.webp" alt="Foto Iván Ciudad" class="tablet:hidden w-[220px] m-1 aspect-[10/8.81]" />
+      <h2 class="text-xl tablet:text-2xl laptop:text-4xl max-w-[400px] tablet:max-w-[500px] laptop:max-w-[800px] font-medium">
+        Bienvenido a mi rincón de internet.
+      </h2>
+    </div>
+  </section>
+  <hr class=" hidden tablet:visible w-[100%] border-t-2 border-gray-300" />
+  <section class="flex flex-col gap-4">
+    <h3 class="text-xl tablet:text-xl laptop:text-2xl font-medium">¿Cual es el foco de esta web?</h3>
+    <p>
+      En primer lugar, la intención de esta web es darme a conocer a mi <b>Iván Ciudad Espinar</b> y mostrar mis habilidades como <b>Frontend Developer</b>. 
+        Aquí encontrarás información sobre mi experiencia en el <b>desarrollo web</b>, mis proyectos y los artículos que he escrito. 
+        También hablaré de mis gustos, hobbies e historia además de cualquier cosa que me parezca interesante.
+        <br /><br>
+        Con esta web quiero probar mis conocimientos de <b>SEO</b> para posicionarme en <b>Google</b> 
+        consiguiendo aparecer en los primeros resultados de búsqueda usando mi nombre <b>Iván Ciudad Espinar</b>.
+  </section>  
+  <section class="flex flex-col gap-8 w-full">
+    <h3 class="text-xl tablet:text-xl laptop:text-2xl font-medium">Un resumen de lo que vas a encontrar</h3>
+    <article class="flex flex-col laptop:flex-row gap-6">
+      <div class="flex flex-col gap-4">
+        <h4 class="text-m tablet:text-l laptop:text-xl font-medium">Voy a hablar sobre mi</h4>
+        <p>En este apartado encontrarás una pequeña biografía mía para que sepas <b>quien soy</b> y de donde vengo.
+          También hablaré de mis gustos como son los <b>videojuegos</b>, las <b>series</b>, <b>películas</b>, el <b>gimnasio</b> y la <b>lectura</b>.
+        </p>
+        <a href="/sobremi">Lee sobre mi</a>
+      </div>
+      <img src="sobremi.webp" alt="Teclado y mandos de videoconsola" class="w-full tablet:w-[500px] laptop:w-[300px]" />
+    </article>
+    <article class="flex flex-col-reverse laptop:flex-row gap-6">
+      <img src="programacion.webp" alt="Ordenador programación" class="w-full tablet:w-[500px] laptop:w-[360px]" />
+      <div class="flex flex-col gap-4">
+        <h4 class="text-m tablet:text-l laptop:text-xl font-medium">Mis proyectos</h4>
+        <p>Te muestro información sobre los <b>proyectos</b> de <b>desarrollo web</b> en los que he trabajado y en los que estoy trabajando.
+          También hablaré de las <b>tecnologías</b> que he utilizado y de las que me gustaría aprender.
+        </p>
+        <a href="/proyectos">Leer sobre mis proyectos</a>
+      </div>
+    </article>
+    <article class="flex flex-col laptop:flex-row gap-6">
+      <div class="flex flex-col gap-4">
+        <h4 class="text-m tablet:text-l laptop:text-xl font-medium">Mi vida laboral</h4>
+        <p> Aquí hay información sobre mi ruta de estudios, mi experiencia en <b>ingeniería telemática</b> y
+          mi inserción en el <b>mundo laboral</b>.
+          Hablo de las <b>empresas</b> en las que he trabajado, de los <b>proyectos</b> en los que he participado y de las <b>tecnologías</b> que he utilizado.
+        </p>
+        <a href="/cv">Mi carrera profesional</a>
+      </div>
+      <img src="laboral.webp" alt="Vida laboral" class="w-full tablet:w-[500px] laptop:w-[300px]" />
+    </article>
+  </section>
+</main>
+</Layout>
+<style>
+  article {
+    border: 1px solid #22d3ee;
+    border-radius: 0.5rem;
+    padding: 1rem;
+  }
+  b, a {
+    font-weight: 800;
+    color: #22d3ee;
+  }
+</style>
