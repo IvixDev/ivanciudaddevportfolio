@@ -9,7 +9,7 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
   integrations: [tailwind(), icon(), sitemap()],
   output: 'server',
-  site: 'https://www.ivanciudad.com',
+  site: 'https://ivanciudad.vercel.app',
   adapter: vercel({
     webAnalytics: {
       enabled: true
