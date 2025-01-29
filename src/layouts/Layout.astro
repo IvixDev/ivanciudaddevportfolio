@@ -19,6 +19,7 @@ const path = Astro.url.pathname;
     <SEO
       title={title}
       description="Esta es la web de Iván Ciudad Espinar. Desarrollador de software e ingeniero."
+      canonical={`https://www.ivanciudad.com${path}`}
       openGraph={{
         basic: {
           title,
