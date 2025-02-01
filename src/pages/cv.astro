@@ -1,8 +1,16 @@
 ---
+import { seoMapper } from "../helpers/seo.helper";
 import Layout from "../layouts/Layout.astro";
+
+const title = "Iván Ciudad Espinar - Mi Carrera Profesional y CV";
+const description = "Explora la carrera profesional de Iván Ciudad Espinar, desarrollador Frontend e Ingeniero Telemático. Consulta mi CV y descubre mis experiencias, habilidades y logros en el desarrollo de software.";
+const url = "https://www.ivanciudad.com/cv";
+const image = "https://www.ivanciudad.com/laboral.webp";
+
+const infoSeo = seoMapper(title, description, url, image);
 ---
 
-<Layout title="CV | Iván Ciudad Espinar">
+<Layout infoSeo={infoSeo}>
   <main class="w-full">
     <embed
       src="/CV_IvanCiudadEspinar.pdf"

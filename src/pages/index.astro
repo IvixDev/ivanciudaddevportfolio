@@ -1,8 +1,16 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { seoMapper } from "../helpers/seo.helper";
+
+const title = "Iván Ciudad Espinar - Desarrollador Frontend e Ingeniero Telemático";
+const description = "Bienvenido a la web de Iván Ciudad Espinar, desarrollador Frontend e Ingeniero Telemático. Descubre mis proyectos, artículos, hobbies y más sobre mi vida y carrera en desarrollo de software.";
+const url = "https://www.ivanciudad.com";
+const image = "https://www.ivanciudad.com/fotoivan.webp";
+
+const infoSeo = seoMapper(title, description, url, image);
 ---
 
-<Layout title="Inicio | Iván Ciudad Espinar">
+<Layout infoSeo={infoSeo}>
   <main class="flex flex-col items-center w-full gap-10">
     <section
       class="flex flex-col-reverse tablet:flex-row justify-start items-start tablet:items-end laptop:justify-center gap-8"

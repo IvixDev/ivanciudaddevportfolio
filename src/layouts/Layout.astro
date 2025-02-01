@@ -4,44 +4,20 @@ import Footer from "../components/Footer.astro";
 import { ClientRouter } from "astro:transitions";
 import { SEO } from "astro-seo";
 import SpeedInsights from "@vercel/speed-insights/astro";
+import type { InfoSeoProps } from "../helpers/seo.helper";
 
 interface Props {
-  title: string;
+  infoSeo: InfoSeoProps;
 }
 
-const { title } = Astro.props;
+const { infoSeo } = Astro.props;
 const path = Astro.url.pathname;
 ---
 
 <!doctype html>
 <html lang="es">
   <head>
-    <SEO
-      title={title}
-      description="Esta es la web de Iván Ciudad Espinar. Desarrollador de software e ingeniero."
-      canonical={`https://www.ivanciudad.com${path}`}
-      openGraph={{
-        basic: {
-          title,
-          type: "website",
-          image: "https://www.ivanciudad.com/fotoivan.webp",
-          url: `https://www.ivanciudad.com${path}`,
-        },
-      }}
-      twitter={{
-        title,
-        description:
-          "Esta es mi web de Iván Ciudad Espinar. Desarrollador de software e ingeniero.",
-        creator: "@Mrivix",
-        image: "https://www.ivanciudad.com/fotoivan.webp",
-      }}
-      extend={{
-        // extending the default link tags
-        link: [{ rel: "icon", href: "/favicon.svg" }],
-        // extending the default meta tags<p
-        meta: [],
-      }}
-    />
+    <SEO {...infoSeo} />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />

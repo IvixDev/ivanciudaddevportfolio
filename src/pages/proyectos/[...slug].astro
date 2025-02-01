@@ -1,10 +1,19 @@
 ---
+import { seoMapper } from "../../helpers/seo.helper";
 import Layout from "../../layouts/Layout.astro";
 const path = Astro.url.pathname;
 const slugs = path.split("/");
 const proyecto = slugs[slugs.length - 1];
+
+const title = `Iván Ciudad Espinar - Proyecto: ${proyecto}`;	
+const description = "Explora los proyectos de Iván Ciudad Espinar, desarrollador Frontend e Ingeniero Telemático. Descubre mis trabajos en desarrollo de software, aplicaciones web y más.";
+const canonical = "https://www.ivanciudad.com/proyectos";
+const url = `${canonical}/${proyecto}`;
+const image = "https://www.ivanciudad.com/programacion.webp";
+
+const infoSeo = seoMapper(title, description, url, image, canonical);
 ---
 
-<Layout title="Proyectos | Iván Ciudad Espinar">
+<Layout infoSeo={infoSeo}>
   <p>Proyecto: {proyecto}</p>
 </Layout>
