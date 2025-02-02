@@ -39,8 +39,9 @@ const path = Astro.url.pathname;
       src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.0/flowbite.min.js"
     ></script>
     <Header />
-    <div
-      class="flex
+    <div class="flex flex-col items-center w-full">
+      <div
+        class="flex
         justify-center
         max-w-screen-tablet
         px-4
@@ -50,11 +51,12 @@ const path = Astro.url.pathname;
         laptop:px-16
         desktop:max-w-screen-desktop
         bigDesktop:max-w-screen-bigDesktop
-        layout-height w-full"
-    >
-      <slot />
+        w-full layout-container"
+        >
+        <slot />
+      </div>
+      <Footer />
     </div>
-    <Footer />
     <style is:global>
       @font-face {
         font-family: "Onest";
@@ -76,23 +78,16 @@ const path = Astro.url.pathname;
       }
       body {
         width: 100%;
-        scrollbar-width: none;
         display: flex;
         align-items: center;
         background-color: #0f172a;
         color: white;
       }
-      body::-webkit-scrollbar {
-        display: none;
-        -webkit-appearance: none;
-        -ms-overflow-style: none;
-        scrollbar-width: none; /* Firefox */
-      }
       p {
         font-family: "Source Code Pro";
       }
-      .layout-height {
-        min-height: calc(100vh - (92px + 124px));
+      .layout-container {
+        min-height: calc(100vh - (80px + 124px));
       }
       .scale-on-hover {
         transition: transform 0.3s ease-in-out;
@@ -105,6 +100,21 @@ const path = Astro.url.pathname;
       }
       .scale-on-hover-big:hover {
         transform: scale(1.3);
+      }
+        /* Custom scrollbar styles */
+      ::-webkit-scrollbar {
+        width: 12px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #0f172a;
+      }
+      ::-webkit-scrollbar-thumb {
+        background-color: #31027c;
+        border-radius: 10px;
+        border: 3px solid #0f172a;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background-color: #310047;
       }
     </style>
   </body>
