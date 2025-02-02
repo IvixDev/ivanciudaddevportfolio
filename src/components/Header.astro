@@ -21,12 +21,12 @@ const firstSlug = `/${path.split("/")[1]}`;
         alt="Ivan SVG Logo"
       />
     </a>
-    <nav class="hidden tablet:flex flex-row tablet:gap-3 laptop:gap-6">
+    <nav class="hidden tablet:flex flex-row tablet:gap-4 laptop:gap-6">
       {
         headerLinks &&
           headerLinks.map((link) => (
             <a
-              class={firstSlug === link.href ? "text-[#22d3ee]" : ""}
+              class={`${firstSlug === link.href ? "text-[#22d3ee]" : ""} scale-on-hover`}
               href={link.href}
             >
               {link.label}
@@ -39,7 +39,7 @@ const firstSlug = `/${path.split("/")[1]}`;
         socialMediaLinks &&
           socialMediaLinks.map((link) => (
             <a href={link.href} target="_blank" aria-label={link.ariaLabel}>
-              <Icon class="size-6" name={link.name} />
+              <Icon class="size-6 scale-on-hover-big" name={link.name} />
             </a>
           ))
       }

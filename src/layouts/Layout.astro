@@ -94,6 +94,18 @@ const path = Astro.url.pathname;
       .layout-height {
         min-height: calc(100vh - (92px + 124px));
       }
+      .scale-on-hover {
+        transition: transform 0.3s ease-in-out;
+      }
+      .scale-on-hover:hover {
+        transform: scale(1.1);
+      }
+      .scale-on-hover-big {
+        transition: transform 0.3s ease-in-out;
+      }
+      .scale-on-hover-big:hover {
+        transform: scale(1.3);
+      }
     </style>
   </body>
 </html>

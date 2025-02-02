@@ -15,7 +15,7 @@ import { footerLinks, socialMediaLinks } from "../content/layout.consts";
           footerLinks &&
             footerLinks.map((link) => (
               <a
-                class="flex items-center text-sm whitespace-nowrap justify-center px-2"
+                class="flex items-center text-sm whitespace-nowrap justify-center px-2 scale-on-hover"
                 href={link.href}
               >
                 {link.label}
@@ -31,7 +31,7 @@ import { footerLinks, socialMediaLinks } from "../content/layout.consts";
           socialMediaLinks &&
             socialMediaLinks.map((link) => (
               <a href={link.href} target="_blank" aria-label={link.ariaLabel}>
-                <Icon class="size-5" name={link.name} />
+                <Icon class="size-5 scale-on-hover-big" name={link.name} />
               </a>
             ))
         }

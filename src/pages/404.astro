@@ -1,0 +1,40 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const title = "Página no encontrada - Iván Ciudad Espinar";
+const description = "Lo sentimos, la página que estás buscando no existe. Vuelve a la página principal para continuar explorando.";
+const url = "https://www.ivanciudad.com/404";
+const image = "https://www.ivanciudad.com/fotoivan.webp";
+
+const infoSeo = {
+  title,
+  description,
+  canonical: url,
+  openGraph: {
+    basic: {
+      title,
+      type: "website",
+      image,
+      url,
+    },
+  },
+  twitter: {
+    title,
+    description,
+    creator: "@Mrivix",
+    image,
+  },
+  extend: {
+    link: [{ rel: "icon", href: "/favicon.svg" }],
+    meta: [],
+  },
+};
+---
+
+<Layout infoSeo={infoSeo}>
+  <main class="flex flex-col items-center min-h-screen text-center gap-10">
+    <h1 class="text-2xl tablet:text-3xl laptop:text-5xl font-medium">404 - Página no encontrada</h1>
+    <p class="mt-4 text-lg">Lo sentimos, la página que estás buscando no existe.</p>
+    <a href="/" class="p-2 border-4 border-solid  bg-purple-950 border-purple-900 rounded-xl scale-on-hover">Volver a la página principal</a>
+  </main>
+</Layout>
