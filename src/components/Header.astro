@@ -10,7 +10,7 @@ const firstSlug = `/${path.split("/")[1]}`;
   <div
     class="flex flex-row justify-between rounded-full bg-[radial-gradient(circle_farthest-side,rgba(255,0,182,.15),rgba(255,255,255,0))] max-w-screen-tablet p-4 tablet:px-8
     tablet:max-w-screen-laptop laptop:px-16 desktop:max-w-screen-desktop
-    bigDesktop:max-w-screen-bigDesktop place-items-center w-full"
+    bigDesktop:max-w-screen-bigDesktop place-items-center w-full z-10"
   >
     <a aria-label="Enlace con Icono ICE" href="/">
       <Icon aria-label="Icono ICE" class="icon-scale size-6 scale-on-hover-big rounded-full p-1 w-[48px] h-[48px] bg-white" color="#6610F2" name="logo" />
@@ -38,60 +38,38 @@ const firstSlug = `/${path.split("/")[1]}`;
           ))
       }
     </div>
-    <Icon
-      data-drawer-target="sidebar-drawer"
-      data-drawer-show="sidebar-drawer"
-      data-drawer-placement="top"
-      aria-controls="sidebar-drawer"
+      <Icon
+      id="burger-menu"
       name="menu"
       class="w-8 h-8 tablet:hidden cursor-pointer"
-    />
+      />
+  </div>
+  <div id="mobile-menu" class="hidden-menu shadow-2xl py-2 border-b-[2px] border-b-[#53116d] bg-[radial-gradient(circle_farthest-side,rgba(255,0,182,.15),rgba(255,255,255,0))] flex flex-col fixed top-[82px] left-0 right-0 z-40 overflow-y-auto  bg-[#0F172A] w-full"  role="navigation" aria-label="Mobile menu">
+    <nav  class="divide-y divide-[#53116d]">
+    {
+      headerLinks &&
+      headerLinks.map((link) => (
+        <a
+        class="flex items-center justify-center  w-full p-2"
+        href={link.href}
+        role="menuitem"
+        >
+            {link.label}
+          </a>
+        ))
+      }
+    </nav>  
   </div>
 </header>
-
-<!-- drawer component -->
-<div id="sidebar-drawer" class="shadow-2xl py-2 border-b-[2px] border-b-[#53116d] bg-[radial-gradient(circle_farthest-side,rgba(255,0,182,.15),rgba(255,255,255,0))] flex flex-col fixed top-0 left-0 right-0 z-40 overflow-y-auto transition-transform -translate-y-full bg-[#0F172A] w-full">
-  <div class="p-4 border-b-[2px] border-b-[#53116d] flex flex-row justify-between items-center">
-    <a aria-label="Enlace con Icono ICE" aria-hidden="false" href="/">
-        <Icon aria-label="Icono ICE" class="icon-scale size-6 scale-on-hover-big rounded-full p-1 w-[48px] h-[48px] bg-white" color="#6610F2" name="logo" />
-    </a>
-    <div class="flex flex-row gap-3 items-center px-4">
-      {
-        socialMediaLinks &&
-          socialMediaLinks.map((link) => (
-            <a aria-hidden="false" href={link.href} target="_blank" aria-label={link.ariaLabel}>
-              <Icon class="size-6" name={link.name} />
-            </a>
-          ))
-      }
-    </div>
-    <Icon      
-      data-drawer-target="sidebar-drawer"
-      data-drawer-hide="sidebar-drawer"
-      data-drawer-placement="top"
-      aria-controls="sidebar-drawer"
-      name="close"
-      class="w-8 h-8 tablet:hidden cursor-pointer" />
-  </div>
-  <nav
-  tabindex="-1"
-  aria-labelledby="sidebar-drwaer"
-  class="divide-y divide-[#53116d]"
-  >
-  {
-    headerLinks &&
-    headerLinks.map((link) => (
-      <a
-      class="flex items-center justify-center  w-full p-2"
-      href={link.href}
-      >
-          {link.label}
-        </a>
-      ))
-    }
-  </nav>  
-</div>
-
+<script>
+  const toogleMenu = () => {
+    const menu = document.getElementById("mobile-menu");
+    menu?.classList.toggle("hidden-menu");
+    menu?.classList.toggle('visible-menu');
+  }
+  const burgerMenu = document.getElementById("burger-menu");
+  burgerMenu?.addEventListener("click", toogleMenu);
+</script>
 <style>
   a:hover {
     color: #98e2ed;
@@ -99,5 +77,15 @@ const firstSlug = `/${path.split("/")[1]}`;
   .icon-scale:hover {
     transform: scale(1.1);
     transition: 0.3s ease-in-out;
+  }
+  .hidden-menu {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out;
+  }
+  .visible-menu {
+    opacity: 1;
+    pointer-events: auto;
+    transition: opacity 0.3s ease-in-out;
   }
 </style>
