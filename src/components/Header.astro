@@ -73,6 +73,7 @@ const firstSlug = `/${path.split("/")[1]}`;
       menu.classList.add("hidden-menu");
       menu.classList.remove("visible-menu");
     }
+
   }
 
   const attachEventListeners =() => {
@@ -82,8 +83,19 @@ const firstSlug = `/${path.split("/")[1]}`;
     }
     document.addEventListener("click", closeMenu);
   }
+
+  const detachEventListeners =() => {
+    const burgerMenu = document.getElementById("burger-menu");
+    if (burgerMenu) {
+      burgerMenu.removeEventListener("click", toggleMenu);
+    }
+    document.removeEventListener("click", closeMenu);
+  }
+  
   
   document.addEventListener("DOMContentLoaded", attachEventListeners);
+  document.addEventListener("astro:after-swap",attachEventListeners);
+  document.addEventListener("astro:before-swap", detachEventListeners);
 </script>
 <style>
   a:hover {
