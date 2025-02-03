@@ -44,7 +44,7 @@ const firstSlug = `/${path.split("/")[1]}`;
       class="w-8 h-8 tablet:hidden cursor-pointer"
       />
   </div>
-  <div id="mobile-menu" class="hidden-menu shadow-2xl py-2 border-b-[2px] border-b-[#53116d] bg-[radial-gradient(circle_farthest-side,rgba(255,0,182,.15),rgba(255,255,255,0))] flex flex-col fixed top-[82px] left-0 right-0 z-40 overflow-y-auto  bg-[#0F172A] w-full"  role="navigation" aria-label="Mobile menu">
+  <div id="mobile-menu" class="hidden-menu shadow-2xl py-2 border-b-[2px] border-b-[#53116d] bg-[radial-gradient(circle_farthest-side,rgba(255,0,182,.15),rgba(255,255,255,0))] flex flex-col fixed top-[82px] left-0 right-0 z-40 overflow-y-auto  bg-[#0F172A] w-full" aria-label="Mobile menu">
     <nav  class="divide-y divide-[#53116d]">
     {
       headerLinks &&
@@ -52,7 +52,6 @@ const firstSlug = `/${path.split("/")[1]}`;
         <a
         class="flex items-center justify-center  w-full p-2"
         href={link.href}
-        role="menuitem"
         >
             {link.label}
           </a>
