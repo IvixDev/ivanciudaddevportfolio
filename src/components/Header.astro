@@ -14,12 +14,12 @@ const firstSlug = `/${path.split("/")[1]}`;
     <a aria-label="Enlace con Icono ICE" href="/">
       <Icon aria-label="Icono ICE" class="icon-scale size-6 scale-on-hover-big rounded-full p-1 w-[48px] h-[48px] bg-white" color="#6610F2" name="logo" />
     </a>
-    <nav class="hidden tablet:flex flex-row tablet:gap-3 laptop:gap-6">
+    <nav class="hidden tablet:flex flex-row tablet:gap-6 laptop:gap-6">
       {
         headerLinks &&
           headerLinks.map((link) => (
             <a
-              class={`${firstSlug === link.href ? "text-[#22d3ee]" : ""} scale-on-hover`}
+              class={`scale-on-hover ${firstSlug === link.href ? "text-[#22d3ee]" : ""}`}
               href={link.href}
             >
               {link.label}
@@ -27,7 +27,7 @@ const firstSlug = `/${path.split("/")[1]}`;
           ))
       }
     </nav>
-    <div class="flex flex-row gap-3 items-center px-4">
+    <div class="hidden tablet:flex flex-row gap-4 items-center px-4">
       {
         socialMediaLinks &&
           socialMediaLinks.map((link) => (
@@ -43,21 +43,34 @@ const firstSlug = `/${path.split("/")[1]}`;
       class="w-8 h-8 tablet:hidden cursor-pointer"
       />
   </div>
-  <div id="mobile-menu" class="z-[-1] hidden-menu tablet:hidden shadow-2xl pb-2 border-b-[2px] border-b-[#53116d] bg-[radial-gradient(circle_farthest-side,rgba(255,0,182,.15),rgba(255,255,255,0))] flex flex-col top-[80px] left-0 right-0 overflow-y-auto absolute bg-[#0F172A] w-full" aria-label="Mobile menu">
+  <div id="mobile-menu" class="z-[-1] hidden-menu tablet:hidden shadow-2xl pb-2 border-b-[2px] border-b-[#53116d] bg-[radial-gradient(circle_farthest-side,rgba(255,0,182,.15),rgba(255,255,255,0))] flex flex-col top-[80px] left-0 right-0 overflow-y-auto absolute bg-[#0F172A] w-full overflow-hidden" aria-label="Mobile menu">
     <hr class="border-t-2 border-[#53116d]" />
-    <nav  class="divide-y divide-[#53116d]">
+    <nav  class="divide-[#53116d] divide-y-2">
     {
       headerLinks &&
       headerLinks.map((link) => (
-        <a
-        class="flex items-center justify-center  w-full p-2"
-        href={link.href}
-        >
+        <div class="flex items-center justify-center w-full p-2">
+          <a
+          class="scale-on-hover w-full text-center"
+          href={link.href}
+          >
             {link.label}
           </a>
+        </div>
         ))
       }
     </nav>  
+    <hr class="border-t-2 border-[#53116d]" />
+    <div class="flex flex-row gap-3 justify-center items-center p-4">
+      {
+        socialMediaLinks &&
+          socialMediaLinks.map((link) => (
+            <a href={link.href} target="_blank" aria-label={link.ariaLabel}>
+              <Icon class="size-6 scale-on-hover-big" name={link.name} />
+            </a>
+          ))
+      }
+    </div>
   </div>
 </header>
 <script>
