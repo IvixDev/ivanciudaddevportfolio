@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { seoMapper } from "../helpers/seo.helper";
+import { socialMediaLinks } from "../content/layout.consts";
 
 const title = "Iván Ciudad Espinar - Desarrollador Frontend e Ingeniero Telemático";
 const description = "Bienvenido a la web de Iván Ciudad Espinar, desarrollador Frontend e Ingeniero Telemático. Descubre mis proyectos, artículos, hobbies y más sobre mi vida y carrera en desarrollo de software.";
@@ -8,81 +9,139 @@ const url = "https://www.ivanciudad.com";
 const image = "https://www.ivanciudad.com/fotoivan.webp";
 
 const infoSeo = seoMapper(title, description, url, image);
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Iván Ciudad Espinar",
+  "url": url,
+  "image": image,
+  "sameAs": socialMediaLinks
+    .filter((link) => link.href.startsWith("http"))
+    .map((link) => link.href),
+  "jobTitle": "Frontend Developer",
+  "description": description,
+};
 ---
 
 <Layout infoSeo={infoSeo}>
-  <main class="flex flex-col items-center w-full gap-10">
-    <section
-      class="flex flex-col-reverse tablet:flex-row justify-start items-start tablet:items-end laptop:justify-center gap-8"
-    >
-      <img src="fotoivan.webp" alt="Foto Iván Ciudad" class="hidden tablet:block h-[182px] m-1 aspect-[10/8.81]" />
-      <div class="flex flex-col gap-2">
-        <h1
-        class="text-3xl laptop:text-5xl max-w-[400px] tablet:max-w-[500px] laptop:max-w-[800px] font-medium"
-        >
-        Soy <b>Iván Ciudad Espinar</b>, <b>Frontend Senior</b> e <b>Ingeniero Telemático</b>.
-      </h1>
-      <img src="fotoivan.webp" alt="Foto Iván Ciudad" class="tablet:hidden w-[220px] m-1 aspect-[10/8.81]" />
-      <h2 class="text-3xl laptop:text-4xl max-w-[400px] tablet:max-w-[500px] laptop:max-w-[800px] font-medium">
-        Bienvenido a mi rincón de internet.
-      </h2>
-    </div>
-  </section>
-  <hr class=" hidden tablet:visible w-[100%] border-t-2 border-gray-300" />
-  <section class="flex flex-col gap-4">
-    <h3 class="text-2xl font-medium">¿Cual es el foco de esta web?</h3>
-    <p>
-      En primer lugar, la intención de esta web es darme a conocer a mi <b>Iván Ciudad Espinar</b> y mostrar mis habilidades como <b>Frontend Developer</b>. 
-        Aquí encontrarás información sobre mi experiencia en el <b>desarrollo web</b>, mis proyectos y los artículos que he escrito. 
-        También hablaré de mis gustos, hobbies e historia además de cualquier cosa que me parezca interesante.
-        <br /><br>
-        Con esta web quiero probar mis conocimientos de <b>SEO</b> para posicionarme en <b>Google</b> 
-        consiguiendo aparecer en los primeros resultados de búsqueda usando mi nombre <b>Iván Ciudad Espinar</b>.
-  </section>  
-  <section class="flex flex-col gap-8 w-full">
-    <h3 class="text-2xl font-medium">Un resumen de lo que vas a encontrar</h3>
-    <article class="flex flex-col laptop:flex-row gap-6">
-      <div class="flex flex-col gap-4">
-        <h4 class="text-xl font-medium">Voy a hablar sobre mi</h4>
-        <p class="text-s tablet:text-m">En este apartado encontrarás una pequeña biografía mía para que sepas <b>quien soy</b> y de donde vengo.
-          También hablaré de mis gustos como son los <b>videojuegos</b>, las <b>series</b>, <b>películas</b>, el <b>gimnasio</b> y la <b>lectura</b>.
-        </p>
-        <a href="/sobre-mi">Lee sobre mi</a>
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  <main class="flex flex-col items-center w-full gap-12 laptop:gap-20">
+    
+    <!-- Hero Section -->
+    <section class="flex flex-col-reverse tablet:flex-row justify-between items-center gap-12 w-full animate-fade-in-up">
+      <div class="flex flex-col gap-6 max-w-2xl">
+        <h1 class="text-4xl tablet:text-5xl laptop:text-6xl font-bold leading-tight">
+          Soy <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">Iván Ciudad</span>, <br />
+          Frontend Developer e <br />
+          <span class="text-slate-300">Ingeniero Telemático</span>.
+        </h1>
+        <h2 class="text-xl tablet:text-2xl text-slate-400 max-w-xl leading-relaxed">
+          Bienvenido a mi rincón de internet, donde codifico ideas y construyo experiencias digitales.
+        </h2>
       </div>
-      <img src="sobremi.webp" alt="Teclado y mandos de videoconsola" class="w-full tablet:w-[500px] laptop:w-[300px]" />
-    </article>
-    <article class="flex flex-col-reverse laptop:flex-row gap-6">
-      <img src="programacion.webp" alt="Ordenador programación" class="w-full tablet:w-[500px] laptop:w-[360px]" />
-      <div class="flex flex-col gap-4">
-        <h4 class="text-xl font-medium">Mis proyectos</h4>
-        <p>Te muestro información sobre los <b>proyectos</b> de <b>desarrollo web</b> en los que he trabajado y en los que estoy trabajando.
-          También hablaré de las <b>tecnologías</b> que he utilizado y de las que me gustaría aprender.
-        </p>
-        <a href="/proyectos">Leer sobre mis proyectos</a>
+      <div class="relative group">
+        <div class="absolute -inset-1 bg-gradient-to-r from-cyan-400 to-purple-600 rounded-full blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+        <img 
+          src="fotoivan.webp" 
+          alt="Foto Iván Ciudad Espinar" 
+          class="relative w-48 h-48 tablet:w-64 tablet:h-64 laptop:w-80 laptop:h-80 object-cover rounded-full border-4 border-slate-900 shadow-2xl" 
+        />
       </div>
-    </article>
-    <article class="flex flex-col laptop:flex-row gap-6">
-      <div class="flex flex-col gap-4">
-        <h4 class="text-xl font-medium">Mi vida laboral</h4>
-        <p> Aquí hay información sobre mi ruta de estudios, mi experiencia en <b>ingeniería telemática</b> y
-          mi inserción en el <b>mundo laboral</b>.
-          Hablo de las <b>empresas</b> en las que he trabajado, de los <b>proyectos</b> en los que he participado y de las <b>tecnologías</b> que he utilizado.
-        </p>
-        <a href="/trayectoria-profesional">Mi carrera profesional</a>
-      </div>
-      <img src="laboral.webp" alt="Vida laboral" class="w-full tablet:w-[500px] laptop:w-[300px]" />
-    </article>
-  </section>
-</main>
+    </section>
+
+    <hr class="w-full border-t border-slate-800/60" />
+
+    <!-- Focus Section -->
+    <section class="flex flex-col gap-4 w-full max-w-4xl text-center items-center">
+      <span class="text-cyan-400 font-mono text-base font-bold tracking-widest uppercase mb-2">Sobre esta web</span>
+      <h3 class="text-3xl tablet:text-4xl font-bold">¿Qué encontrarás aquí?</h3>
+      <p class="text-lg text-slate-300 leading-relaxed max-w-3xl">
+        Esta web es mi <strong>portfolio personal</strong> y laboratorio de pruebas. 
+        Un espacio donde demuestro mis capacidades como <strong class="text-cyan-300">Frontend Developer</strong>, 
+        aplico estrategias de <strong class="text-purple-300">SEO</strong> y comparto quién soy más allá del código.
+      </p>
+    </section>
+
+    <!-- Content Grid -->
+    <section class="grid grid-cols-1 laptop:grid-cols-3 gap-6 w-full">
+      
+      <!-- Card 1: Sobre Mi -->
+      <a href="/sobre-mi" class="group relative flex flex-col gap-4 p-6 rounded-2xl bg-slate-800/30 border border-white/5 hover:border-cyan-500/30 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-cyan-500/10 overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-slate-900/90 z-10 pointer-events-none"></div>
+        <div class="h-48 w-full overflow-hidden rounded-xl mb-2">
+          <img src="sobremi.webp" alt="Sobre mi" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+        </div>
+        <div class="z-20 flex flex-col gap-2">
+          <h4 class="text-2xl font-bold group-hover:text-cyan-400 transition-colors">Sobre mí</h4>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            Una pequeña biografía, mis gustos (videojuegos, series, gym) y quién soy detrás del código.
+          </p>
+          <span class="mt-2 text-cyan-400 text-sm font-medium flex items-center gap-2">
+            Leer más 
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 group-hover:translate-x-1 transition-transform">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+            </svg>
+          </span>
+        </div>
+      </a>
+
+      <!-- Card 2: Proyectos -->
+      <a href="/proyectos" class="group relative flex flex-col gap-4 p-6 rounded-2xl bg-slate-800/30 border border-white/5 hover:border-purple-500/30 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-purple-500/10 overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-slate-900/90 z-10 pointer-events-none"></div>
+        <div class="h-48 w-full overflow-hidden rounded-xl mb-2">
+          <img src="programacion.webp" alt="Proyectos" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+        </div>
+        <div class="z-20 flex flex-col gap-2">
+          <h4 class="text-2xl font-bold group-hover:text-purple-400 transition-colors">Mis Proyectos</h4>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            Descubre lo que he construido. Webs, aplicaciones y experimentos con las últimas tecnologías.
+          </p>
+          <span class="mt-2 text-purple-400 text-sm font-medium flex items-center gap-2">
+            Ver portfolio 
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 group-hover:translate-x-1 transition-transform">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+            </svg>
+          </span>
+        </div>
+      </a>
+
+      <!-- Card 3: Trayectoria -->
+      <a href="/trayectoria-profesional" class="group relative flex flex-col gap-4 p-6 rounded-2xl bg-slate-800/30 border border-white/5 hover:border-green-500/30 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-green-500/10 overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-slate-900/90 z-10 pointer-events-none"></div>
+        <div class="h-48 w-full overflow-hidden rounded-xl mb-2">
+          <img src="laboral.webp" alt="Trayectoria" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+        </div>
+        <div class="z-20 flex flex-col gap-2">
+          <h4 class="text-2xl font-bold group-hover:text-green-400 transition-colors">Trayectoria</h4>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            Mi camino profesional: empresas, roles y experiencia en ingeniería telemática y desarrollo.
+          </p>
+          <span class="mt-2 text-green-400 text-sm font-medium flex items-center gap-2">
+            Ver CV
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 group-hover:translate-x-1 transition-transform">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+            </svg>
+          </span>
+        </div>
+      </a>
+
+    </section>
+  </main>
 </Layout>
+
 <style>
-  article {
-    border: 1px solid #22d3ee;
-    border-radius: 0.5rem;
-    padding: 1rem;
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
-  b, a {
-    font-weight: 800;
-    color: #22d3ee;
+  .animate-fade-in-up {
+    animation: fade-in-up 0.8s ease-out forwards;
   }
 </style>

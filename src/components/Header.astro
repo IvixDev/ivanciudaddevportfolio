@@ -6,21 +6,24 @@ const path = Astro.url.pathname;
 const firstSlug = `/${path.split("/")[1]}`;
 ---
 
-<header class="flex justify-center sticky top-0 z-100 bg-[#0f172a] w-full">
+<header class="flex justify-center sticky top-0 z-50 w-full backdrop-blur-md bg-slate-950/80 border-b border-white/10 transition-all duration-300">
   <div
-    class="flex flex-row justify-between bg-[#0f172a] bg-[radial-gradient(circle_farthest-side,rgba(255,0,182,.15),rgba(255,255,255,0))] max-w-screen-tablet p-4 tablet:px-8
+    class="flex flex-row justify-between max-w-screen-tablet p-4 tablet:px-8
     tablet:max-w-screen-laptop laptop:px-16 desktop:max-w-screen-desktop
-    bigDesktop:max-w-screen-bigDesktop place-items-center w-full z-100"
+    bigDesktop:max-w-screen-bigDesktop place-items-center w-full"
   >
-    <a aria-label="Enlace con Icono ICE" href="/">
-      <Icon aria-label="Icono ICE" class="icon-scale size-6 scale-on-hover-big rounded-full p-1 w-[48px] h-[48px] bg-white" color="#6610F2" name="logo" />
+    <a aria-label="Home" href="/" class="flex items-center gap-3 group">
+      <div class="p-1.5 bg-white/5 rounded-full border border-white/10 group-hover:border-cyan-500/50 transition-colors">
+        <Icon aria-label="Logo" class="size-8 text-cyan-400 group-hover:scale-110 transition-transform" name="logo" />
+      </div>
+      <span class="hidden tablet:block font-bold text-lg text-slate-200 group-hover:text-white transition-colors">Iván Ciudad Espinar</span>
     </a>
-    <nav class="hidden tablet:flex flex-row tablet:gap-6 laptop:gap-6">
+    <nav class="hidden tablet:flex flex-row gap-1 items-center bg-slate-900/50 p-1 rounded-full border border-white/10 backdrop-blur-md shadow-sm">
       {
         headerLinks &&
           headerLinks.map((link) => (
             <a
-              class={`scale-on-hover ${firstSlug === link.href ? "text-[#22d3ee]" : ""}`}
+              class={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${firstSlug === link.href ? "bg-white/10 text-cyan-400 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1)]" : "text-slate-400 hover:text-slate-200 hover:bg-white/5"}`}
               href={link.href}
             >
               {link.label}
@@ -28,12 +31,17 @@ const firstSlug = `/${path.split("/")[1]}`;
           ))
       }
     </nav>
-    <div class="hidden tablet:flex flex-row gap-4 items-center px-4">
+    <div class="hidden tablet:flex flex-row gap-3 items-center px-4">
       {
         socialMediaLinks &&
           socialMediaLinks.map((link) => (
-            <a href={link.href} target="_blank" aria-label={link.ariaLabel}>
-              <Icon class="size-6 scale-on-hover-big" name={link.name} />
+            <a 
+              href={link.href} 
+              target="_blank" 
+              aria-label={link.ariaLabel}
+              class="text-slate-400 hover:text-white transition-colors p-2 hover:bg-white/10 rounded-lg"
+            >
+              <Icon class="size-5" name={link.name} />
             </a>
           ))
       }
@@ -50,25 +58,21 @@ const firstSlug = `/${path.split("/")[1]}`;
     <span class="group-[.open]:translate-y-[-0.6rem] group-[.open]:-rotate-45 h-[2px] w-6 bg-gray-300 transition ease transform duration-300"></span>
   </button>
   </div>
-  <div id="mobile-menu" class="z-[-1] hidden-menu tablet:hidden shadow-2xl pb-2 border-b-[2px] border-b-[#53116d] bg-[radial-gradient(circle_farthest-side,rgba(255,0,182,.15),rgba(255,255,255,0))] flex flex-col top-[80px] left-0 right-0 overflow-y-auto absolute bg-[#0F172A] w-full overflow-hidden" aria-label="Mobile menu">
-    <hr class="border-t-2 border-[#53116d]" />
-    <nav  class="divide-[#53116d] divide-y-2">
+  <div id="mobile-menu" class="z-[-1] hidden-menu tablet:hidden shadow-2xl bg-slate-950/95 backdrop-blur-xl flex flex-col absolute top-full left-0 right-0 w-full border-b border-white/10" aria-label="Mobile menu">
+    <nav class="flex flex-col p-4 gap-2">
     {
       headerLinks &&
       headerLinks.map((link) => (
-        <div class="flex items-center justify-center w-full p-2">
-          <a
-          class="scale-on-hover w-full text-center"
+        <a
+          class={`w-full py-3 text-center rounded-lg transition-all duration-200 text-lg ${firstSlug === link.href ? "bg-white/10 text-cyan-400 font-medium" : "text-slate-400 hover:text-white hover:bg-white/5"}`}
           href={link.href}
-          >
-            {link.label}
-          </a>
-        </div>
+        >
+          {link.label}
+        </a>
         ))
       }
     </nav>  
-    <hr class="border-t-2 border-[#53116d]" />
-    <div class="flex flex-row gap-3 justify-center items-center p-4">
+    <div class="flex flex-row gap-4 justify-center items-center py-6 border-t border-white/10 bg-white/5">
       {
         socialMediaLinks &&
           socialMediaLinks.map((link) => (
