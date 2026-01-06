@@ -1,4 +1,4 @@
-import vercel from "@astrojs/vercel";
+import node from "@astrojs/node";
 import icon from "astro-icon";
 import { defineConfig } from 'astro/config';
 import tailwind from "@astrojs/tailwind";
@@ -13,11 +13,10 @@ export default defineConfig({
   integrations: [icon(), sitemap(), react(), tailwind()],
   output: 'server',
   site: 'https://www.ivanciudad.com',
-  adapter: vercel({
-    webAnalytics: {
-      enabled: true
-    }
+  adapter: node({
+    mode: "standalone",
   }),
+
   vite: {
     plugins: [],
   },

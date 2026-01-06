@@ -2,7 +2,8 @@
 import Layout from "../layouts/Layout.astro";
 
 const title = "Error interno del servidor - Iván Ciudad Espinar";
-const description = "Lo sentimos, ha ocurrido un error en el servidor. Por favor, vuelve a intentarlo más tarde.";
+const description =
+  "Lo sentimos, ha ocurrido un error en el servidor. Por favor, vuelve a intentarlo más tarde.";
 const url = "https://www.ivanciudad.com/500";
 const image = "https://www.ivanciudad.com/fotoivan.webp";
 
@@ -30,14 +31,24 @@ const infoSeo = {
   },
 };
 
-const errorMessage = Astro.props.error.message ?? "Error desconocido";
+const errorMessage = (Astro.props as any).error?.message ?? "Error desconocido";
 ---
 
 <Layout infoSeo={infoSeo}>
   <main class="flex flex-col items-center min-h-screen text-center gap-10">
-    <h1 class="text-2xl tablet:text-3xl laptop:text-5xl font-medium">500 - Error interno del servidor</h1>
-    <p class="mt-4 text-lg">Lo sentimos, ha ocurrido un error en el servidor. Por favor, vuelve a intentarlo más tarde.</p>
-    <pre class="mt-4 p-4 bg-gray-100 text-red-600 rounded-lg">{errorMessage}</pre>
-    <a href="/" class="p-2 border-4 border-solid bg-purple-950 border-purple-900 rounded-xl scale-on-hover">Volver a la página principal</a>
+    <h1 class="text-2xl tablet:text-3xl laptop:text-5xl font-medium">
+      500 - Error interno del servidor
+    </h1>
+    <p class="mt-4 text-lg">
+      Lo sentimos, ha ocurrido un error en el servidor. Por favor, vuelve a
+      intentarlo más tarde.
+    </p>
+    <pre
+      class="mt-4 p-4 bg-gray-100 text-red-600 rounded-lg">{errorMessage}</pre>
+    <a
+      href="/"
+      class="p-2 border-4 border-solid bg-purple-950 border-purple-900 rounded-xl scale-on-hover"
+      >Volver a la página principal</a
+    >
   </main>
 </Layout>
