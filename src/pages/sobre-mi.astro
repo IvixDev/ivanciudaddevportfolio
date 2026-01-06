@@ -1,9 +1,11 @@
 ---
 import { seoMapper } from "../helpers/seo.helper";
 import Layout from "../layouts/Layout.astro";
+import ScrollReveal from "../components/ScrollReveal";
 
 const title = "Iván Ciudad Espinar - Sobre mi";
-const description = "Aquí encontrarás información sobre mi vida, mis gustos y mis hobbies. Descubre quién soy, de dónde vengo y mis pasiones por los videojuegos, las películas y las series.";
+const description =
+  "Aquí encontrarás información sobre mi vida, mis gustos y mis hobbies. Descubre quién soy, de dónde vengo y mis pasiones por los videojuegos, las películas y las series.";
 const url = "https://www.ivanciudad.com/sobre-mi";
 const image = "https://www.ivanciudad.com/sobremi.webp";
 
@@ -11,5 +13,7 @@ const infoSeo = seoMapper(title, description, url, image);
 ---
 
 <Layout infoSeo={infoSeo}>
-  <p>te voy a contar mi vida</p>
+  <ScrollReveal client:visible>
+    <p class="text-lg text-slate-300">te voy a contar mi vida</p>
+  </ScrollReveal>
 </Layout>
