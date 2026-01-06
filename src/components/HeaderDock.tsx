@@ -2,7 +2,6 @@ import React, { useRef, useState, useEffect } from "react";
 import {
     motion,
     useMotionValue,
-    useSpring,
     useTransform,
     AnimatePresence,
 } from "framer-motion";
@@ -40,11 +39,18 @@ export default function HeaderDock({ currentPath }: HeaderDockProps) {
 
     // Sync active path when props change (view transitions)
     useEffect(() => {
-        // If the path changes, we want to close the menu but allow animation.
-        // However, if the component is re-mounted by Astro, animation is lost.
-        // We ensure the active path updates, and if menu was open, we close it.
+        const handlePageLoad = () => {
+            setActivePath(window.location.pathname);
+            setIsMobileMenuOpen(false);
+        };
+
+        // Sync from props
         setActivePath(currentPath);
         setIsMobileMenuOpen(false);
+
+        // Listen for Astro transitions
+        document.addEventListener("astro:page-load", handlePageLoad);
+        return () => document.removeEventListener("astro:page-load", handlePageLoad);
     }, [currentPath]);
 
     // Framer Motion logic for Desktop Dock

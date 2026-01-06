@@ -47,9 +47,7 @@ import "../styles/global.css";
     class="flex flex-col min-h-screen bg-slate-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))] text-white selection:bg-cyan-500/30 selection:text-cyan-200"
   >
     <!-- <Header /> -->
-    <div transition:name="header" transition:persist>
-      <HeaderDock client:load currentPath={path} />
-    </div>
+    <HeaderDock client:load transition:persist currentPath={path} />
     <div class="flex flex-col items-center w-full">
       <div
         class="flex
