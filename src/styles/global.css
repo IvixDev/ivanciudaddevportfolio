@@ -8,3 +8,12 @@
   --breakpoint-desktop: 1280px;
   --breakpoint-bigDesktop: 1536px;
 }
+
+html {
+  background-color: #0f172a !important;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.15s;
+}

@@ -32,7 +32,19 @@ import "../styles/global.css";
       content="rtqz__fHq7l_eMEEl-ULln50aHX17BLq7dSVgfVkLdU"
     />
     <link rel="sitemap" href="/sitemap-index.xml" />
-    <ClientRouter />
+    <ClientRouter fallback="none" />
+
+    <!-- Estilos críticos inyectados en el head para evitar el flash blanco -->
+    <style is:inline>
+      html {
+        background-color: #000000 !important; /* Color base aún más oscuro para el flash */
+      }
+      ::view-transition-old(root),
+      ::view-transition-new(root) {
+        animation-duration: 0.15s;
+      }
+    </style>
+
     <SEO {...infoSeo} />
     <SpeedInsights />
   </head>
