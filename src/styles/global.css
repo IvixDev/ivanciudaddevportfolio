@@ -1,6 +1,13 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --breakpoint-mobile: 0px;
+  --breakpoint-small-tablet: 640px;
+  --breakpoint-tablet: 768px;
+  --breakpoint-laptop: 1024px;
+  --breakpoint-desktop: 1280px;
+  --breakpoint-big-desktop: 1536px;
+}
 
 @layer base {
   :root {
