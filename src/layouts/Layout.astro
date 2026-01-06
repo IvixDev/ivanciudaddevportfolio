@@ -32,28 +32,11 @@ import "../styles/global.css";
       content="rtqz__fHq7l_eMEEl-ULln50aHX17BLq7dSVgfVkLdU"
     />
     <link rel="sitemap" href="/sitemap-index.xml" />
-    <ClientRouter fallback="none" />
-
-    <!-- Prevención de FOUC (Flash of Unstyled Content) -->
+    <ClientRouter />
     <style is:inline>
-      :root {
-        background-color: #020617 !important;
-        color: white;
-      }
-      /* Reset básico para que si Tailwind falla un frame, no se vea horrible */
-      a {
-        color: #22d3ee;
-        text-decoration: none;
-        font-family: sans-serif;
-      }
+      html,
       body {
-        margin: 0;
-        background-color: #020617;
-      }
-
-      ::view-transition-old(root),
-      ::view-transition-new(root) {
-        animation-duration: 0.1s;
+        background-color: #0f172a !important;
       }
     </style>
 
@@ -64,7 +47,9 @@ import "../styles/global.css";
     class="flex flex-col min-h-screen bg-slate-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))] text-white selection:bg-cyan-500/30 selection:text-cyan-200"
   >
     <!-- <Header /> -->
-    <HeaderDock client:load transition:persist currentPath={path} />
+    <div transition:name="header" transition:persist>
+      <HeaderDock client:load currentPath={path} />
+    </div>
     <div class="flex flex-col items-center w-full">
       <div
         class="flex
