@@ -34,14 +34,26 @@ import "../styles/global.css";
     <link rel="sitemap" href="/sitemap-index.xml" />
     <ClientRouter fallback="none" />
 
-    <!-- Estilos críticos inyectados en el head para evitar el flash blanco -->
+    <!-- Prevención de FOUC (Flash of Unstyled Content) -->
     <style is:inline>
-      html {
-        background-color: #000000 !important; /* Color base aún más oscuro para el flash */
+      :root {
+        background-color: #020617 !important;
+        color: white;
       }
+      /* Reset básico para que si Tailwind falla un frame, no se vea horrible */
+      a {
+        color: #22d3ee;
+        text-decoration: none;
+        font-family: sans-serif;
+      }
+      body {
+        margin: 0;
+        background-color: #020617;
+      }
+
       ::view-transition-old(root),
       ::view-transition-new(root) {
-        animation-duration: 0.15s;
+        animation-duration: 0.1s;
       }
     </style>
 
