@@ -1,10 +1,11 @@
 ---
 // import Header from "../components/Header.astro";
-import HeaderDock from "../components/HeaderDock.astro";
+import HeaderDock from "../components/HeaderDock";
 import Footer from "../components/Footer.astro";
 import { SEO } from "astro-seo";
+import { ClientRouter } from "astro:transitions";
 import SpeedInsights from "@vercel/speed-insights/astro";
-import type { InfoSeoProps } from "../types/types"
+import type { InfoSeoProps } from "../types/types";
 
 interface Props {
   infoSeo: InfoSeoProps;
@@ -26,8 +27,12 @@ import "../styles/global.css";
       property="og:image"
       content="https://www.ivanciudad.com/fotoivan.webp"
     />
-    <meta name="google-site-verification" content="rtqz__fHq7l_eMEEl-ULln50aHX17BLq7dSVgfVkLdU" />
+    <meta
+      name="google-site-verification"
+      content="rtqz__fHq7l_eMEEl-ULln50aHX17BLq7dSVgfVkLdU"
+    />
     <link rel="sitemap" href="/sitemap-index.xml" />
+    <ClientRouter />
     <SEO {...infoSeo} />
     <SpeedInsights />
   </head>
@@ -35,7 +40,7 @@ import "../styles/global.css";
     class="flex flex-col min-h-screen bg-slate-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))] text-white selection:bg-cyan-500/30 selection:text-cyan-200"
   >
     <!-- <Header /> -->
-    <HeaderDock />
+    <HeaderDock client:load transition:persist currentPath={path} />
     <div class="flex flex-col items-center w-full">
       <div
         class="flex
@@ -49,7 +54,7 @@ import "../styles/global.css";
         desktop:max-w-screen-desktop
         bigDesktop:max-w-screen-bigDesktop
         w-full layout-container"
-        >
+      >
         <slot />
       </div>
       <Footer />
@@ -57,13 +62,13 @@ import "../styles/global.css";
     <style is:global>
       @font-face {
         font-family: "Onest";
-        src: url('/fonts/Onest.woff2') format('woff2');
+        src: url("/fonts/Onest.woff2") format("woff2");
         font-weight: normal;
         font-style: normal;
       }
       @font-face {
         font-family: "Source Code Pro";
-        src: url('/fonts/SourceCodePro.woff2') format('woff2');
+        src: url("/fonts/SourceCodePro.woff2") format("woff2");
         font-weight: normal;
         font-style: normal;
       }
@@ -114,7 +119,6 @@ import "../styles/global.css";
       ::-webkit-scrollbar-button {
         display: none;
       }
-
     </style>
   </body>
 </html>
