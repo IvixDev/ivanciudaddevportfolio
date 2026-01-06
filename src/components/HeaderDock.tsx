@@ -215,18 +215,20 @@ function DockItem({
             ref={ref}
             href={href}
             className={cn(
-                "flex items-center justify-center rounded-full text-sm font-medium transition-colors mx-0.5 px-4 py-2",
-                active
-                    ? "bg-white/10 text-cyan-400 shadow-inner"
-                    : "text-slate-400 hover:text-slate-200 hover:bg-white/5"
+                "relative flex items-center justify-center rounded-full text-sm font-medium transition-colors mx-0.5 px-4 py-2",
+                active ? "text-cyan-400" : "text-slate-400 hover:text-slate-200"
             )}
             style={{
-                // We only scale width slightly for the "magnification" effect on the container
-                // actually for text links, scaling font-size or padding is better.
-                // Let's just scale the WHOLE element slightly
-                scale: useTransform(distance, [-150, 0, 150], [1, 1.15, 1]),
+                scale: useTransform(distance, [-150, 0, 150], [1, 1.05, 1]),
             }}
         >
+            {active && (
+                <motion.span
+                    layoutId="active-pill"
+                    className="absolute inset-0 bg-white/10 rounded-full shadow-inner z-[-1]"
+                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                />
+            )}
             {children}
         </motion.a>
     );
