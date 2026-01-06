@@ -6,19 +6,32 @@ const path = Astro.url.pathname;
 const firstSlug = `/${path.split("/")[1]}`;
 ---
 
-<header class="header-dock fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[92%] max-w-4xl">
+<header
+  class="header-dock fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[92%] max-w-4xl"
+>
   <div
     class="flex flex-row justify-between items-center rounded-full border border-white/10 bg-slate-950/70 backdrop-blur-xl shadow-2xl px-6 py-3 w-full"
   >
     <a aria-label="Home" href="/" class="flex items-center gap-3 group">
-      <div class="p-1.5 bg-white/5 rounded-full border border-white/10 group-hover:border-cyan-500/50 transition-colors">
-        <Icon aria-label="Logo" class="size-6 text-cyan-400 group-hover:scale-110 transition-transform" name="logo" />
+      <div
+        class="p-1.5 bg-white/5 rounded-full border border-white/10 group-hover:border-cyan-500/50 transition-colors"
+      >
+        <Icon
+          aria-label="Logo"
+          class="size-6 text-cyan-400 group-hover:scale-110 transition-transform"
+          name="logo"
+        />
       </div>
-      <span class="hidden tablet:block font-bold text-lg text-slate-200 group-hover:text-white transition-colors">Iván Ciudad</span>
+      <span
+        class="hidden tablet:block font-bold text-lg text-slate-200 group-hover:text-white transition-colors"
+        >Iván Ciudad</span
+      >
     </a>
 
     <!-- Desktop Nav -->
-    <nav class="hidden tablet:flex flex-row gap-1 items-center bg-slate-900/30 p-1 rounded-full border border-white/5">
+    <nav
+      class="hidden tablet:flex flex-row gap-1 items-center bg-slate-900/30 p-1 rounded-full border border-white/5"
+    >
       {
         headerLinks &&
           headerLinks.map((link) => (
@@ -34,56 +47,74 @@ const firstSlug = `/${path.split("/")[1]}`;
 
     <!-- Socials & Mobile Toggle -->
     <div class="flex items-center gap-3">
-        <div class="hidden tablet:flex flex-row gap-2 items-center">
+      <div class="hidden tablet:flex flex-row gap-2 items-center">
         {
-            socialMediaLinks &&
+          socialMediaLinks &&
             socialMediaLinks.map((link) => (
-                <a 
-                href={link.href} 
-                target="_blank" 
+              <a
+                href={link.href}
+                target="_blank"
                 aria-label={link.ariaLabel}
                 class="text-slate-400 hover:text-white transition-colors p-2 hover:bg-white/10 rounded-full"
-                >
+              >
                 <Icon class="size-5" name={link.name} />
-                </a>
+              </a>
             ))
         }
-        </div>
-        
-        <button
-            aria-expanded="false"
-            id="burger-menu"
-            class="burger-menu group relative flex h-[20px] flex-col items-center justify-between tablet:hidden w-6"
-            aria-label="Abrir menú de navegación"
-        >
-            <span class="group-[.open]:translate-y-2 group-[.open]:rotate-45 h-[2px] w-6 bg-slate-300 transition ease transform duration-300"></span>
-            <span class="group-[.open]:opacity-0 h-[2px] w-6 bg-slate-300 transition ease transform duration-300"></span>
-            <span class="group-[.open]:opacity-0 h-[2px] w-6 bg-slate-300 transition ease transform duration-300"></span>
-            <span class="group-[.open]:translate-y-[-0.6rem] group-[.open]:-rotate-45 h-[2px] w-6 bg-slate-300 transition ease transform duration-300"></span>
-        </button>
+      </div>
+
+      <button
+        aria-expanded="false"
+        id="burger-menu"
+        class="burger-menu group relative flex h-[20px] flex-col items-center justify-between tablet:hidden w-6"
+        aria-label="Abrir menú de navegación"
+      >
+        <span
+          class="group-[.open]:translate-y-2 group-[.open]:rotate-45 h-[2px] w-6 bg-slate-300 transition ease transform duration-300"
+        ></span>
+        <span
+          class="group-[.open]:opacity-0 h-[2px] w-6 bg-slate-300 transition ease transform duration-300"
+        ></span>
+        <span
+          class="group-[.open]:opacity-0 h-[2px] w-6 bg-slate-300 transition ease transform duration-300"
+        ></span>
+        <span
+          class="group-[.open]:translate-y-[-0.6rem] group-[.open]:-rotate-45 h-[2px] w-6 bg-slate-300 transition ease transform duration-300"
+        ></span>
+      </button>
     </div>
   </div>
 
   <!-- Mobile Menu Dropdown -->
-  <div id="mobile-menu" class="hidden-menu absolute top-full left-0 right-0 mt-4 rounded-2xl border border-white/10 bg-slate-950/90 backdrop-blur-xl shadow-2xl overflow-hidden tablet:hidden">
+  <div
+    id="mobile-menu"
+    class="hidden-menu absolute top-full left-0 right-0 mt-4 rounded-2xl border border-white/10 bg-slate-950/90 backdrop-blur-xl shadow-2xl overflow-hidden tablet:hidden"
+  >
     <nav class="flex flex-col p-4 gap-2">
-    {
-      headerLinks &&
-      headerLinks.map((link) => (
-        <a
-          class={`w-full py-3 text-center rounded-xl transition-all duration-200 text-lg ${firstSlug === link.href ? "bg-white/10 text-cyan-400 font-medium" : "text-slate-400 hover:text-white hover:bg-white/5"}`}
-          href={link.href}
-        >
-          {link.label}
-        </a>
-        ))
+      {
+        headerLinks &&
+          headerLinks.map((link) => (
+            <a
+              class={`w-full py-3 text-center rounded-xl transition-all duration-200 text-lg ${firstSlug === link.href ? "bg-white/10 text-cyan-400 font-medium" : "text-slate-400 hover:text-white hover:bg-white/5"}`}
+              href={link.href}
+            >
+              {link.label}
+            </a>
+          ))
       }
-    </nav>  
-    <div class="flex flex-row gap-4 justify-center items-center py-5 border-t border-white/10 bg-white/5">
+    </nav>
+    <div
+      class="flex flex-row gap-4 justify-center items-center py-5 border-t border-white/10 bg-white/5"
+    >
       {
         socialMediaLinks &&
           socialMediaLinks.map((link) => (
-            <a href={link.href} target="_blank" aria-label={link.ariaLabel} class="p-2 bg-slate-800 rounded-full text-slate-300 hover:text-white hover:bg-slate-700 transition-colors">
+            <a
+              href={link.href}
+              target="_blank"
+              aria-label={link.ariaLabel}
+              class="p-2 bg-slate-800 rounded-full text-slate-300 hover:text-white hover:bg-slate-700 transition-colors"
+            >
               <Icon class="size-5" name={link.name} />
             </a>
           ))
@@ -94,47 +125,72 @@ const firstSlug = `/${path.split("/")[1]}`;
 
 <script>
   const toggleBurger = () => {
-    const burgerMenuSticks = document.getElementsByClassName("burger-menu");
-    Array.from(burgerMenuSticks).forEach((element) => {
-      element.classList.toggle("open");
-    });
-  }
-  
+    const burgerMenu = document.getElementById("burger-menu");
+    if (!burgerMenu) return;
+
+    const isOpen = burgerMenu.classList.toggle("open");
+    burgerMenu.setAttribute("aria-expanded", isOpen.toString());
+  };
+
   const toggleMenu = () => {
     const menu = document.getElementById("mobile-menu");
-    menu?.classList.toggle("hidden-menu");
-    menu?.classList.toggle('visible-menu');
-    toggleBurger();
-  }
+    if (!menu) return;
 
-  const closeMenu = (event: MouseEvent) =>{
-    const menu = document.getElementById("mobile-menu");
-    const burgerMenu = document.getElementById("burger-menu");
-    if (menu && burgerMenu && !menu.contains(event.target as Node) && !burgerMenu.contains(event.target as Node)) {
+    const isHidden = menu.classList.contains("hidden-menu");
+
+    if (isHidden) {
+      menu.classList.remove("hidden-menu");
+      menu.classList.add("visible-menu");
+    } else {
       menu.classList.add("hidden-menu");
       menu.classList.remove("visible-menu");
-      if(burgerMenu.classList.contains("open")){
-         toggleBurger();
+    }
+
+    toggleBurger();
+  };
+
+  const closeMenu = (event: MouseEvent) => {
+    const menu = document.getElementById("mobile-menu");
+    const burgerMenu = document.getElementById("burger-menu");
+
+    if (
+      menu &&
+      burgerMenu &&
+      !menu.contains(event.target as Node) &&
+      !burgerMenu.contains(event.target as Node)
+    ) {
+      if (menu.classList.contains("visible-menu")) {
+        menu.classList.add("hidden-menu");
+        menu.classList.remove("visible-menu");
+
+        if (burgerMenu.classList.contains("open")) {
+          burgerMenu.classList.remove("open");
+          burgerMenu.setAttribute("aria-expanded", "false");
+        }
       }
     }
-  }
+  };
 
-  const attachEventListeners =() => {
+  const attachEventListeners = () => {
     const burgerMenu = document.getElementById("burger-menu");
     if (burgerMenu) {
       burgerMenu.addEventListener("click", toggleMenu);
     }
     document.addEventListener("click", closeMenu);
-  }
+  };
 
-  const detachEventListeners =() => {
+  const detachEventListeners = () => {
     const burgerMenu = document.getElementById("burger-menu");
     if (burgerMenu) {
       burgerMenu.removeEventListener("click", toggleMenu);
     }
     document.removeEventListener("click", closeMenu);
-  }
+  };
 
+  // Attach listeners on initial load
+  attachEventListeners();
+
+  // Handle Astro view transitions
   document.addEventListener("astro:before-swap", detachEventListeners);
   document.addEventListener("astro:page-load", attachEventListeners);
 </script>
