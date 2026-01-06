@@ -33,12 +33,69 @@ import "../styles/global.css";
     />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <ClientRouter />
+
+    <!-- SOLUCIÓN EXPERTA ANTI-FOAC -->
     <style is:inline>
-      html,
-      body {
+      /* 1. Fondo crítico inmediato: Evita el frame blanco */
+      :root {
         background-color: #0f172a !important;
+        color-scheme: dark;
+      }
+
+      /* 2. Ocultar el contenido hasta que los estilos base estén listos (opcional pero recomendado) */
+      /* html.js-loading body { opacity: 0; } */
+
+      /* 3. Evitar que links/textos parpadeen con colores por defecto */
+      html {
+        color: white;
+        font-family:
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          "Helvetica Neue",
+          Arial,
+          "Noto Sans",
+          sans-serif;
       }
     </style>
+
+    <script is:inline>
+      // 4. Script bloqueante: Se ejecuta antes de la primera pintura
+      const theme = (() => {
+        if (
+          typeof localStorage !== "undefined" &&
+          localStorage.getItem("theme")
+        ) {
+          return localStorage.getItem("theme");
+        }
+        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+          return "dark";
+        }
+        return "light";
+      })();
+
+      if (theme === "light") {
+        document.documentElement.classList.remove("dark");
+      } else {
+        document.documentElement.classList.add("dark");
+      }
+
+      // Persistencia para View Transitions
+      document.addEventListener("astro:after-swap", () => {
+        if (
+          localStorage.getItem("theme") === "dark" ||
+          (!("theme" in localStorage) &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches)
+        ) {
+          document.documentElement.classList.add("dark");
+        } else {
+          document.documentElement.classList.remove("dark");
+        }
+      });
+    </script>
 
     <SEO {...infoSeo} />
     <SpeedInsights />
