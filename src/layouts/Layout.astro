@@ -34,7 +34,7 @@ import "../styles/global.css";
     <link rel="sitemap" href="/sitemap-index.xml" />
     <ClientRouter />
 
-    <!-- SOLUCIÓN EXPERTA ANTI-FOAC -->
+    <!-- SOLUCIÓN DEFINITIVA ANTI-FOAC/FOUC -->
     <style is:inline>
       /* 1. Fondo crítico inmediato: Evita el frame blanco */
       :root {
@@ -42,49 +42,29 @@ import "../styles/global.css";
         color-scheme: dark;
       }
 
-      /* 2. Ocultar el contenido hasta que los estilos base estén listos (opcional pero recomendado) */
-      /* html.js-loading body { opacity: 0; } */
+      /* 2. Bloqueo de transiciones durante la carga/navegación */
+      /* Evita que los nodos "animen" desde un estado sin estilo al inyectarse */
+      .no-transitions *,
+      .no-transitions *::before,
+      .no-transitions *::after {
+        transition: none !important;
+        animation: none !important;
+      }
 
-      /* 3. Evitar que links/textos parpadeen con colores por defecto */
       html {
         color: white;
+        background-color: #0f172a;
         font-family:
           ui-sans-serif,
           system-ui,
           -apple-system,
-          BlinkMacSystemFont,
-          "Segoe UI",
-          Roboto,
-          "Helvetica Neue",
-          Arial,
-          "Noto Sans",
           sans-serif;
       }
     </style>
 
     <script is:inline>
-      // 4. Script bloqueante: Se ejecuta antes de la primera pintura
-      const theme = (() => {
-        if (
-          typeof localStorage !== "undefined" &&
-          localStorage.getItem("theme")
-        ) {
-          return localStorage.getItem("theme");
-        }
-        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-          return "dark";
-        }
-        return "light";
-      })();
-
-      if (theme === "light") {
-        document.documentElement.classList.remove("dark");
-      } else {
-        document.documentElement.classList.add("dark");
-      }
-
-      // Persistencia para View Transitions
-      document.addEventListener("astro:after-swap", () => {
+      // 3. Script bloqueante para el tema y prevención de parpadeos
+      function applyTheme() {
         if (
           localStorage.getItem("theme") === "dark" ||
           (!("theme" in localStorage) &&
@@ -94,6 +74,30 @@ import "../styles/global.css";
         } else {
           document.documentElement.classList.remove("dark");
         }
+      }
+
+      // Aplicar inmediatamente para evitar flash de tema
+      applyTheme();
+
+      // 4. Ciclo de vida de View Transitions
+      document.addEventListener("astro:before-swap", () => {
+        // Bloqueamos todas las transiciones CSS justo antes de cambiar el HTML
+        document.documentElement.classList.add("no-transitions");
+      });
+
+      document.addEventListener("astro:after-swap", () => {
+        // Re-aplicamos tema en el nuevo documento
+        applyTheme();
+      });
+
+      document.addEventListener("astro:page-load", () => {
+        // Reactivamos transiciones solo una vez que el navegador ha pintado el nuevo estado
+        // El doble rAF es el estándar de oro para asegurar un frame de pintura
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            document.documentElement.classList.remove("no-transitions");
+          });
+        });
       });
     </script>
 
