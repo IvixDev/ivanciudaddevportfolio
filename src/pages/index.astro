@@ -4,13 +4,18 @@ import { seoMapper } from "../helpers/seo.helper";
 import { socialMediaLinks } from "../content/layout.consts";
 import ScrollReveal from "../components/ScrollReveal";
 import { IconArrowRight } from "@tabler/icons-react";
+import { Image } from "astro:assets";
+import ivanHeroImg from "../assets/ivan-ciudad-hero.webp";
+import sobreMiImg from "../assets/sobre-mi.webp";
+import proyectosImg from "../assets/proyectos-buscaminas.webp";
+import trayectoriaImg from "../assets/trayectoria-profesional.webp";
 
 const title =
   "Iván Ciudad Espinar - Desarrollador Frontend e Ingeniero Telemático";
 const description =
   "Bienvenido a la web de Iván Ciudad Espinar, desarrollador Frontend e Ingeniero Telemático. Descubre mis proyectos, artículos, hobbies y más sobre mi vida y carrera en desarrollo de software.";
 const url = "https://www.ivanciudad.com";
-const image = "https://www.ivanciudad.com/fotoivan.webp";
+const image = "https://www.ivanciudad.com/ivan-ciudad-hero.webp";
 
 const infoSeo = seoMapper(title, description, url, image);
 
@@ -59,10 +64,11 @@ const schema = {
             class="absolute -inset-1 bg-gradient-to-r from-cyan-400 to-purple-600 rounded-full blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"
           >
           </div>
-          <img
-            src="fotoivan.webp"
+          <Image
+            src={ivanHeroImg}
             alt="Foto Iván Ciudad Espinar"
             class="relative w-48 h-48 tablet:w-64 tablet:h-64 laptop:w-80 laptop:h-80 object-cover rounded-full border-4 border-slate-900 shadow-2xl"
+            loading="eager"
           />
         </div>
       </section>
@@ -105,24 +111,24 @@ const schema = {
           >
           </div>
           <div class="h-48 w-full overflow-hidden rounded-xl mb-2">
-            <img
-              src="sobremi.webp"
+            <Image
+              src={sobreMiImg}
               alt="Sobre mi"
               class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
             />
           </div>
-          <div class="z-20 flex flex-col gap-2">
+          <div class="z-20 flex flex-col gap-2 flex-1">
             <h4
               class="text-2xl font-bold group-hover:text-cyan-400 transition-colors"
             >
               Sobre mí
             </h4>
             <p class="text-slate-400 text-sm leading-relaxed">
-              Una pequeña biografía, mis gustos (videojuegos, series, gym) y
-              quién soy detrás del código.
+              Una pequeña biografía, mis gustos (videojuegos, series, películas,
+              etc.) y quién soy detrás del código.
             </p>
             <span
-              class="mt-2 text-cyan-400 text-sm font-medium flex items-center gap-2"
+              class="mt-auto text-cyan-400 text-sm font-medium flex items-center gap-2"
             >
               Leer más
               <IconArrowRight
@@ -144,13 +150,13 @@ const schema = {
           >
           </div>
           <div class="h-48 w-full overflow-hidden rounded-xl mb-2">
-            <img
-              src="programacion.webp"
+            <Image
+              src={proyectosImg}
               alt="Proyectos"
               class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
             />
           </div>
-          <div class="z-20 flex flex-col gap-2">
+          <div class="z-20 flex flex-col gap-2 flex-1">
             <h4
               class="text-2xl font-bold group-hover:text-purple-400 transition-colors"
             >
@@ -161,7 +167,7 @@ const schema = {
               con las últimas tecnologías.
             </p>
             <span
-              class="mt-2 text-purple-400 text-sm font-medium flex items-center gap-2"
+              class="mt-auto text-purple-400 text-sm font-medium flex items-center gap-2"
             >
               Ver portfolio
               <IconArrowRight
@@ -183,13 +189,13 @@ const schema = {
           >
           </div>
           <div class="h-48 w-full overflow-hidden rounded-xl mb-2">
-            <img
-              src="laboral.webp"
+            <Image
+              src={trayectoriaImg}
               alt="Trayectoria"
               class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
             />
           </div>
-          <div class="z-20 flex flex-col gap-2">
+          <div class="z-20 flex flex-col gap-2 flex-1">
             <h4
               class="text-2xl font-bold group-hover:text-green-400 transition-colors"
             >
@@ -200,7 +206,7 @@ const schema = {
               telemática y desarrollo.
             </p>
             <span
-              class="mt-2 text-green-400 text-sm font-medium flex items-center gap-2"
+              class="mt-auto text-green-400 text-sm font-medium flex items-center gap-2"
             >
               Ver CV
               <IconArrowRight
