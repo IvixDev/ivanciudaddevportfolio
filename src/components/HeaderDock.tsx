@@ -4,16 +4,17 @@ import {
     useMotionValue,
     useTransform,
     AnimatePresence,
+    type MotionValue,
 } from "framer-motion";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 import {
-    LogoIcon,
-    GithubIcon,
-    GmailIcon,
-    LinkedInIcon,
-    XIcon,
-} from "./Icons";
+    IconBrandGithub,
+    IconMail,
+    IconBrandLinkedin,
+    IconBrandX,
+} from "@tabler/icons-react";
+import { LogoIcon } from "./Icons";
 import { headerLinks, socialMediaLinks } from "../content/layout.consts";
 
 function cn(...inputs: ClassValue[]) {
@@ -21,12 +22,12 @@ function cn(...inputs: ClassValue[]) {
 }
 
 // Map icon names from consts to components
-const IconMap: Record<string, React.ComponentType<any>> = {
+const IconMap: Record<string, React.ComponentType<React.SVGProps<SVGSVGElement>>> = {
     logo: LogoIcon,
-    github: GithubIcon,
-    gmail: GmailIcon,
-    linkedin: LinkedInIcon,
-    X: XIcon,
+    github: IconBrandGithub,
+    gmail: IconMail,
+    linkedin: IconBrandLinkedin,
+    X: IconBrandX,
 };
 
 interface HeaderDockProps {
@@ -106,7 +107,7 @@ export default function HeaderDock({ currentPath }: HeaderDockProps) {
                                     aria-label={link.ariaLabel}
                                     className="text-slate-400 hover:text-white transition-colors p-2 hover:bg-white/10 rounded-full"
                                 >
-                                    <Icon className="size-5" />
+                                    <Icon className="size-6" />
                                 </a>
                             );
                         })}
@@ -177,7 +178,7 @@ export default function HeaderDock({ currentPath }: HeaderDockProps) {
                                         aria-label={link.ariaLabel}
                                         className="p-2 bg-slate-800 rounded-full text-slate-300 hover:text-white hover:bg-slate-700 transition-colors"
                                     >
-                                        <Icon className="size-5" />
+                                        <Icon className="size-6" />
                                     </a>
                                 )
                             })}
@@ -198,7 +199,7 @@ function DockItem({
     children: React.ReactNode;
     href: string;
     active: boolean;
-    mouseX: any;
+    mouseX: MotionValue<number>;
 }) {
     const ref = useRef<HTMLAnchorElement>(null);
 

@@ -7,15 +7,68 @@
   --breakpoint-laptop: 1024px;
   --breakpoint-desktop: 1280px;
   --breakpoint-big-desktop: 1536px;
+
+  --font-onest: "Onest", ui-sans-serif, system-ui, sans-serif;
+  --font-source-code: "Source Code Pro", monospace;
 }
 
 @layer base {
+  @font-face {
+    font-family: "Onest";
+    src: url("/fonts/Onest.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Source Code Pro";
+    src: url("/fonts/SourceCodePro.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
   :root {
-    --font-onest: "Onest", "sans-serif";
-    --font-source-code: "Source Code Pro", "monospace";
+    color-scheme: dark;
+    --background-hex: #0f172a;
+    background-color: var(--background-hex);
+    color: white;
+  }
+
+  html {
+    font-family: var(--font-onest);
+    scroll-behavior: smooth;
+    background-color: var(--background-hex);
+  }
+
+  body {
+    @apply min-h-screen text-white antialiased;
+    background-color: var(--background-hex);
+  }
+
+  /* Custom scrollbar styles */
+  ::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #0f172a;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #334155;
+    border-radius: 10px;
+    border: 3px solid #0f172a;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #64748b;
   }
 }
 
-html {
-  background-color: #0f172a !important;
+@layer utilities {
+  .layout-container {
+    min-height: calc(100vh - 204px);
+  }
 }
