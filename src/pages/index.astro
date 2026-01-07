@@ -37,42 +37,44 @@ const schema = {
   <script type="application/ld+json" set:html={JSON.stringify(schema)} />
   <main class="flex flex-col items-center w-full gap-12 laptop:gap-20">
     <!-- Hero Section -->
-    <ScrollReveal client:visible duration={1}>
-      <section
-        class="flex flex-col-reverse tablet:flex-row justify-between items-center gap-12 w-full"
-      >
-        <div class="flex flex-col gap-6 max-w-2xl">
-          <h1
-            class="text-4xl tablet:text-5xl laptop:text-6xl font-bold leading-tight"
-          >
-            Soy <span
-              class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500"
-              >Iván Ciudad</span
-            >, <br />
-            Frontend Developer e <br />
-            <span class="text-slate-300">Ingeniero Telemático</span>.
-          </h1>
-          <h2
-            class="text-xl tablet:text-2xl text-slate-400 max-w-xl leading-relaxed"
-          >
-            Bienvenido a mi rincón de internet, donde codifico ideas y construyo
-            experiencias digitales.
-          </h2>
+    <section
+      class="flex flex-col-reverse tablet:flex-row justify-between items-center gap-12 w-full pt-10"
+    >
+      <div class="flex flex-col gap-6 max-w-2xl">
+        <h1
+          class="text-4xl tablet:text-5xl laptop:text-6xl font-bold leading-tight"
+        >
+          Soy <span
+            class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500"
+            >Iván Ciudad</span
+          >, <br />
+          Frontend Developer e <br />
+          <span class="text-slate-300">Ingeniero Telemático</span>.
+        </h1>
+        <h2
+          class="text-xl tablet:text-2xl text-slate-400 max-w-xl leading-relaxed"
+        >
+          Bienvenido a mi rincón de internet, donde codifico ideas y construyo
+          experiencias digitales.
+        </h2>
+      </div>
+      <div class="relative group">
+        <div
+          class="absolute -inset-1 bg-gradient-to-r from-cyan-400 to-purple-600 rounded-full blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"
+        >
         </div>
-        <div class="relative group">
-          <div
-            class="absolute -inset-1 bg-gradient-to-r from-cyan-400 to-purple-600 rounded-full blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"
-          >
-          </div>
-          <Image
-            src={ivanHeroImg}
-            alt="Foto Iván Ciudad Espinar"
-            class="relative w-48 h-48 tablet:w-64 tablet:h-64 laptop:w-80 laptop:h-80 object-cover rounded-full border-4 border-slate-900 shadow-2xl"
-            loading="eager"
-          />
-        </div>
-      </section>
-    </ScrollReveal>
+        <Image
+          src={ivanHeroImg}
+          alt="Foto Iván Ciudad Espinar"
+          class="relative w-48 h-48 tablet:w-64 tablet:h-64 laptop:w-80 laptop:h-80 object-cover rounded-full border-4 border-slate-900 shadow-2xl"
+          loading="eager"
+          fetchpriority="high"
+          widths={[400, 800]}
+          sizes="(max-width: 768px) 192px, (max-width: 1024px) 256px, 320px"
+          quality={80}
+        />
+      </div>
+    </section>
 
     <hr class="w-full border-t border-slate-800/60" />
 
@@ -115,6 +117,9 @@ const schema = {
               src={sobreMiImg}
               alt="Sobre mi"
               class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              widths={[400, 800]}
+              sizes="(max-width: 1024px) 90vw, 30vw"
+              quality={80}
             />
           </div>
           <div class="z-20 flex flex-col gap-2 flex-1">
@@ -154,6 +159,9 @@ const schema = {
               src={proyectosImg}
               alt="Proyectos"
               class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              widths={[400, 800]}
+              sizes="(max-width: 1024px) 90vw, 30vw"
+              quality={80}
             />
           </div>
           <div class="z-20 flex flex-col gap-2 flex-1">
@@ -193,6 +201,9 @@ const schema = {
               src={trayectoriaImg}
               alt="Trayectoria"
               class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              widths={[400, 800]}
+              sizes="(max-width: 1024px) 90vw, 30vw"
+              quality={80}
             />
           </div>
           <div class="z-20 flex flex-col gap-2 flex-1">

@@ -22,10 +22,7 @@ import "../styles/global.css";
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <meta
-      property="og:image"
-      content="https://www.ivanciudad.com/fotoivan.webp"
-    />
+
     <meta
       name="google-site-verification"
       content="rtqz__fHq7l_eMEEl-ULln50aHX17BLq7dSVgfVkLdU"
@@ -107,7 +104,7 @@ import "../styles/global.css";
     class="flex flex-col min-h-screen bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))] text-white selection:bg-cyan-500/30 selection:text-cyan-200"
   >
     <!-- <Header /> -->
-    <HeaderDock client:load transition:persist currentPath={path} />
+    <HeaderDock client:idle transition:persist currentPath={path} />
     <div class="flex flex-col items-center w-full">
       <div
         class="flex

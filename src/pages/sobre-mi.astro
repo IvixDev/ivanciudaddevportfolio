@@ -21,6 +21,11 @@ const infoSeo = seoMapper(title, description, url, image);
         src={ivanJapon}
         alt="Iván en Japón"
         class="w-full rounded-2xl shadow-2xl border border-white/10"
+        widths={[400, 800, 1200]}
+        sizes="(max-width: 768px) 100vw, 800px"
+        quality={80}
+        loading="eager"
+        fetchpriority="high"
       />
       <p class="text-lg text-slate-300 leading-relaxed">
         te voy a contar mi vida
