@@ -8,6 +8,10 @@
     ],
     "rewrites": [
         {
+            "source": "/proyectos/public-pages/_next/:path*",
+            "destination": "https://iciudade-public-pages.vercel.app/_next/:path*"
+        },
+        {
             "source": "/proyectos/public-pages",
             "destination": "https://iciudade-public-pages.vercel.app/public-pages-iciudade"
         },
