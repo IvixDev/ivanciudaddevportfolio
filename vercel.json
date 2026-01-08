@@ -1,8 +1,8 @@
 {
     "rewrites": [
         {
-            "source": "/proyectos/public-web/:path*",
-            "destination": "https://onboarding-public-pages-8dcw3qyto-iciudades-projects.vercel.app/:path*"
+            "source": "/proyectos/public-pages/:path*",
+            "destination": "https://iciudade-public-pages.vercel.app/:path*"
         }
     ]
 }
