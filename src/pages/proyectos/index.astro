@@ -1,9 +1,17 @@
 ---
 import { seoMapper } from "../../helpers/seo.helper";
 import Layout from "../../layouts/Layout.astro";
+import ProjectCard from "../../components/ProjectCard";
+import {
+  IconBrandNextjs,
+  IconBrandTailwind,
+  IconSeo,
+  IconAccessible,
+} from "@tabler/icons-react";
 
 const title = "Iván Ciudad Espinar - Proyectos de Desarrollo Frontend";
-const description = "Explora los proyectos de Iván Ciudad Espinar, desarrollador Frontend e Ingeniero Telemático. Descubre mis trabajos en desarrollo de software, aplicaciones web y más.";
+const description =
+  "Explora los proyectos de Iván Ciudad Espinar, desarrollador Frontend e Ingeniero Telemático. Descubre mis trabajos en desarrollo de software, aplicaciones web y más.";
 const url = "https://www.ivanciudad.com/proyectos";
 const image = "https://www.ivanciudad.com/programacion.webp";
 
@@ -11,5 +19,29 @@ const infoSeo = seoMapper(title, description, url, image);
 ---
 
 <Layout infoSeo={infoSeo}>
-  <p>estos son los proyectos</p>
+  <section class="w-full max-w-4xl mx-auto py-12">
+    <h1
+      class="text-4xl tablet:text-5xl font-bold mb-8 bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent pb-1"
+    >
+      Mis Proyectos
+    </h1>
+
+    <div class="grid grid-cols-1 tablet:grid-cols-2 gap-6">
+      {/* Public Pages Card */}
+      <ProjectCard
+        title="Páginas Públicas"
+        description="Mini proyecto construido con Nx, Next.js, Base-UI y Tailwind. Un laboratorio para experimentar con SEO, accesibilidad y diferentes estrategias de renderizado."
+        href="/proyectos/public-pages"
+        shouldReload={true}
+        technologies={[
+          { label: "Nx", variant: "cyan" },
+          { label: "Next.js", icon: IconBrandNextjs, variant: "cyan" },
+          { label: "Base-UI", variant: "cyan" },
+          { label: "Tailwind", icon: IconBrandTailwind, variant: "cyan" },
+          { label: "SEO", icon: IconSeo, variant: "purple" },
+          { label: "A11y", icon: IconAccessible, variant: "green" },
+        ]}
+      />
+    </div>
+  </section>
 </Layout>
