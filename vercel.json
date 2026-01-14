@@ -20,6 +20,10 @@
             "destination": "https://iciudade-public-pages.vercel.app/public-pages-iciudade/:path*"
         },
         {
+            "source": "/bombsweeper/:path*",
+            "destination": "https://ivan-city-bombsweeper.vercel.app/bombsweeper/:path*"
+        },
+        {
             "source": "/proyectos/buscaminas",
             "destination": "https://ivan-city-bombsweeper.vercel.app/bombsweeper"
         },
