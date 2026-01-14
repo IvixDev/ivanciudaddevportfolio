@@ -30,6 +30,18 @@
         {
             "source": "/proyectos/buscaminas/:path*",
             "destination": "https://ivan-city-bombsweeper.vercel.app/bombsweeper/:path*"
+        },
+        {
+            "source": "/pokemon-table-types/:path*",
+            "destination": "https://pokemon-types-table.vercel.app/pokemon-table-types/:path*"
+        },
+        {
+            "source": "/proyectos/tabla-pokemon",
+            "destination": "https://pokemon-types-table.vercel.app/pokemon-table-types"
+        },
+        {
+            "source": "/proyectos/tabla-pokemon/:path*",
+            "destination": "https://pokemon-types-table.vercel.app/pokemon-table-types/:path*"
         }
     ]
 }

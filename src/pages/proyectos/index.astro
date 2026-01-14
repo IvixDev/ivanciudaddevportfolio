@@ -9,6 +9,10 @@ import {
   IconAccessible,
   IconBrandTypescript,
   IconBomb,
+  IconArrowsMove,
+  IconServer,
+  IconPalette,
+  IconSunMoon,
 } from "@tabler/icons-react";
 
 const title = "Iván Ciudad Espinar - Proyectos de Desarrollo Frontend";
@@ -54,6 +58,22 @@ const infoSeo = seoMapper(title, description, url, image);
         technologies={[
           { label: "TypeScript", icon: IconBrandTypescript, variant: "blue" },
           { label: "Recursividad", icon: IconBomb, variant: "purple" },
+        ]}
+      />
+      {/* Pokemon Table Card */}
+      <ProjectCard
+        title="Tabla de Tipos Pokémon"
+        description="Herramienta avanzada para consultar debilidades y fortalezas de tipos Pokémon. Enfocada en un Design System robusto con soporte nativo para modo claro/oscuro, uso de Drag & Drop interactivo y SSR para una carga de datos optimizada."
+        href="/proyectos/tabla-pokemon"
+        shouldReload={true}
+        technologies={[
+          { label: "Next.js", icon: IconBrandNextjs, variant: "cyan" },
+          { label: "TypeScript", icon: IconBrandTypescript, variant: "blue" },
+          { label: "MUI", variant: "blue" },
+          { label: "Drag & Drop", icon: IconArrowsMove, variant: "purple" },
+          { label: "SSR", icon: IconServer, variant: "green" },
+          { label: "Design System", icon: IconPalette, variant: "purple" },
+          { label: "Modo Dark/Light", icon: IconSunMoon, variant: "blue" },
         ]}
       />
     </div>
