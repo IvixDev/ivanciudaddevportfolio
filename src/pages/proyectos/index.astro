@@ -7,6 +7,8 @@ import {
   IconBrandTailwind,
   IconSeo,
   IconAccessible,
+  IconBrandTypescript,
+  IconBomb,
 } from "@tabler/icons-react";
 
 const title = "Iván Ciudad Espinar - Proyectos de Desarrollo Frontend";
@@ -40,6 +42,17 @@ const infoSeo = seoMapper(title, description, url, image);
           { label: "Tailwind", icon: IconBrandTailwind, variant: "cyan" },
           { label: "SEO", icon: IconSeo, variant: "purple" },
           { label: "A11y", icon: IconAccessible, variant: "green" },
+        ]}
+      />
+      {/* Minesweeper Card */}
+      <ProjectCard
+        title="Buscaminas"
+        description="Versión moderna del clásico Buscaminas desarrollada en TypeScript. Un desafío técnico que implementa algoritmos de recursividad eficiente para la apertura de celdas en cascada."
+        href="/proyectos/buscaminas"
+        shouldReload={true}
+        technologies={[
+          { label: "TypeScript", icon: IconBrandTypescript, variant: "blue" },
+          { label: "Recursividad", icon: IconBomb, variant: "purple" },
         ]}
       />
     </div>
