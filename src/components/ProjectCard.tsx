@@ -57,9 +57,9 @@ export default function ProjectCard(props: ProjectCardProps) {
             {/* Content Container Laptop */}
             <div className="absolute inset-x-0 bottom-0 p-6 flex flex-col bg-slate-950/40 backdrop-blur-xl border-t border-white/5 transition-transform duration-500 ease-in-out h-[310px] translate-y-[calc(100%-115px)] group-hover:translate-y-0">
                 <div className="flex flex-col h-full">
-                    <h3 className="text-xl font-semibold mb-3 text-white group-hover:text-cyan-400 transition-colors">
+                    <h2 className="text-xl font-semibold mb-3 text-white group-hover:text-cyan-400 transition-colors">
                         {props.title}
-                    </h3>
+                    </h2>
 
                     <div className="mb-6">
                         {/* Normal state: limited count */}

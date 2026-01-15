@@ -101,9 +101,9 @@ export default function ProjectCardMobile({
                 <div className="flex flex-col">
                     {/* Header: Title & Badges */}
                     <div className="mb-4">
-                        <h3 className={`text-2xl font-bold mb-2 transition-colors duration-700 ${isExpanded ? "text-cyan-400" : "text-white"}`}>
+                        <h2 className={`text-2xl font-bold mb-2 transition-colors duration-700 ${isExpanded ? "text-cyan-400" : "text-white"}`}>
                             {title}
-                        </h3>
+                        </h2>
 
                         <div className="flex flex-wrap gap-2">
                             {(isExpanded ? technologies : visibleTechs).map((tech, idx) => (
