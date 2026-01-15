@@ -1,5 +1,16 @@
-import React from "react";
-import { type TablerIcon } from "@tabler/icons-react";
+import {
+    type TablerIcon,
+    IconBrandNextjs,
+    IconBrandTailwind,
+    IconSeo,
+    IconAccessible,
+    IconBrandTypescript,
+    IconBomb,
+    IconArrowsMove,
+    IconServer,
+    IconPalette,
+    IconSunMoon
+} from "@tabler/icons-react";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -7,11 +18,24 @@ function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs));
 }
 
+const ICON_MAP: Record<string, TablerIcon> = {
+    IconBrandNextjs,
+    IconBrandTailwind,
+    IconSeo,
+    IconAccessible,
+    IconBrandTypescript,
+    IconBomb,
+    IconArrowsMove,
+    IconServer,
+    IconPalette,
+    IconSunMoon
+};
+
 export type BadgeVariant = "default" | "cyan" | "purple" | "green" | "blue" | "orange";
 
 interface TechBadgeProps {
     label: string;
-    icon?: TablerIcon | React.ComponentType<any>;
+    icon?: string | TablerIcon | React.ComponentType<any>;
     variant?: BadgeVariant;
     className?: string;
 }
@@ -25,7 +49,9 @@ const variantStyles: Record<BadgeVariant, string> = {
     orange: "bg-orange-500/10 text-orange-300 border-orange-500/20",
 };
 
-export function TechBadge({ label, icon: Icon, variant = "default", className }: TechBadgeProps) {
+export function TechBadge({ label, icon, variant = "default", className }: TechBadgeProps) {
+    const Icon = typeof icon === "string" ? ICON_MAP[icon] : icon;
+
     return (
         <span
             className={cn(
