@@ -21,7 +21,6 @@ interface ProjectCardProps {
 
 export default function ProjectCard(props: ProjectCardProps) {
     const [isMobile, setIsMobile] = useState(false);
-    const [imageLoaded, setImageLoaded] = useState(false);
 
     useEffect(() => {
         const checkMobile = () => setIsMobile(window.innerWidth < 1024);
@@ -43,20 +42,13 @@ export default function ProjectCard(props: ProjectCardProps) {
         <div
             className="group relative flex flex-col rounded-2xl border border-white/10 bg-slate-900 transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl hover:shadow-cyan-500/20 overflow-hidden h-[400px] cursor-pointer"
         >
-            {/* Background Image Content */}
+            {/* Background Image */}
             {props.image && (
                 <div className="absolute inset-0 h-full w-full overflow-hidden">
-                    {/* Shimmer Placeholder */}
-                    {!imageLoaded && (
-                        <div className="absolute inset-0 z-10 animate-shimmer bg-slate-800" />
-                    )}
-
                     <img
                         src={props.image}
                         alt={props.title}
-                        onLoad={() => setImageLoaded(true)}
-                        className={`w-full h-full object-cover transition-all duration-700 group-hover:scale-110 ${imageLoaded ? "opacity-100" : "opacity-0"
-                            }`}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent" />
                 </div>
