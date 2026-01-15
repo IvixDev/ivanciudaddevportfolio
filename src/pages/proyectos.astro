@@ -14,6 +14,7 @@ import {
   IconPalette,
   IconSunMoon,
 } from "@tabler/icons-react";
+import ScrollReveal from "../components/ScrollReveal";
 import buscaminasImg from "../assets/proyectos-buscaminas.webp";
 import pokemonTableImg from "../assets/proyectos-pokemon.webp";
 import publicPagesImg from "../assets/proyectos-public-pages.png";
@@ -37,54 +38,74 @@ const infoSeo = seoMapper(title, description, url, image);
 
     <div class="grid grid-cols-1 tablet:grid-cols-2 gap-6">
       {/* Minesweeper Card */}
-      <ProjectCard
-        client:visible
-        title="Buscaminas"
-        description="Versión moderna del clásico Buscaminas desarrollada en TypeScript. Un desafío técnico que implementa algoritmos de recursividad eficiente para la apertura de celdas en cascada."
-        href="/proyectos/buscaminas"
-        image={buscaminasImg.src}
-        shouldReload={true}
-        technologies={[
-          { label: "TypeScript", icon: "IconBrandTypescript", variant: "blue" },
-          { label: "Recursividad", icon: "IconBomb", variant: "purple" },
-        ]}
-      />
+      <ScrollReveal client:visible once={false} delay={0.1}>
+        <ProjectCard
+          client:visible
+          title="Buscaminas"
+          description="Versión moderna del clásico Buscaminas desarrollada en TypeScript. Un desafío técnico que implementa algoritmos de recursividad eficiente para la apertura de celdas en cascada."
+          href="/proyectos/buscaminas"
+          image={buscaminasImg.src}
+          shouldReload={true}
+          technologies={[
+            {
+              label: "TypeScript",
+              icon: "IconBrandTypescript",
+              variant: "blue",
+            },
+            { label: "Recursividad", icon: "IconBomb", variant: "purple" },
+          ]}
+        />
+      </ScrollReveal>
+
       {/* Pokemon Table Card */}
-      <ProjectCard
-        client:visible
-        title="Tabla de Tipos Pokémon"
-        description="Herramienta avanzada para consultar debilidades y fortalezas de tipos Pokémon. Enfocada en un Design System robusto con soporte nativo para modo claro/oscuro, uso de Drag & Drop interactivo y SSR para una carga de datos optimizada usando la PokeAPI."
-        href="/proyectos/tabla-pokemon"
-        image={pokemonTableImg.src}
-        shouldReload={true}
-        technologies={[
-          { label: "Next.js", icon: "IconBrandNextjs", variant: "cyan" },
-          { label: "TypeScript", icon: "IconBrandTypescript", variant: "blue" },
-          { label: "MUI", variant: "blue" },
-          { label: "Drag & Drop", icon: "IconArrowsMove", variant: "purple" },
-          { label: "SSR", icon: "IconServer", variant: "green" },
-          { label: "Design System", icon: "IconPalette", variant: "purple" },
-          { label: "Modo Dark/Light", icon: "IconSunMoon", variant: "blue" },
-        ]}
-      />
+      <ScrollReveal client:visible once={false} delay={0.2}>
+        <ProjectCard
+          client:visible
+          title="Tabla de Tipos Pokémon"
+          description="Herramienta avanzada para consultar debilidades y fortalezas de tipos Pokémon. Enfocada en un Design System robusto con soporte nativo para modo claro/oscuro, uso de Drag & Drop interactivo y SSR para una carga de datos optimizada usando la PokeAPI."
+          href="/proyectos/tabla-pokemon"
+          image={pokemonTableImg.src}
+          shouldReload={true}
+          technologies={[
+            { label: "Next.js", icon: "IconBrandNextjs", variant: "cyan" },
+            {
+              label: "TypeScript",
+              icon: "IconBrandTypescript",
+              variant: "blue",
+            },
+            { label: "MUI", variant: "blue" },
+            { label: "Drag & Drop", icon: "IconArrowsMove", variant: "purple" },
+            { label: "SSR", icon: "IconServer", variant: "green" },
+            { label: "Design System", icon: "IconPalette", variant: "purple" },
+            { label: "Modo Dark/Light", icon: "IconSunMoon", variant: "blue" },
+          ]}
+        />
+      </ScrollReveal>
+
       {/* Public Pages Card */}
-      <ProjectCard
-        client:visible
-        title="Páginas Públicas"
-        description="Mini proyecto construido con Nx, Next.js, Base-UI y Tailwind. Un laboratorio para experimentar con SEO, accesibilidad y diferentes estrategias de renderizado."
-        href="/proyectos/public-pages"
-        image={publicPagesImg.src}
-        shouldReload={true}
-        technologies={[
-          { label: "TypeScript", icon: "IconBrandTypescript", variant: "blue" },
-          { label: "Nx", variant: "cyan" },
-          { label: "Next.js", icon: "IconBrandNextjs", variant: "cyan" },
-          { label: "Base-UI", variant: "cyan" },
-          { label: "Tailwind", icon: "IconBrandTailwind", variant: "cyan" },
-          { label: "SEO", icon: "IconSeo", variant: "purple" },
-          { label: "A11y", icon: "IconAccessible", variant: "green" },
-        ]}
-      />
+      <ScrollReveal client:visible once={false} delay={0.3}>
+        <ProjectCard
+          client:visible
+          title="Páginas Públicas"
+          description="Mini proyecto construido con Nx, Next.js, Base-UI y Tailwind. Un laboratorio para experimentar con SEO, accesibilidad y diferentes estrategias de renderizado."
+          href="/proyectos/public-pages"
+          image={publicPagesImg.src}
+          shouldReload={true}
+          technologies={[
+            {
+              label: "TypeScript",
+              icon: "IconBrandTypescript",
+              variant: "blue",
+            },
+            { label: "Nx", variant: "cyan" },
+            { label: "Next.js", icon: "IconBrandNextjs", variant: "cyan" },
+            { label: "Base-UI", variant: "cyan" },
+            { label: "Tailwind", icon: "IconBrandTailwind", variant: "cyan" },
+            { label: "SEO", icon: "IconSeo", variant: "purple" },
+            { label: "A11y", icon: "IconAccessible", variant: "green" },
+          ]}
+        />
+      </ScrollReveal>
     </div>
   </section>
 </Layout>

@@ -28,6 +28,7 @@ export default function ProjectCardMobile({
     ctaText = "Ver proyecto",
 }: ProjectCardMobileProps) {
     const [isExpanded, setIsExpanded] = useState(false);
+    const [imageLoaded, setImageLoaded] = useState(false);
     const cardRef = useRef<HTMLDivElement>(null);
 
     const MAX_VISIBLE = 3;
@@ -84,10 +85,17 @@ export default function ProjectCardMobile({
             {/* Background Image Container */}
             {image && (
                 <div className={`absolute inset-0 w-full h-full transition-all duration-1000 ${isExpanded ? "opacity-20 blur-md scale-110" : "opacity-50 scale-100"}`}>
+                    {/* Shimmer Placeholder */}
+                    {!imageLoaded && (
+                        <div className="absolute inset-0 z-10 animate-shimmer bg-slate-800" />
+                    )}
+
                     <img
                         src={image}
                         alt={title}
-                        className="w-full h-full object-cover"
+                        onLoad={() => setImageLoaded(true)}
+                        className={`w-full h-full object-cover transition-opacity duration-700 ${imageLoaded ? "opacity-100" : "opacity-0"
+                            }`}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-transparent" />
                 </div>
