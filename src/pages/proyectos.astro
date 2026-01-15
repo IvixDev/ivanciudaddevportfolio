@@ -1,7 +1,7 @@
 ---
-import { seoMapper } from "../../helpers/seo.helper";
-import Layout from "../../layouts/Layout.astro";
-import ProjectCard from "../../components/ProjectCard";
+import { seoMapper } from "../helpers/seo.helper";
+import Layout from "../layouts/Layout.astro";
+import ProjectCard from "../components/ProjectCard";
 import {
   IconBrandNextjs,
   IconBrandTailwind,
@@ -33,22 +33,6 @@ const infoSeo = seoMapper(title, description, url, image);
     </h1>
 
     <div class="grid grid-cols-1 tablet:grid-cols-2 gap-6">
-      {/* Public Pages Card */}
-      <ProjectCard
-        title="Páginas Públicas"
-        description="Mini proyecto construido con Nx, Next.js, Base-UI y Tailwind. Un laboratorio para experimentar con SEO, accesibilidad y diferentes estrategias de renderizado."
-        href="/proyectos/public-pages"
-        shouldReload={true}
-        technologies={[
-          { label: "TypeScript", icon: IconBrandTypescript, variant: "blue" },
-          { label: "Nx", variant: "cyan" },
-          { label: "Next.js", icon: IconBrandNextjs, variant: "cyan" },
-          { label: "Base-UI", variant: "cyan" },
-          { label: "Tailwind", icon: IconBrandTailwind, variant: "cyan" },
-          { label: "SEO", icon: IconSeo, variant: "purple" },
-          { label: "A11y", icon: IconAccessible, variant: "green" },
-        ]}
-      />
       {/* Minesweeper Card */}
       <ProjectCard
         title="Buscaminas"
@@ -74,6 +58,22 @@ const infoSeo = seoMapper(title, description, url, image);
           { label: "SSR", icon: IconServer, variant: "green" },
           { label: "Design System", icon: IconPalette, variant: "purple" },
           { label: "Modo Dark/Light", icon: IconSunMoon, variant: "blue" },
+        ]}
+      />
+      {/* Public Pages Card */}
+      <ProjectCard
+        title="Páginas Públicas"
+        description="Mini proyecto construido con Nx, Next.js, Base-UI y Tailwind. Un laboratorio para experimentar con SEO, accesibilidad y diferentes estrategias de renderizado."
+        href="/proyectos/public-pages"
+        shouldReload={true}
+        technologies={[
+          { label: "TypeScript", icon: IconBrandTypescript, variant: "blue" },
+          { label: "Nx", variant: "cyan" },
+          { label: "Next.js", icon: IconBrandNextjs, variant: "cyan" },
+          { label: "Base-UI", variant: "cyan" },
+          { label: "Tailwind", icon: IconBrandTailwind, variant: "cyan" },
+          { label: "SEO", icon: IconSeo, variant: "purple" },
+          { label: "A11y", icon: IconAccessible, variant: "green" },
         ]}
       />
     </div>
