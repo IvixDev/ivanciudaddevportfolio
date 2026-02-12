@@ -2,8 +2,7 @@
 import { seoMapper } from "../helpers/seo.helper";
 import Layout from "../layouts/Layout.astro";
 import ScrollReveal from "../components/ScrollReveal";
-import { Image } from "astro:assets";
-import ivanJapon from "../assets/sobre-mi.webp";
+import AboutMe from "../components/AboutMe.astro";
 
 const title = "Iván Ciudad Espinar - Sobre mi";
 const description =
@@ -15,21 +14,9 @@ const infoSeo = seoMapper(title, description, url, image);
 ---
 
 <Layout infoSeo={infoSeo}>
-  <ScrollReveal client:visible>
-    <div class="flex flex-col gap-8">
-      <Image
-        src={ivanJapon}
-        alt="Iván en Japón"
-        class="w-full rounded-2xl shadow-2xl border border-white/10"
-        widths={[400, 800, 1200]}
-        sizes="(max-width: 768px) 100vw, 800px"
-        quality={80}
-        loading="eager"
-        fetchpriority="high"
-      />
-      <p class="text-lg text-slate-300 leading-relaxed">
-        te voy a contar mi vida
-      </p>
-    </div>
-  </ScrollReveal>
+  <main class="w-full max-w-7xl mx-auto px-6 py-12 flex flex-col gap-12">
+    <ScrollReveal client:visible>
+      <AboutMe />
+    </ScrollReveal>
+  </main>
 </Layout>

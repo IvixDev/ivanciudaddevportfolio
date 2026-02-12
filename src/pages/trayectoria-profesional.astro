@@ -1,11 +1,11 @@
 ---
 import { seoMapper } from "../helpers/seo.helper";
 import Layout from "../layouts/Layout.astro";
-import ScrollReveal from "../components/ScrollReveal";
+import CareerStepper from "../components/CareerStepper.astro";
 
 const title = "Iván Ciudad Espinar - Mi Trayectoria Profesional y CV";
 const description =
-  "Explora la carrera profesional de Iván Ciudad Espinar, desarrollador Frontend e Ingeniero Telemático. Consulta mi CV y descubre mis experiencias, habilidades y logros en el desarrollo de software.";
+  "Explora la carrera profesional de Iván Ciudad Espinar, Software Developer e Ingeniero Telemático. Consulta mi CV y descubre mis experiencias, habilidades y logros en el desarrollo de software.";
 const url = "https://www.ivanciudad.com/trayectoria-profesional";
 const image = "https://www.ivanciudad.com/trayectoria-profesional.webp";
 
@@ -13,13 +13,5 @@ const infoSeo = seoMapper(title, description, url, image);
 ---
 
 <Layout infoSeo={infoSeo}>
-  <main class="w-full h-screen">
-    <ScrollReveal client:visible className="w-full h-full">
-      <embed
-        src="/CV_IvanCiudadEspinar.pdf"
-        type="application/pdf"
-        class="w-full h-full rounded-2xl border border-white/10"
-      />
-    </ScrollReveal>
-  </main>
+  <CareerStepper />
 </Layout>

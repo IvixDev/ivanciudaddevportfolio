@@ -34,7 +34,7 @@ export default function Footer() {
                             </span>
                         </a>
                         <p className="text-slate-400 text-sm leading-relaxed max-w-xs">
-                            Desarrollador Frontend & Ingeniero Telemático.
+                            Software Developer & Ingeniero Telemático.
                             <br />
                             Transformando ideas en experiencias digitales fluidas y
                             modernas.
