@@ -1,23 +1,16 @@
 {
-    "redirects": [
-        {
-            "source": "/proyectos/public-pages/",
-            "destination": "/proyectos/public-pages",
-            "permanent": false
-        }
-    ],
     "rewrites": [
         {
-            "source": "/public-pages-iciudade/:path*",
-            "destination": "https://iciudade-public-pages.vercel.app/public-pages-iciudade/:path*"
+            "source": "/proyectos/public-pages/:path*",
+            "destination": "https://iciudade-public-pages.vercel.ap/proyectos/public-pages/:path*"
         },
         {
             "source": "/proyectos/public-pages",
-            "destination": "https://iciudade-public-pages.vercel.app/public-pages-iciudade"
+            "destination": "https://iciudade-public-pages.vercel.ap/proyectos/public-pages"
         },
         {
             "source": "/proyectos/public-pages/:path*",
-            "destination": "https://iciudade-public-pages.vercel.app/public-pages-iciudade/:path*"
+            "destination": "https://iciudade-public-pages.vercel.app/proyectos/public-pages/:path*"
         },
         {
             "source": "/bombsweeper/:path*",
