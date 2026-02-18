@@ -1,12 +1,8 @@
 {
     "rewrites": [
         {
-            "source": "/proyectos/public-pages/:path*",
-            "destination": "https://iciudade-public-pages.vercel.ap/proyectos/public-pages/:path*"
-        },
-        {
             "source": "/proyectos/public-pages",
-            "destination": "https://iciudade-public-pages.vercel.ap/proyectos/public-pages"
+            "destination": "https://iciudade-public-pages.vercel.app/proyectos/public-pages"
         },
         {
             "source": "/proyectos/public-pages/:path*",
