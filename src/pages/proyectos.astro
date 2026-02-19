@@ -51,7 +51,7 @@ const infoSeo = seoMapper(title, description, url, image);
         <ProjectCard
           client:visible
           title="Tabla de Tipos Pokémon"
-          description="Herramienta avanzada para consultar debilidades y fortalezas de tipos Pokémon. Enfocada en un Design System robusto con soporte nativo para modo claro/oscuro, uso de Drag & Drop interactivo y SSR para una carga de datos optimizada usando la PokeAPI."
+          description="Consulta debilidades y fortalezas de tipos Pokémon con Drag & Drop y SSR usando la PokeAPI."
           href="/proyectos/tabla-pokemon"
           image={pokemonTableImg.src}
           shouldReload={true}
@@ -65,8 +65,6 @@ const infoSeo = seoMapper(title, description, url, image);
             { label: "MUI", variant: "blue" },
             { label: "Drag & Drop", icon: "IconArrowsMove", variant: "purple" },
             { label: "SSR", icon: "IconServer", variant: "green" },
-            { label: "Design System", icon: "IconPalette", variant: "purple" },
-            { label: "Modo Dark/Light", icon: "IconSunMoon", variant: "blue" },
           ]}
         />
       </ScrollReveal>
@@ -76,7 +74,7 @@ const infoSeo = seoMapper(title, description, url, image);
         <ProjectCard
           client:visible
           title="Páginas Públicas"
-          description="Mini proyecto construido con Nx, Next.js, Base-UI y Tailwind. Un laboratorio para experimentar con SEO, accesibilidad y diferentes estrategias de renderizado."
+          description="Laboratorio Next.js para explorar SSR, ISR, SSG y Cache Components con foco en SEO y accesibilidad."
           href="/proyectos/public-pages"
           image={publicPagesImg.src}
           shouldReload={true}
@@ -88,10 +86,16 @@ const infoSeo = seoMapper(title, description, url, image);
             },
             { label: "Nx", variant: "cyan" },
             { label: "Next.js", icon: "IconBrandNextjs", variant: "cyan" },
-            { label: "Base-UI", variant: "cyan" },
-            { label: "Tailwind", icon: "IconBrandTailwind", variant: "cyan" },
             { label: "SEO", icon: "IconSeo", variant: "purple" },
             { label: "A11y", icon: "IconAccessible", variant: "green" },
+            { label: "SSR", icon: "IconServer", variant: "green" },
+            { label: "ISR", icon: "IconRefresh", variant: "green" },
+            { label: "SSG", icon: "IconStack2", variant: "green" },
+            {
+              label: "Cache Components",
+              icon: "IconDatabase",
+              variant: "purple",
+            },
           ]}
         />
       </ScrollReveal>
