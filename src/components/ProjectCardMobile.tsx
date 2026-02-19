@@ -13,9 +13,11 @@ interface ProjectCardMobileProps {
     description: string;
     href: string;
     image?: string;
+    imageAlt?: string;
     technologies?: TechItem[];
     shouldReload?: boolean;
     ctaText?: string;
+    transitionName?: string;
 }
 
 export default function ProjectCardMobile({
@@ -23,9 +25,11 @@ export default function ProjectCardMobile({
     description,
     href,
     image,
+    imageAlt,
     technologies = [],
     shouldReload = false,
     ctaText = "Ver proyecto",
+    transitionName,
 }: ProjectCardMobileProps) {
     const [isExpanded, setIsExpanded] = useState(false);
     const cardRef = useRef<HTMLDivElement>(null);
@@ -86,8 +90,9 @@ export default function ProjectCardMobile({
                 <div className={`absolute inset-0 w-full h-full transition-all duration-1000 ${isExpanded ? "opacity-20 blur-md scale-110" : "opacity-50 scale-100"}`}>
                     <img
                         src={image}
-                        alt={title}
+                        alt={imageAlt || title}
                         className="w-full h-full object-cover"
+                        style={{ viewTransitionName: transitionName } as React.CSSProperties}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-transparent" />
                 </div>

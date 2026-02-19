@@ -1,6 +1,7 @@
 import type { InfoSeoProps } from "../types/types"
 
-export const seoMapper = (title: string, description: string, url: string, image: string, canonical?: string): InfoSeoProps => {
+export const seoMapper = (title: string, description: string, url: string, image: string, imageAlt?: string, canonical?: string): InfoSeoProps => {
+  const imgAlt = imageAlt ?? title;
   return {
     title,
     description,
@@ -18,7 +19,7 @@ export const seoMapper = (title: string, description: string, url: string, image
         siteName: "Iván Ciudad Portfolio",
       },
       image: {
-        alt: title,
+        alt: imgAlt,
         type: "image/webp",
         width: 1200,
         height: 630,
@@ -35,7 +36,7 @@ export const seoMapper = (title: string, description: string, url: string, image
     extend: {
       link: [{ rel: "icon", href: "/favicon.svg" }],
       meta: [
-        { name: "twitter:image:alt", content: title },
+        { name: "twitter:image:alt", content: imgAlt },
         { name: "theme-color", content: "#0f172a" }
       ],
     },

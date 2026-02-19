@@ -14,9 +14,11 @@ interface ProjectCardProps {
     description: string;
     href: string;
     image?: string;
+    imageAlt?: string;
     technologies?: TechItem[];
     shouldReload?: boolean;
     ctaText?: string;
+    transitionName?: string;
 }
 
 export default function ProjectCard(props: ProjectCardProps) {
@@ -47,8 +49,9 @@ export default function ProjectCard(props: ProjectCardProps) {
                 <div className="absolute inset-0 h-full w-full overflow-hidden">
                     <img
                         src={props.image}
-                        alt={props.title}
+                        alt={props.imageAlt || props.title}
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        style={{ viewTransitionName: props.transitionName } as React.CSSProperties}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent" />
                 </div>

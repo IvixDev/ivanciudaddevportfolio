@@ -14,7 +14,13 @@ const description =
 const url = "https://www.ivanciudad.com/proyectos";
 const image = "https://www.ivanciudad.com/proyectos-buscaminas.webp";
 
-const infoSeo = seoMapper(title, description, url, image);
+const infoSeo = seoMapper(
+  title,
+  description,
+  url,
+  image,
+  "Captura del juego Buscaminas, proyecto de desarrollo web de Iván Ciudad Espinar",
+);
 ---
 
 <Layout infoSeo={infoSeo}>
@@ -27,33 +33,34 @@ const infoSeo = seoMapper(title, description, url, image);
 
     <div class="grid grid-cols-1 tablet:grid-cols-2 gap-6">
       {/* Minesweeper Card */}
-      <ScrollReveal client:visible once={false} delay={0.1}>
-        <ProjectCard
-          client:visible
-          title="Buscaminas"
-          description="Versión moderna del clásico Buscaminas desarrollada en TypeScript. Un desafío técnico que implementa algoritmos de recursividad eficiente para la apertura de celdas en cascada."
-          href="/proyectos/buscaminas"
-          image={buscaminasImg.src}
-          shouldReload={true}
-          technologies={[
-            {
-              label: "TypeScript",
-              icon: "IconBrandTypescript",
-              variant: "blue",
-            },
-            { label: "Recursividad", icon: "IconBomb", variant: "purple" },
-          ]}
-        />
-      </ScrollReveal>
+      <ProjectCard
+        client:visible
+        title="Buscaminas"
+        description="Versión moderna del clásico Buscaminas desarrollada en TypeScript. Un desafío técnico que implementa algoritmos de recursividad eficiente para la apertura de celdas en cascada."
+        href="/proyectos/buscaminas"
+        image={buscaminasImg.src}
+        imageAlt="Captura del juego Buscaminas desarrollado por Iván Ciudad Espinar en TypeScript"
+        shouldReload={true}
+        transitionName="projects-image"
+        technologies={[
+          {
+            label: "TypeScript",
+            icon: "IconBrandTypescript",
+            variant: "blue",
+          },
+          { label: "Recursividad", icon: "IconBomb", variant: "purple" },
+        ]}
+      />
 
       {/* Pokemon Table Card */}
-      <ScrollReveal client:visible once={false} delay={0.2}>
+      <ScrollReveal client:visible once={false} delay={0.2} distance={0}>
         <ProjectCard
           client:visible
           title="Tabla de Tipos Pokémon"
           description="Consulta debilidades y fortalezas de tipos Pokémon con Drag & Drop y SSR usando la PokeAPI."
           href="/proyectos/tabla-pokemon"
           image={pokemonTableImg.src}
+          imageAlt="Captura de la herramienta Tabla de Tipos Pokémon con Drag and Drop creada por Iván Ciudad Espinar"
           shouldReload={true}
           technologies={[
             { label: "Next.js", icon: "IconBrandNextjs", variant: "cyan" },
@@ -69,14 +76,15 @@ const infoSeo = seoMapper(title, description, url, image);
         />
       </ScrollReveal>
 
-      {/* Public Pages Card */}
-      <ScrollReveal client:visible once={false} delay={0.3}>
+      {/* eShop Cache Lab Card */}
+      <ScrollReveal client:visible once={false} delay={0.3} distance={0}>
         <ProjectCard
           client:visible
-          title="Páginas Públicas"
+          title="eShop Cache Lab"
           description="Laboratorio Next.js para explorar SSR, ISR, SSG y Cache Components con foco en SEO y accesibilidad."
           href="/proyectos/public-pages"
           image={publicPagesImg.src}
+          imageAlt="Captura del proyecto eShop Cache Lab de Iván Ciudad Espinar para probar métodos de caché de Next.js"
           shouldReload={true}
           technologies={[
             {

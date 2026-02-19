@@ -1,14 +1,17 @@
 ---
 import { Image } from "astro:assets";
-import ivanJapon from "../assets/sobre-mi.webp";
+import ivanJapon from "../assets/ivan-japon.webp";
+import juegosDeMesa from "../assets/juegos-de-mesa-dados.webp";
+import legos from "../assets/legos.webp";
 ---
 
 <div class="flex flex-col gap-24 w-full">
     <!-- SECCIÓN 1: Perfil Profesional y Origen -->
-    <section class="flex flex-col laptop:flex-row items-center gap-12 w-full">
-        <div
-            class="w-full laptop:w-3/5 flex flex-col gap-6 order-1 laptop:order-1"
-        >
+    <section
+        class="grid grid-cols-1 laptop:grid-cols-2 gap-6 laptop:gap-12 w-full laptop:items-center"
+    >
+        <!-- Título -->
+        <div class="order-1 laptop:col-start-1 laptop:row-start-1">
             <h1 class="text-4xl tablet:text-5xl font-bold leading-tight">
                 Soy <span
                     class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500"
@@ -16,122 +19,82 @@ import ivanJapon from "../assets/sobre-mi.webp";
                 >
             </h1>
             <h2
-                class="text-xl tablet:text-2xl text-slate-300 font-medium font-source-code"
+                class="text-xl tablet:text-2xl text-slate-300 font-medium font-source-code mt-4"
             >
                 Software Developer & Ingeniero Telemático
             </h2>
-            <div class="space-y-6 text-slate-400 text-lg leading-relaxed">
-                <p>
-                    <strong class="text-cyan-300">En el terreno laboral</strong
-                    >, me considero una persona muy comunicativa y proactiva. No
-                    dudo en asumir el liderazgo cuando la situación lo requiere,
-                    y disfruto enormemente compartiendo conocimientos y ayudando
-                    a mis compañeros a crecer, fomentando siempre un ambiente de
-                    trabajo positivo y colaborativo.
-                </p>
-                <p>
-                    <strong class="text-purple-300"
-                        >Mi origen como programador</strong
-                    >
-                    se remonta al instituto, cuando en clase de informática nos retaron
-                    a crear un pequeño videojuego. Aquella experiencia encendió una
-                    chispa que me llevó a desarrollar mi primera aplicación real:
-                    una calculadora de notas para gestionar mis estudios. Comprobar
-                    la utilidad práctica del código fue lo que me terminó de enganchar.
-                </p>
+        </div>
+
+        <!-- Imagen -->
+        <div
+            class="order-2 laptop:col-start-2 laptop:row-start-1 laptop:row-span-2 flex justify-center"
+        >
+            <div class="w-full relative group">
+                <div
+                    class="absolute -inset-1 bg-gradient-to-r from-cyan-400 to-purple-600 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"
+                >
+                </div>
+                <Image
+                    src={ivanJapon}
+                    alt="Iván Ciudad Espinar posando en Japón con el Templo Dorado Kinkaku-ji de fondo"
+                    class="relative w-full h-auto object-cover rounded-2xl shadow-2xl border border-slate-800 aspect-[4/5]"
+                    widths={[400, 800]}
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    quality={90}
+                    loading="eager"
+                    transition:name="about-image"
+                />
             </div>
         </div>
 
+        <!-- Párrafos -->
         <div
-            class="w-full laptop:w-2/5 flex justify-center order-2 laptop:order-2"
+            class="order-3 laptop:col-start-1 laptop:row-start-2 space-y-6 text-slate-400 text-lg leading-relaxed"
         >
-            <!-- Placeholder para futura foto de Perfil -->
-            <div
-                class="w-full aspect-[4/5] rounded-2xl bg-slate-900/50 border border-dashed border-slate-700 flex flex-col items-center justify-center text-slate-500 gap-2"
-            >
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="48"
-                    height="48"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    ><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"
-                    ></path><circle cx="12" cy="7" r="4"></circle></svg
+            <p>
+                <strong class="text-cyan-300">En el terreno laboral</strong>, me
+                considero una persona muy comunicativa y proactiva. No dudo en
+                asumir el liderazgo cuando la situación lo requiere, y disfruto
+                enormemente compartiendo conocimientos y ayudando a mis
+                compañeros a crecer, fomentando siempre un ambiente de trabajo
+                positivo y colaborativo.
+            </p>
+            <p>
+                <strong class="text-purple-300"
+                    >Mi origen como programador</strong
                 >
-                <span class="text-sm">Foto de Perfil</span>
-            </div>
+                se remonta al instituto, cuando en clase de informática nos retaron
+                a crear un pequeño videojuego. Aquella experiencia encendió una chispa
+                que me llevó a desarrollar mi primera aplicación real: una calculadora
+                de notas para gestionar mis estudios. Comprobar la utilidad práctica
+                del código fue lo que me terminó de enganchar.
+            </p>
         </div>
     </section>
 
-    <!-- SECCIÓN 2: Pasiones y Desconexión (VIAJES) -->
+    <!-- SECCIÓN 2: Pasiones y Desconexión -->
     <section
-        class="flex flex-col laptop:flex-row-reverse items-center gap-12 w-full"
+        class="grid grid-cols-1 laptop:grid-cols-[2fr_3fr] gap-6 laptop:gap-12 w-full laptop:items-center"
     >
-        <div class="w-full laptop:w-3/5 flex flex-col gap-6">
-            <h3 class="text-3xl font-bold text-white flex items-center gap-3">
-                <span class="w-8 h-px bg-purple-500 inline-block"></span>
-                Pasiones y Desconexión
-            </h3>
-            <div class="space-y-4 text-slate-400 text-lg leading-relaxed">
-                <p>
-                    Los <strong class="text-slate-200">videojuegos</strong> son una
-                    de mis grandes pasiones:{" "}
-                    <span class="text-slate-200 font-medium"
-                        >World of Warcraft</span
-                    >,{" "}
-                    <span class="text-slate-200 font-medium">The Witcher 3</span
-                    >,{" "}
-                    <span class="text-slate-200 font-medium">Dark Souls</span>,{
-                        " "
-                    }
-                    <span class="text-slate-200 font-medium"
-                        >League of Legends</span
-                    >... Decidí conscientemente no dedicarme profesionalmente a
-                    su desarrollo para mantener ese mundo como mi espacio de
-                    desconexión.
-                </p>
-                <p>
-                    <strong class="text-slate-200"
-                        >Mi forma favorita de desconectar</strong
-                    >
-                    es reunirme con amigos alrededor de una mesa: desde partidas de
-                    <span class="text-slate-200 font-medium"
-                        >juegos de mesa</span
-                    >
-                    hasta largas campañas de <span
-                        class="text-slate-200 font-medium"
-                        >Dragones y Mazmorras</span
-                    >. Y para equilibrar, caminar y el gym son mis pilares
-                    fundamentales.
-                </p>
-                <p>
-                    En el sofá, soy fan incondicional de <span
-                        class="text-slate-200 font-medium">Star Wars</span
-                    > y
-                    <span class="text-slate-200 font-medium"
-                        >El Señor de los Anillos</span
-                    >. Mi lista de favoritos incluye
-                    <span class="text-slate-200 font-medium"
-                        >Juego de Tronos, Breaking Bad, Naruto y Clone Wars</span
-                    >, sin olvidar el maratón navideño de <span
-                        class="text-slate-200 font-medium">Harry Potter</span
-                    >.
-                </p>
-            </div>
-        </div>
+        <!-- Título -->
+        <h3
+            class="order-1 laptop:col-start-2 laptop:row-start-1 text-3xl font-bold text-white flex items-center gap-3"
+        >
+            <span class="w-8 h-px bg-purple-500 inline-block"></span>
+            Pasiones y Desconexión
+        </h3>
 
-        <div class="w-full laptop:w-2/5 relative group">
+        <!-- Imagen -->
+        <div
+            class="order-2 laptop:col-start-1 laptop:row-start-1 laptop:row-span-2 relative group"
+        >
             <div
                 class="absolute -inset-1 bg-gradient-to-r from-purple-400 to-sky-600 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"
             >
             </div>
             <Image
-                src={ivanJapon}
-                alt="Iván Ciudad en Japón"
+                src={juegosDeMesa}
+                alt="Cuenco de dados de rol y juegos de mesa, hobby de Iván Ciudad Espinar"
                 class="relative w-full h-auto object-cover rounded-2xl shadow-2xl border border-slate-800 aspect-[4/3] laptop:aspect-auto"
                 widths={[400, 800]}
                 sizes="(max-width: 768px) 100vw, 40vw"
@@ -139,54 +102,103 @@ import ivanJapon from "../assets/sobre-mi.webp";
                 loading="eager"
             />
         </div>
+
+        <!-- Párrafos -->
+        <div
+            class="order-3 laptop:col-start-2 laptop:row-start-2 space-y-4 text-slate-400 text-lg leading-relaxed"
+        >
+            <p>
+                Los <strong class="text-slate-200">videojuegos</strong> son una de
+                mis grandes pasiones:{" "}
+                <span class="text-slate-200 font-medium">World of Warcraft</span
+                >,{" "}
+                <span class="text-slate-200 font-medium">The Witcher 3</span>,{
+                    " "
+                }
+                <span class="text-slate-200 font-medium">Dark Souls</span>,{" "}
+                <span class="text-slate-200 font-medium">League of Legends</span
+                >... Decidí conscientemente no dedicarme profesionalmente a su
+                desarrollo para mantener ese mundo como mi espacio de
+                desconexión.
+            </p>
+            <p>
+                <strong class="text-slate-200"
+                    >Mi forma favorita de desconectar</strong
+                >
+                es reunirme con amigos alrededor de una mesa: desde partidas de
+                <span class="text-slate-200 font-medium">juegos de mesa</span>
+                hasta largas campañas de <span
+                    class="text-slate-200 font-medium"
+                    >Dragones y Mazmorras</span
+                >. Y para equilibrar, caminar y el gym son mis pilares
+                fundamentales.
+            </p>
+            <p>
+                En el sofá, soy fan incondicional de <span
+                    class="text-slate-200 font-medium">Star Wars</span
+                > y
+                <span class="text-slate-200 font-medium"
+                    >El Señor de los Anillos</span
+                >. Mi lista de favoritos incluye
+                <span class="text-slate-200 font-medium"
+                    >Juego de Tronos, Breaking Bad, Naruto y Clone Wars</span
+                >, sin olvidar el maratón navideño de <span
+                    class="text-slate-200 font-medium">Harry Potter</span
+                >.
+            </p>
+        </div>
     </section>
 
     <!-- SECCIÓN 3: Construcción y Hardware -->
-    <section class="flex flex-col laptop:flex-row items-center gap-12 w-full">
-        <div class="w-full laptop:w-3/5 flex flex-col gap-6">
-            <h3 class="text-3xl font-bold text-white flex items-center gap-3">
-                <span class="w-8 h-px bg-cyan-400 inline-block"></span>
-                Hardware y Construcción
-            </h3>
-            <div class="space-y-4 text-slate-400 text-lg leading-relaxed">
-                <p>
-                    Esa curiosidad por como funcionan las cosas se extiende al <strong
-                        class="text-slate-200">hardware</strong
-                    >. Me encanta montar mis propios ordenadores por piezas,
-                    limpiarlos, medir tensiones y exprimir su rendimiento
-                    mediante overclocking.
-                </p>
-                <p>
-                    Siguiendo con esa faceta de "construir", mi pasatiempo
-                    favorito es montar sets de <span
-                        class="text-slate-200 font-medium">LEGO</span
-                    >; una afición que, aunque cara, me apasiona tanto que en su
-                    día me hizo plantearme seriamente estudiar arquitectura por
-                    mi amor a las estructuras y el diseño.
-                </p>
-            </div>
-        </div>
-        <div class="w-full laptop:w-2/5 flex justify-center">
-            <!-- Placeholder para futura foto de Hardware/Lego -->
+    <section
+        class="grid grid-cols-1 laptop:grid-cols-[3fr_2fr] gap-6 laptop:gap-12 w-full laptop:items-center"
+    >
+        <!-- Título -->
+        <h3
+            class="order-1 laptop:col-start-1 laptop:row-start-1 text-3xl font-bold text-white flex items-center gap-3"
+        >
+            <span class="w-8 h-px bg-cyan-400 inline-block"></span>
+            Hardware y Construcción
+        </h3>
+
+        <!-- Imagen -->
+        <div
+            class="order-2 laptop:col-start-2 laptop:row-start-1 laptop:row-span-2 relative group"
+        >
             <div
-                class="w-full aspect-video rounded-2xl bg-slate-900/50 border border-dashed border-slate-700 flex flex-col items-center justify-center text-slate-500 gap-2"
+                class="absolute -inset-1 bg-gradient-to-r from-cyan-400 to-emerald-500 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"
             >
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="48"
-                    height="48"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    ><path
-                        d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"
-                    ></path><circle cx="12" cy="13" r="3"></circle></svg
-                >
-                <span class="text-sm">Espacio para foto de Hardware/LEGO</span>
             </div>
+            <Image
+                src={legos}
+                alt="Figuras LEGO de Grogu, R2-D2 y C-3PO de Star Wars, colección de Iván Ciudad Espinar"
+                class="relative w-full h-auto object-cover rounded-2xl shadow-2xl border border-slate-800 aspect-[4/3] laptop:aspect-auto"
+                widths={[400, 800]}
+                sizes="(max-width: 768px) 100vw, 50vw"
+                quality={90}
+                loading="lazy"
+            />
+        </div>
+
+        <!-- Párrafos -->
+        <div
+            class="order-3 laptop:col-start-1 laptop:row-start-2 space-y-4 text-slate-400 text-lg leading-relaxed"
+        >
+            <p>
+                Esa curiosidad por como funcionan las cosas se extiende al <strong
+                    class="text-slate-200">hardware</strong
+                >. Me encanta montar mis propios ordenadores por piezas,
+                limpiarlos, medir tensiones y exprimir su rendimiento mediante
+                overclocking.
+            </p>
+            <p>
+                Siguiendo con esa faceta de "construir", mi pasatiempo favorito
+                es montar sets de <span class="text-slate-200 font-medium"
+                    >LEGO</span
+                >; una afición que, aunque cara, me apasiona tanto que en su día
+                me hizo plantearme seriamente estudiar arquitectura por mi amor
+                a las estructuras y el diseño.
+            </p>
         </div>
     </section>
 </div>

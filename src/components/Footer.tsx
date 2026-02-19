@@ -35,9 +35,6 @@ export default function Footer() {
                         </a>
                         <p className="text-slate-400 text-sm leading-relaxed max-w-xs">
                             Software Developer & Ingeniero Telemático.
-                            <br />
-                            Transformando ideas en experiencias digitales fluidas y
-                            modernas.
                         </p>
                     </div>
 
