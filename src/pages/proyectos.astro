@@ -33,27 +33,28 @@ const infoSeo = seoMapper(
 
     <div class="grid grid-cols-1 tablet:grid-cols-2 gap-6">
       {/* Minesweeper Card */}
-      <ProjectCard
-        client:visible
-        title="Buscaminas"
-        description="Versión moderna del clásico Buscaminas desarrollada en TypeScript. Un desafío técnico que implementa algoritmos de recursividad eficiente para la apertura de celdas en cascada."
-        href="/proyectos/buscaminas"
-        image={buscaminasImg.src}
-        imageAlt="Captura del juego Buscaminas desarrollado por Iván Ciudad Espinar en TypeScript"
-        shouldReload={true}
-        transitionName="projects-image"
-        technologies={[
-          {
-            label: "TypeScript",
-            icon: "IconBrandTypescript",
-            variant: "blue",
-          },
-          { label: "Recursividad", icon: "IconBomb", variant: "purple" },
-        ]}
-      />
+      <ScrollReveal client:visible once={false} delay={0.1}>
+        <ProjectCard
+          client:visible
+          title="Buscaminas"
+          description="Versión moderna del clásico Buscaminas desarrollada en TypeScript. Un desafío técnico que implementa algoritmos de recursividad eficiente para la apertura de celdas en cascada."
+          href="/proyectos/buscaminas"
+          image={buscaminasImg.src}
+          imageAlt="Captura del juego Buscaminas desarrollado por Iván Ciudad Espinar en TypeScript"
+          shouldReload={true}
+          technologies={[
+            {
+              label: "TypeScript",
+              icon: "IconBrandTypescript",
+              variant: "blue",
+            },
+            { label: "Recursividad", icon: "IconBomb", variant: "purple" },
+          ]}
+        />
+      </ScrollReveal>
 
       {/* Pokemon Table Card */}
-      <ScrollReveal client:visible once={false} delay={0.2} distance={0}>
+      <ScrollReveal client:visible once={false} delay={0.2}>
         <ProjectCard
           client:visible
           title="Tabla de Tipos Pokémon"
@@ -77,7 +78,7 @@ const infoSeo = seoMapper(
       </ScrollReveal>
 
       {/* eShop Cache Lab Card */}
-      <ScrollReveal client:visible once={false} delay={0.3} distance={0}>
+      <ScrollReveal client:visible once={false} delay={0.3}>
         <ProjectCard
           client:visible
           title="eShop Cache Lab"

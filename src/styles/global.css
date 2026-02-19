@@ -40,11 +40,51 @@
     font-family: var(--font-onest);
     scroll-behavior: smooth;
     background-color: var(--background-hex);
+    cursor: default;
+    /* Elimina la barra vertical | al clickar */
+    caret-color: transparent;
   }
 
   body {
     @apply min-h-screen text-white antialiased;
     background-color: var(--background-hex);
+    /* Asegura que no aparezca el cursor en el body */
+    caret-color: transparent;
+  }
+
+  /* Prevent text selection cursor on non-text elements */
+  img,
+  video,
+  svg,
+  a,
+  button,
+  .no-select {
+    user-select: none;
+    -webkit-user-drag: none;
+    /* Evita que aparezca el caret en elementos de interacción */
+    caret-color: transparent;
+  }
+
+  /* Keep selection enabled for actual readable content, but still no caret */
+  p,
+  span,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  li,
+  article,
+  time {
+    user-select: text;
+    caret-color: transparent;
+  }
+
+  /* Si en el futuro añades un input, ahí sí querremos el caret original */
+  input,
+  textarea {
+    caret-color: auto;
   }
 
   /* Custom scrollbar styles */

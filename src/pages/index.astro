@@ -108,48 +108,49 @@ const schema = {
     <!-- Content Grid -->
     <section class="grid grid-cols-1 laptop:grid-cols-3 gap-6 w-full">
       <!-- Card 1: Proyectos -->
-      <a
-        href="/proyectos"
-        class="group relative flex flex-col gap-4 p-6 rounded-2xl bg-slate-800/30 border border-white/5 hover:border-purple-500/30 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-purple-500/10 overflow-hidden h-full"
-      >
-        <div
-          class="absolute inset-0 bg-gradient-to-b from-transparent to-slate-900/90 z-10 pointer-events-none"
+      <ScrollReveal client:visible delay={0.1}>
+        <a
+          href="/proyectos"
+          class="group relative flex flex-col gap-4 p-6 rounded-2xl bg-slate-800/30 border border-white/5 hover:border-purple-500/30 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-purple-500/10 overflow-hidden h-full"
         >
-        </div>
-        <div class="h-48 w-full overflow-hidden rounded-xl mb-2">
-          <Image
-            src={proyectosImg}
-            alt="Captura del juego Buscaminas, proyecto de desarrollo web de Iván Ciudad Espinar"
-            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-            widths={[400, 800]}
-            sizes="(max-width: 1024px) 90vw, 30vw"
-            quality={80}
-            transition:name="projects-image"
-          />
-        </div>
-        <div class="z-20 flex flex-col gap-2 flex-1">
-          <h4
-            class="text-2xl font-bold group-hover:text-purple-400 transition-colors"
+          <div
+            class="absolute inset-0 bg-gradient-to-b from-transparent to-slate-900/90 z-10 pointer-events-none"
           >
-            Mis Proyectos
-          </h4>
-          <p class="text-slate-400 text-sm leading-relaxed">
-            Descubre lo que he construido. Webs, aplicaciones y experimentos con
-            las últimas tecnologías.
-          </p>
-          <span
-            class="mt-auto text-purple-400 text-sm font-medium flex items-center gap-2"
-          >
-            Ver portfolio
-            <IconArrowRight
-              className="w-4 h-4 group-hover:translate-x-1 transition-transform"
+          </div>
+          <div class="h-48 w-full overflow-hidden rounded-xl mb-2">
+            <Image
+              src={proyectosImg}
+              alt="Captura del juego Buscaminas, proyecto de desarrollo web de Iván Ciudad Espinar"
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              widths={[400, 800]}
+              sizes="(max-width: 1024px) 90vw, 30vw"
+              quality={80}
             />
-          </span>
-        </div>
-      </a>
+          </div>
+          <div class="z-20 flex flex-col gap-2 flex-1">
+            <h4
+              class="text-2xl font-bold group-hover:text-purple-400 transition-colors"
+            >
+              Mis Proyectos
+            </h4>
+            <p class="text-slate-400 text-sm leading-relaxed">
+              Descubre lo que he construido. Webs, aplicaciones y experimentos
+              con las últimas tecnologías.
+            </p>
+            <span
+              class="mt-auto text-purple-400 text-sm font-medium flex items-center gap-2"
+            >
+              Ver portfolio
+              <IconArrowRight
+                className="w-4 h-4 group-hover:translate-x-1 transition-transform"
+              />
+            </span>
+          </div>
+        </a>
+      </ScrollReveal>
 
       <!-- Card 2: Trayectoria -->
-      <ScrollReveal client:visible delay={0.1}>
+      <ScrollReveal client:visible delay={0.2}>
         <a
           href="/trayectoria-profesional"
           class="group relative flex flex-col gap-4 p-6 rounded-2xl bg-slate-800/30 border border-white/5 hover:border-green-500/30 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-green-500/10 overflow-hidden h-full"
@@ -166,7 +167,6 @@ const schema = {
               widths={[400, 800]}
               sizes="(max-width: 1024px) 90vw, 30vw"
               quality={80}
-              transition:name="career-image"
             />
           </div>
           <div class="z-20 flex flex-col gap-2 flex-1">
@@ -192,7 +192,7 @@ const schema = {
       </ScrollReveal>
 
       <!-- Card 3: Sobre Mi -->
-      <ScrollReveal client:visible delay={0.2}>
+      <ScrollReveal client:visible delay={0.3}>
         <a
           href="/sobre-mi"
           class="group relative flex flex-col gap-4 p-6 rounded-2xl bg-slate-800/30 border border-white/5 hover:border-cyan-500/30 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-cyan-500/10 overflow-hidden h-full"
@@ -209,7 +209,6 @@ const schema = {
               widths={[400, 800]}
               sizes="(max-width: 1024px) 90vw, 30vw"
               quality={80}
-              transition:name="about-image"
             />
           </div>
           <div class="z-20 flex flex-col gap-2 flex-1">
