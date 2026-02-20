@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 import { SEO } from "astro-seo";
 import { ClientRouter } from "astro:transitions";
 import SpeedInsights from "@vercel/speed-insights/astro";
+import Analytics from "@vercel/analytics/astro";
 import type { InfoSeoProps } from "../types/types";
 
 interface Props {
@@ -99,6 +100,7 @@ import "../styles/global.css";
 
     <SEO {...infoSeo} />
     <SpeedInsights />
+    <Analytics />
   </head>
   <body
     class="flex flex-col min-h-screen bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))] text-white selection:bg-cyan-500/30 selection:text-cyan-200"
