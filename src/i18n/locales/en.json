@@ -1,0 +1,240 @@
+{
+    "header": {
+        "home": "Home",
+        "projects": "My Projects",
+        "career": "My Career",
+        "about": "About Me",
+        "menu_aria": "Open navigation menu",
+        "email": "Click to send me an email. I will reply as fast as I can!"
+    },
+    "nav": {
+        "home_url": "/en",
+        "projects_url": "/en/projects",
+        "career_url": "/en/career",
+        "about_url": "/en/about-me"
+    },
+    "footer": {
+        "site_map": "Site Map",
+        "contact": "Contact",
+        "projects": "Projects",
+        "career": "Career",
+        "about": "About Me",
+        "made_with": "Made with",
+        "and_astro": "and Astro",
+        "software_dev": "Software Developer & Telematics Engineer."
+    },
+    "home": {
+        "title": "Iván Ciudad Espinar - Software Developer & Telematics Engineer",
+        "description": "Welcome to the website of Iván Ciudad Espinar, Software Developer & Telematics Engineer. Discover my projects, articles, hobbies and more about my life and career in software development.",
+        "software_developer": "Software Developer &",
+        "telematics_engineer": "Telematics Engineer",
+        "welcome_subtitle": "Welcome to my corner of the internet, where I code ideas and build digital experiences.",
+        "about_web": "About this website",
+        "what_find": "What will you find here?",
+        "what_find_desc": "This website is my personal portfolio and testing laboratory. A space where I demonstrate my skills as a Software Developer, apply SEO strategies, and share who I am beyond code.",
+        "my_projects": "My Projects",
+        "my_projects_desc": "Discover what I've built. Websites, applications, and experiments with the latest technologies.",
+        "view_portfolio": "View Portfolio",
+        "career": "Career",
+        "career_desc": "My professional path: companies, roles, and experience in telematics engineering and development.",
+        "view_cv": "View CV",
+        "about_me": "About Me",
+        "about_me_desc": "A short biography, my interests (video games, series, movies, etc.) and who I am behind the code.",
+        "read_more": "Read more",
+        "soy_ivan": "I am ",
+        "image_url": "https://www.ivanciudad.com/ivan-ciudad-hero.webp",
+        "image_alt": "Iván Ciudad Espinar, Software Developer and Telematics Engineer",
+        "projects_url": "/en/projects",
+        "career_url": "/en/career",
+        "about_url": "/en/about-me",
+        "projects_img_alt": "Screenshot of the Minesweeper game, web development project by Iván Ciudad Espinar",
+        "career_img_alt": "Iván Ciudad Espinar in a suit, professional career as a Software Developer",
+        "about_img_alt": "Iván Ciudad Espinar posing in Japan with the Golden Kinkaku-ji Temple in the background"
+    },
+    "projects": {
+        "title": "Iván Ciudad Espinar - Software Development Projects",
+        "description": "Explore the projects of Iván Ciudad Espinar, Software Developer & Telematics Engineer. Discover my work in software development, web applications, and more.",
+        "page_heading": "My Projects",
+        "buscaminas_desc": "Modern version of the classic Minesweeper developed in TypeScript. A technical challenge that implements efficient recursive algorithms for cascading cell opening.",
+        "pokemon_desc": "Check weaknesses and strengths of Pokemon types with Drag & Drop and SSR using PokeAPI.",
+        "eshop_desc": "Next.js laboratory to explore SSR, ISR, SSG and Cache Components with a focus on SEO and accessibility.",
+        "buscaminas_title": "Minesweeper",
+        "buscaminas_url": "/en/projects/minesweeper",
+        "pokemon_title": "Pokémon Type Chart",
+        "pokemon_url": "/en/projects/pokemon-types",
+        "eshop_title": "eShop Cache Lab",
+        "eshop_url": "/en/projects/public-pages",
+        "cta_text": "View project",
+        "recursive_tech": "Recursive",
+        "image_url": "https://www.ivanciudad.com/proyectos-buscaminas.webp",
+        "image_alt": "Screenshot of the Minesweeper game, web development project by Iván Ciudad Espinar",
+        "pokemon_img_alt": "Screenshot of the Pokémon Type Chart tool with Drag and Drop created by Iván Ciudad Espinar",
+        "eshop_img_alt": "Screenshot of the eShop Cache Lab project by Iván Ciudad Espinar to test Next.js caching methods"
+    },
+    "about_page": {
+        "title": "Iván Ciudad Espinar - About Me",
+        "description": "Here you will find information about my life, my tastes and my hobbies. Discover who I am, where I come from and my passions for video games, movies and series.",
+        "url": "https://www.ivanciudad.com/en/about-me",
+        "image_url": "https://www.ivanciudad.com/ivan-japon.webp",
+        "image_alt": "Iván Ciudad Espinar posing in Japan with the Golden Kinkaku-ji Temple in the background"
+    },
+    "about": {
+        "section1_title1": "I am",
+        "section1_title2": "Software Developer & Telematics Engineer",
+        "p1_1": "In the workplace",
+        "p1_2": ", I consider myself a highly communicative and proactive person. I don't hesitate to take leadership when the situation requires it, and I thoroughly enjoy sharing knowledge and helping my colleagues grow, always fostering a positive and collaborative work environment.",
+        "p1_3": "My origin as a programmer",
+        "p1_4": " goes back to high school, when in computer class we were challenged to create a small video game. That experience ignited a spark that led me to develop my first real application: a grade calculator to manage my studies. Verifying the practical utility of code was what finally hooked me.",
+        "section2_title": "Passions and Disconnection",
+        "p2_1": "Video games",
+        "p2_2": "",
+        "p2_3": " are one of my great passions: ",
+        "p2_4": "... I consciously decided not to work professionally in their development to keep that world as my place of disconnection.",
+        "p2_5": "My favorite way to disconnect",
+        "p2_6": " is gathering with friends around a table: from ",
+        "p2_7": "board game",
+        "p2_8": " sessions to long ",
+        "p2_9": "Dungeons & Dragons",
+        "p2_10": " campaigns. And for balance, walking and the gym are my fundamental pillars.",
+        "p2_11": "On the couch, I'm an unconditional fan of ",
+        "p2_12": " and ",
+        "p2_13": ". My favorites list includes ",
+        "p2_14": ", without forgetting the Christmas marathon of ",
+        "p2_15": ".",
+        "section3_title": "Hardware and Building",
+        "p3_1": "That curiosity for how things work extends to ",
+        "p3_2": "hardware",
+        "p3_3": ". I love building my own computers from parts, cleaning them, measuring voltages, and squeezing their performance through overclocking.",
+        "p3_4": "Continuing with that \"building\" facet, my favorite hobby is putting together ",
+        "p3_5": " sets; a hobby that, although expensive, I am so passionate about that it once made me seriously consider studying architecture because of my love for structures and design.",
+        "section4_title2": " and Creativity",
+        "section4_p1": "I also enjoy letting my imagination run wild building ",
+        "section4_p2": " sets such as the Star Wars ones.",
+        "img_ivan_japon_alt": "Iván Ciudad Espinar posing in Japan with the Golden Kinkaku-ji Temple in the background",
+        "img_board_games_alt": "Bowl of role-playing dice and board games, hobby of Iván Ciudad Espinar",
+        "img_legos_alt": "LEGO figures of Grogu, R2-D2 and C-3PO from Star Wars, collection of Iván Ciudad Espinar"
+    },
+    "career_page": {
+        "title": "Iván Ciudad Espinar - My Professional Career and CV",
+        "description": "Explore the professional career of Iván Ciudad Espinar, Software Developer & Telematics Engineer. Check out my CV and discover my experiences, skills, and achievements in software development.",
+        "url": "https://www.ivanciudad.com/en/career",
+        "image_url": "https://www.ivanciudad.com/trayectoria-profesional.webp",
+        "image_alt": "Iván Ciudad Espinar in a suit, Software Developer and Telematics Engineer"
+    },
+    "career": {
+        "title1": "My",
+        "title2": "Journey",
+        "description": "A journey through the technical challenges, projects, and training that have forged my professional profile.",
+        "page_heading": "My Professional \nCareer",
+        "download_cv": "Download CV (.pdf)",
+        "cv_link": "/IvanCiudadEspinar_CV_En.pdf",
+        "img_career_alt": "Iván Ciudad Espinar in a suit, Software Developer and Telematics Engineer",
+        "last_update": "Last update: February 2026",
+        "experience_title": "Experience",
+        "education_title": "Education",
+        "tech_stack_title": "Tech Stack",
+        "soft_skills_title": "Soft Skills"
+    },
+    "experiences": [
+        {
+            "date": "November 2024 - Present",
+            "title": "Senior Frontend Developer",
+            "company": "MasOrange",
+            "description": "Developer of the Multi-brand eShop.",
+            "tags": [
+                "Next.js",
+                "AI",
+                "Claude",
+                "React",
+                "TypeScript",
+                "Tailwind"
+            ]
+        },
+        {
+            "date": "January 2023 - October 2024",
+            "title": "Software Engineer • Frontend Developer",
+            "company": "Capgemini",
+            "description": "MasMovil Project: Creation of a multi-brand application for: Euskaltel, Telecable, R, Guuk, Racctel, MasMovil, Yoigo, Lyca, and Lebara.",
+            "tags": [
+                "Next.js",
+                "React",
+                "TypeScript",
+                "JIRA",
+                "Gitflow"
+            ]
+        },
+        {
+            "date": "September 2022 - September 2023",
+            "title": "Software Engineer • Frontend Developer",
+            "company": "Capgemini",
+            "description": "Maintenance of Yoigo.",
+            "tags": [
+                "Angular",
+                "TypeScript",
+                "JIRA",
+                "Gitflow"
+            ]
+        },
+        {
+            "date": "February 2022 - July 2022",
+            "title": "Internship • Backend",
+            "company": "Capgemini",
+            "description": "MasMovil Project: Yoigo Maintenance.",
+            "tags": [
+                "Java",
+                "Springboot",
+                "MySQL",
+                "Microservices"
+            ]
+        }
+    ],
+    "educations": [
+        {
+            "date": "2023 - 2024",
+            "title": "Master High Potential Technical Leader",
+            "institution": "EDEM",
+            "description": "Leadership, Team Management, Conflict Resolution, Google Cloud.",
+            "color": "amber"
+        },
+        {
+            "date": "2017 - 2021",
+            "title": "Bachelor's Degree in Telematics Engineering",
+            "institution": "University of Valencia",
+            "description": "Honors in programming, Web Development, and Software Engineering.",
+            "color": "blue"
+        }
+    ],
+    "tech_categories": {
+        "Frontend": "Frontend",
+        "Backend": "Backend",
+        "Herramientas": "Tools"
+    },
+    "softskills": [
+        "Team Leadership",
+        "Proactive Communication",
+        "Conflict Resolution",
+        "Mentoring",
+        "Adaptability"
+    ],
+    "error_404": {
+        "title": "Page Not Found - Iván Ciudad Espinar",
+        "description": "Sorry, the page you are looking for does not exist. Return to the home page to continue exploring.",
+        "url": "/en/404",
+        "image": "https://www.ivanciudad.com/fotoivan.webp",
+        "heading": "404 - Page not found",
+        "body": "Sorry, the page you are looking for does not exist.",
+        "return_home": "Return to home page",
+        "home_url": "/en"
+    },
+    "error_500": {
+        "title": "Internal Server Error - Iván Ciudad Espinar",
+        "description": "Sorry, an internal server error has occurred. Please try again later.",
+        "url": "/en/500",
+        "image": "https://www.ivanciudad.com/fotoivan.webp",
+        "heading": "500 - Internal Server Error",
+        "body": "Sorry, an internal server error has occurred. Please try again later.",
+        "return_home": "Return to home page",
+        "unknown_error": "Unknown error",
+        "home_url": "/en"
+    }
+}

@@ -13,11 +13,17 @@ interface Props {
 
 const { infoSeo } = Astro.props;
 const path = Astro.url.pathname;
+
+// Calculate canonical and alternate URLs for hreflang
+const cleanPath = path.replace(/^\/en/, "").replace(/\/$/, "") || "/";
+const esUrl = `https://www.ivanciudad.es${cleanPath}`;
+const enUrl = `https://www.ivanciudad.com/en${cleanPath === "/" ? "" : cleanPath}`;
+
 import "../styles/global.css";
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang={Astro.currentLocale || "es"}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -29,6 +35,12 @@ import "../styles/global.css";
       content="rtqz__fHq7l_eMEEl-ULln50aHX17BLq7dSVgfVkLdU"
     />
     <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <!-- Hreflang Tags for SEO -->
+    <link rel="alternate" hreflang="es" href={esUrl} />
+    <link rel="alternate" hreflang="en" href={enUrl} />
+    <link rel="alternate" hreflang="x-default" href={esUrl} />
+
     <ClientRouter />
 
     <!-- SOLUCIÓN DEFINITIVA ANTI-FOAC/FOUC -->
@@ -106,7 +118,12 @@ import "../styles/global.css";
     class="flex flex-col min-h-screen bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))] text-white selection:bg-cyan-500/30 selection:text-cyan-200"
   >
     <!-- <Header /> -->
-    <HeaderDock client:idle transition:persist currentPath={path} />
+    <HeaderDock
+      client:idle
+      transition:persist
+      currentPath={path}
+      lang={Astro.currentLocale}
+    />
     <div class="flex flex-col items-center w-full">
       <main
         class="flex
@@ -123,7 +140,7 @@ import "../styles/global.css";
       >
         <slot />
       </main>
-      <Footer />
+      <Footer lang={Astro.currentLocale} />
     </div>
     <style is:global>
       :root {

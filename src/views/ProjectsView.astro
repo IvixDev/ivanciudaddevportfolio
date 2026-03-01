@@ -1,0 +1,123 @@
+---
+import { seoMapper } from "../helpers/seo.helper";
+import Layout from "../layouts/Layout.astro";
+import ProjectCard from "../components/ProjectCard";
+
+import ScrollReveal from "../components/ScrollReveal";
+import buscaminasImg from "../assets/proyectos-buscaminas.webp";
+import pokemonTableImg from "../assets/proyectos-pokemon.webp";
+import publicPagesImg from "../assets/proyectos-public-pages.webp";
+import { useTranslations } from "../i18n/utils";
+
+const lang = Astro.currentLocale;
+const t = useTranslations(lang);
+
+const title = t("projects.title");
+const description = t("projects.description");
+const url = t("projects.url");
+const image = t("projects.image_url");
+
+const infoSeo = seoMapper(
+  title,
+  description,
+  url,
+  image,
+  t("projects.image_alt"),
+);
+---
+
+<Layout infoSeo={infoSeo}>
+  <section class="w-full max-w-4xl mx-auto tablet:py-6 laptop:py-12">
+    <h1
+      class="text-4xl tablet:text-5xl font-bold mb-8 bg-gradient-to-r from-white to-slate-400 bg-clip-text text-center tablet:text-left text-transparent pb-1"
+    >
+      {t("projects.page_heading")}
+    </h1>
+
+    <div class="grid grid-cols-1 tablet:grid-cols-2 gap-6">
+      {/* Minesweeper Card */}
+      <ScrollReveal client:visible once={false} delay={0.1}>
+        <ProjectCard
+          client:visible
+          title={t("projects.buscaminas_title")}
+          description={t("projects.buscaminas_desc")}
+          href={t("projects.buscaminas_url")}
+          ctaText={t("projects.cta_text")}
+          image={buscaminasImg.src}
+          imageAlt={t("projects.image_alt")}
+          shouldReload={true}
+          technologies={[
+            {
+              label: "TypeScript",
+              icon: "IconBrandTypescript",
+              variant: "blue",
+            },
+            {
+              label: t("projects.recursive_tech"),
+              icon: "IconBomb",
+              variant: "purple",
+            },
+          ]}
+        />
+      </ScrollReveal>
+
+      {/* Pokemon Table Card */}
+      <ScrollReveal client:visible once={false} delay={0.2}>
+        <ProjectCard
+          client:visible
+          title={t("projects.pokemon_title")}
+          description={t("projects.pokemon_desc")}
+          href={t("projects.pokemon_url")}
+          ctaText={t("projects.cta_text")}
+          image={pokemonTableImg.src}
+          imageAlt={t("projects.pokemon_img_alt")}
+          shouldReload={true}
+          technologies={[
+            { label: "Next.js", icon: "IconBrandNextjs", variant: "cyan" },
+            {
+              label: "TypeScript",
+              icon: "IconBrandTypescript",
+              variant: "blue",
+            },
+            { label: "MUI", variant: "blue" },
+            { label: "Drag & Drop", icon: "IconArrowsMove", variant: "purple" },
+            { label: "SSR", icon: "IconServer", variant: "green" },
+          ]}
+        />
+      </ScrollReveal>
+
+      {/* eShop Cache Lab Card */}
+      <ScrollReveal client:visible once={false} delay={0.3}>
+        <ProjectCard
+          client:visible
+          title={t("projects.eshop_title")}
+          description={t("projects.eshop_desc")}
+          href={t("projects.eshop_url")}
+          ctaText={t("projects.cta_text")}
+          image={publicPagesImg.src}
+          imageAlt={t("projects.eshop_img_alt")}
+          shouldReload={true}
+          technologies={[
+            {
+              label: "TypeScript",
+              icon: "IconBrandTypescript",
+              variant: "blue",
+            },
+            { label: "Nx", variant: "cyan" },
+            { label: "Next.js", icon: "IconBrandNextjs", variant: "cyan" },
+            { label: "SEO", icon: "IconSeo", variant: "purple" },
+            { label: "A11y", icon: "IconAccessible", variant: "green" },
+            { label: "SSR", icon: "IconServer", variant: "green" },
+            { label: "ISR", icon: "IconRefresh", variant: "green" },
+            { label: "SSG", icon: "IconStack2", variant: "green" },
+            {
+              label: "Cache Components",
+              icon: "IconDatabase",
+              variant: "purple",
+            },
+          ]}
+        />
+      </ScrollReveal>
+    </div>
+  </section>
+</Layout>

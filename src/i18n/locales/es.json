@@ -1,0 +1,243 @@
+{
+    "header": {
+        "home": "Inicio",
+        "projects": "Mis proyectos",
+        "career": "Mi trayectoria",
+        "about": "Sobre mí",
+        "menu_aria": "Abrir menú de navegación",
+        "email": "Haz click para enviarme un correo. Contestare lo más rápido que pueda!"
+    },
+    "nav": {
+        "home_url": "/",
+        "projects_url": "/proyectos",
+        "career_url": "/trayectoria-profesional",
+        "about_url": "/sobre-mi"
+    },
+    "footer": {
+        "site_map": "Mapa del sitio",
+        "contact": "Contacto",
+        "projects": "Proyectos",
+        "career": "Trayectoria",
+        "about": "Sobre mí",
+        "made_with": "Hecho con",
+        "and_astro": "y Astro",
+        "software_dev": "Software Developer & Ingeniero Telemático."
+    },
+    "home": {
+        "title": "Iván Ciudad Espinar - Software Developer e Ingeniero Telemático",
+        "description": "Bienvenido a la web de Iván Ciudad Espinar, Software Developer e Ingeniero Telemático. Descubre mis proyectos, artículos, hobbies y más sobre mi vida y carrera en desarrollo de software.",
+        "software_developer": "Software Developer e",
+        "telematics_engineer": "Ingeniero Telemático",
+        "welcome_subtitle": "Bienvenido a mi rincón de internet, donde codifico ideas y construyo experiencias digitales.",
+        "about_web": "Sobre esta web",
+        "what_find": "¿Qué encontrarás aquí?",
+        "what_find_desc": "Esta web es mi portfolio personal y laboratorio de pruebas. Un espacio donde demuestro mis capacidades como Software Developer, aplico estrategias de SEO y comparto quién soy más allá del código.",
+        "my_projects": "Mis Proyectos",
+        "my_projects_desc": "Descubre lo que he construido. Webs, aplicaciones y experimentos con las últimas tecnologías.",
+        "view_portfolio": "Ver portfolio",
+        "career": "Trayectoria",
+        "career_desc": "Mi camino profesional: empresas, roles y experiencia en ingeniería telemática y desarrollo.",
+        "view_cv": "Ver CV",
+        "about_me": "Sobre mí",
+        "about_me_desc": "Una pequeña biografía, mis gustos (videojuegos, series, películas, etc.) y quién soy detrás del código.",
+        "read_more": "Leer más",
+        "soy_ivan": "Soy ",
+        "image_url": "https://www.ivanciudad.com/ivan-ciudad-hero.webp",
+        "image_alt": "Iván Ciudad Espinar, Software Developer e Ingeniero Telemático",
+        "projects_url": "/proyectos",
+        "career_url": "/trayectoria-profesional",
+        "about_url": "/sobre-mi",
+        "projects_img_alt": "Captura del juego Buscaminas, proyecto de desarrollo web de Iván Ciudad Espinar",
+        "career_img_alt": "Iván Ciudad Espinar en traje, trayectoria profesional como Software Developer",
+        "about_img_alt": "Iván Ciudad Espinar posando en Japón con el Templo Dorado Kinkaku-ji de fondo"
+    },
+    "projects": {
+        "title": "Iván Ciudad Espinar - Proyectos de Desarrollo de Software",
+        "description": "Explora los proyectos de Iván Ciudad Espinar, Software Developer e Ingeniero Telemático. Descubre mis trabajos en desarrollo de software, aplicaciones web y más.",
+        "page_heading": "Mis Proyectos",
+        "buscaminas_desc": "Versión moderna del clásico Buscaminas desarrollada en TypeScript. Un desafío técnico que implementa algoritmos de recursividad eficiente para la apertura de celdas en cascada.",
+        "pokemon_desc": "Consulta debilidades y fortalezas de tipos Pokémon con Drag & Drop y SSR usando la PokeAPI.",
+        "eshop_desc": "Laboratorio Next.js para explorar SSR, ISR, SSG y Cache Components con foco en SEO y accesibilidad.",
+        "buscaminas_title": "Buscaminas",
+        "buscaminas_url": "/proyectos/buscaminas",
+        "pokemon_title": "Tabla de Tipos Pokémon",
+        "pokemon_url": "/proyectos/tabla-pokemon",
+        "eshop_title": "eShop Cache Lab",
+        "eshop_url": "/proyectos/public-pages",
+        "cta_text": "Ver proyecto",
+        "recursive_tech": "Recursividad",
+        "image_url": "https://www.ivanciudad.com/proyectos-buscaminas.webp",
+        "image_alt": "Captura del juego Buscaminas, proyecto de desarrollo web de Iván Ciudad Espinar",
+        "pokemon_img_alt": "Captura de la herramienta Tabla de Tipos Pokémon con Drag and Drop creada por Iván Ciudad Espinar",
+        "eshop_img_alt": "Captura del proyecto eShop Cache Lab de Iván Ciudad Espinar para probar métodos de caché de Next.js"
+    },
+    "about_page": {
+        "title": "Iván Ciudad Espinar - Sobre mi",
+        "description": "Aquí encontrarás información sobre mi vida, mis gustos y mis hobbies. Descubre quién soy, de dónde vengo y mis pasiones por los videojuegos, las películas y las series.",
+        "url": "https://www.ivanciudad.com/sobre-mi",
+        "image_url": "https://www.ivanciudad.com/ivan-japon.webp",
+        "image_alt": "Iván Ciudad Espinar posando en Japón con el Templo Dorado Kinkaku-ji de fondo"
+    },
+    "about": {
+        "section1_title1": "Soy",
+        "section1_title2": "Software Developer & Ingeniero Telemático",
+        "img1_alt": "Iván Ciudad Espinar posando en Japón con el Templo Dorado Kinkaku-ji de fondo",
+        "p1_1": "En el terreno laboral",
+        "p1_2": ", me considero una persona muy comunicativa y proactiva. No dudo en asumir el liderazgo cuando la situación lo requiere, y disfruto enormemente compartiendo conocimientos y ayudando a mis compañeros a crecer, fomentando siempre un ambiente de trabajo positivo y colaborativo.",
+        "p1_3": "Mi origen como programador",
+        "p1_4": " se remonta al instituto, cuando en clase de informática nos retaron a crear un pequeño videojuego. Aquella experiencia encendió una chispa que me llevó a desarrollar mi primera aplicación real: una calculadora de notas para gestionar mis estudios. Comprobar la utilidad práctica del código fue lo que me terminó de enganchar.",
+        "section2_title": "Pasiones y Desconexión",
+        "img2_alt": "Cuenco de dados de rol y juegos de mesa, hobby de Iván Ciudad Espinar",
+        "p2_1": "Los ",
+        "p2_2": "videojuegos",
+        "p2_3": " son una de mis grandes pasiones: ",
+        "p2_4": "... Decidí conscientemente no dedicarme profesionalmente a su desarrollo para mantener ese mundo como mi espacio de desconexión.",
+        "p2_5": "Mi forma favorita de desconectar",
+        "p2_6": " es reunirme con amigos alrededor de una mesa: desde partidas de ",
+        "p2_7": "juegos de mesa",
+        "p2_8": " hasta largas campañas de ",
+        "p2_9": "Dragones y Mazmorras",
+        "p2_10": ". Y para equilibrar, caminar y el gym son mis pilares fundamentales.",
+        "p2_11": "En el sofá, soy fan incondicional de ",
+        "p2_12": " y ",
+        "p2_13": ". Mi lista de favoritos incluye ",
+        "p2_14": ", sin olvidar el maratón navideño de ",
+        "p2_15": ".",
+        "section3_title": "Hardware y Construcción",
+        "img3_alt": "Figuras LEGO de Grogu, R2-D2 y C-3PO de Star Wars, colección de Iván Ciudad Espinar",
+        "p3_1": "Esa curiosidad por como funcionan las cosas se extiende al ",
+        "p3_2": "hardware",
+        "p3_3": ". Me encanta montar mis propios ordenadores por piezas, limpiarlos, medir tensiones y exprimir su rendimiento mediante overclocking.",
+        "p3_4": "Siguiendo con esa faceta de \"construir\", mi pasatiempo favorito es montar sets de ",
+        "p3_5": "; una afición que, aunque cara, me apasiona tanto que en su día me hizo plantearme seriamente estudiar arquitectura por mi amor a las estructuras y el diseño.",
+        "section4_title2": " y Creatividad",
+        "section4_p1": "También disfruto dejando volar la imaginación construyendo sets de ",
+        "section4_p2": " como los de Star Wars.",
+        "img_ivan_japon_alt": "Iván Ciudad Espinar posando en Japón con el Templo Dorado Kinkaku-ji de fondo",
+        "img_board_games_alt": "Cuenco de dados de rol y juegos de mesa, hobby de Iván Ciudad Espinar",
+        "img_legos_alt": "Figuras LEGO de Grogu, R2-D2 y C-3PO de Star Wars, colección de Iván Ciudad Espinar"
+    },
+    "career_page": {
+        "title": "Iván Ciudad Espinar - Mi Trayectoria Profesional y CV",
+        "description": "Explora la carrera profesional de Iván Ciudad Espinar, Software Developer e Ingeniero Telemático. Consulta mi CV y descubre mis experiencias, habilidades y logros en el desarrollo de software.",
+        "url": "https://www.ivanciudad.com/trayectoria-profesional",
+        "image_url": "https://www.ivanciudad.com/trayectoria-profesional.webp",
+        "image_alt": "Iván Ciudad Espinar en traje, Software Developer e Ingeniero Telemático"
+    },
+    "career": {
+        "title1": "Mi",
+        "title2": "Trayectoria",
+        "description": "Un recorrido a través de los retos técnicos, proyectos y formación que han forjado mi perfil profesional.",
+        "page_heading": "Mi Trayectoria \nProfesional",
+        "download_cv": "Descargar CV (.pdf)",
+        "cv_link": "/IvanCiudadEspinar_CV.pdf",
+        "img_career_alt": "Iván Ciudad Espinar en traje, Software Developer e Ingeniero Telemático",
+        "last_update": "Última actualización: Febrero 2026",
+        "experience_title": "Experiencia",
+        "education_title": "Estudios",
+        "tech_stack_title": "Stack Técnico",
+        "soft_skills_title": "Soft Skills"
+    },
+    "experiences": [
+        {
+            "date": "Noviembre 2024 - Actualidad",
+            "title": "Senior Frontend Developer",
+            "company": "MasOrange",
+            "description": "Desarrollador de la eShop Multimarca.",
+            "tags": [
+                "Next.js",
+                "IA",
+                "Claude",
+                "React",
+                "TypeScript",
+                "Tailwind"
+            ]
+        },
+        {
+            "date": "Enero 2023 - Octubre 2024",
+            "title": "Ingeniero de Software • Frontend Developer",
+            "company": "Capgemini",
+            "description": "Proyecto MasMovil: Creación de aplicación multimarca para: Euskaltel, Telecable, R, Guuk, Racctel, MasMovil, Yoigo, Lyca y Lebara.",
+            "tags": [
+                "Next.js",
+                "React",
+                "TypeScript",
+                "JIRA",
+                "Gitflow"
+            ]
+        },
+        {
+            "date": "Septiembre 2022 - Septiembre 2023",
+            "title": "Ingeniero de Software • Frontend Developer",
+            "company": "Capgemini",
+            "description": "Mantenimiento de Yoigo.",
+            "tags": [
+                "Angular",
+                "TypeScript",
+                "JIRA",
+                "Gitflow"
+            ]
+        },
+        {
+            "date": "Febrero 2022 - Julio 2022",
+            "title": "Prácticas • Backend",
+            "company": "Capgemini",
+            "description": "Proyecto MasMovil: Mantenimiento Yoigo.",
+            "tags": [
+                "Java",
+                "Springboot",
+                "MySQL",
+                "Microservicios"
+            ]
+        }
+    ],
+    "educations": [
+        {
+            "date": "2023 - 2024",
+            "title": "Máster High Potential Technical Leader",
+            "institution": "EDEM",
+            "description": "Liderazgo, Gestión de equipos, Resolución de conflictos, Google Cloud.",
+            "color": "amber"
+        },
+        {
+            "date": "2017 - 2021",
+            "title": "Grado en Ingeniería Telemática",
+            "institution": "Universidad de València",
+            "description": "Matrículas de Honor en programación, Desarrollo Web e Ingeniería del Software.",
+            "color": "blue"
+        }
+    ],
+    "tech_categories": {
+        "Frontend": "Frontend",
+        "Backend": "Backend",
+        "Herramientas": "Herramientas"
+    },
+    "softskills": [
+        "Liderazgo de equipos",
+        "Comunicación proactiva",
+        "Resolución de conflictos",
+        "Mentoría",
+        "Adaptabilidad"
+    ],
+    "error_404": {
+        "title": "Página no encontrada - Iván Ciudad Espinar",
+        "description": "Lo sentimos, la página que estás buscando no existe. Vuelve a la página principal para continuar explorando.",
+        "url": "/404",
+        "image": "https://www.ivanciudad.com/fotoivan.webp",
+        "heading": "404 - Página no encontrada",
+        "body": "Lo sentimos, la página que estás buscando no existe.",
+        "return_home": "Volver a la página principal",
+        "home_url": "/"
+    },
+    "error_500": {
+        "title": "Error interno del servidor - Iván Ciudad Espinar",
+        "description": "Lo sentimos, ha ocurrido un error en el servidor. Por favor, vuelve a intentarlo más tarde.",
+        "url": "/500",
+        "image": "https://www.ivanciudad.com/fotoivan.webp",
+        "heading": "500 - Error interno del servidor",
+        "body": "Lo sentimos, ha ocurrido un error en el servidor. Por favor, vuelve a intentarlo más tarde.",
+        "return_home": "Volver a la página principal",
+        "unknown_error": "Error desconocido",
+        "home_url": "/"
+    }
+}

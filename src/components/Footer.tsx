@@ -1,4 +1,3 @@
-import React from "react";
 import {
     IconBrandGithub,
     IconMail,
@@ -7,6 +6,7 @@ import {
 } from "@tabler/icons-react";
 import { LogoIcon } from "./Icons";
 import { footerLinks, socialMediaLinks } from "../content/layout.consts";
+import { useTranslations } from "../i18n/utils";
 
 const ICON_MAP = {
     github: IconBrandGithub,
@@ -15,7 +15,8 @@ const ICON_MAP = {
     X: IconBrandX,
 } as const;
 
-export default function Footer() {
+export default function Footer({ lang }: { lang?: string }) {
+    const t = useTranslations(lang);
     const currentYear = new Date().getFullYear();
 
     return (
@@ -34,34 +35,37 @@ export default function Footer() {
                             </span>
                         </a>
                         <p className="text-slate-400 text-sm leading-relaxed max-w-xs">
-                            Software Developer & Ingeniero Telemático.
+                            {t('footer.software_dev')}
                         </p>
                     </div>
 
                     {/* Col 2: Navigation */}
                     <div className="flex flex-col gap-5 items-center tablet:items-start">
                         <h3 className="text-slate-100 font-semibold tracking-wide">
-                            Mapa del sitio
+                            {t('footer.site_map')}
                         </h3>
                         <nav className="flex flex-col gap-3">
                             {footerLinks &&
-                                footerLinks.map((link) => (
-                                    <a
-                                        key={link.href}
-                                        href={link.href}
-                                        className="text-slate-400 hover:text-cyan-400 transition-colors text-sm flex items-center gap-2 group"
-                                    >
-                                        <span className="w-1.5 h-1.5 rounded-full bg-slate-600 group-hover:bg-cyan-400 transition-colors"></span>
-                                        {link.label}
-                                    </a>
-                                ))}
+                                footerLinks.map((link) => {
+                                    const localizedHref = t(`nav.${link.tKey}_url`) as string;
+                                    return (
+                                        <a
+                                            key={link.tKey}
+                                            href={localizedHref}
+                                            className="text-slate-400 hover:text-cyan-400 transition-colors text-sm flex items-center gap-2 group"
+                                        >
+                                            <span className="w-1.5 h-1.5 rounded-full bg-slate-600 group-hover:bg-cyan-400 transition-colors"></span>
+                                            {t(`footer.${link.tKey}`)}
+                                        </a>
+                                    );
+                                })}
                         </nav>
                     </div>
 
                     {/* Col 3: Social & Contact */}
                     <div className="flex flex-col gap-5 items-center tablet:items-start">
                         <h3 className="text-slate-100 font-semibold tracking-wide">
-                            Contacto
+                            {t('footer.contact')}
                         </h3>
                         <div className="flex gap-3">
                             {socialMediaLinks &&
@@ -91,7 +95,7 @@ export default function Footer() {
                 <div className="w-full border-t border-white/5 pt-8 flex flex-col tablet:flex-row justify-between items-center gap-4 text-xs text-slate-500">
                     <p>&copy; 2024-{currentYear} Iván Ciudad Espinar.</p>
                     <p className="flex items-center gap-1">
-                        Hecho con <span className="text-red-500">❤</span> y Astro
+                        {t('footer.made_with')} <span className="text-red-500">❤</span> {t('footer.and_astro')}
                     </p>
                 </div>
             </div>

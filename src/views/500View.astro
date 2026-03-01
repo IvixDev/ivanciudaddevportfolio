@@ -1,0 +1,57 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { useTranslations } from "../i18n/utils";
+
+const lang = Astro.currentLocale;
+const t = useTranslations(lang);
+
+const title = t("error_500.title");
+const description = t("error_500.description");
+const url = t("error_500.url");
+const image = t("error_500.image");
+
+const infoSeo = {
+  title,
+  description,
+  canonical: url,
+  openGraph: {
+    basic: {
+      title,
+      type: "website",
+      image,
+      url,
+    },
+  },
+  twitter: {
+    title,
+    description,
+    creator: "@Mrivix",
+    image,
+  },
+  extend: {
+    link: [{ rel: "icon", href: "/favicon.svg" }],
+    meta: [],
+  },
+};
+
+const errorMessage =
+  (Astro.props as any).error?.message ?? t("error_500.unknown_error");
+---
+
+<Layout infoSeo={infoSeo}>
+  <main class="flex flex-col items-center min-h-screen text-center gap-10">
+    <h1 class="text-2xl tablet:text-3xl laptop:text-5xl font-medium">
+      {t("error_500.heading")}
+    </h1>
+    <p class="mt-4 text-lg">
+      {t("error_500.body")}
+    </p>
+    <pre
+      class="mt-4 p-4 bg-gray-100 text-red-600 rounded-lg">{errorMessage}</pre>
+    <a
+      href={t("error_500.home_url")}
+      class="p-2 border-4 border-solid bg-purple-950 border-purple-900 rounded-xl scale-on-hover"
+      >{t("error_500.return_home")}</a
+    >
+  </main>
+</Layout>

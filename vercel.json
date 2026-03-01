@@ -31,6 +31,30 @@
         {
             "source": "/proyectos/tabla-pokemon/:path*",
             "destination": "https://pokemon-types-table.vercel.app/pokemon-table-types/:path*"
+        },
+        {
+            "source": "/en/projects/public-pages",
+            "destination": "https://iciudade-public-pages.vercel.app/proyectos/public-pages"
+        },
+        {
+            "source": "/en/projects/public-pages/:path*",
+            "destination": "https://iciudade-public-pages.vercel.app/proyectos/public-pages/:path*"
+        },
+        {
+            "source": "/en/projects/minesweeper",
+            "destination": "https://ivan-city-bombsweeper.vercel.app/bombsweeper"
+        },
+        {
+            "source": "/en/projects/minesweeper/:path*",
+            "destination": "https://ivan-city-bombsweeper.vercel.app/bombsweeper/:path*"
+        },
+        {
+            "source": "/en/projects/pokemon-types",
+            "destination": "https://pokemon-types-table.vercel.app/pokemon-table-types"
+        },
+        {
+            "source": "/en/projects/pokemon-types/:path*",
+            "destination": "https://pokemon-types-table.vercel.app/pokemon-table-types/:path*"
         }
     ]
 }

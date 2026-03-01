@@ -16,6 +16,7 @@ import {
 } from "@tabler/icons-react";
 import { LogoIcon } from "./Icons";
 import { headerLinks, socialMediaLinks } from "../content/layout.consts";
+import { useTranslations, getOppositeLocaleUrl, isNavActive } from "../i18n/utils";
 
 function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs));
@@ -32,9 +33,11 @@ const IconMap: Record<string, React.ComponentType<React.SVGProps<SVGSVGElement>>
 
 interface HeaderDockProps {
     currentPath: string;
+    lang?: string;
 }
 
-export default function HeaderDock({ currentPath }: HeaderDockProps) {
+export default function HeaderDock({ currentPath, lang }: HeaderDockProps) {
+    const t = useTranslations(lang);
     const [activePath, setActivePath] = useState(currentPath);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -61,8 +64,7 @@ export default function HeaderDock({ currentPath }: HeaderDockProps) {
         setIsMobileMenuOpen(!isMobileMenuOpen);
     };
 
-    const firstSlug =
-        activePath === "/" ? "/" : `/${activePath.split("/")[1] || ""}`;
+    const oppositeLangPath = getOppositeLocaleUrl(activePath, lang || 'es');
 
     return (
         <header className="header-dock fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[92%] max-w-4xl">
@@ -87,16 +89,33 @@ export default function HeaderDock({ currentPath }: HeaderDockProps) {
                     onMouseLeave={() => mouseX.set(Infinity)}
                     className="hidden tablet:flex flex-row gap-1 items-center bg-slate-900/30 p-1 rounded-full border border-white/5"
                 >
-                    {headerLinks.map((link) => (
-                        <DockItem key={link.href} mouseX={mouseX} href={link.href} active={firstSlug === link.href}>
-                            {link.label}
-                        </DockItem>
-                    ))}
+                    {headerLinks.map((link) => {
+                        const localizedHref = t(`nav.${link.tKey}_url`) as string;
+                        return (
+                            <DockItem key={link.tKey} mouseX={mouseX} href={localizedHref} active={isNavActive(activePath, localizedHref, link.tKey === 'home')}>
+                                {t(`header.${link.tKey}`)}
+                            </DockItem>
+                        );
+                    })}
                 </nav>
 
                 {/* Socials & Mobile Toggle */}
                 <div className="flex items-center gap-3 relative z-10">
-                    <div className="hidden tablet:flex flex-row gap-2 items-center">
+                    <a
+                        href={oppositeLangPath}
+                        className="hidden tablet:flex items-center bg-slate-900/40 rounded-full p-1 w-[70px] h-8 relative shadow-inner group border border-white/5 hover:border-white/10 transition-colors cursor-pointer"
+                        aria-label="Toggle language"
+                    >
+                        <span className={cn(
+                            "absolute flex items-center justify-center w-6 h-6 rounded-full bg-slate-800 text-[10px] font-bold text-cyan-400 transition-all duration-300 z-10 shadow-sm border border-white/10",
+                            lang === 'en' ? "translate-x-9" : "translate-x-0"
+                        )}>
+                            {lang === 'en' ? 'EN' : 'ES'}
+                        </span>
+                        <span className="absolute left-2 text-[10px] font-bold text-slate-500 z-0 transition-colors group-hover:text-slate-400">ES</span>
+                        <span className="absolute right-2 text-[10px] font-bold text-slate-500 z-0 transition-colors group-hover:text-slate-400">EN</span>
+                    </a>
+                    <div className="hidden laptop:flex flex-row gap-2 items-center">
                         {socialMediaLinks.map((link) => {
                             const Icon = IconMap[link.name] || IconMap["github"];
                             return (
@@ -117,7 +136,7 @@ export default function HeaderDock({ currentPath }: HeaderDockProps) {
                         onClick={toggleMobileMenu}
                         aria-expanded={isMobileMenuOpen}
                         className="burger-menu group relative flex h-[20px] flex-col items-center justify-between tablet:hidden w-6 z-50"
-                        aria-label="Abrir menú de navegación"
+                        aria-label={t('header.menu_aria')}
                     >
                         <motion.span
                             animate={isMobileMenuOpen ? { rotate: 45, y: 9 } : { rotate: 0, y: 0 }}
@@ -152,22 +171,34 @@ export default function HeaderDock({ currentPath }: HeaderDockProps) {
                         className="absolute top-full left-0 right-0 mt-4 rounded-2xl border border-white/10 bg-slate-950/90 backdrop-blur-xl shadow-2xl overflow-hidden tablet:hidden"
                     >
                         <nav className="flex flex-col p-4 gap-2">
-                            {headerLinks.map((link) => (
-                                <a
-                                    key={link.href}
-                                    className={cn(
-                                        "w-full py-3 text-center rounded-xl transition-all duration-200 text-lg",
-                                        firstSlug === link.href
-                                            ? "bg-white/10 text-cyan-400 font-medium scale-105"
-                                            : "text-slate-400 hover:text-white hover:bg-white/5"
-                                    )}
-                                    href={link.href}
-                                >
-                                    {link.label}
-                                </a>
-                            ))}
+
+                            {headerLinks.map((link) => {
+                                const localizedHref = t(`nav.${link.tKey}_url`) as string;
+                                const active = isNavActive(activePath, localizedHref, link.tKey === 'home');
+                                return (
+                                    <a
+                                        key={link.tKey}
+                                        className={cn(
+                                            "w-full py-3 text-center rounded-xl transition-all duration-200 text-lg",
+                                            active
+                                                ? "bg-white/10 text-cyan-400 font-medium scale-105"
+                                                : "text-slate-400 hover:text-white hover:bg-white/5"
+                                        )}
+                                        href={localizedHref}
+                                    >
+                                        {t(`header.${link.tKey}`)}
+                                    </a>
+                                );
+                            })}
                         </nav>
                         <div className="flex flex-row gap-4 justify-center items-center py-5 border-t border-white/10 bg-white/5">
+                            <a
+                                href={oppositeLangPath}
+                                className="px-4 py-2 bg-slate-800 rounded-full text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-700 transition-colors mr-2"
+                                aria-label="Toggle language"
+                            >
+                                {lang === 'en' ? 'Español' : 'English'}
+                            </a>
                             {socialMediaLinks.map((link) => {
                                 const Icon = IconMap[link.name] || IconMap["github"];
                                 return (
@@ -216,7 +247,7 @@ function DockItem({
             ref={ref}
             href={href}
             className={cn(
-                "relative flex items-center justify-center rounded-full text-sm font-medium transition-colors mx-0.5 px-4 py-2",
+                "relative flex items-center justify-center rounded-full text-sm font-medium transition-colors mx-0.5 px-3 whitespace-nowrap py-2",
                 active ? "text-cyan-400" : "text-slate-400 hover:text-slate-200"
             )}
             style={{

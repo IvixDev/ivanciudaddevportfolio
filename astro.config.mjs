@@ -17,6 +17,13 @@ export default defineConfig({
   ],
   output: 'static',
   site: 'https://www.ivanciudad.com',
+  i18n: {
+    locales: ["es", "en"],
+    defaultLocale: "es",
+    routing: {
+      prefixDefaultLocale: false,
+    },
+  },
   vite: {
     plugins: [tailwind()],
   },

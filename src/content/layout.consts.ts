@@ -6,14 +6,14 @@ export const socialMediaLinks = [
 ]
 
 export const headerLinks = [
-  { href: "/", label: "Inicio" },
-  { href: "/proyectos", label: "Mis proyectos" },
-  { href: "/trayectoria-profesional", label: "Mi trayectoria" },
-  { href: "/sobre-mi", label: "Sobre mi" },
+  { tKey: "home" },
+  { tKey: "projects" },
+  { tKey: "career" },
+  { tKey: "about" },
 ]
 
 export const footerLinks = [
-  { href: "/proyectos", label: "Proyectos" },
-  { href: "/trayectoria-profesional", label: "Trayectoria" },
-  { href: "/sobre-mi", label: "Sobre mi" },
+  { tKey: "projects" },
+  { tKey: "career" },
+  { tKey: "about" },
 ]

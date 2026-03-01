@@ -1,0 +1,26 @@
+---
+import { seoMapper } from "../helpers/seo.helper";
+import { useTranslations } from "../i18n/utils";
+import Layout from "../layouts/Layout.astro";
+import CareerStepper from "../components/CareerStepper.astro";
+
+const lang = Astro.currentLocale;
+const t = useTranslations(lang);
+const pageData = t("career_page") as {
+  title: string;
+  description: string;
+  url: string;
+  image_url: string;
+  image_alt: string;
+};
+const title = pageData.title;
+const description = pageData.description;
+const url = pageData.url;
+const image = pageData.image_url;
+
+const infoSeo = seoMapper(title, description, url, image, pageData.image_alt);
+---
+
+<Layout infoSeo={infoSeo}>
+  <CareerStepper />
+</Layout>
