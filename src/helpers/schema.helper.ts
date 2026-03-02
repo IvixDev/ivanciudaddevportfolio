@@ -19,8 +19,8 @@ export function buildPersonSchema(t: TranslateFn) {
         url: SITE,
         image: {
             "@type": "ImageObject",
-            url: `${SITE}/ivan-ciudad-hero.webp`,
-            width: 800,
+            url: `${SITE}/trayectoria-profesional.webp`,
+            width: 1200,
             height: 800,
             caption: t("schema.person_caption"),
         },
