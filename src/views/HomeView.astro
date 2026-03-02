@@ -1,7 +1,10 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { seoMapper } from "../helpers/seo.helper";
-import { socialMediaLinks } from "../content/layout.consts";
+import {
+  buildPersonSchema,
+  buildWebsiteSchema,
+} from "../helpers/schema.helper";
 import ScrollReveal from "../components/ScrollReveal";
 import { IconArrowRight } from "@tabler/icons-react";
 import { Image } from "astro:assets";
@@ -16,7 +19,10 @@ const t = useTranslations(lang);
 
 const title = t("home.title");
 const description = t("home.description");
-const url = t("home.image_url");
+const url =
+  lang === "en"
+    ? "https://www.ivanciudad.com/en"
+    : "https://www.ivanciudad.com";
 const image = t("home.image_url");
 
 const infoSeo = seoMapper(
@@ -27,25 +33,20 @@ const infoSeo = seoMapper(
   `${t("home.image_alt")}`,
 );
 
-const schema = {
-  "@context": "https://schema.org",
-  "@type": "Person",
-  name: "Iván Ciudad Espinar",
-  url: url,
-  image: image,
-  sameAs: socialMediaLinks
-    .filter((link) => link.href.startsWith("http"))
-    .map((link) => link.href),
-  jobTitle: "Software Developer",
-  description: description,
-};
+const personSchema = buildPersonSchema(t);
+const websiteSchema = buildWebsiteSchema(t);
 ---
 
 <Layout infoSeo={infoSeo}>
   <script
     is:inline
     type="application/ld+json"
-    set:html={JSON.stringify(schema)}
+    set:html={JSON.stringify(personSchema)}
+  />
+  <script
+    is:inline
+    type="application/ld+json"
+    set:html={JSON.stringify(websiteSchema)}
   />
   <main class="flex flex-col items-center w-full gap-12 laptop:gap-20">
     <!-- Hero Section -->

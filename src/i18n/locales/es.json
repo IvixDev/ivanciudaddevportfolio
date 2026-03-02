@@ -239,5 +239,16 @@
         "return_home": "Volver a la página principal",
         "unknown_error": "Error desconocido",
         "home_url": "/"
+    },
+    "schema": {
+        "person_caption": "Iván Ciudad Espinar, Software Developer e Ingeniero Telemático",
+        "job_title": "Senior Frontend Developer",
+        "nationality": "España",
+        "lang_spanish": "Español",
+        "lang_english": "English",
+        "edem_name": "EDEM Escuela de Empresarios",
+        "credential_degree": "Grado en Ingeniería Telemática",
+        "credential_master": "Máster High Potential Technical Leader",
+        "website_name": "Iván Ciudad Espinar - Portfolio"
     }
 }

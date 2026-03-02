@@ -1,5 +1,6 @@
 ---
 import { seoMapper } from "../helpers/seo.helper";
+import { buildProfilePageSchema } from "../helpers/schema.helper";
 import { useTranslations } from "../i18n/utils";
 import Layout from "../layouts/Layout.astro";
 import ScrollReveal from "../components/ScrollReveal";
@@ -20,9 +21,16 @@ const url = pageData.url;
 const image = pageData.image_url;
 
 const infoSeo = seoMapper(title, description, url, image, pageData.image_alt);
+
+const aboutPageSchema = buildProfilePageSchema(t, "about_page");
 ---
 
 <Layout infoSeo={infoSeo}>
+  <script
+    is:inline
+    type="application/ld+json"
+    set:html={JSON.stringify(aboutPageSchema)}
+  />
   <main class="w-full max-w-7xl mx-auto px-6 py-12 flex flex-col gap-12">
     <ScrollReveal client:visible>
       <AboutMe />

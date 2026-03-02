@@ -236,5 +236,16 @@
         "return_home": "Return to home page",
         "unknown_error": "Unknown error",
         "home_url": "/en"
+    },
+    "schema": {
+        "person_caption": "Iván Ciudad Espinar, Software Developer & Telematics Engineer",
+        "job_title": "Senior Frontend Developer",
+        "nationality": "Spain",
+        "lang_spanish": "Spanish",
+        "lang_english": "English",
+        "edem_name": "EDEM Business School",
+        "credential_degree": "Bachelor's Degree in Telematics Engineering",
+        "credential_master": "Master High Potential Technical Leader",
+        "website_name": "Iván Ciudad Espinar - Portfolio"
     }
 }

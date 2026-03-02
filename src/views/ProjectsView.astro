@@ -1,5 +1,6 @@
 ---
 import { seoMapper } from "../helpers/seo.helper";
+import { buildProjectsPageSchema } from "../helpers/schema.helper";
 import Layout from "../layouts/Layout.astro";
 import ProjectCard from "../components/ProjectCard";
 
@@ -24,9 +25,16 @@ const infoSeo = seoMapper(
   image,
   t("projects.image_alt"),
 );
+
+const projectsPageSchema = buildProjectsPageSchema(t);
 ---
 
 <Layout infoSeo={infoSeo}>
+  <script
+    is:inline
+    type="application/ld+json"
+    set:html={JSON.stringify(projectsPageSchema)}
+  />
   <section class="w-full max-w-4xl mx-auto tablet:py-6 laptop:py-12">
     <h1
       class="text-4xl tablet:text-5xl font-bold mb-8 bg-gradient-to-r from-white to-slate-400 bg-clip-text text-center tablet:text-left text-transparent pb-1"
