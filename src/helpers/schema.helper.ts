@@ -169,6 +169,12 @@ export function buildProjectsPageSchema(t: TranslateFn) {
                     name: t("projects.eshop_title"),
                     url: `${SITE}${t("projects.eshop_url")}`,
                 },
+                {
+                    "@type": "ListItem",
+                    position: 4,
+                    name: t("projects.gym_title"),
+                    url: t("projects.gym_url"),
+                },
             ],
         },
     };

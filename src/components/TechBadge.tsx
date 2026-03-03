@@ -9,7 +9,14 @@ import {
     IconArrowsMove,
     IconServer,
     IconPalette,
-    IconSunMoon
+    IconSunMoon,
+    IconBrandReact,
+    IconDatabase,
+    IconBrandGoogle,
+    IconDeviceMobile,
+    IconSparkles,
+    IconRefresh,
+    IconStack2
 } from "@tabler/icons-react";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
@@ -28,7 +35,14 @@ const ICON_MAP: Record<string, TablerIcon> = {
     IconArrowsMove,
     IconServer,
     IconPalette,
-    IconSunMoon
+    IconSunMoon,
+    IconBrandReact,
+    IconDatabase,
+    IconBrandGoogle,
+    IconDeviceMobile,
+    IconSparkles,
+    IconRefresh,
+    IconStack2
 };
 
 export type BadgeVariant = "default" | "cyan" | "purple" | "green" | "blue" | "orange";

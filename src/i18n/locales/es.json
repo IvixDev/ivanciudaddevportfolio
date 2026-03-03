@@ -69,7 +69,11 @@
         "image_url": "https://www.ivanciudad.com/proyectos-buscaminas.webp",
         "image_alt": "Captura del juego Buscaminas, proyecto de desarrollo web de Iván Ciudad Espinar",
         "pokemon_img_alt": "Captura de la herramienta Tabla de Tipos Pokémon con Drag and Drop creada por Iván Ciudad Espinar",
-        "eshop_img_alt": "Captura del proyecto eShop Cache Lab de Iván Ciudad Espinar para probar métodos de caché de Next.js"
+        "eshop_img_alt": "Captura del proyecto eShop Cache Lab de Iván Ciudad Espinar para probar métodos de caché de Next.js",
+        "gym_title": "GymTracker",
+        "gym_desc": "PWA vibecodeada para trackear tus entrenamientos. Registra kilos, repeticiones y RIR de cada sesión, y visualiza tu progreso con gráficas interactivas. Instálala en tu móvil como una app nativa.",
+        "gym_url": "https://gym-app-gamma-hazel.vercel.app/",
+        "gym_img_alt": "Captura de la aplicación GymTracker, PWA para seguimiento de entrenamientos creada por Iván Ciudad Espinar"
     },
     "about_page": {
         "title": "Iván Ciudad Espinar - Sobre mi",

@@ -69,7 +69,11 @@
         "image_url": "https://www.ivanciudad.com/proyectos-buscaminas.webp",
         "image_alt": "Screenshot of the Minesweeper game, web development project by Iván Ciudad Espinar",
         "pokemon_img_alt": "Screenshot of the Pokémon Type Chart tool with Drag and Drop created by Iván Ciudad Espinar",
-        "eshop_img_alt": "Screenshot of the eShop Cache Lab project by Iván Ciudad Espinar to test Next.js caching methods"
+        "eshop_img_alt": "Screenshot of the eShop Cache Lab project by Iván Ciudad Espinar to test Next.js caching methods",
+        "gym_title": "GymTracker",
+        "gym_desc": "Vibecoded PWA to track your workouts. Log weight, reps, and RIR for each session, and visualize your progress with interactive charts. Install it on your phone as a native app.",
+        "gym_url": "https://gym-app-gamma-hazel.vercel.app/",
+        "gym_img_alt": "Screenshot of the GymTracker application, a PWA for workout tracking created by Iván Ciudad Espinar"
     },
     "about_page": {
         "title": "Iván Ciudad Espinar - About Me",

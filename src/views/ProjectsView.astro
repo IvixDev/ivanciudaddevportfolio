@@ -8,6 +8,7 @@ import ScrollReveal from "../components/ScrollReveal";
 import buscaminasImg from "../assets/proyectos-buscaminas.webp";
 import pokemonTableImg from "../assets/proyectos-pokemon.webp";
 import publicPagesImg from "../assets/proyectos-public-pages.webp";
+import gymTrackerImg from "../assets/proyectos-gym-tracker.webp";
 import { useTranslations } from "../i18n/utils";
 
 const lang = Astro.currentLocale;
@@ -123,6 +124,32 @@ const projectsPageSchema = buildProjectsPageSchema(t);
               icon: "IconDatabase",
               variant: "purple",
             },
+          ]}
+        />
+      </ScrollReveal>
+
+      {/* Gym Tracker Card */}
+      <ScrollReveal client:visible once={false} delay={0.4}>
+        <ProjectCard
+          client:visible
+          title={t("projects.gym_title")}
+          description={t("projects.gym_desc")}
+          href={t("projects.gym_url")}
+          ctaText={t("projects.cta_text")}
+          image={gymTrackerImg.src}
+          imageAlt={t("projects.gym_img_alt")}
+          shouldReload={true}
+          technologies={[
+            { label: "React", icon: "IconBrandReact", variant: "cyan" },
+            {
+              label: "TypeScript",
+              icon: "IconBrandTypescript",
+              variant: "blue",
+            },
+            { label: "Supabase", icon: "IconDatabase", variant: "green" },
+            { label: "OAuth2", icon: "IconBrandGoogle", variant: "purple" },
+            { label: "PWA", icon: "IconDeviceMobile", variant: "cyan" },
+            { label: "Vibecoding", icon: "IconSparkles", variant: "purple" },
           ]}
         />
       </ScrollReveal>
