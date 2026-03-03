@@ -32,7 +32,7 @@ export default function ProjectCardMobile({
     const [isExpanded, setIsExpanded] = useState(false);
     const cardRef = useRef<HTMLDivElement>(null);
 
-    const MAX_VISIBLE = 3;
+    const MAX_VISIBLE = 2;
     const visibleTechs = technologies.slice(0, MAX_VISIBLE);
     const hiddenTechsCount = technologies.length - MAX_VISIBLE;
 
@@ -97,7 +97,7 @@ export default function ProjectCardMobile({
 
             {/* Content Container */}
             <div
-                className={`absolute inset-x-0 top-0 p-6 z-20 transition-transform duration-700 ease-in-out ${isExpanded ? "translate-y-4" : "translate-y-[280px]"
+                className={`absolute inset-x-0 top-0 p-6 z-20 transition-transform duration-700 ease-in-out ${isExpanded ? "translate-y-4" : "translate-y-[270px]"
                     }`}
             >
                 <div className="flex flex-col">
@@ -107,12 +107,12 @@ export default function ProjectCardMobile({
                             {title}
                         </h2>
 
-                        <div className="flex flex-wrap gap-2">
+                        <div className={`flex flex-wrap gap-2 ${!isExpanded ? "flex-nowrap overflow-hidden" : ""}`}>
                             {(isExpanded ? technologies : visibleTechs).map((tech, idx) => (
                                 <TechBadge key={`mob-${idx}-${tech.label}`} label={tech.label} icon={tech.icon} variant={tech.variant || "cyan"} />
                             ))}
                             {!isExpanded && hiddenTechsCount > 0 && (
-                                <span className="text-[10px] px-2 py-1 rounded-full bg-white/5 text-slate-400 border border-white/10 self-center">+{hiddenTechsCount}</span>
+                                <span className="text-[10px] px-2 py-1 rounded-full bg-white/5 text-slate-400 border border-white/10 self-center flex-shrink-0">+{hiddenTechsCount}</span>
                             )}
                         </div>
                     </div>
