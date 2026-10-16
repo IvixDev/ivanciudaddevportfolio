@@ -1,5 +1,6 @@
 ## Convenciones
 - Usa pnpm para todo. No usar npm ni yarn bajo ningún concepto
+- Node 24.x (definido en `engines` de `package.json`; lo usan Vercel y la CI). Cambiar la versión solo ahí
 - TypeScript es obligatorio
 - Usa siempre Tailwind CSS para estilos
 - Iconos de tabler-icons. Importación explícita, nunca barrels

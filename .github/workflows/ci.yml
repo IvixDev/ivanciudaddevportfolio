@@ -20,7 +20,8 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: lts/*
+          # Node version comes from engines.node in package.json (same one Vercel uses).
+          node-version-file: package.json
           cache: pnpm
 
       - run: pnpm install --frozen-lockfile
