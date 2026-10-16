@@ -1,11 +1,16 @@
 {
-    "header": {
-        "home": "Inicio",
-        "projects": "Mis proyectos",
-        "career": "Mi trayectoria",
-        "about": "Sobre mí",
-        "menu_aria": "Abrir menú de navegación",
-        "email": "Haz click para enviarme un correo. Contestare lo más rápido que pueda!"
+    "a11y": {
+        "skip_to_content": "Saltar al contenido",
+        "main_nav": "Principal",
+        "footer_nav": "Páginas",
+        "language_group": "Idioma",
+        "switch_language": "Cambiar a inglés",
+        "menu_open": "Abrir menú de navegación",
+        "menu_close": "Cerrar menú de navegación",
+        "tech_marquee": "Tecnologías que uso",
+        "technologies": "Tecnologías",
+        "new_tab": "(se abre en una pestaña nueva)",
+        "home_link": "Iván Ciudad, página de inicio"
     },
     "nav": {
         "home_url": "/",
@@ -13,221 +18,473 @@
         "career_url": "/trayectoria-profesional",
         "about_url": "/sobre-mi"
     },
-    "footer": {
-        "site_map": "Mapa del sitio",
-        "contact": "Contacto",
+    "header": {
+        "home": "Inicio",
         "projects": "Proyectos",
         "career": "Trayectoria",
         "about": "Sobre mí",
-        "made_with": "Hecho con",
-        "and_astro": "y Astro",
-        "software_dev": "Software Developer & Ingeniero Telemático."
+        "contact": "Contacto"
+    },
+    "footer": {
+        "copyright": "© {year} Iván Ciudad Espinar",
+        "made_with": "Hecho con Astro y Tailwind",
+        "github": "GitHub",
+        "linkedin": "LinkedIn",
+        "email": "Email",
+        "source_code": "Código de esta web"
+    },
+    "common": {
+        "view_all": "Ver todos",
+        "view_all_projects": "Ver todos los proyectos",
+        "view_project": "Ver proyecto",
+        "play": "Jugar",
+        "open_app": "Abrir app",
+        "download_cv": "Descargar CV",
+        "download_cv_pdf": "Descargar CV (PDF)",
+        "write_me": "Escríbeme",
+        "know_me": "Conóceme",
+        "know_me_better": "Conóceme mejor",
+        "view_linkedin": "Ver en LinkedIn",
+        "view_github": "Ver mi GitHub",
+        "view_projects": "Ver proyectos",
+        "featured": "Destacado",
+        "email_address": "ivanciudad98@gmail.com",
+        "cv_language_note": ""
     },
     "home": {
         "title": "Iván Ciudad Espinar - Software Developer e Ingeniero Telemático",
-        "description": "Bienvenido a la web de Iván Ciudad Espinar, Software Developer e Ingeniero Telemático. Descubre mis proyectos, artículos, hobbies y más sobre mi vida y carrera en desarrollo de software.",
-        "software_developer": "Software Developer e",
-        "telematics_engineer": "Ingeniero Telemático",
-        "welcome_subtitle": "Bienvenido a mi rincón de internet, donde codifico ideas y construyo experiencias digitales.",
-        "about_web": "Sobre esta web",
-        "what_find": "¿Qué encontrarás aquí?",
-        "what_find_desc": "Esta web es mi portfolio personal y laboratorio de pruebas. Un espacio donde demuestro mis capacidades como Software Developer, aplico estrategias de SEO y comparto quién soy más allá del código.",
-        "my_projects": "Mis Proyectos",
-        "my_projects_desc": "Descubre lo que he construido. Webs, aplicaciones y experimentos con las últimas tecnologías.",
-        "view_portfolio": "Ver portfolio",
-        "career": "Trayectoria",
-        "career_desc": "Mi camino profesional: empresas, roles y experiencia en ingeniería telemática y desarrollo.",
-        "view_cv": "Ver CV",
-        "about_me": "Sobre mí",
-        "about_me_desc": "Una pequeña biografía, mis gustos (videojuegos, series, películas, etc.) y quién soy detrás del código.",
-        "read_more": "Leer más",
-        "soy_ivan": "Soy ",
+        "description": "Portfolio de Iván Ciudad Espinar, Software Developer e Ingeniero Telemático. Proyectos web, experimentos con IA, trayectoria profesional y lo que hago fuera del código.",
         "image_url": "https://www.ivanciudad.com/trayectoria-profesional.webp",
         "image_alt": "Iván Ciudad Espinar en traje, Software Developer e Ingeniero Telemático",
-        "projects_url": "/proyectos",
-        "career_url": "/trayectoria-profesional",
-        "about_url": "/sobre-mi",
-        "projects_img_alt": "Captura del juego Buscaminas, proyecto de desarrollo web de Iván Ciudad Espinar",
-        "career_img_alt": "Iván Ciudad Espinar en traje, trayectoria profesional como Software Developer",
-        "about_img_alt": "Iván Ciudad Espinar posando en Japón con el Templo Dorado Kinkaku-ji de fondo"
+        "eyebrow": "Software Developer · Ingeniero Telemático",
+        "eyebrow_short": "Software Developer",
+        "hero_title_before": "Hola, soy Iván. Construyo ",
+        "hero_title_highlight": "software",
+        "hero_title_after": " para la web.",
+        "hero_subtitle": "Este es mi rincón de internet: donde codifico ideas, enseño lo que construyo y cuento lo que me gusta cuando cierro el editor.",
+        "hero_subtitle_short": "Mi rincón de internet: proyectos, experimentos y lo que me gusta cuando cierro el editor.",
+        "portrait_alt": "Retrato de Iván Ciudad Espinar",
+        "marquee_ai": "IA aplicada",
+        "terminal": {
+            "label": "Presentación en formato terminal",
+            "cmd_whoami": "whoami",
+            "out_whoami": "iván ciudad — software developer",
+            "cmd_hobbies": "hobbies --list",
+            "out_hobbies": "d&d · lego · hardware · gym"
+        },
+        "projects_eyebrow": "01 — Proyectos",
+        "projects_title": "Cosas que he construido",
+        "now_eyebrow": "02 — Ahora mismo",
+        "now_title": "En qué ando estos días",
+        "now": {
+            "work_label": "Trabajando en",
+            "work_text": "La eShop de MasOrange, con Next.js, React y TypeScript.",
+            "work_link": "Mi trayectoria",
+            "lab_label": "Experimentando con",
+            "lab_text": "Desarrollo con agentes de IA (Claude Code, Opencode, Orca) y estrategias de caché en Next.js.",
+            "lab_text_short": "Desarrollo con agentes de IA (Claude Code, Orca) y caché en Next.js.",
+            "lab_link": "Ver experimentos",
+            "life_label": "Fuera del código",
+            "life_text": "Campañas de D&D, sets de LEGO y PCs montados por piezas.",
+            "life_link": "Sobre mí"
+        },
+        "about_eyebrow": "03 — Sobre mí",
+        "about_title": "Dados, LEGO y PCs montados a mano",
+        "about_text": "Empecé programando un videojuego en el instituto y una calculadora de notas. Hoy los videojuegos son mi desconexión, junto a las partidas de rol, el gym y los sets de LEGO.",
+        "about_text_short": "Videojuegos para desconectar, partidas de rol, gym y sets de LEGO.",
+        "about_photos": {
+            "japan_caption": "Kioto, Japón",
+            "japan_alt": "Iván en Japón frente al templo Kinkaku-ji",
+            "dice_caption": "Dragones y Mazmorras",
+            "dice_alt": "Cuenco de dados de rol",
+            "lego_caption": "LEGO · Star Wars",
+            "lego_alt": "Figuras LEGO de Star Wars"
+        },
+        "contact_title_before": "¿Construimos ",
+        "contact_title_highlight": "algo juntos",
+        "contact_title_after": "?",
+        "contact_text": "Proyectos, ideas o una charla sobre desarrollo de software. Contesto lo más rápido que puedo.",
+        "contact_text_short": "Proyectos, ideas o una charla sobre desarrollo de software.",
+        "contact_linkedin_mobile": "Conectar en LinkedIn"
     },
     "projects": {
         "title": "Iván Ciudad Espinar - Proyectos de Desarrollo de Software",
-        "description": "Explora los proyectos de Iván Ciudad Espinar, Software Developer e Ingeniero Telemático. Descubre mis trabajos en desarrollo de software, aplicaciones web y más.",
-        "page_heading": "Mis Proyectos",
-        "buscaminas_desc": "Versión moderna del clásico Buscaminas desarrollada en TypeScript. Un desafío técnico que implementa algoritmos de recursividad eficiente para la apertura de celdas en cascada.",
-        "pokemon_desc": "Consulta debilidades y fortalezas de tipos Pokémon con Drag & Drop y SSR usando la PokeAPI.",
-        "eshop_desc": "Laboratorio Next.js para explorar SSR, ISR, SSG y Cache Components con foco en SEO y accesibilidad.",
-        "buscaminas_title": "Buscaminas",
-        "buscaminas_url": "/proyectos/buscaminas",
-        "pokemon_title": "Tabla de Tipos Pokémon",
-        "pokemon_url": "/proyectos/tabla-pokemon",
-        "eshop_title": "eShop Cache Lab",
-        "eshop_url": "/proyectos/public-pages",
-        "cta_text": "Ver proyecto",
-        "recursive_tech": "Recursividad",
+        "description": "Proyectos de Iván Ciudad Espinar, Software Developer: aplicaciones web, experimentos con Next.js y juegos hechos con TypeScript.",
+        "url": "https://www.ivanciudad.com/proyectos",
         "image_url": "https://www.ivanciudad.com/proyectos-buscaminas.webp",
         "image_alt": "Captura del juego Buscaminas, proyecto de desarrollo web de Iván Ciudad Espinar",
-        "pokemon_img_alt": "Captura de la herramienta Tabla de Tipos Pokémon con Drag and Drop creada por Iván Ciudad Espinar",
-        "eshop_img_alt": "Captura del proyecto eShop Cache Lab de Iván Ciudad Espinar para probar métodos de caché de Next.js",
-        "gym_title": "GymTracker",
-        "gym_desc": "PWA vibecodeada para trackear tus entrenamientos. Registra kilos, repeticiones y RIR de cada sesión, y visualiza tu progreso con gráficas interactivas. Instálala en tu móvil como una app nativa.",
-        "gym_url": "https://gym-app-gamma-hazel.vercel.app/",
-        "gym_img_alt": "Captura de la aplicación GymTracker, PWA para seguimiento de entrenamientos creada por Iván Ciudad Espinar"
-    },
-    "about_page": {
-        "title": "Iván Ciudad Espinar - Sobre mi",
-        "description": "Aquí encontrarás información sobre mi vida, mis gustos y mis hobbies. Descubre quién soy, de dónde vengo y mis pasiones por los videojuegos, las películas y las series.",
-        "url": "https://www.ivanciudad.com/sobre-mi",
-        "image_url": "https://www.ivanciudad.com/ivan-japon.webp",
-        "image_alt": "Iván Ciudad Espinar posando en Japón con el Templo Dorado Kinkaku-ji de fondo"
-    },
-    "about": {
-        "section1_title1": "Soy",
-        "section1_title2": "Software Developer & Ingeniero Telemático",
-        "img1_alt": "Iván Ciudad Espinar posando en Japón con el Templo Dorado Kinkaku-ji de fondo",
-        "p1_1": "En el terreno laboral",
-        "p1_2": ", me considero una persona muy comunicativa y proactiva. No dudo en asumir el liderazgo cuando la situación lo requiere, y disfruto enormemente compartiendo conocimientos y ayudando a mis compañeros a crecer, fomentando siempre un ambiente de trabajo positivo y colaborativo.",
-        "p1_3": "Mi origen como programador",
-        "p1_4": " se remonta al instituto, cuando en clase de informática nos retaron a crear un pequeño videojuego. Aquella experiencia encendió una chispa que me llevó a desarrollar mi primera aplicación real: una calculadora de notas para gestionar mis estudios. Comprobar la utilidad práctica del código fue lo que me terminó de enganchar.",
-        "section2_title": "Pasiones y Desconexión",
-        "img2_alt": "Cuenco de dados de rol y juegos de mesa, hobby de Iván Ciudad Espinar",
-        "p2_1": "Los ",
-        "p2_2": "videojuegos",
-        "p2_3": " son una de mis grandes pasiones: ",
-        "p2_4": "... Decidí conscientemente no dedicarme profesionalmente a su desarrollo para mantener ese mundo como mi espacio de desconexión.",
-        "p2_5": "Mi forma favorita de desconectar",
-        "p2_6": " es reunirme con amigos alrededor de una mesa: desde partidas de ",
-        "p2_7": "juegos de mesa",
-        "p2_8": " hasta largas campañas de ",
-        "p2_9": "Dragones y Mazmorras",
-        "p2_10": ". Y para equilibrar, caminar y el gym son mis pilares fundamentales.",
-        "p2_11": "En el sofá, soy fan incondicional de ",
-        "p2_12": " y ",
-        "p2_13": ". Mi lista de favoritos incluye ",
-        "p2_14": ", sin olvidar el maratón navideño de ",
-        "p2_15": ".",
-        "section3_title": "Hardware y Construcción",
-        "img3_alt": "Figuras LEGO de Grogu, R2-D2 y C-3PO de Star Wars, colección de Iván Ciudad Espinar",
-        "p3_1": "Esa curiosidad por como funcionan las cosas se extiende al ",
-        "p3_2": "hardware",
-        "p3_3": ". Me encanta montar mis propios ordenadores por piezas, limpiarlos, medir tensiones y exprimir su rendimiento mediante overclocking.",
-        "p3_4": "Siguiendo con esa faceta de \"construir\", mi pasatiempo favorito es montar sets de ",
-        "p3_5": "; una afición que, aunque cara, me apasiona tanto que en su día me hizo plantearme seriamente estudiar arquitectura por mi amor a las estructuras y el diseño.",
-        "section4_title2": " y Creatividad",
-        "section4_p1": "También disfruto dejando volar la imaginación construyendo sets de ",
-        "section4_p2": " como los de Star Wars.",
-        "img_ivan_japon_alt": "Iván Ciudad Espinar posando en Japón con el Templo Dorado Kinkaku-ji de fondo",
-        "img_board_games_alt": "Cuenco de dados de rol y juegos de mesa, hobby de Iván Ciudad Espinar",
-        "img_legos_alt": "Figuras LEGO de Grogu, R2-D2 y C-3PO de Star Wars, colección de Iván Ciudad Espinar"
-    },
-    "career_page": {
-        "title": "Iván Ciudad Espinar - Mi Trayectoria Profesional y CV",
-        "description": "Explora la carrera profesional de Iván Ciudad Espinar, Software Developer e Ingeniero Telemático. Consulta mi CV y descubre mis experiencias, habilidades y logros en el desarrollo de software.",
-        "url": "https://www.ivanciudad.com/trayectoria-profesional",
-        "image_url": "https://www.ivanciudad.com/trayectoria-profesional.webp",
-        "image_alt": "Iván Ciudad Espinar en traje, Software Developer e Ingeniero Telemático"
+        "eyebrow": "~/proyectos · {count} resultados",
+        "eyebrow_one": "~/proyectos · {count} resultado",
+        "heading_before": "Cosas que he ",
+        "heading_highlight": "construido",
+        "heading_after": ".",
+        "intro": "Webs, aplicaciones y experimentos. Algunos nacen para aprender una tecnología; otros, porque los necesitaba en mi día a día.",
+        "intro_short": "Webs, aplicaciones y experimentos para aprender o para usar a diario.",
+        "filter_label": "Filtrar proyectos",
+        "filters": {
+            "all": "Todos",
+            "app": "Apps",
+            "experiment": "Experimentos",
+            "game": "Juegos"
+        },
+        "categories": {
+            "app": "App",
+            "experiment": "Experimento",
+            "game": "Juego"
+        },
+        "list_label": "Lista de proyectos",
+        "items": {
+            "eshop": {
+                "title": "eShop Cache Lab",
+                "description": "Laboratorio en Next.js para comparar SSR, ISR, SSG y Cache Components y medir su impacto en SEO y accesibilidad. Montado como monorepo con Nx.",
+                "description_short": "SSR, ISR, SSG y Cache Components en Next.js, comparados por su impacto en SEO y accesibilidad.",
+                "img_alt": "Captura del proyecto eShop Cache Lab de Iván Ciudad Espinar para probar métodos de caché de Next.js",
+                "tags": [
+                    "Next.js",
+                    "TypeScript",
+                    "Nx",
+                    "SSR · ISR · SSG",
+                    "Cache Components",
+                    "SEO",
+                    "A11y"
+                ],
+                "href": "/proyectos/public-pages"
+            },
+            "gym": {
+                "title": "GymTracker",
+                "description": "PWA para registrar kilos, repeticiones y RIR de cada sesión y ver tu progreso en gráficas. Se instala en el móvil como una app nativa. Hecha con IA como copiloto.",
+                "description_short": "PWA de entrenos con gráficas de progreso.",
+                "img_alt": "Captura de la aplicación GymTracker, PWA para seguimiento de entrenamientos creada por Iván Ciudad Espinar",
+                "tags": [
+                    "React",
+                    "TypeScript",
+                    "Supabase",
+                    "OAuth2",
+                    "PWA"
+                ],
+                "href": "https://gym-app-gamma-hazel.vercel.app/"
+            },
+            "pokemon": {
+                "title": "Tabla de Tipos Pokémon",
+                "description": "Consulta fortalezas y debilidades entre tipos arrastrando y soltando. Renderizado en servidor sobre la PokeAPI.",
+                "description_short": "Drag & Drop y SSR sobre la PokeAPI.",
+                "img_alt": "Captura de la herramienta Tabla de Tipos Pokémon con Drag and Drop creada por Iván Ciudad Espinar",
+                "tags": [
+                    "Next.js",
+                    "TypeScript",
+                    "MUI",
+                    "Drag & Drop",
+                    "SSR"
+                ],
+                "href": "/proyectos/tabla-pokemon"
+            },
+            "buscaminas": {
+                "title": "Buscaminas",
+                "description": "Versión moderna del clásico en TypeScript. El reto técnico: abrir celdas en cascada con un algoritmo recursivo eficiente.",
+                "description_short": "TypeScript y recursividad para la apertura en cascada.",
+                "img_alt": "Captura del juego Buscaminas, proyecto de desarrollo web de Iván Ciudad Espinar",
+                "tags": [
+                    "TypeScript",
+                    "Recursividad"
+                ],
+                "href": "/proyectos/buscaminas"
+            }
+        },
+        "idea_title": "¿Se te ocurre algo que construir?",
+        "idea_text": "Siempre tengo hueco para una buena idea o una charla sobre código."
     },
     "career": {
-        "title1": "Mi",
-        "title2": "Trayectoria",
-        "description": "Un recorrido a través de los retos técnicos, proyectos y formación que han forjado mi perfil profesional.",
-        "page_heading": "Mi Trayectoria \nProfesional",
-        "download_cv": "Descargar CV (.pdf)",
-        "cv_link": "/IvanCiudadEspinar_CV.pdf",
-        "img_career_alt": "Iván Ciudad Espinar en traje, Software Developer e Ingeniero Telemático",
-        "last_update": "Última actualización: Febrero 2026",
+        "title": "Iván Ciudad Espinar - Mi Trayectoria Profesional y CV",
+        "description": "Trayectoria profesional de Iván Ciudad Espinar, Software Developer: experiencia, estudios, stack técnico de frontend a Kubernetes y CV descargable.",
+        "url": "https://www.ivanciudad.com/trayectoria-profesional",
+        "image_url": "https://www.ivanciudad.com/trayectoria-profesional.webp",
+        "image_alt": "Iván Ciudad Espinar en traje, Software Developer e Ingeniero Telemático",
+        "eyebrow": "~/trayectoria · actualizado en {date}",
+        "eyebrow_short": "actualizado {date}",
+        "updated_date": "febrero de 2026",
+        "updated_date_short": "feb. 2026",
+        "heading_before": "Mi ",
+        "heading_highlight": "trayectoria",
+        "heading_after": ".",
+        "intro": "Un recorrido por los retos técnicos, los proyectos y la formación que han dado forma a mi perfil como desarrollador de software.",
+        "intro_short": "Retos técnicos, proyectos y formación que han dado forma a mi perfil.",
+        "portrait_alt": "Iván Ciudad Espinar con traje",
+        "cv_url": "/CV_IvanCiudadEspinar.pdf",
         "experience_title": "Experiencia",
+        "experience_intro": "Cuatro años en el ecosistema MasMovil y MasOrange, del backend al producto en producción.",
+        "experiences": [
+            {
+                "id": "masorange",
+                "date": "Nov 2024 — hoy",
+                "company": "MasOrange",
+                "title": "Senior Frontend Developer",
+                "description": "Desarrollo de la eShop multimarca, con la IA integrada en el flujo de trabajo del equipo.",
+                "tags": [
+                    "Next.js",
+                    "React",
+                    "TypeScript",
+                    "Tailwind",
+                    "IA",
+                    "Claude"
+                ]
+            },
+            {
+                "id": "capgemini-multibrand",
+                "date": "Ene 2023 — Oct 2024",
+                "company": "Capgemini",
+                "title": "Ingeniero de Software",
+                "description": "Proyecto MasMovil: aplicación multimarca para Euskaltel, Telecable, R, Guuk, Racctel, MasMovil, Yoigo, Lyca y Lebara.",
+                "tags": [
+                    "Next.js",
+                    "React",
+                    "TypeScript",
+                    "JIRA",
+                    "Gitflow"
+                ]
+            },
+            {
+                "id": "capgemini-yoigo",
+                "date": "Sep 2022 — Sep 2023",
+                "company": "Capgemini",
+                "title": "Ingeniero de Software",
+                "description": "Mantenimiento y evolución de Yoigo.",
+                "tags": [
+                    "Angular",
+                    "TypeScript",
+                    "JIRA",
+                    "Gitflow"
+                ]
+            },
+            {
+                "id": "capgemini-internship",
+                "date": "Feb 2022 — Jul 2022",
+                "company": "Capgemini",
+                "title": "Prácticas de Backend",
+                "description": "Proyecto MasMovil: mantenimiento de Yoigo con microservicios.",
+                "tags": [
+                    "Java",
+                    "Spring Boot",
+                    "MySQL",
+                    "Microservicios"
+                ]
+            }
+        ],
         "education_title": "Estudios",
-        "tech_stack_title": "Stack Técnico",
-        "soft_skills_title": "Soft Skills"
+        "educations": [
+            {
+                "id": "edem",
+                "date": "2023 — 2024",
+                "institution": "EDEM",
+                "title": "Máster High Potential Technical Leader",
+                "description": "Liderazgo, gestión de equipos, resolución de conflictos y Google Cloud."
+            },
+            {
+                "id": "uv",
+                "date": "2017 — 2021",
+                "institution": "Universitat de València",
+                "title": "Grado en Ingeniería Telemática",
+                "description": "Matrículas de Honor en Programación, Desarrollo Web e Ingeniería del Software."
+            }
+        ],
+        "stack_title": "Stack y habilidades",
+        "stack_intro": "Del componente al despliegue: interfaz, rendimiento, backend e infraestructura.",
+        "stack": [
+            {
+                "id": "frontend",
+                "name": "Frontend",
+                "description": "Aplicaciones web en producción.",
+                "items": [
+                    "TypeScript",
+                    "React",
+                    "Next.js",
+                    "Angular",
+                    "Astro",
+                    "Tailwind CSS",
+                    "MUI",
+                    "PWA"
+                ]
+            },
+            {
+                "id": "performance",
+                "name": "Rendimiento y calidad",
+                "description": "Core Web Vitals, SEO técnico y accesibilidad.",
+                "items": [
+                    "Core Web Vitals",
+                    "SSR · ISR · SSG",
+                    "SEO técnico",
+                    "Accesibilidad"
+                ]
+            },
+            {
+                "id": "backend",
+                "name": "Backend y datos",
+                "description": "APIs y microservicios.",
+                "items": [
+                    "Node.js",
+                    "Java",
+                    "Spring Boot",
+                    "Microservicios",
+                    "MySQL",
+                    "Supabase"
+                ]
+            },
+            {
+                "id": "infra",
+                "name": "Cloud e infraestructura",
+                "description": "Servidores, proxies y clústeres en Google Cloud.",
+                "items": [
+                    "Google Cloud",
+                    "Kubernetes",
+                    "Docker",
+                    "Nginx",
+                    "Proxy inverso"
+                ]
+            },
+            {
+                "id": "delivery",
+                "name": "CI/CD y colaboración",
+                "description": "Pipelines en Jenkins, despliegues GitOps con ArgoCD y trabajo en equipo.",
+                "items": [
+                    "Jenkins",
+                    "ArgoCD",
+                    "Git",
+                    "Gitflow",
+                    "JIRA",
+                    "Figma"
+                ]
+            },
+            {
+                "id": "ai",
+                "name": "Desarrollo con IA",
+                "description": "Harnesses agénticos, varios modelos, skills propias y MCP.",
+                "items": [
+                    "Claude Code",
+                    "Opencode",
+                    "OMP",
+                    "Orca",
+                    "Claude",
+                    "Gemini",
+                    "GPT",
+                    "Skills",
+                    "MCP"
+                ]
+            },
+            {
+                "id": "soft",
+                "name": "Soft skills",
+                "description": "Reforzadas en el máster de liderazgo de EDEM.",
+                "items": [
+                    "Liderazgo de equipos",
+                    "Comunicación proactiva",
+                    "Resolución de conflictos",
+                    "Mentoría",
+                    "Adaptabilidad"
+                ],
+                "wide": true
+            }
+        ],
+        "cv_cta_before": "¿Prefieres el ",
+        "cv_cta_highlight": "PDF",
+        "cv_cta_after": "?",
+        "cv_cta_text": "Todo lo anterior en una página, listo para compartir."
     },
-    "experiences": [
-        {
-            "date": "Noviembre 2024 - Actualidad",
-            "title": "Senior Frontend Developer",
-            "company": "MasOrange",
-            "description": "Desarrollador de la eShop Multimarca.",
-            "tags": [
-                "Next.js",
-                "IA",
-                "Claude",
-                "React",
-                "TypeScript",
-                "Tailwind"
-            ]
-        },
-        {
-            "date": "Enero 2023 - Octubre 2024",
-            "title": "Ingeniero de Software • Frontend Developer",
-            "company": "Capgemini",
-            "description": "Proyecto MasMovil: Creación de aplicación multimarca para: Euskaltel, Telecable, R, Guuk, Racctel, MasMovil, Yoigo, Lyca y Lebara.",
-            "tags": [
-                "Next.js",
-                "React",
-                "TypeScript",
-                "JIRA",
-                "Gitflow"
-            ]
-        },
-        {
-            "date": "Septiembre 2022 - Septiembre 2023",
-            "title": "Ingeniero de Software • Frontend Developer",
-            "company": "Capgemini",
-            "description": "Mantenimiento de Yoigo.",
-            "tags": [
-                "Angular",
-                "TypeScript",
-                "JIRA",
-                "Gitflow"
-            ]
-        },
-        {
-            "date": "Febrero 2022 - Julio 2022",
-            "title": "Prácticas • Backend",
-            "company": "Capgemini",
-            "description": "Proyecto MasMovil: Mantenimiento Yoigo.",
-            "tags": [
-                "Java",
-                "Springboot",
-                "MySQL",
-                "Microservicios"
-            ]
-        }
-    ],
-    "educations": [
-        {
-            "date": "2023 - 2024",
-            "title": "Máster High Potential Technical Leader",
-            "institution": "EDEM",
-            "description": "Liderazgo, Gestión de equipos, Resolución de conflictos, Google Cloud.",
-            "color": "amber"
-        },
-        {
-            "date": "2017 - 2021",
-            "title": "Grado en Ingeniería Telemática",
-            "institution": "Universidad de València",
-            "description": "Matrículas de Honor en programación, Desarrollo Web e Ingeniería del Software.",
-            "color": "blue"
-        }
-    ],
-    "tech_categories": {
-        "Frontend": "Frontend",
-        "Backend": "Backend",
-        "Herramientas": "Herramientas"
+    "about": {
+        "title": "Iván Ciudad Espinar - Sobre mí",
+        "description": "Quién es Iván Ciudad Espinar fuera del código: cómo empezó a programar, videojuegos, rol, LEGO, hardware y sus series y películas favoritas.",
+        "url": "https://www.ivanciudad.com/sobre-mi",
+        "image_url": "https://www.ivanciudad.com/ivan-japon.webp",
+        "image_alt": "Iván Ciudad Espinar posando en Japón con el Templo Dorado Kinkaku-ji de fondo",
+        "eyebrow": "~/sobre-mi",
+        "heading_before": "Soy ",
+        "heading_highlight": "Iván",
+        "heading_after": ", y esto es lo que no sale en el CV.",
+        "origin": "**Mi origen como programador** está en el instituto: en clase de informática nos retaron a crear un pequeño videojuego. Esa chispa me llevó a mi primera aplicación real, una calculadora de notas. Ver que el código servía para algo fue lo que me terminó de enganchar.",
+        "origin_short": "**Mi origen como programador** está en el instituto, con un pequeño videojuego de clase y mi primera app real: una calculadora de notas.",
+        "work": "**En el trabajo** soy comunicativo y proactivo. Asumo el liderazgo cuando toca y disfruto compartiendo lo que sé para que el equipo crezca.",
+        "work_short": "**En el trabajo** soy comunicativo y proactivo, y disfruto ayudando a que el equipo crezca.",
+        "japan_alt": "Iván Ciudad Espinar en Kioto, con el templo dorado Kinkaku-ji de fondo",
+        "japan_caption": "Kinkaku-ji · Kioto, Japón",
+        "passions_eyebrow": "01 — Desconexión",
+        "passions_title": "Pasiones y desconexión",
+        "passions_p1": "Los **videojuegos** son una de mis grandes pasiones. Decidí no dedicarme a desarrollarlos para que siguieran siendo mi espacio para desconectar.",
+        "passions_p2": "Mi forma favorita de desconectar es una mesa con amigos: **juegos de mesa** y largas campañas de **Dragones y Mazmorras**. Para equilibrar, caminar y el gym.",
+        "passions_short": "Los **videojuegos** son mi desconexión, por eso decidí no dedicarme a desarrollarlos. Y nada como una mesa con amigos: **juegos de mesa** y campañas de **D&D**.",
+        "dice_alt": "Cuenco con dados de rol y juegos de mesa",
+        "build_eyebrow": "02 — Construir",
+        "build_title": "Hardware y LEGO",
+        "build_p1": "La curiosidad por cómo funcionan las cosas llega al **hardware**: monto mis ordenadores por piezas, los limpio, mido tensiones y los exprimo con overclocking.",
+        "build_p2": "Mi pasatiempo favorito es montar sets de **LEGO**, sobre todo de Star Wars. Me gustan tanto las estructuras que llegué a plantearme estudiar arquitectura.",
+        "build_short": "Monto mis PCs por piezas y los exprimo con overclocking. Y me encantan los sets de **LEGO**: casi estudio arquitectura por mi amor a las estructuras.",
+        "lego_alt": "Figuras LEGO de Grogu, R2-D2 y C-3PO",
+        "favorites_eyebrow": "03 — Favoritos",
+        "favorites_title": "Mi lista de guardados",
+        "favorites_tabs_label": "Categorías de favoritos",
+        "favorites": [
+            {
+                "id": "games",
+                "label": "Videojuegos",
+                "items": [
+                    {
+                        "name": "World of Warcraft"
+                    },
+                    {
+                        "name": "The Witcher 3"
+                    },
+                    {
+                        "name": "Dark Souls"
+                    },
+                    {
+                        "name": "League of Legends"
+                    }
+                ]
+            },
+            {
+                "id": "series",
+                "label": "Series",
+                "items": [
+                    {
+                        "name": "Juego de tronos"
+                    },
+                    {
+                        "name": "Breaking Bad"
+                    },
+                    {
+                        "name": "Naruto"
+                    },
+                    {
+                        "name": "Clone Wars"
+                    }
+                ]
+            },
+            {
+                "id": "films",
+                "label": "Películas",
+                "items": [
+                    {
+                        "name": "Star Wars",
+                        "note": "Fan incondicional."
+                    },
+                    {
+                        "name": "El Señor de los Anillos",
+                        "note": "Fan incondicional."
+                    },
+                    {
+                        "name": "Harry Potter",
+                        "note": "Maratón navideño obligatorio."
+                    }
+                ]
+            }
+        ],
+        "cta_title_before": "¿Hablamos de ",
+        "cta_title_highlight": "código",
+        "cta_title_after": "… o de rol?",
+        "cta_text": "Me vale cualquiera de los dos temas."
     },
-    "softskills": [
-        "Liderazgo de equipos",
-        "Comunicación proactiva",
-        "Resolución de conflictos",
-        "Mentoría",
-        "Adaptabilidad"
-    ],
     "error_404": {
         "title": "Página no encontrada - Iván Ciudad Espinar",
         "description": "Lo sentimos, la página que estás buscando no existe. Vuelve a la página principal para continuar explorando.",
         "url": "/404",
-        "image": "https://www.ivanciudad.com/fotoivan.webp",
+        "image": "https://www.ivanciudad.com/trayectoria-profesional.webp",
         "heading": "404 - Página no encontrada",
         "body": "Lo sentimos, la página que estás buscando no existe.",
         "return_home": "Volver a la página principal",
@@ -237,11 +494,10 @@
         "title": "Error interno del servidor - Iván Ciudad Espinar",
         "description": "Lo sentimos, ha ocurrido un error en el servidor. Por favor, vuelve a intentarlo más tarde.",
         "url": "/500",
-        "image": "https://www.ivanciudad.com/fotoivan.webp",
+        "image": "https://www.ivanciudad.com/trayectoria-profesional.webp",
         "heading": "500 - Error interno del servidor",
         "body": "Lo sentimos, ha ocurrido un error en el servidor. Por favor, vuelve a intentarlo más tarde.",
         "return_home": "Volver a la página principal",
-        "unknown_error": "Error desconocido",
         "home_url": "/"
     },
     "schema": {

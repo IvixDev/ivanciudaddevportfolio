@@ -1,0 +1,42 @@
+---
+import { IconDownload } from "@tabler/icons-react";
+import Button from "../ui/Button.astro";
+import GradientText from "../ui/GradientText.astro";
+import { socialMediaLinks } from "../../content/layout.consts";
+import { getMessages } from "../../i18n/utils";
+
+const { career, common } = getMessages(Astro.currentLocale);
+const linkedin = socialMediaLinks.find((link) => link.name === "linkedin");
+---
+
+<section aria-labelledby="cv-heading">
+  <div
+    class="reveal flex flex-col gap-3.5 rounded-card border border-line bg-surface px-5 py-6 tablet:flex-row tablet:items-center tablet:justify-between tablet:gap-5 tablet:rounded-card-lg tablet:p-9 laptop:gap-6 laptop:rounded-block laptop:p-[clamp(32px,5vw,64px)]"
+  >
+    <div class="flex flex-col gap-2">
+      <h2
+        id="cv-heading"
+        class="font-display text-[30px] leading-[1.05] font-extrabold tracking-[-0.03em] text-fg tablet:text-4xl laptop:text-[clamp(32px,4vw,52px)]"
+      >
+        {career.cv_cta_before}<GradientText>{career.cv_cta_highlight}</GradientText>{career.cv_cta_after}
+      </h2>
+      <p class="text-[15px] text-muted tablet:text-[17px]">{career.cv_cta_text}</p>
+    </div>
+    <div class="flex flex-col gap-3 tablet:flex-none">
+      <Button href={career.cv_url} fileType="application/pdf" hreflang="es" class="justify-center">
+        <IconDownload size={18} stroke={2.2} aria-hidden="true" />
+        <span>{common.download_cv}</span>
+        {common.cv_language_note && <span class="font-normal">{common.cv_language_note}</span>}
+      </Button>
+      {
+        linkedin && (
+          <div class="flex flex-col tablet:hidden">
+            <Button href={linkedin.href} variant="secondary" external class="justify-center">
+              {common.view_linkedin}
+            </Button>
+          </div>
+        )
+      }
+    </div>
+  </div>
+</section>

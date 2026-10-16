@@ -1,0 +1,66 @@
+---
+import { Image } from "astro:assets";
+import Button from "../ui/Button.astro";
+import Tag from "../ui/Tag.astro";
+import { getLocalizedProjects } from "../../content/projects";
+import { getMessages } from "../../i18n/utils";
+
+type LocalizedProject = ReturnType<typeof getLocalizedProjects>[number];
+
+interface Props {
+  project: LocalizedProject;
+  /** Posición (empezando en 0) entre los proyectos visibles. */
+  index: number;
+  /** La primera imagen es la candidata a LCP. */
+  priority?: boolean;
+}
+
+const { project, index, priority = false } = Astro.props;
+const m = getMessages(Astro.currentLocale);
+const number = String(index + 1).padStart(2, "0");
+---
+
+<article
+  data-project
+  data-category={project.category}
+  data-reverse={index % 2 === 1 ? "true" : "false"}
+  class="lift reveal flex flex-col overflow-hidden rounded-[24px] border border-line-subtle bg-surface tablet:rounded-card-lg laptop:flex-row laptop:data-[reverse=true]:flex-row-reverse"
+>
+  <div class="relative aspect-[16/10] min-w-0 overflow-hidden bg-line-subtle tablet:aspect-[16/8] laptop:aspect-auto laptop:min-h-80 laptop:flex-[1_1_520px]">
+    <Image
+      src={project.image}
+      alt={project.img_alt}
+      widths={[480, 768, 1100]}
+      sizes="(min-width: 1024px) 660px, (min-width: 768px) calc(100vw - 64px), calc(100vw - 32px)"
+      loading={priority ? "eager" : "lazy"}
+      fetchpriority={priority ? "high" : undefined}
+      decoding={priority ? "sync" : "async"}
+      class="zoom absolute inset-0 size-full object-cover"
+    />
+  </div>
+  <div class="flex min-w-0 flex-col gap-3 p-5 tablet:gap-3.5 tablet:px-8 tablet:pt-7 tablet:pb-8 laptop:flex-[1_1_380px] laptop:gap-4 laptop:p-[clamp(24px,3vw,44px)]">
+    <div class="flex items-center justify-between gap-3 font-mono text-xs tablet:text-[13px]">
+      <span class="text-brand" data-project-number aria-hidden="true">{number}</span>
+      <span class="rounded-full border border-line-strong px-2.5 py-1 text-muted">{m.projects.categories[project.category]}</span>
+    </div>
+    <h2 class="font-display text-[26px] leading-[1.1] font-bold text-fg tablet:text-[32px] tablet:tracking-[-0.02em] laptop:text-4xl">
+      {project.title}
+    </h2>
+    <p class="text-[15px] text-muted tablet:text-base laptop:text-[17px]">{project.description}</p>
+    <div class="mt-auto flex flex-col gap-4 tablet:flex-row tablet:flex-wrap tablet:items-center tablet:justify-between laptop:flex-col laptop:items-start laptop:justify-start">
+      <ul class="flex flex-1 flex-wrap gap-1.5" aria-label={m.a11y.technologies}>
+        {project.tags.map((tag) => <Tag as="li">{tag}</Tag>)}
+      </ul>
+      <Button
+        variant="light"
+        arrow
+        href={project.href}
+        external={project.external}
+        reload={!project.external}
+        class="w-full justify-center tablet:w-auto"
+      >
+        {m.common[project.ctaKey]}<span class="sr-only">: {project.title}</span>
+      </Button>
+    </div>
+  </div>
+</article>

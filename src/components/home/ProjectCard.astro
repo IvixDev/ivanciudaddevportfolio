@@ -1,0 +1,72 @@
+---
+import { Image } from "astro:assets";
+import Button from "../ui/Button.astro";
+import Tag from "../ui/Tag.astro";
+import { getMessages } from "../../i18n/utils";
+import type { LocalizedProject } from "./types";
+
+interface Props {
+  project: LocalizedProject;
+  /** En tablet ocupa dos columnas con la imagen a la izquierda. */
+  wide?: boolean;
+}
+
+const { project, wide = false } = Astro.props;
+const m = getMessages(Astro.currentLocale);
+---
+
+<!-- Móvil: fila compacta con miniatura. Tablet y escritorio: tarjeta vertical. -->
+<article
+  class:list={[
+    "lift relative flex h-full overflow-hidden rounded-card-sm border border-line-subtle bg-surface tablet:flex-col tablet:rounded-card",
+    wide && "tablet:max-laptop:flex-row",
+  ]}
+>
+  <div
+    class:list={[
+      "w-28 shrink-0 overflow-hidden bg-line-subtle tablet:w-full tablet:shrink",
+      wide && "tablet:max-laptop:w-[46%] tablet:max-laptop:shrink-0",
+    ]}
+  >
+    <Image
+      src={project.image}
+      alt={project.img_alt}
+      widths={[224, 400, 600, 800]}
+      sizes={wide
+        ? "(min-width: 1024px) 380px, (min-width: 768px) 355px, 112px"
+        : "(min-width: 1024px) 380px, (min-width: 768px) 375px, 112px"}
+      class:list={[
+        "zoom block h-full w-full object-cover tablet:aspect-[16/10] tablet:h-auto",
+        wide && "tablet:max-laptop:aspect-auto tablet:max-laptop:h-full",
+      ]}
+    />
+  </div>
+  <div
+    class:list={[
+      "flex min-w-0 flex-1 flex-col gap-1 p-4 tablet:gap-2.5 tablet:p-[22px] laptop:gap-3 laptop:p-6",
+      wide && "tablet:max-laptop:p-[26px]",
+    ]}
+  >
+    <h3 class="font-display text-xl font-bold text-fg tablet:text-[23px] laptop:text-2xl">{project.title}</h3>
+    <p class="text-sm leading-normal text-muted tablet:text-[15px]">
+      <span class="tablet:hidden">{project.description_short}</span>
+      <span class="hidden tablet:inline">{project.description}</span>
+    </p>
+    <ul
+      class:list={["hidden flex-wrap gap-1.5", wide ? "tablet:flex" : "laptop:flex"]}
+      aria-label={m.a11y.technologies}
+    >
+      {project.tags.slice(0, 3).map((tag) => <Tag as="li">{tag}</Tag>)}
+    </ul>
+    <Button
+      href={project.href}
+      variant="link"
+      arrow
+      external={project.external}
+      reload={!project.external}
+      class="mt-auto pt-2 text-sm after:absolute after:inset-0 tablet:text-[15px]"
+    >
+      {m.common[project.ctaKey]}{" "}<span class="sr-only">{project.title}</span>
+    </Button>
+  </div>
+</article>

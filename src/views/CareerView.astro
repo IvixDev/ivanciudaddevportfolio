@@ -1,34 +1,43 @@
 ---
-import { seoMapper } from "../helpers/seo.helper";
-import { buildProfilePageSchema } from "../helpers/schema.helper";
-import { useTranslations } from "../i18n/utils";
 import Layout from "../layouts/Layout.astro";
-import CareerStepper from "../components/CareerStepper.astro";
+import CareerIntro from "../components/career/CareerIntro.astro";
+import CareerSection from "../components/career/CareerSection.astro";
+import CvCta from "../components/career/CvCta.astro";
+import EducationList from "../components/career/EducationList.astro";
+import ExperienceTimeline from "../components/career/ExperienceTimeline.astro";
+import StackGroups from "../components/career/StackGroups.astro";
+import { seoMapper } from "../helpers/seo.helper";
+import { buildBreadcrumbSchema, buildProfilePageSchema } from "../helpers/schema.helper";
+import { getLang, getMessages, useTranslations } from "../i18n/utils";
 
 const lang = Astro.currentLocale;
 const t = useTranslations(lang);
-const pageData = t("career_page") as {
-  title: string;
-  description: string;
-  url: string;
-  image_url: string;
-  image_alt: string;
-};
-const title = pageData.title;
-const description = pageData.description;
-const url = pageData.url;
-const image = pageData.image_url;
+const m = getMessages(lang).career;
 
-const infoSeo = seoMapper(title, description, url, image, pageData.image_alt);
+const infoSeo = seoMapper(t("career.title"), t("career.description"), t("career.url"), t("career.image_url"), t("career.image_alt"), undefined, getLang(lang));
 
-const profilePageSchema = buildProfilePageSchema(t, "career_page");
+const schemas = [buildProfilePageSchema(t, "career"), buildBreadcrumbSchema(t, "career")];
 ---
 
 <Layout infoSeo={infoSeo}>
-  <script
-    is:inline
-    type="application/ld+json"
-    set:html={JSON.stringify(profilePageSchema)}
-  />
-  <CareerStepper />
+  {
+    schemas.map((schema) => (
+      <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />
+    ))
+  }
+  <div
+    class="mx-auto flex w-full max-w-(--container-content) flex-col gap-14 px-4 pt-8 pb-14 tablet:gap-20 tablet:px-8 tablet:pt-16 laptop:gap-24 laptop:pt-[clamp(56px,7vw,96px)] desktop:px-[clamp(16px,4vw,40px)]"
+  >
+    <CareerIntro />
+    <CareerSection number="01" title={m.experience_title} intro={m.experience_intro} headingId="experience-heading">
+      <ExperienceTimeline />
+    </CareerSection>
+    <CareerSection number="02" title={m.education_title} headingId="education-heading">
+      <EducationList />
+    </CareerSection>
+    <CareerSection number="03" title={m.stack_title} intro={m.stack_intro} headingId="stack-heading">
+      <StackGroups />
+    </CareerSection>
+    <CvCta />
+  </div>
 </Layout>

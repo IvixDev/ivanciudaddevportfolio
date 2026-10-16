@@ -1,0 +1,59 @@
+---
+import HomeSection from "./HomeSection.astro";
+import Button from "../ui/Button.astro";
+import GradientText from "../ui/GradientText.astro";
+import Logo from "../ui/Logo.astro";
+import { socialMediaLinks } from "../../content/layout.consts";
+import { getMessages } from "../../i18n/utils";
+
+const m = getMessages(Astro.currentLocale);
+const h = m.home;
+
+const linkedin = socialMediaLinks.find((link) => link.name === "linkedin")?.href;
+const github = socialMediaLinks.find((link) => link.name === "github")?.href;
+---
+
+<HomeSection id="contacto" headingId="contacto-titulo">
+  <div
+    class="reveal relative flex flex-col gap-[18px] overflow-hidden rounded-[28px] border border-line bg-surface px-[22px] py-7 tablet:gap-6 tablet:rounded-block tablet:p-12 laptop:flex-row laptop:items-end laptop:justify-between laptop:gap-8 laptop:p-[clamp(32px,6vw,80px)]"
+  >
+    <Logo
+      class="animate-float absolute -top-8 -right-6 size-40 text-line-subtle tablet:-top-10 tablet:-right-8 tablet:size-[220px]"
+    />
+    <div class="relative flex flex-col gap-4 laptop:flex-[1_1_520px]">
+      <h2
+        id="contacto-titulo"
+        class="font-display text-[clamp(32px,10.3vw,40px)] leading-none font-extrabold tracking-[-0.035em] text-fg tablet:text-[60px] laptop:text-[clamp(40px,5.5vw,78px)]"
+      >
+        {h.contact_title_before}<GradientText>{h.contact_title_highlight}</GradientText>{h.contact_title_after}
+      </h2>
+      <p class="max-w-[520px] text-base text-muted tablet:text-[19px]">
+        <span class="tablet:hidden">{h.contact_text_short}</span>
+        <span class="hidden tablet:inline">{h.contact_text}</span>
+      </p>
+    </div>
+    <div class="relative grid grid-cols-2 gap-3 tablet:grid-cols-4 laptop:min-w-[260px] laptop:grid-cols-2">
+      <Button
+        href={`mailto:${m.common.email_address}`}
+        arrow
+        class="col-span-2 justify-center laptop:justify-between"
+      >
+        {m.common.write_me}
+      </Button>
+      {
+        linkedin && (
+          <Button href={linkedin} variant="secondary" external class="justify-center">
+            {m.footer.linkedin}
+          </Button>
+        )
+      }
+      {
+        github && (
+          <Button href={github} variant="secondary" external class="justify-center">
+            {m.footer.github}
+          </Button>
+        )
+      }
+    </div>
+  </div>
+</HomeSection>

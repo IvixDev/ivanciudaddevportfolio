@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Proyectos — Iván Ciudad (escritorio)</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&amp;family=Onest:wght@400..700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0;background:#0B1120}
+a{color:#E8ECF4;text-decoration:none}a:hover{color:#FFFFFF}
+@keyframes up{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+@keyframes drop{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.up{animation:up .9s cubic-bezier(.2,.7,.2,1) both}
+.logo rect{animation:drop .5s cubic-bezier(.2,.7,.2,1) both}
+.navlink{transition:color .2s,background-color .2s}.navlink:hover{background:#121A2B;color:#FFFFFF}
+.chip{transition:background-color .2s,color .2s,border-color .2s}.chip:hover{border-color:#34406A}
+.lift{transition:transform .35s cubic-bezier(.2,.7,.2,1),border-color .35s,box-shadow .35s}
+.lift:hover{transform:translateY(-6px);border-color:#34406A;box-shadow:0 24px 48px -24px rgba(167,139,250,.45)}
+.lift .zoom{transition:transform .7s cubic-bezier(.2,.7,.2,1)}.lift:hover .zoom{transform:scale(1.05)}
+.arrow{transition:transform .25s}a:hover .arrow{transform:translateX(4px)}
+@supports (animation-timeline: view()){.reveal{animation:up linear both;animation-timeline:view();animation-range:entry 0% entry 100%}}
+:focus-visible{outline:2px solid #22D3EE;outline-offset:3px}
+.skip{position:absolute;left:16px;top:-80px;z-index:20;padding:12px 18px;border-radius:999px;background:#E8ECF4;color:#0B1120;font-weight:600}.skip:focus{top:12px}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+</style>
+</helmet>
+<div style="width: 100%; min-height: 100vh; background: #0B1120; color: #E8ECF4; font-family: 'Onest', system-ui, sans-serif; font-size: 17px; line-height: 1.6; overflow-x: hidden; display: flex; flex-direction: column; position: relative">
+<a class="skip" href="#contenido">Saltar al contenido</a>
+
+<header style="position: sticky; top: 0; z-index: 10; background: #0B1120; border-bottom: 1px solid #1A2338">
+<nav aria-label="Principal" style="max-width: 1200px; margin: 0 auto; padding: 16px clamp(16px, 4vw, 40px); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<a href="Main.dc.html" style="display: flex; align-items: center; gap: 12px; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 19px">
+<svg class="logo" width="34" height="34" viewBox="0 0 32 32" aria-hidden="true" fill="currentColor" style="color: {{brand}}"><rect x="2" y="2" width="12.7" height="5.6" style="animation-delay: .05s"></rect><rect x="9.6" y="2" width="5.1" height="28" style="animation-delay: .12s"></rect><rect x="2" y="24.4" width="12.7" height="5.6" style="animation-delay: .19s"></rect><rect x="17.3" y="2" width="12.7" height="5.6" style="animation-delay: .26s"></rect><rect x="17.3" y="2" width="5.1" height="9.8" style="animation-delay: .33s"></rect><rect x="17.3" y="13.2" width="12.7" height="5.6" style="animation-delay: .40s"></rect><rect x="17.3" y="20.2" width="5.1" height="9.8" style="animation-delay: .47s"></rect><rect x="17.3" y="24.4" width="12.7" height="5.6" style="animation-delay: .54s"></rect></svg>
+Iván Ciudad
+</a>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 4px; font-size: 15px">
+<a class="navlink" href="Main.dc.html" style="padding: 10px 14px; border-radius: 999px; color: #A3AEC2">Inicio</a>
+<a class="navlink" href="Proyectos.dc.html" aria-current="page" style="padding: 10px 14px; border-radius: 999px; background: #121A2B; color: #E8ECF4">Proyectos</a>
+<a class="navlink" href="Trayectoria.dc.html" style="padding: 10px 14px; border-radius: 999px; color: #A3AEC2">Trayectoria</a>
+<a class="navlink" href="SobreMi.dc.html" style="padding: 10px 14px; border-radius: 999px; color: #A3AEC2">Sobre mí</a>
+</div>
+<div style="display: flex; align-items: center; gap: 12px">
+<div role="group" aria-label="Idioma" style="display: flex; border: 1px solid #1F2A40; border-radius: 999px; padding: 3px; font-family: 'JetBrains Mono', monospace; font-size: 12px">
+<a href="/proyectos" aria-current="true" style="padding: 8px 10px; border-radius: 999px; background: #1A2338; color: #E8ECF4">ES</a>
+<a href="/en/projects" style="padding: 8px 10px; border-radius: 999px; color: #A3AEC2">EN</a>
+</div>
+<a href="Main.dc.html" style="padding: 11px 18px; border-radius: 999px; background: {{accent}}; color: #0B1120; font-weight: 600; font-size: 15px">Contacto</a>
+</div>
+</nav>
+</header>
+
+<main id="contenido" tabindex="-1" style="flex: 1">
+<section style="max-width: 1200px; margin: 0 auto; padding: clamp(56px, 7vw, 96px) clamp(16px, 4vw, 40px) 48px; display: flex; flex-direction: column; gap: 24px">
+<span class="up" aria-live="polite" style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: {{brand}}">~/proyectos · {{count}} resultados</span>
+<h1 class="up" style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(46px, 6.4vw, 90px); line-height: 0.98; letter-spacing: -0.035em; animation-delay: .1s">Cosas que he <span style="background: linear-gradient(90deg, {{brand}}, {{accent}}); -webkit-background-clip: text; background-clip: text; color: transparent">construido</span>.</h1>
+<p class="up" style="margin: 0; max-width: 620px; font-size: clamp(17px, 1.5vw, 20px); color: #A3AEC2; animation-delay: .2s">Webs, aplicaciones y experimentos. Algunos nacen para aprender una tecnología; otros, porque los necesitaba en mi día a día.</p>
+<div class="up" role="group" aria-label="Filtrar proyectos" style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; animation-delay: .3s">
+<sc-for list="{{filters}}" as="f" hint-placeholder-count="4">
+<button class="chip" type="button" aria-pressed="{{f.pressed}}" onClick="{{f.pick}}" style="{{f.style}}">{{f.label}}</button>
+</sc-for>
+</div>
+</section>
+
+<section aria-label="Lista de proyectos" style="max-width: 1200px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 40px); display: flex; flex-direction: column; gap: 28px">
+<sc-for list="{{projects}}" as="p" hint-placeholder-count="4">
+<article class="lift reveal" style="display: flex; flex-wrap: wrap; flex-direction: {{p.dir}}; border-radius: 28px; background: #121A2B; border: 1px solid #1A2338; overflow: hidden">
+<div style="flex: 1 1 520px; min-width: 0; overflow: hidden">
+<img class="zoom" src="{{p.img}}" alt="{{p.alt}}" style="width: 100%; height: 100%; aspect-ratio: 16 / 10; object-fit: cover; display: block; background: #1A2338">
+</div>
+<div style="flex: 1 1 380px; padding: clamp(24px, 3vw, 44px); display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; font-family: 'JetBrains Mono', monospace; font-size: 13px">
+<span style="color: {{brand}}">{{p.num}}</span>
+<span style="padding: 5px 10px; border-radius: 999px; border: 1px solid #2A3654; color: #A3AEC2">{{p.cat}}</span>
+</div>
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 36px; line-height: 1.1; letter-spacing: -0.02em">{{p.title}}</h2>
+<p style="margin: 0; color: #A3AEC2">{{p.desc}}</p>
+<ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 6px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #A3AEC2">
+<sc-for list="{{p.tags}}" as="t" hint-placeholder-count="3"><li style="padding: 5px 10px; border-radius: 8px; border: 1px solid #1F2A40">{{t}}</li></sc-for>
+</ul>
+<a href="{{p.href}}" style="margin-top: auto; align-self: flex-start; display: flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 999px; background: #E8ECF4; color: #0B1120; font-weight: 600; font-size: 15px">{{p.cta}} <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 18l6-6M13 6l6 6"></path></svg></a>
+</div>
+</article>
+</sc-for>
+</section>
+
+<section aria-labelledby="idea-h" style="max-width: 1200px; margin: 0 auto; padding: 96px clamp(16px, 4vw, 40px) 0">
+<div class="reveal" style="border-radius: 28px; border: 1px dashed #2A3654; padding: clamp(28px, 4vw, 48px); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<h2 id="idea-h" style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 32px; letter-spacing: -0.02em">¿Se te ocurre algo que construir?</h2>
+<p style="margin: 0; color: #A3AEC2">Siempre tengo hueco para una buena idea o una charla sobre código.</p>
+</div>
+<div style="display: flex; gap: 12px">
+<a href="mailto:ivanciudad98@gmail.com" style="padding: 14px 22px; border-radius: 999px; background: {{accent}}; color: #0B1120; font-weight: 700">Escríbeme</a>
+<a href="https://github.com/Srivix" style="padding: 13px 22px; border-radius: 999px; border: 1px solid #2A3654; font-weight: 600">Ver mi GitHub</a>
+</div>
+</div>
+</section>
+</main>
+
+<footer style="width: 100%; max-width: 1200px; box-sizing: border-box; margin: 0 auto; padding: 56px clamp(16px, 4vw, 40px) 40px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; color: #8A97B0; font-size: 14px">
+<span style="display: flex; align-items: center; gap: 10px"><svg width="20" height="20" viewBox="0 0 32 32" aria-hidden="true" fill="currentColor" style="color: {{brand}}"><rect x="2" y="2" width="12.7" height="5.6"></rect><rect x="9.6" y="2" width="5.1" height="28"></rect><rect x="2" y="24.4" width="12.7" height="5.6"></rect><rect x="17.3" y="2" width="12.7" height="5.6"></rect><rect x="17.3" y="2" width="5.1" height="9.8"></rect><rect x="17.3" y="13.2" width="12.7" height="5.6"></rect><rect x="17.3" y="20.2" width="5.1" height="9.8"></rect><rect x="17.3" y="24.4" width="12.7" height="5.6"></rect></svg>© 2026 Iván Ciudad Espinar · Hecho con Astro y Tailwind</span>
+<div style="display: flex; gap: 20px">
+<a href="https://github.com/Srivix" style="color: #8A97B0">GitHub</a>
+<a href="https://www.linkedin.com/in/iv%C3%A1n-ciudad-espinar-2195191b2/" style="color: #8A97B0">LinkedIn</a>
+<a href="mailto:ivanciudad98@gmail.com" style="color: #8A97B0">Email</a>
+</div>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#A78BFA","options":["#A78BFA","#C084FC","#818CF8","#60A5FA"]},"brand":{"editor":"color","default":"#22D3EE","options":["#22D3EE","#38BDF8","#67E8F9"]},"$preview":{"width":1440,"height":3300}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { filter: 'all' };
+  }
+  renderVals() {
+    const accent = this.props.accent ?? '#A78BFA';
+    const brand = this.props.brand ?? '#22D3EE';
+    const all = [
+      { id: 'eshop', cat: 'Experimento', title: 'eShop Cache Lab', desc: 'Laboratorio en Next.js para comparar SSR, ISR, SSG y Cache Components y medir su impacto en SEO y accesibilidad. Montado como monorepo con Nx.', img: '/_blob/cfa9387b7791b5b806161631008e841b', alt: 'Captura de eShop Cache Lab', tags: ['Next.js', 'TypeScript', 'Nx', 'SSR · ISR · SSG', 'Cache Components', 'SEO', 'A11y'], href: '/proyectos/public-pages', cta: 'Ver proyecto' },
+      { id: 'gym', cat: 'App', title: 'GymTracker', desc: 'PWA para registrar kilos, repeticiones y RIR de cada sesión y ver tu progreso en gráficas. Se instala en el móvil como una app nativa. Hecha con IA como copiloto.', img: '/_blob/06efd44e48bc0f38e87f6fb76325a85a', alt: 'Captura de GymTracker', tags: ['React', 'TypeScript', 'Supabase', 'OAuth2', 'PWA'], href: 'https://gym-app-gamma-hazel.vercel.app/', cta: 'Abrir app' },
+      { id: 'pokemon', cat: 'App', title: 'Tabla de Tipos Pokémon', desc: 'Consulta fortalezas y debilidades entre tipos arrastrando y soltando. Renderizado en servidor sobre la PokeAPI.', img: '/_blob/9060cc44794b614199594c39e0ce7ebc', alt: 'Captura de la Tabla de Tipos Pokémon', tags: ['Next.js', 'TypeScript', 'MUI', 'Drag & Drop', 'SSR'], href: '/proyectos/tabla-pokemon', cta: 'Ver proyecto' },
+      { id: 'buscaminas', cat: 'Juego', title: 'Buscaminas', desc: 'Versión moderna del clásico en TypeScript. El reto técnico: abrir celdas en cascada con un algoritmo recursivo eficiente.', img: '/_blob/d65e58cd059addbf2718857d258880e1', alt: 'Captura del Buscaminas', tags: ['TypeScript', 'Recursividad'], href: '/proyectos/buscaminas', cta: 'Jugar' }
+    ];
+    const defs = [['all', 'Todos'], ['App', 'Apps'], ['Experimento', 'Experimentos'], ['Juego', 'Juegos']];
+    const filters = defs.map(([id, label]) => {
+      const on = this.state.filter === id;
+      return {
+        label,
+        pressed: on ? 'true' : 'false',
+        pick: () => this.setState({ filter: id }),
+        style: 'min-height: 44px; padding: 10px 18px; border-radius: 999px; font: 500 15px Onest, system-ui, sans-serif; cursor: pointer; border: 1px solid ' + (on ? accent : '#1F2A40') + '; background: ' + (on ? accent : '#121A2B') + '; color: ' + (on ? '#0B1120' : '#A3AEC2')
+      };
+    });
+    const list = all.filter((p) => this.state.filter === 'all' || p.cat === this.state.filter);
+    const projects = list.map((p, i) => ({ ...p, num: String(i + 1).padStart(2, '0'), dir: i % 2 === 0 ? 'row' : 'row-reverse' }));
+    return { accent, brand, filters, projects, count: projects.length };
+  }
+}
+</script>
+</body>
+</html>

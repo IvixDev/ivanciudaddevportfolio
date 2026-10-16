@@ -1,0 +1,49 @@
+---
+import { IconCode, IconCube, IconFlask } from "@tabler/icons-react";
+import HomeSection from "./HomeSection.astro";
+import SectionHeader from "../ui/SectionHeader.astro";
+import NowCard from "./NowCard.astro";
+import { getMessages } from "../../i18n/utils";
+
+const m = getMessages(Astro.currentLocale);
+const now = m.home.now;
+---
+
+<HomeSection id="ahora" headingId="ahora-titulo">
+  <SectionHeader eyebrow={m.home.now_eyebrow} title={m.home.now_title} headingId="ahora-titulo" />
+
+  <ul class="grid gap-4 tablet:grid-cols-2 laptop:grid-cols-3 laptop:gap-5">
+    <li class="reveal tablet:max-laptop:col-span-2">
+      <NowCard
+        icon={IconCode}
+        tone="brand"
+        label={now.work_label}
+        text={now.work_text}
+        linkLabel={now.work_link}
+        href={m.nav.career_url}
+        wide
+      />
+    </li>
+    <li class="reveal">
+      <NowCard
+        icon={IconFlask}
+        tone="accent"
+        label={now.lab_label}
+        text={now.lab_text}
+        textShort={now.lab_text_short}
+        linkLabel={now.lab_link}
+        href={m.nav.projects_url}
+      />
+    </li>
+    <li class="reveal">
+      <NowCard
+        icon={IconCube}
+        tone="brand"
+        label={now.life_label}
+        text={now.life_text}
+        linkLabel={now.life_link}
+        href={m.nav.about_url}
+      />
+    </li>
+  </ul>
+</HomeSection>

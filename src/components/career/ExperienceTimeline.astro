@@ -1,0 +1,39 @@
+---
+import Tag from "../ui/Tag.astro";
+import { getMessages } from "../../i18n/utils";
+
+const m = getMessages(Astro.currentLocale);
+const { experiences } = m.career;
+---
+
+<ol
+  class="ml-[7px] flex min-w-0 flex-col gap-7 border-l-2 border-line pl-[22px] tablet:ml-0 tablet:gap-[18px] tablet:pl-8 laptop:gap-5"
+>
+  {
+    experiences.map((experience, index) => (
+      <li class="lift max-tablet:hover:transform-none! max-tablet:hover:shadow-none! reveal relative flex flex-col gap-1.5 rounded-[22px] tablet:gap-2 tablet:border tablet:border-line-subtle tablet:bg-surface tablet:p-6 laptop:gap-2.5 laptop:rounded-card laptop:p-7">
+        <span
+          aria-hidden="true"
+          class={[
+            "absolute -left-[31px] top-[3px] size-3.5 rounded-full tablet:-left-[42px] tablet:top-[30px] tablet:size-4 laptop:top-[34px]",
+            index === 0 ? "animate-pulse-ring bg-brand" : "border-2 border-line-hover bg-ink",
+          ].join(" ")}
+        />
+        <p class="flex flex-wrap items-center justify-start gap-x-2 font-mono text-xs tablet:justify-between tablet:text-[13px]">
+          <span class={index === 0 ? "text-brand" : "text-subtle"}>{experience.date}</span>
+          <span class="text-subtle tablet:hidden" aria-hidden="true">·</span>
+          <span class="text-subtle">{experience.company}</span>
+        </p>
+        <h3 class="text-[19px] leading-[1.3] font-semibold text-fg tablet:text-[21px] laptop:text-[22px]">
+          {experience.title}
+        </h3>
+        <p class="text-[15px] text-muted tablet:text-base">{experience.description}</p>
+        <ul aria-label={m.a11y.technologies} class="mt-0.5 flex flex-wrap gap-1.5 tablet:mt-1">
+          {experience.tags.map((tag) => (
+            <Tag as="li">{tag}</Tag>
+          ))}
+        </ul>
+      </li>
+    ))
+  }
+</ol>

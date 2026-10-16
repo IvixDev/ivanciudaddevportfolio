@@ -8,6 +8,7 @@ interface OpenGraph {
   optional?: {
     description?: string;
     locale?: string;
+    localeAlternate?: string[];
     siteName?: string;
   };
   image?: {
@@ -22,11 +23,9 @@ interface Twitter {
   titleType?: string;
   title: string;
   description: string;
-  creator: string;
   image: string;
   imageAlt?: string;
   card?: "summary" | "summary_large_image" | "app" | "player";
-  site?: string;
 }
 
 interface Extend {

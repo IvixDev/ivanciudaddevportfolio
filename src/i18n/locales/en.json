@@ -1,11 +1,16 @@
 {
-    "header": {
-        "home": "Home",
-        "projects": "My Projects",
-        "career": "My Career",
-        "about": "About Me",
-        "menu_aria": "Open navigation menu",
-        "email": "Click to send me an email. I will reply as fast as I can!"
+    "a11y": {
+        "skip_to_content": "Skip to content",
+        "main_nav": "Main",
+        "footer_nav": "Pages",
+        "language_group": "Language",
+        "switch_language": "Switch to Spanish",
+        "menu_open": "Open navigation menu",
+        "menu_close": "Close navigation menu",
+        "tech_marquee": "Technologies I use",
+        "technologies": "Technologies",
+        "new_tab": "(opens in a new tab)",
+        "home_link": "Iván Ciudad, home page"
     },
     "nav": {
         "home_url": "/en",
@@ -13,218 +18,473 @@
         "career_url": "/en/career",
         "about_url": "/en/about-me"
     },
-    "footer": {
-        "site_map": "Site Map",
-        "contact": "Contact",
+    "header": {
+        "home": "Home",
         "projects": "Projects",
         "career": "Career",
-        "about": "About Me",
-        "made_with": "Made with",
-        "and_astro": "and Astro",
-        "software_dev": "Software Developer & Telematics Engineer."
+        "about": "About me",
+        "contact": "Contact"
+    },
+    "footer": {
+        "copyright": "© {year} Iván Ciudad Espinar",
+        "made_with": "Made with Astro and Tailwind",
+        "github": "GitHub",
+        "linkedin": "LinkedIn",
+        "email": "Email",
+        "source_code": "Source code of this site"
+    },
+    "common": {
+        "view_all": "View all",
+        "view_all_projects": "View all projects",
+        "view_project": "View project",
+        "play": "Play",
+        "open_app": "Open app",
+        "download_cv": "Download CV",
+        "download_cv_pdf": "Download CV (PDF, in Spanish)",
+        "write_me": "Email me",
+        "know_me": "About me",
+        "know_me_better": "Get to know me",
+        "view_linkedin": "View on LinkedIn",
+        "view_github": "See my GitHub",
+        "view_projects": "View projects",
+        "featured": "Featured",
+        "email_address": "ivanciudad98@gmail.com",
+        "cv_language_note": "(in Spanish)"
     },
     "home": {
         "title": "Iván Ciudad Espinar - Software Developer & Telematics Engineer",
-        "description": "Welcome to the website of Iván Ciudad Espinar, Software Developer & Telematics Engineer. Discover my projects, articles, hobbies and more about my life and career in software development.",
-        "software_developer": "Software Developer &",
-        "telematics_engineer": "Telematics Engineer",
-        "welcome_subtitle": "Welcome to my corner of the internet, where I code ideas and build digital experiences.",
-        "about_web": "About this website",
-        "what_find": "What will you find here?",
-        "what_find_desc": "This website is my personal portfolio and testing laboratory. A space where I demonstrate my skills as a Software Developer, apply SEO strategies, and share who I am beyond code.",
-        "my_projects": "My Projects",
-        "my_projects_desc": "Discover what I've built. Websites, applications, and experiments with the latest technologies.",
-        "view_portfolio": "View Portfolio",
-        "career": "Career",
-        "career_desc": "My professional path: companies, roles, and experience in telematics engineering and development.",
-        "view_cv": "View CV",
-        "about_me": "About Me",
-        "about_me_desc": "A short biography, my interests (video games, series, movies, etc.) and who I am behind the code.",
-        "read_more": "Read more",
-        "soy_ivan": "I am ",
+        "description": "Portfolio of Iván Ciudad Espinar, Software Developer and Telematics Engineer. Web projects, AI experiments, professional career and what I do away from the keyboard.",
         "image_url": "https://www.ivanciudad.com/trayectoria-profesional.webp",
         "image_alt": "Iván Ciudad Espinar in a suit, Software Developer and Telematics Engineer",
-        "projects_url": "/en/projects",
-        "career_url": "/en/career",
-        "about_url": "/en/about-me",
-        "projects_img_alt": "Screenshot of the Minesweeper game, web development project by Iván Ciudad Espinar",
-        "career_img_alt": "Iván Ciudad Espinar in a suit, professional career as a Software Developer",
-        "about_img_alt": "Iván Ciudad Espinar posing in Japan with the Golden Kinkaku-ji Temple in the background"
+        "eyebrow": "Software Developer · Telematics Engineer",
+        "eyebrow_short": "Software Developer",
+        "hero_title_before": "Hi, I'm Iván. I build ",
+        "hero_title_highlight": "software",
+        "hero_title_after": " for the web.",
+        "hero_subtitle": "This is my corner of the internet: where I code ideas, show what I build and talk about what I enjoy once the editor is closed.",
+        "hero_subtitle_short": "My corner of the internet: projects, experiments and what I enjoy once the editor is closed.",
+        "portrait_alt": "Portrait of Iván Ciudad Espinar",
+        "marquee_ai": "Applied AI",
+        "terminal": {
+            "label": "Introduction in terminal format",
+            "cmd_whoami": "whoami",
+            "out_whoami": "iván ciudad — software developer",
+            "cmd_hobbies": "hobbies --list",
+            "out_hobbies": "d&d · lego · hardware · gym"
+        },
+        "projects_eyebrow": "01 — Projects",
+        "projects_title": "Things I've built",
+        "now_eyebrow": "02 — Right now",
+        "now_title": "What I'm up to these days",
+        "now": {
+            "work_label": "Working on",
+            "work_text": "MasOrange's eShop, with Next.js, React and TypeScript.",
+            "work_link": "My career",
+            "lab_label": "Experimenting with",
+            "lab_text": "Development with AI agents (Claude Code, Opencode, Orca) and caching strategies in Next.js.",
+            "lab_text_short": "Development with AI agents (Claude Code, Orca) and caching in Next.js.",
+            "lab_link": "See experiments",
+            "life_label": "Away from code",
+            "life_text": "D&D campaigns, LEGO sets and PCs built from parts.",
+            "life_link": "About me"
+        },
+        "about_eyebrow": "03 — About me",
+        "about_title": "Dice, LEGO and hand-built PCs",
+        "about_text": "I started out coding a video game in high school and a grade calculator. Today video games are how I unwind, along with tabletop role-playing, the gym and LEGO sets.",
+        "about_text_short": "Video games to unwind, role-playing sessions, the gym and LEGO sets.",
+        "about_photos": {
+            "japan_caption": "Kyoto, Japan",
+            "japan_alt": "Iván in Japan in front of the Kinkaku-ji temple",
+            "dice_caption": "Dungeons & Dragons",
+            "dice_alt": "Bowl of role-playing dice",
+            "lego_caption": "LEGO · Star Wars",
+            "lego_alt": "Star Wars LEGO figures"
+        },
+        "contact_title_before": "Shall we build ",
+        "contact_title_highlight": "something together",
+        "contact_title_after": "?",
+        "contact_text": "Projects, ideas or a chat about software development. I reply as fast as I can.",
+        "contact_text_short": "Projects, ideas or a chat about software development.",
+        "contact_linkedin_mobile": "Connect on LinkedIn"
     },
     "projects": {
         "title": "Iván Ciudad Espinar - Software Development Projects",
-        "description": "Explore the projects of Iván Ciudad Espinar, Software Developer & Telematics Engineer. Discover my work in software development, web applications, and more.",
-        "page_heading": "My Projects",
-        "buscaminas_desc": "Modern version of the classic Minesweeper developed in TypeScript. A technical challenge that implements efficient recursive algorithms for cascading cell opening.",
-        "pokemon_desc": "Check weaknesses and strengths of Pokemon types with Drag & Drop and SSR using PokeAPI.",
-        "eshop_desc": "Next.js laboratory to explore SSR, ISR, SSG and Cache Components with a focus on SEO and accessibility.",
-        "buscaminas_title": "Minesweeper",
-        "buscaminas_url": "/en/projects/minesweeper",
-        "pokemon_title": "Pokémon Type Chart",
-        "pokemon_url": "/en/projects/pokemon-types",
-        "eshop_title": "eShop Cache Lab",
-        "eshop_url": "/en/projects/public-pages",
-        "cta_text": "View project",
-        "recursive_tech": "Recursive",
+        "description": "Projects by Iván Ciudad Espinar, Software Developer: web applications, Next.js experiments and games built with TypeScript.",
+        "url": "https://www.ivanciudad.com/en/projects",
         "image_url": "https://www.ivanciudad.com/proyectos-buscaminas.webp",
         "image_alt": "Screenshot of the Minesweeper game, web development project by Iván Ciudad Espinar",
-        "pokemon_img_alt": "Screenshot of the Pokémon Type Chart tool with Drag and Drop created by Iván Ciudad Espinar",
-        "eshop_img_alt": "Screenshot of the eShop Cache Lab project by Iván Ciudad Espinar to test Next.js caching methods",
-        "gym_title": "GymTracker",
-        "gym_desc": "Vibecoded PWA to track your workouts. Log weight, reps, and RIR for each session, and visualize your progress with interactive charts. Install it on your phone as a native app.",
-        "gym_url": "https://gym-app-gamma-hazel.vercel.app/",
-        "gym_img_alt": "Screenshot of the GymTracker application, a PWA for workout tracking created by Iván Ciudad Espinar"
-    },
-    "about_page": {
-        "title": "Iván Ciudad Espinar - About Me",
-        "description": "Here you will find information about my life, my tastes and my hobbies. Discover who I am, where I come from and my passions for video games, movies and series.",
-        "url": "https://www.ivanciudad.com/en/about-me",
-        "image_url": "https://www.ivanciudad.com/ivan-japon.webp",
-        "image_alt": "Iván Ciudad Espinar posing in Japan with the Golden Kinkaku-ji Temple in the background"
-    },
-    "about": {
-        "section1_title1": "I am",
-        "section1_title2": "Software Developer & Telematics Engineer",
-        "p1_1": "In the workplace",
-        "p1_2": ", I consider myself a highly communicative and proactive person. I don't hesitate to take leadership when the situation requires it, and I thoroughly enjoy sharing knowledge and helping my colleagues grow, always fostering a positive and collaborative work environment.",
-        "p1_3": "My origin as a programmer",
-        "p1_4": " goes back to high school, when in computer class we were challenged to create a small video game. That experience ignited a spark that led me to develop my first real application: a grade calculator to manage my studies. Verifying the practical utility of code was what finally hooked me.",
-        "section2_title": "Passions and Disconnection",
-        "p2_1": "Video games",
-        "p2_2": "",
-        "p2_3": " are one of my great passions: ",
-        "p2_4": "... I consciously decided not to work professionally in their development to keep that world as my place of disconnection.",
-        "p2_5": "My favorite way to disconnect",
-        "p2_6": " is gathering with friends around a table: from ",
-        "p2_7": "board game",
-        "p2_8": " sessions to long ",
-        "p2_9": "Dungeons & Dragons",
-        "p2_10": " campaigns. And for balance, walking and the gym are my fundamental pillars.",
-        "p2_11": "On the couch, I'm an unconditional fan of ",
-        "p2_12": " and ",
-        "p2_13": ". My favorites list includes ",
-        "p2_14": ", without forgetting the Christmas marathon of ",
-        "p2_15": ".",
-        "section3_title": "Hardware and Building",
-        "p3_1": "That curiosity for how things work extends to ",
-        "p3_2": "hardware",
-        "p3_3": ". I love building my own computers from parts, cleaning them, measuring voltages, and squeezing their performance through overclocking.",
-        "p3_4": "Continuing with that \"building\" facet, my favorite hobby is putting together ",
-        "p3_5": " sets; a hobby that, although expensive, I am so passionate about that it once made me seriously consider studying architecture because of my love for structures and design.",
-        "section4_title2": " and Creativity",
-        "section4_p1": "I also enjoy letting my imagination run wild building ",
-        "section4_p2": " sets such as the Star Wars ones.",
-        "img_ivan_japon_alt": "Iván Ciudad Espinar posing in Japan with the Golden Kinkaku-ji Temple in the background",
-        "img_board_games_alt": "Bowl of role-playing dice and board games, hobby of Iván Ciudad Espinar",
-        "img_legos_alt": "LEGO figures of Grogu, R2-D2 and C-3PO from Star Wars, collection of Iván Ciudad Espinar"
-    },
-    "career_page": {
-        "title": "Iván Ciudad Espinar - My Professional Career and CV",
-        "description": "Explore the professional career of Iván Ciudad Espinar, Software Developer & Telematics Engineer. Check out my CV and discover my experiences, skills, and achievements in software development.",
-        "url": "https://www.ivanciudad.com/en/career",
-        "image_url": "https://www.ivanciudad.com/trayectoria-profesional.webp",
-        "image_alt": "Iván Ciudad Espinar in a suit, Software Developer and Telematics Engineer"
+        "eyebrow": "~/projects · {count} results",
+        "eyebrow_one": "~/projects · {count} result",
+        "heading_before": "Things I've ",
+        "heading_highlight": "built",
+        "heading_after": ".",
+        "intro": "Websites, apps and experiments. Some were born to learn a technology; others because I needed them in my day-to-day.",
+        "intro_short": "Websites, apps and experiments, to learn or to use every day.",
+        "filter_label": "Filter projects",
+        "filters": {
+            "all": "All",
+            "app": "Apps",
+            "experiment": "Experiments",
+            "game": "Games"
+        },
+        "categories": {
+            "app": "App",
+            "experiment": "Experiment",
+            "game": "Game"
+        },
+        "list_label": "Project list",
+        "items": {
+            "eshop": {
+                "title": "eShop Cache Lab",
+                "description": "A Next.js lab to compare SSR, ISR, SSG and Cache Components and measure their impact on SEO and accessibility. Set up as an Nx monorepo.",
+                "description_short": "SSR, ISR, SSG and Cache Components in Next.js, compared by their impact on SEO and accessibility.",
+                "img_alt": "Screenshot of the eShop Cache Lab project by Iván Ciudad Espinar to test Next.js caching methods",
+                "tags": [
+                    "Next.js",
+                    "TypeScript",
+                    "Nx",
+                    "SSR · ISR · SSG",
+                    "Cache Components",
+                    "SEO",
+                    "A11y"
+                ],
+                "href": "/en/projects/public-pages"
+            },
+            "gym": {
+                "title": "GymTracker",
+                "description": "A PWA to log weight, reps and RIR for every session and track your progress in charts. Installs on your phone like a native app. Built with AI as a copilot.",
+                "description_short": "Workout PWA with progress charts.",
+                "img_alt": "Screenshot of GymTracker, a workout tracking PWA created by Iván Ciudad Espinar",
+                "tags": [
+                    "React",
+                    "TypeScript",
+                    "Supabase",
+                    "OAuth2",
+                    "PWA"
+                ],
+                "href": "https://gym-app-gamma-hazel.vercel.app/"
+            },
+            "pokemon": {
+                "title": "Pokémon Type Chart",
+                "description": "Check strengths and weaknesses between types with drag and drop. Server-rendered on top of the PokeAPI.",
+                "description_short": "Drag & Drop and SSR on top of the PokeAPI.",
+                "img_alt": "Screenshot of the Pokémon Type Chart tool with Drag and Drop created by Iván Ciudad Espinar",
+                "tags": [
+                    "Next.js",
+                    "TypeScript",
+                    "MUI",
+                    "Drag & Drop",
+                    "SSR"
+                ],
+                "href": "/en/projects/pokemon-types"
+            },
+            "buscaminas": {
+                "title": "Minesweeper",
+                "description": "A modern take on the classic, written in TypeScript. The technical challenge: opening cells in cascade with an efficient recursive algorithm.",
+                "description_short": "TypeScript and recursion for cascading reveals.",
+                "img_alt": "Screenshot of the Minesweeper game, web development project by Iván Ciudad Espinar",
+                "tags": [
+                    "TypeScript",
+                    "Recursion"
+                ],
+                "href": "/en/projects/minesweeper"
+            }
+        },
+        "idea_title": "Got something worth building?",
+        "idea_text": "I always have room for a good idea or a chat about code."
     },
     "career": {
-        "title1": "My",
-        "title2": "Journey",
-        "description": "A journey through the technical challenges, projects, and training that have forged my professional profile.",
-        "page_heading": "My Professional \nCareer",
-        "download_cv": "Download CV (.pdf)",
-        "cv_link": "/IvanCiudadEspinar_CV_En.pdf",
-        "img_career_alt": "Iván Ciudad Espinar in a suit, Software Developer and Telematics Engineer",
-        "last_update": "Last update: February 2026",
+        "title": "Iván Ciudad Espinar - My Professional Career and CV",
+        "description": "Professional career of Iván Ciudad Espinar, Software Developer: experience, education, tech stack from frontend to Kubernetes and a downloadable CV.",
+        "url": "https://www.ivanciudad.com/en/career",
+        "image_url": "https://www.ivanciudad.com/trayectoria-profesional.webp",
+        "image_alt": "Iván Ciudad Espinar in a suit, Software Developer and Telematics Engineer",
+        "eyebrow": "~/career · updated {date}",
+        "eyebrow_short": "updated {date}",
+        "updated_date": "February 2026",
+        "updated_date_short": "Feb 2026",
+        "heading_before": "My ",
+        "heading_highlight": "career",
+        "heading_after": ".",
+        "intro": "A walk through the technical challenges, projects and education that have shaped me as a software developer.",
+        "intro_short": "Technical challenges, projects and education that have shaped my profile.",
+        "portrait_alt": "Iván Ciudad Espinar in a suit",
+        "cv_url": "/CV_IvanCiudadEspinar.pdf",
         "experience_title": "Experience",
+        "experience_intro": "Four years in the MasMovil and MasOrange ecosystem, from the backend to the product in production.",
+        "experiences": [
+            {
+                "id": "masorange",
+                "date": "Nov 2024 — present",
+                "company": "MasOrange",
+                "title": "Senior Frontend Developer",
+                "description": "Building the multi-brand eShop, with AI built into the team's workflow.",
+                "tags": [
+                    "Next.js",
+                    "React",
+                    "TypeScript",
+                    "Tailwind",
+                    "AI",
+                    "Claude"
+                ]
+            },
+            {
+                "id": "capgemini-multibrand",
+                "date": "Jan 2023 — Oct 2024",
+                "company": "Capgemini",
+                "title": "Software Engineer",
+                "description": "MasMovil project: multi-brand application for Euskaltel, Telecable, R, Guuk, Racctel, MasMovil, Yoigo, Lyca and Lebara.",
+                "tags": [
+                    "Next.js",
+                    "React",
+                    "TypeScript",
+                    "JIRA",
+                    "Gitflow"
+                ]
+            },
+            {
+                "id": "capgemini-yoigo",
+                "date": "Sep 2022 — Sep 2023",
+                "company": "Capgemini",
+                "title": "Software Engineer",
+                "description": "Maintenance and evolution of Yoigo.",
+                "tags": [
+                    "Angular",
+                    "TypeScript",
+                    "JIRA",
+                    "Gitflow"
+                ]
+            },
+            {
+                "id": "capgemini-internship",
+                "date": "Feb 2022 — Jul 2022",
+                "company": "Capgemini",
+                "title": "Backend Intern",
+                "description": "MasMovil project: maintaining Yoigo with microservices.",
+                "tags": [
+                    "Java",
+                    "Spring Boot",
+                    "MySQL",
+                    "Microservices"
+                ]
+            }
+        ],
         "education_title": "Education",
-        "tech_stack_title": "Tech Stack",
-        "soft_skills_title": "Soft Skills"
+        "educations": [
+            {
+                "id": "edem",
+                "date": "2023 — 2024",
+                "institution": "EDEM",
+                "title": "Master High Potential Technical Leader",
+                "description": "Leadership, team management, conflict resolution and Google Cloud."
+            },
+            {
+                "id": "uv",
+                "date": "2017 — 2021",
+                "institution": "Universitat de València",
+                "title": "Bachelor's Degree in Telematics Engineering",
+                "description": "Distinctions (Matrícula de Honor) in Programming, Web Development and Software Engineering."
+            }
+        ],
+        "stack_title": "Stack and skills",
+        "stack_intro": "From the component to the deployment: interface, performance, backend and infrastructure.",
+        "stack": [
+            {
+                "id": "frontend",
+                "name": "Frontend",
+                "description": "Web applications in production.",
+                "items": [
+                    "TypeScript",
+                    "React",
+                    "Next.js",
+                    "Angular",
+                    "Astro",
+                    "Tailwind CSS",
+                    "MUI",
+                    "PWA"
+                ]
+            },
+            {
+                "id": "performance",
+                "name": "Performance and quality",
+                "description": "Core Web Vitals, technical SEO and accessibility.",
+                "items": [
+                    "Core Web Vitals",
+                    "SSR · ISR · SSG",
+                    "Technical SEO",
+                    "Accessibility"
+                ]
+            },
+            {
+                "id": "backend",
+                "name": "Backend and data",
+                "description": "APIs and microservices.",
+                "items": [
+                    "Node.js",
+                    "Java",
+                    "Spring Boot",
+                    "Microservices",
+                    "MySQL",
+                    "Supabase"
+                ]
+            },
+            {
+                "id": "infra",
+                "name": "Cloud and infrastructure",
+                "description": "Servers, proxies and clusters on Google Cloud.",
+                "items": [
+                    "Google Cloud",
+                    "Kubernetes",
+                    "Docker",
+                    "Nginx",
+                    "Reverse proxy"
+                ]
+            },
+            {
+                "id": "delivery",
+                "name": "CI/CD and collaboration",
+                "description": "Jenkins pipelines, GitOps deployments with ArgoCD and teamwork.",
+                "items": [
+                    "Jenkins",
+                    "ArgoCD",
+                    "Git",
+                    "Gitflow",
+                    "JIRA",
+                    "Figma"
+                ]
+            },
+            {
+                "id": "ai",
+                "name": "AI-assisted development",
+                "description": "Agentic harnesses, several models, custom skills and MCP.",
+                "items": [
+                    "Claude Code",
+                    "Opencode",
+                    "OMP",
+                    "Orca",
+                    "Claude",
+                    "Gemini",
+                    "GPT",
+                    "Skills",
+                    "MCP"
+                ]
+            },
+            {
+                "id": "soft",
+                "name": "Soft skills",
+                "description": "Strengthened in EDEM's leadership master's programme.",
+                "items": [
+                    "Team leadership",
+                    "Proactive communication",
+                    "Conflict resolution",
+                    "Mentoring",
+                    "Adaptability"
+                ],
+                "wide": true
+            }
+        ],
+        "cv_cta_before": "Prefer the ",
+        "cv_cta_highlight": "PDF",
+        "cv_cta_after": "?",
+        "cv_cta_text": "All of the above on one page, ready to share. Only available in Spanish for now."
     },
-    "experiences": [
-        {
-            "date": "November 2024 - Present",
-            "title": "Senior Frontend Developer",
-            "company": "MasOrange",
-            "description": "Developer of the Multi-brand eShop.",
-            "tags": [
-                "Next.js",
-                "AI",
-                "Claude",
-                "React",
-                "TypeScript",
-                "Tailwind"
-            ]
-        },
-        {
-            "date": "January 2023 - October 2024",
-            "title": "Software Engineer • Frontend Developer",
-            "company": "Capgemini",
-            "description": "MasMovil Project: Creation of a multi-brand application for: Euskaltel, Telecable, R, Guuk, Racctel, MasMovil, Yoigo, Lyca, and Lebara.",
-            "tags": [
-                "Next.js",
-                "React",
-                "TypeScript",
-                "JIRA",
-                "Gitflow"
-            ]
-        },
-        {
-            "date": "September 2022 - September 2023",
-            "title": "Software Engineer • Frontend Developer",
-            "company": "Capgemini",
-            "description": "Maintenance of Yoigo.",
-            "tags": [
-                "Angular",
-                "TypeScript",
-                "JIRA",
-                "Gitflow"
-            ]
-        },
-        {
-            "date": "February 2022 - July 2022",
-            "title": "Internship • Backend",
-            "company": "Capgemini",
-            "description": "MasMovil Project: Yoigo Maintenance.",
-            "tags": [
-                "Java",
-                "Springboot",
-                "MySQL",
-                "Microservices"
-            ]
-        }
-    ],
-    "educations": [
-        {
-            "date": "2023 - 2024",
-            "title": "Master High Potential Technical Leader",
-            "institution": "EDEM",
-            "description": "Leadership, Team Management, Conflict Resolution, Google Cloud.",
-            "color": "amber"
-        },
-        {
-            "date": "2017 - 2021",
-            "title": "Bachelor's Degree in Telematics Engineering",
-            "institution": "University of Valencia",
-            "description": "Honors in programming, Web Development, and Software Engineering.",
-            "color": "blue"
-        }
-    ],
-    "tech_categories": {
-        "Frontend": "Frontend",
-        "Backend": "Backend",
-        "Herramientas": "Tools"
+    "about": {
+        "title": "Iván Ciudad Espinar - About Me",
+        "description": "Who Iván Ciudad Espinar is away from code: how he started programming, video games, role-playing, LEGO, hardware and his favourite series and films.",
+        "url": "https://www.ivanciudad.com/en/about-me",
+        "image_url": "https://www.ivanciudad.com/ivan-japon.webp",
+        "image_alt": "Iván Ciudad Espinar posing in Japan with the Golden Kinkaku-ji Temple in the background",
+        "eyebrow": "~/about-me",
+        "heading_before": "I'm ",
+        "heading_highlight": "Iván",
+        "heading_after": ", and this is what my CV leaves out.",
+        "origin": "**My start as a programmer** goes back to high school: in IT class we were challenged to build a small video game. That spark led me to my first real application, a grade calculator. Seeing that code could actually be useful is what got me hooked.",
+        "origin_short": "**My start as a programmer** goes back to high school, with a small class video game and my first real app: a grade calculator.",
+        "work": "**At work** I'm communicative and proactive. I take the lead when needed and enjoy sharing what I know so the team can grow.",
+        "work_short": "**At work** I'm communicative and proactive, and I enjoy helping the team grow.",
+        "japan_alt": "Iván Ciudad Espinar in Kyoto, with the golden Kinkaku-ji temple in the background",
+        "japan_caption": "Kinkaku-ji · Kyoto, Japan",
+        "passions_eyebrow": "01 — Unwinding",
+        "passions_title": "Passions and unwinding",
+        "passions_p1": "**Video games** are one of my great passions. I chose not to make them for a living so they would stay my space to unwind.",
+        "passions_p2": "My favourite way to switch off is a table full of friends: **board games** and long **Dungeons & Dragons** campaigns. To balance it out, walking and the gym.",
+        "passions_short": "**Video games** are how I unwind, which is why I chose not to make them for a living. And nothing beats a table with friends: **board games** and **D&D** campaigns.",
+        "dice_alt": "Bowl of role-playing dice and board games",
+        "build_eyebrow": "02 — Building",
+        "build_title": "Hardware and LEGO",
+        "build_p1": "My curiosity about how things work extends to **hardware**: I build my own computers from parts, clean them, measure voltages and push them with overclocking.",
+        "build_p2": "My favourite pastime is building **LEGO** sets, especially Star Wars ones. I love structures so much that I once seriously considered studying architecture.",
+        "build_short": "I build my PCs from parts and push them with overclocking. And I love **LEGO** sets: I nearly studied architecture out of my love for structures.",
+        "lego_alt": "LEGO figures of Grogu, R2-D2 and C-3PO",
+        "favorites_eyebrow": "03 — Favourites",
+        "favorites_title": "My saved list",
+        "favorites_tabs_label": "Favourite categories",
+        "favorites": [
+            {
+                "id": "games",
+                "label": "Video games",
+                "items": [
+                    {
+                        "name": "World of Warcraft"
+                    },
+                    {
+                        "name": "The Witcher 3"
+                    },
+                    {
+                        "name": "Dark Souls"
+                    },
+                    {
+                        "name": "League of Legends"
+                    }
+                ]
+            },
+            {
+                "id": "series",
+                "label": "Series",
+                "items": [
+                    {
+                        "name": "Game of Thrones"
+                    },
+                    {
+                        "name": "Breaking Bad"
+                    },
+                    {
+                        "name": "Naruto"
+                    },
+                    {
+                        "name": "Clone Wars"
+                    }
+                ]
+            },
+            {
+                "id": "films",
+                "label": "Films",
+                "items": [
+                    {
+                        "name": "Star Wars",
+                        "note": "Die-hard fan."
+                    },
+                    {
+                        "name": "The Lord of the Rings",
+                        "note": "Die-hard fan."
+                    },
+                    {
+                        "name": "Harry Potter",
+                        "note": "Mandatory Christmas marathon."
+                    }
+                ]
+            }
+        ],
+        "cta_title_before": "Shall we talk ",
+        "cta_title_highlight": "code",
+        "cta_title_after": "… or role-playing?",
+        "cta_text": "Either topic works for me."
     },
-    "softskills": [
-        "Team Leadership",
-        "Proactive Communication",
-        "Conflict Resolution",
-        "Mentoring",
-        "Adaptability"
-    ],
     "error_404": {
         "title": "Page Not Found - Iván Ciudad Espinar",
         "description": "Sorry, the page you are looking for does not exist. Return to the home page to continue exploring.",
         "url": "/en/404",
-        "image": "https://www.ivanciudad.com/fotoivan.webp",
+        "image": "https://www.ivanciudad.com/trayectoria-profesional.webp",
         "heading": "404 - Page not found",
         "body": "Sorry, the page you are looking for does not exist.",
         "return_home": "Return to home page",
@@ -234,11 +494,10 @@
         "title": "Internal Server Error - Iván Ciudad Espinar",
         "description": "Sorry, an internal server error has occurred. Please try again later.",
         "url": "/en/500",
-        "image": "https://www.ivanciudad.com/fotoivan.webp",
+        "image": "https://www.ivanciudad.com/trayectoria-profesional.webp",
         "heading": "500 - Internal Server Error",
         "body": "Sorry, an internal server error has occurred. Please try again later.",
         "return_home": "Return to home page",
-        "unknown_error": "Unknown error",
         "home_url": "/en"
     },
     "schema": {

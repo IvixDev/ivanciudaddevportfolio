@@ -1,0 +1,15 @@
+---
+// Tag de tecnología (mono).
+export interface Props {
+  as?: "span" | "li";
+  class?: string;
+}
+
+const { as: Root = "span", class: className } = Astro.props;
+---
+
+<Root
+  class:list={["rounded-tag border border-line px-2.5 py-1 font-mono text-xs text-muted", className]}
+>
+  <slot />
+</Root>

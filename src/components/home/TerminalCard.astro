@@ -1,0 +1,41 @@
+---
+import { getMessages } from "../../i18n/utils";
+
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+const { terminal } = getMessages(Astro.currentLocale).home;
+const lines = [
+  { cmd: terminal.cmd_whoami, out: terminal.out_whoami },
+  { cmd: terminal.cmd_hobbies, out: terminal.out_hobbies },
+];
+---
+
+<div
+  role="group"
+  aria-label={terminal.label}
+  class:list={[
+    "rounded-[18px] border border-line bg-ink-raised px-5 py-4 font-mono text-[13px] leading-[1.75] shadow-float tablet:rounded-card-sm tablet:py-5 tablet:text-sm laptop:text-[13px]",
+    className,
+  ]}
+>
+  <div class="mb-2.5 flex gap-1.5" aria-hidden="true">
+    <span class="size-2.5 rounded-full bg-line-strong"></span>
+    <span class="size-2.5 rounded-full bg-line-strong"></span>
+    <span class="size-2.5 rounded-full bg-line-strong"></span>
+  </div>
+  {
+    lines.map(({ cmd, out }) => (
+      <>
+        <p><span class="text-brand" aria-hidden="true">~</span> <span class="text-muted" aria-hidden="true">$</span> {cmd}</p>
+        <p class="text-muted">{out}</p>
+      </>
+    ))
+  }
+  <p aria-hidden="true">
+    <span class="text-brand">~</span> <span class="text-muted">$</span>
+    <span class="animate-blink inline-block h-[15px] w-2 bg-accent align-[-2px]"></span>
+  </p>
+</div>

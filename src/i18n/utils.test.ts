@@ -1,6 +1,9 @@
 import { describe, expect, it, vi } from 'vitest';
-import { getOppositeLocaleUrl, isNavActive, useTranslations } from './utils';
+import { format, getMessages, getOppositeLocaleUrl, isNavActive, useTranslations, type TranslationKey } from './utils';
 import es from './locales/es.json';
+
+// Claves fuera del tipo a propósito, para probar el comportamiento ante claves inválidas.
+const asKey = (key: string) => key as TranslationKey;
 
 // Drop one EN key so the fallback to the default locale can be tested
 // independently of how complete the real EN translations are.
@@ -14,7 +17,7 @@ vi.mock('./locales/en.json', async (importOriginal) => {
 describe('useTranslations', () => {
     it('returns the value for the requested locale', () => {
         const t = useTranslations('en');
-        expect(t('footer.contact')).toBe('Contact');
+        expect(t('header.contact')).toBe('Contact');
     });
 
     it('falls back to Spanish when the key is missing in the requested locale', () => {
@@ -23,19 +26,27 @@ describe('useTranslations', () => {
     });
 
     it('uses Spanish when the locale is unknown or undefined', () => {
-        expect(useTranslations('fr')('footer.contact')).toBe(es.footer.contact);
-        expect(useTranslations(undefined)('footer.contact')).toBe(es.footer.contact);
+        expect(useTranslations('fr')('header.contact')).toBe(es.header.contact);
+        expect(useTranslations(undefined)('header.contact')).toBe(es.header.contact);
     });
 
     it('returns the key itself when it does not exist in any locale', () => {
         const t = useTranslations('en');
-        expect(t('does.not.exist')).toBe('does.not.exist');
+        expect(t(asKey('does.not.exist'))).toBe('does.not.exist');
     });
 
-    it('returns whole sections for top-level keys', () => {
+    it('returns the key for sections, which are read with getMessages', () => {
         const t = useTranslations('es');
-        expect(t('nav')).toEqual(es.nav);
-        expect(Array.isArray(t('experiences'))).toBe(true);
+        expect(t(asKey('nav'))).toBe('nav');
+        expect(getMessages('es').nav).toEqual(es.nav);
+        expect(Array.isArray(getMessages('es').career.experiences)).toBe(true);
+    });
+});
+
+describe('format', () => {
+    it('replaces known placeholders and keeps unknown ones', () => {
+        expect(format('~/proyectos · {count} resultados', { count: 3 })).toBe('~/proyectos · 3 resultados');
+        expect(format('{year} {missing}', { year: 2026 })).toBe('2026 {missing}');
     });
 });
 

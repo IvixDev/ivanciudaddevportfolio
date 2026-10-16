@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Trayectoria — Iván Ciudad (escritorio)</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&amp;family=Onest:wght@400..700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0;background:#0B1120}
+a{color:#E8ECF4;text-decoration:none}a:hover{color:#FFFFFF}
+@keyframes up{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+@keyframes drop{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(34,211,238,.5)}70%{box-shadow:0 0 0 12px rgba(34,211,238,0)}100%{box-shadow:0 0 0 0 rgba(34,211,238,0)}}
+.up{animation:up .9s cubic-bezier(.2,.7,.2,1) both}
+.logo rect{animation:drop .5s cubic-bezier(.2,.7,.2,1) both}
+.pulse{animation:pulse 2s ease-out infinite}
+.navlink{transition:color .2s,background-color .2s}.navlink:hover{background:#121A2B;color:#FFFFFF}
+.lift{transition:transform .35s cubic-bezier(.2,.7,.2,1),border-color .35s}.lift:hover{transform:translateY(-4px);border-color:#34406A}
+.chip{transition:border-color .2s,color .2s}.chip:hover{border-color:#22D3EE;color:#E8ECF4}
+@supports (animation-timeline: view()){.reveal{animation:up linear both;animation-timeline:view();animation-range:entry 0% entry 100%}}
+:focus-visible{outline:2px solid #22D3EE;outline-offset:3px}
+.skip{position:absolute;left:16px;top:-80px;z-index:20;padding:12px 18px;border-radius:999px;background:#E8ECF4;color:#0B1120;font-weight:600}.skip:focus{top:12px}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+</style>
+</helmet>
+<div style="width: 100%; min-height: 100vh; background: #0B1120; color: #E8ECF4; font-family: 'Onest', system-ui, sans-serif; font-size: 17px; line-height: 1.6; overflow-x: hidden; display: flex; flex-direction: column; position: relative">
+<a class="skip" href="#contenido">Saltar al contenido</a>
+
+<header style="position: sticky; top: 0; z-index: 10; background: #0B1120; border-bottom: 1px solid #1A2338">
+<nav aria-label="Principal" style="max-width: 1200px; margin: 0 auto; padding: 16px clamp(16px, 4vw, 40px); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<a href="Main.dc.html" style="display: flex; align-items: center; gap: 12px; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 19px">
+<svg class="logo" width="34" height="34" viewBox="0 0 32 32" aria-hidden="true" fill="currentColor" style="color: {{brand}}"><rect x="2" y="2" width="12.7" height="5.6" style="animation-delay: .05s"></rect><rect x="9.6" y="2" width="5.1" height="28" style="animation-delay: .12s"></rect><rect x="2" y="24.4" width="12.7" height="5.6" style="animation-delay: .19s"></rect><rect x="17.3" y="2" width="12.7" height="5.6" style="animation-delay: .26s"></rect><rect x="17.3" y="2" width="5.1" height="9.8" style="animation-delay: .33s"></rect><rect x="17.3" y="13.2" width="12.7" height="5.6" style="animation-delay: .40s"></rect><rect x="17.3" y="20.2" width="5.1" height="9.8" style="animation-delay: .47s"></rect><rect x="17.3" y="24.4" width="12.7" height="5.6" style="animation-delay: .54s"></rect></svg>
+Iván Ciudad
+</a>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 4px; font-size: 15px">
+<a class="navlink" href="Main.dc.html" style="padding: 10px 14px; border-radius: 999px; color: #A3AEC2">Inicio</a>
+<a class="navlink" href="Proyectos.dc.html" style="padding: 10px 14px; border-radius: 999px; color: #A3AEC2">Proyectos</a>
+<a class="navlink" href="Trayectoria.dc.html" aria-current="page" style="padding: 10px 14px; border-radius: 999px; background: #121A2B; color: #E8ECF4">Trayectoria</a>
+<a class="navlink" href="SobreMi.dc.html" style="padding: 10px 14px; border-radius: 999px; color: #A3AEC2">Sobre mí</a>
+</div>
+<div style="display: flex; align-items: center; gap: 12px">
+<div role="group" aria-label="Idioma" style="display: flex; border: 1px solid #1F2A40; border-radius: 999px; padding: 3px; font-family: 'JetBrains Mono', monospace; font-size: 12px">
+<a href="/trayectoria-profesional" aria-current="true" style="padding: 8px 10px; border-radius: 999px; background: #1A2338; color: #E8ECF4">ES</a>
+<a href="/en/career" style="padding: 8px 10px; border-radius: 999px; color: #A3AEC2">EN</a>
+</div>
+<a href="Main.dc.html" style="padding: 11px 18px; border-radius: 999px; background: {{accent}}; color: #0B1120; font-weight: 600; font-size: 15px">Contacto</a>
+</div>
+</nav>
+</header>
+
+<main id="contenido" tabindex="-1" style="flex: 1; width: 100%; max-width: 1200px; box-sizing: border-box; margin: 0 auto; padding: clamp(56px, 7vw, 96px) clamp(16px, 4vw, 40px) 0; display: flex; flex-direction: column; gap: 96px">
+
+<!-- Intro -->
+<section style="display: flex; flex-wrap: wrap; align-items: flex-end; gap: 48px">
+<div style="flex: 999 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 24px">
+<span class="up" style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: {{brand}}">~/trayectoria · actualizado en febrero de 2026</span>
+<h1 class="up" style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(46px, 6.4vw, 90px); line-height: 0.98; letter-spacing: -0.035em; animation-delay: .1s">Mi <span style="background: linear-gradient(90deg, {{brand}}, {{accent}}); -webkit-background-clip: text; background-clip: text; color: transparent">trayectoria</span>.</h1>
+<p class="up" style="margin: 0; max-width: 600px; font-size: clamp(17px, 1.5vw, 20px); color: #A3AEC2; animation-delay: .2s">Un recorrido por los retos técnicos, los proyectos y la formación que han dado forma a mi perfil como desarrollador de software.</p>
+<div class="up" style="display: flex; flex-wrap: wrap; gap: 12px; animation-delay: .3s">
+<a href="/CV_IvanCiudadEspinar.pdf" style="display: flex; align-items: center; gap: 10px; padding: 15px 24px; border-radius: 999px; background: {{accent}}; color: #0B1120; font-weight: 700">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2M7 11l5 5 5-5M12 4v12"></path></svg>
+Descargar CV <span style="font-weight: 500">(PDF)</span>
+</a>
+<a href="https://www.linkedin.com/in/iv%C3%A1n-ciudad-espinar-2195191b2/" style="padding: 14px 22px; border-radius: 999px; border: 1px solid #2A3654; font-weight: 600">Ver en LinkedIn</a>
+</div>
+</div>
+<img class="up" src="/_blob/a6c98472de791ce4b4c71fa77abc7fd5" alt="Iván Ciudad Espinar con traje" style="flex: 1 1 280px; max-width: 340px; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 28px; display: block; background: #121A2B; border: 1px solid #1F2A40; animation-delay: .25s">
+</section>
+
+<!-- Experience -->
+<section aria-labelledby="exp-h" style="display: flex; flex-wrap: wrap; gap: 48px">
+<div class="reveal" style="flex: 1 1 260px; display: flex; flex-direction: column; gap: 12px">
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: {{brand}}">01</span>
+<h2 id="exp-h" style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: clamp(32px, 3.6vw, 48px); line-height: 1.05; letter-spacing: -0.03em">Experiencia</h2>
+<p style="margin: 0; color: #A3AEC2">Cuatro años en el ecosistema MasMovil y MasOrange, del backend al producto en producción.</p>
+</div>
+<ol style="flex: 999 1 600px; min-width: 0; margin: 0; padding: 0 0 0 32px; list-style: none; display: flex; flex-direction: column; gap: 20px; border-left: 2px solid #1F2A40">
+<sc-for list="{{experience}}" as="e" hint-placeholder-count="4">
+<li class="lift reveal" style="position: relative; padding: 28px; border-radius: 24px; background: #121A2B; border: 1px solid #1A2338; display: flex; flex-direction: column; gap: 10px">
+<span class="{{e.dotClass}}" aria-hidden="true" style="{{e.dotStyle}}"></span>
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px">
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: {{e.dateColor}}">{{e.date}}</span>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #8A97B0">{{e.company}}</span>
+</div>
+<h3 style="margin: 0; font-size: 22px; font-weight: 600; line-height: 1.3">{{e.title}}</h3>
+<p style="margin: 0; color: #A3AEC2; font-size: 16px">{{e.desc}}</p>
+<ul aria-label="Tecnologías" style="margin: 4px 0 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 6px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #A3AEC2">
+<sc-for list="{{e.tags}}" as="t" hint-placeholder-count="4"><li style="padding: 5px 10px; border-radius: 8px; border: 1px solid #1F2A40">{{t}}</li></sc-for>
+</ul>
+</li>
+</sc-for>
+</ol>
+</section>
+
+<!-- Education -->
+<section aria-labelledby="edu-h" style="display: flex; flex-wrap: wrap; gap: 48px">
+<div class="reveal" style="flex: 1 1 260px; display: flex; flex-direction: column; gap: 12px">
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: {{brand}}">02</span>
+<h2 id="edu-h" style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: clamp(32px, 3.6vw, 48px); line-height: 1.05; letter-spacing: -0.03em">Estudios</h2>
+</div>
+<div style="flex: 999 1 600px; min-width: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px">
+<article class="lift reveal" style="padding: 28px; border-radius: 24px; background: #121A2B; border: 1px solid #1A2338; display: flex; flex-direction: column; gap: 10px">
+<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color: {{accent}}"><path d="M22 9L12 5 2 9l10 4 10-4v6M6 10.6V16a6 3 0 0 0 12 0v-5.4"></path></svg>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #8A97B0">2023 — 2024 · EDEM</span>
+<h3 style="margin: 0; font-size: 21px; font-weight: 600; line-height: 1.3">Máster High Potential Technical Leader</h3>
+<p style="margin: 0; color: #A3AEC2; font-size: 16px">Liderazgo, gestión de equipos, resolución de conflictos y Google Cloud.</p>
+</article>
+<article class="lift reveal" style="padding: 28px; border-radius: 24px; background: #121A2B; border: 1px solid #1A2338; display: flex; flex-direction: column; gap: 10px">
+<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color: {{brand}}"><path d="M22 9L12 5 2 9l10 4 10-4v6M6 10.6V16a6 3 0 0 0 12 0v-5.4"></path></svg>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #8A97B0">2017 — 2021 · Universitat de València</span>
+<h3 style="margin: 0; font-size: 21px; font-weight: 600; line-height: 1.3">Grado en Ingeniería Telemática</h3>
+<p style="margin: 0; color: #A3AEC2; font-size: 16px">Matrículas de Honor en Programación, Desarrollo Web e Ingeniería del Software.</p>
+</article>
+</div>
+</section>
+
+<!-- Stack + soft skills -->
+<section aria-labelledby="stack-h" style="display: flex; flex-wrap: wrap; gap: 48px">
+<div class="reveal" style="flex: 1 1 260px; display: flex; flex-direction: column; gap: 12px">
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: {{brand}}">03</span>
+<h2 id="stack-h" style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: clamp(32px, 3.6vw, 48px); line-height: 1.05; letter-spacing: -0.03em">Stack y habilidades</h2>
+<p style="margin: 0; color: #A3AEC2">Del componente al despliegue: interfaz, rendimiento, backend e infraestructura.</p>
+</div>
+<div style="flex: 999 1 600px; min-width: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px">
+<sc-for list="{{stack}}" as="s" hint-placeholder-count="4">
+<div class="reveal" style="{{s.cardStyle}}">
+<h3 style="margin: 0; font-family: 'JetBrains Mono', monospace; font-weight: 500; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: {{brand}}">{{s.name}}</h3>
+<p style="margin: 0; color: #A3AEC2; font-size: 15px">{{s.desc}}</p>
+<ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px; font-size: 15px">
+<sc-for list="{{s.items}}" as="i" hint-placeholder-count="5"><li class="chip" style="padding: 7px 13px; border-radius: 999px; background: #121A2B; border: 1px solid #1F2A40; color: #C9D1DE">{{i}}</li></sc-for>
+</ul>
+</div>
+</sc-for>
+</div>
+</section>
+
+<!-- CV CTA -->
+<section aria-labelledby="cv-h">
+<div class="reveal" style="border-radius: 32px; background: #121A2B; border: 1px solid #1F2A40; padding: clamp(32px, 5vw, 64px); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<h2 id="cv-h" style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(32px, 4vw, 52px); line-height: 1.05; letter-spacing: -0.03em">¿Prefieres el <span style="background: linear-gradient(90deg, {{brand}}, {{accent}}); -webkit-background-clip: text; background-clip: text; color: transparent">PDF</span>?</h2>
+<p style="margin: 0; color: #A3AEC2">Todo lo anterior en una página, listo para compartir.</p>
+</div>
+<a href="/CV_IvanCiudadEspinar.pdf" style="display: flex; align-items: center; gap: 10px; padding: 16px 26px; border-radius: 999px; background: {{accent}}; color: #0B1120; font-weight: 700">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2M7 11l5 5 5-5M12 4v12"></path></svg>
+Descargar CV
+</a>
+</div>
+</section>
+</main>
+
+<footer style="width: 100%; max-width: 1200px; box-sizing: border-box; margin: 0 auto; padding: 56px clamp(16px, 4vw, 40px) 40px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; color: #8A97B0; font-size: 14px">
+<span style="display: flex; align-items: center; gap: 10px"><svg width="20" height="20" viewBox="0 0 32 32" aria-hidden="true" fill="currentColor" style="color: {{brand}}"><rect x="2" y="2" width="12.7" height="5.6"></rect><rect x="9.6" y="2" width="5.1" height="28"></rect><rect x="2" y="24.4" width="12.7" height="5.6"></rect><rect x="17.3" y="2" width="12.7" height="5.6"></rect><rect x="17.3" y="2" width="5.1" height="9.8"></rect><rect x="17.3" y="13.2" width="12.7" height="5.6"></rect><rect x="17.3" y="20.2" width="5.1" height="9.8"></rect><rect x="17.3" y="24.4" width="12.7" height="5.6"></rect></svg>© 2026 Iván Ciudad Espinar · Hecho con Astro y Tailwind</span>
+<div style="display: flex; gap: 20px">
+<a href="https://github.com/Srivix" style="color: #8A97B0">GitHub</a>
+<a href="https://www.linkedin.com/in/iv%C3%A1n-ciudad-espinar-2195191b2/" style="color: #8A97B0">LinkedIn</a>
+<a href="mailto:ivanciudad98@gmail.com" style="color: #8A97B0">Email</a>
+</div>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#A78BFA","options":["#A78BFA","#C084FC","#818CF8","#60A5FA"]},"brand":{"editor":"color","default":"#22D3EE","options":["#22D3EE","#38BDF8","#67E8F9"]},"$preview":{"width":1440,"height":3700}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const accent = this.props.accent ?? '#A78BFA';
+    const brand = this.props.brand ?? '#22D3EE';
+    const raw = [
+      { date: 'Nov 2024 — hoy', company: 'MasOrange', title: 'Senior Frontend Developer', desc: 'Desarrollo de la eShop multimarca, con la IA integrada en el flujo de trabajo del equipo.', tags: ['Next.js', 'React', 'TypeScript', 'Tailwind', 'IA', 'Claude'] },
+      { date: 'Ene 2023 — Oct 2024', company: 'Capgemini', title: 'Ingeniero de Software', desc: 'Proyecto MasMovil: aplicación multimarca para Euskaltel, Telecable, R, Guuk, Racctel, MasMovil, Yoigo, Lyca y Lebara.', tags: ['Next.js', 'React', 'TypeScript', 'JIRA', 'Gitflow'] },
+      { date: 'Sep 2022 — Sep 2023', company: 'Capgemini', title: 'Ingeniero de Software', desc: 'Mantenimiento y evolución de Yoigo.', tags: ['Angular', 'TypeScript', 'JIRA', 'Gitflow'] },
+      { date: 'Feb 2022 — Jul 2022', company: 'Capgemini', title: 'Prácticas de Backend', desc: 'Proyecto MasMovil: mantenimiento de Yoigo con microservicios.', tags: ['Java', 'Spring Boot', 'MySQL', 'Microservicios'] }
+    ];
+    const experience = raw.map((e, i) => ({
+      ...e,
+      dateColor: i === 0 ? brand : '#8A97B0',
+      dotClass: i === 0 ? 'pulse' : '',
+      dotStyle: 'position: absolute; left: -42px; top: 34px; width: 16px; height: 16px; border-radius: 999px; box-sizing: border-box; ' + (i === 0 ? 'background: ' + brand : 'background: #0B1120; border: 2px solid #34406A')
+    }));
+    const groups = [
+      { name: 'Frontend', desc: 'Aplicaciones web en producción.', items: ['TypeScript', 'React', 'Next.js', 'Angular', 'Astro', 'Tailwind CSS', 'MUI', 'PWA'] },
+      { name: 'Rendimiento y calidad', desc: 'Core Web Vitals, SEO técnico y accesibilidad.', items: ['Core Web Vitals', 'SSR · ISR · SSG', 'SEO técnico', 'Accesibilidad'] },
+      { name: 'Backend y datos', desc: 'APIs y microservicios.', items: ['Node.js', 'Java', 'Spring Boot', 'Microservicios', 'MySQL', 'Supabase'] },
+      { name: 'Cloud e infraestructura', desc: 'Servidores, proxies y clústeres en Google Cloud.', items: ['Google Cloud', 'Kubernetes', 'Docker', 'Nginx', 'Proxy inverso'] },
+      { name: 'CI/CD y colaboración', desc: 'Pipelines en Jenkins, despliegues GitOps con ArgoCD y trabajo en equipo.', items: ['Jenkins', 'ArgoCD', 'Git', 'Gitflow', 'JIRA', 'Figma'] },
+      { name: 'Desarrollo con IA', desc: 'Harnesses agénticos, varios modelos, skills propias y MCP.', items: ['Claude Code', 'Opencode', 'OMP', 'Orca', 'Claude', 'Gemini', 'GPT', 'Skills', 'MCP'] },
+      { name: 'Soft skills', desc: 'Reforzadas en el máster de liderazgo de EDEM.', items: ['Liderazgo de equipos', 'Comunicación proactiva', 'Resolución de conflictos', 'Mentoría', 'Adaptabilidad'], wide: true }
+    ];
+    const stack = groups.map((g) => ({
+      ...g,
+      cardStyle: 'padding: 24px; border-radius: 24px; border: 1px solid #1A2338; display: flex; flex-direction: column; gap: 12px; ' + (g.wide ? 'grid-column: 1 / -1; background: #121A2B' : '')
+    }));
+    return { accent, brand, experience, stack };
+  }
+}
+</script>
+</body>
+</html>

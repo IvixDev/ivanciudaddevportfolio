@@ -1,0 +1,30 @@
+---
+import { marqueeItems } from "../../content/marquee";
+import { getMessages } from "../../i18n/utils";
+
+const m = getMessages(Astro.currentLocale);
+
+const labels = marqueeItems.map((item) => (item === "ai" ? m.home.marquee_ai : item));
+// Lista duplicada para el bucle: la segunda copia es decorativa.
+const copies = [false, true];
+---
+
+<section
+  aria-label={m.a11y.tech_marquee}
+  class="overflow-hidden border-y border-line-subtle py-4 tablet:py-5 laptop:py-[22px]"
+>
+  <ul
+    class="animate-marquee flex w-max gap-7 font-display text-xl font-semibold whitespace-nowrap text-faint hover:[animation-play-state:paused] tablet:gap-10 tablet:text-2xl laptop:gap-12 laptop:text-[26px]"
+  >
+    {
+      copies.map((hidden) =>
+        labels.map((label, i) => (
+          <>
+            <li aria-hidden={hidden || undefined}>{label}</li>
+            <li aria-hidden="true" class={i % 2 === 0 ? "text-brand" : "text-accent"}>✦</li>
+          </>
+        )),
+      )
+    }
+  </ul>
+</section>

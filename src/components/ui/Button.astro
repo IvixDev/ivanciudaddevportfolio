@@ -1,0 +1,84 @@
+---
+import { IconArrowRight } from "@tabler/icons-react";
+import { getMessages } from "../../i18n/utils";
+
+interface Props {
+  variant?: "primary" | "light" | "secondary" | "link" | "icon";
+  /** Color del texto en la variante link. */
+  tone?: "brand" | "accent";
+  href?: string;
+  /** Enlace externo: abre en pestaña nueva y lo anuncia a lectores de pantalla. */
+  external?: boolean;
+  /** Muestra la flecha que se desplaza en hover. */
+  arrow?: boolean;
+  type?: "button" | "submit";
+  ariaLabel?: string;
+  /** Idioma del recurso enlazado (p. ej. el CV, que solo existe en español). */
+  hreflang?: string;
+  /** Tipo MIME del recurso enlazado (p. ej. application/pdf). */
+  fileType?: string;
+  /** Fuerza navegación completa (rutas servidas por rewrites de vercel.json a otros sitios). */
+  reload?: boolean;
+  class?: string;
+}
+
+const {
+  variant = "primary",
+  tone = "brand",
+  href,
+  external = false,
+  arrow = variant === "link",
+  type = "button",
+  ariaLabel,
+  hreflang,
+  fileType,
+  reload = false,
+  class: className,
+} = Astro.props;
+
+const m = getMessages(Astro.currentLocale);
+
+const variants = {
+  primary: "min-h-11 px-6 py-[15px] bg-accent text-ink font-bold rounded-full hover:brightness-110",
+  light: "min-h-11 px-6 py-3 bg-fg text-ink font-semibold rounded-full hover:brightness-95",
+  secondary:
+    "min-h-11 px-6 py-3 border border-line-strong text-fg font-semibold rounded-full hover:bg-surface",
+  link: "min-h-11 font-semibold",
+  icon: "size-11 justify-center rounded-full text-muted hover:bg-surface hover:text-fg",
+} as const;
+
+const tones = { brand: "text-brand", accent: "text-accent" } as const;
+
+const classes = [
+  "inline-flex items-center gap-2 transition-colors duration-(--duration-fast)",
+  variants[variant],
+  variant === "link" && tones[tone],
+  className,
+]
+  .filter(Boolean)
+  .join(" ");
+---
+
+{
+  href ? (
+    <a
+      href={href}
+      class={classes}
+      aria-label={ariaLabel}
+      hreflang={hreflang}
+      type={fileType}
+      target={external ? "_blank" : undefined}
+      rel={external ? "noopener" : undefined}
+      data-astro-reload={reload || undefined}
+    >
+      <slot />
+      {arrow && <IconArrowRight className="arrow" size={18} stroke={2} aria-hidden="true" />}
+      {external && <span class="sr-only">{m.a11y.new_tab}</span>}
+    </a>
+  ) : (
+    <button type={type} class={classes} aria-label={ariaLabel}>
+      <slot />
+      {arrow && <IconArrowRight className="arrow" size={18} stroke={2} aria-hidden="true" />}
+    </button>
+  )
+}

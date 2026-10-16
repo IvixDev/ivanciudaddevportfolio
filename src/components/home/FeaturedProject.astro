@@ -1,0 +1,67 @@
+---
+import { Image } from "astro:assets";
+import Button from "../ui/Button.astro";
+import Tag from "../ui/Tag.astro";
+import { getMessages } from "../../i18n/utils";
+import type { LocalizedProject } from "./types";
+
+interface Props {
+  project: LocalizedProject;
+}
+
+const { project } = Astro.props;
+const m = getMessages(Astro.currentLocale);
+---
+
+<article
+  class="lift relative flex flex-col overflow-hidden rounded-card border border-line-subtle bg-surface tablet:rounded-card-lg laptop:flex-row"
+>
+  <div class="overflow-hidden bg-line-subtle laptop:min-w-0 laptop:flex-[1_1_520px]">
+    <Image
+      src={project.image}
+      alt={project.img_alt}
+      widths={[480, 768, 1000, 1246]}
+      sizes="(min-width: 1024px) 640px, (min-width: 768px) calc(100vw - 64px), calc(100vw - 32px)"
+      class="zoom block aspect-[16/10] w-full object-cover tablet:aspect-[16/8] laptop:aspect-auto laptop:h-full"
+    />
+  </div>
+  <div
+    class="flex flex-col gap-3 p-5 tablet:gap-4 tablet:p-8 laptop:flex-[1_1_360px] laptop:gap-[18px] laptop:p-[clamp(24px,3vw,44px)]"
+  >
+    <div
+      class="flex flex-col items-start gap-3 tablet:flex-row-reverse tablet:items-center tablet:justify-between tablet:gap-4 laptop:flex-col laptop:items-start laptop:justify-start laptop:gap-[18px]"
+    >
+      <span
+        class="rounded-full border border-accent px-2.5 py-[5px] font-mono text-[11px] text-accent tablet:px-3 tablet:py-1.5 tablet:text-xs"
+      >
+        {m.common.featured}
+      </span>
+      <h3
+        class="font-display text-[26px] leading-[1.1] font-bold tracking-[-0.02em] text-fg tablet:text-[32px] laptop:text-[34px]"
+      >
+        {project.title}
+      </h3>
+    </div>
+    <p class="text-[15px] text-muted tablet:text-base laptop:text-[17px]">
+      <span class="tablet:hidden">{project.description_short}</span>
+      <span class="hidden tablet:inline">{project.description}</span>
+    </p>
+    <div
+      class="mt-1 flex flex-col gap-4 tablet:flex-row tablet:items-center tablet:justify-between laptop:mt-auto laptop:flex-col laptop:items-start laptop:justify-start"
+    >
+      <ul class="hidden flex-wrap gap-1.5 tablet:flex" aria-label={m.a11y.technologies}>
+        {project.tags.slice(0, 5).map((tag) => <Tag as="li">{tag}</Tag>)}
+      </ul>
+      <Button
+        href={project.href}
+        variant="light"
+        arrow
+        external={project.external}
+        reload={!project.external}
+        class="justify-center after:absolute after:inset-0 tablet:justify-start"
+      >
+        {m.common[project.ctaKey]}{" "}<span class="sr-only">{project.title}</span>
+      </Button>
+    </div>
+  </div>
+</article>

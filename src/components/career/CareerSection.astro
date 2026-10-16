@@ -1,0 +1,28 @@
+---
+// Sección numerada: encabezado a un lado en escritorio, arriba en móvil y tablet.
+interface Props {
+  number: string;
+  title: string;
+  headingId: string;
+  intro?: string;
+}
+
+const { number, title, headingId, intro } = Astro.props;
+---
+
+<section
+  aria-labelledby={headingId}
+  class="flex flex-col gap-4 tablet:gap-6 laptop:grid laptop:grid-cols-[260px_minmax(0,1fr)] laptop:gap-12"
+>
+  <div class="reveal flex items-baseline gap-3 tablet:gap-4 laptop:flex-col laptop:items-start laptop:gap-3">
+    <span class="font-mono text-xs text-brand tablet:text-[13px]" aria-hidden="true">{number}</span>
+    <h2
+      id={headingId}
+      class="font-display text-[32px] leading-[1.05] font-bold tracking-[-0.03em] text-fg tablet:text-[44px] laptop:text-[clamp(32px,3.6vw,48px)]"
+    >
+      {title}
+    </h2>
+    {intro && <p class="hidden text-muted laptop:block">{intro}</p>}
+  </div>
+  <slot />
+</section>

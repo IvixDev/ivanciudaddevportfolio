@@ -1,0 +1,54 @@
+---
+import { Picture } from "astro:assets";
+import GradientText from "../ui/GradientText.astro";
+import RichText from "../ui/RichText.astro";
+import ivanJapon from "../../assets/ivan-japon.webp";
+import { getMessages } from "../../i18n/utils";
+
+const m = getMessages(Astro.currentLocale).about;
+---
+
+<section
+  class="grid grid-cols-1 gap-y-4.5 tablet:grid-cols-[300px_1fr] tablet:gap-x-7 tablet:gap-y-5.5 laptop:grid-cols-[minmax(0,1fr)_420px] laptop:gap-x-16 laptop:gap-y-6"
+>
+  <p
+    class="animate-up hidden font-mono text-[13px] text-brand tablet:col-span-2 tablet:col-start-1 tablet:row-start-1 tablet:block laptop:col-span-1"
+  >
+    {m.eyebrow}
+  </p>
+
+  <h1
+    class="animate-up font-display text-[42px] leading-none font-extrabold tracking-[-0.035em] text-fg [animation-delay:100ms] tablet:col-span-2 tablet:row-start-2 tablet:text-[68px] tablet:leading-[0.98] laptop:col-span-1 laptop:text-[clamp(46px,6.4vw,90px)]"
+  >
+    {m.heading_before}<GradientText>{m.heading_highlight}</GradientText>{m.heading_after}
+  </h1>
+
+  <figure
+    class="animate-up order-first m-0 tablet:order-none tablet:col-start-1 tablet:row-start-3 tablet:self-start laptop:col-start-2 laptop:row-span-3 laptop:row-start-1 laptop:self-center"
+  >
+    <Picture
+      src={ivanJapon}
+      alt={m.japan_alt}
+      width={800}
+      height={1000}
+      widths={[300, 420, 600, 800]}
+      sizes="(min-width: 1024px) 420px, (min-width: 768px) 300px, calc(100vw - 32px)"
+      formats={["avif", "webp"]}
+      loading="eager"
+      fetchpriority="high"
+      class="block aspect-[4/4.4] w-full rounded-card border border-line bg-surface object-cover transition-[rotate,scale] duration-(--duration-slow) ease-(--ease-out-soft) tablet:aspect-[4/5] tablet:hover:-rotate-2 tablet:hover:scale-[1.02] laptop:rounded-card-lg"
+    />
+    <figcaption class="mt-2 font-mono text-xs text-subtle tablet:mt-2.5 laptop:mt-3 laptop:text-[13px]">
+      {m.japan_caption}
+    </figcaption>
+  </figure>
+
+  <div
+    class="animate-up flex max-w-[600px] flex-col gap-4 text-base text-muted [animation-delay:200ms] tablet:col-start-2 tablet:row-start-3 tablet:self-start laptop:col-start-1 laptop:gap-6 laptop:text-[clamp(17px,1.5vw,19px)]"
+  >
+    <p class="tablet:hidden"><RichText text={m.origin_short} /></p>
+    <p class="hidden tablet:block"><RichText text={m.origin} /></p>
+    <p class="tablet:hidden"><RichText text={m.work_short} /></p>
+    <p class="hidden tablet:block"><RichText text={m.work} /></p>
+  </div>
+</section>

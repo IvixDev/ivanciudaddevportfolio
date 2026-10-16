@@ -1,0 +1,21 @@
+---
+// Contenedor de sección de la home: ancho de contenido, gutters y ritmo vertical.
+interface Props {
+  id: string;
+  headingId: string;
+  class?: string;
+}
+
+const { id, headingId, class: className } = Astro.props;
+---
+
+<section
+  id={id}
+  aria-labelledby={headingId}
+  class:list={[
+    "mx-auto flex w-full max-w-(--container-content) flex-col gap-4 px-4 pt-14 tablet:gap-8 tablet:px-8 tablet:pt-24 desktop:px-[clamp(16px,4vw,40px)] laptop:gap-10 laptop:pt-30",
+    className,
+  ]}
+>
+  <slot />
+</section>

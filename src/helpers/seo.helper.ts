@@ -1,6 +1,9 @@
 import type { InfoSeoProps } from "../types/types"
+import type { Lang } from "../i18n/utils"
 
-export const seoMapper = (title: string, description: string, url: string, image: string, imageAlt?: string, canonical?: string): InfoSeoProps => {
+const OG_LOCALES = { es: "es_ES", en: "en_US" } as const satisfies Record<Lang, string>
+
+export const seoMapper = (title: string, description: string, url: string, image: string, imageAlt?: string, canonical?: string, lang: Lang = "es"): InfoSeoProps => {
   const imgAlt = imageAlt ?? title;
   return {
     title,
@@ -15,7 +18,8 @@ export const seoMapper = (title: string, description: string, url: string, image
       },
       optional: {
         description,
-        locale: "es_ES",
+        locale: OG_LOCALES[lang],
+        localeAlternate: [OG_LOCALES[lang === "es" ? "en" : "es"]],
         siteName: "Iván Ciudad Portfolio",
       },
       image: {
@@ -28,16 +32,14 @@ export const seoMapper = (title: string, description: string, url: string, image
     twitter: {
       title,
       description,
-      creator: "@Mrivix",
       image,
       card: "summary_large_image",
-      site: "@Mrivix",
     },
     extend: {
       link: [{ rel: "icon", href: "/favicon.svg" }],
       meta: [
         { name: "twitter:image:alt", content: imgAlt },
-        { name: "theme-color", content: "#0f172a" }
+        { name: "theme-color", content: "#0B1120" }
       ],
     },
   }

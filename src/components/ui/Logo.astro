@@ -1,0 +1,40 @@
+---
+interface Props {
+  animated?: boolean;
+  class?: string;
+}
+
+const { animated = false, class: className } = Astro.props;
+
+// Mismo trazado que public/favicon.svg
+const rects = [
+  { x: 2, y: 2, width: 12.727114, height: 5.6 },
+  { x: 9.63625, y: 2, width: 5.0908456, height: 28 },
+  { x: 17.272539, y: 2, width: 12.727114, height: 5.6 },
+  { x: 17.272539, y: 2, width: 5.0908456, height: 9.8 },
+  { x: 17.272886, y: 13.2, width: 12.727114, height: 5.6 },
+  { x: 17.272539, y: 20.2, width: 5.0908456, height: 9.8 },
+  { x: 17.272539, y: 24.4, width: 12.727114, height: 5.6 },
+  { x: 2, y: 24.4, width: 12.727114, height: 5.6 },
+];
+---
+
+<svg
+  width="32"
+  height="32"
+  viewBox="0 0 32 32"
+  fill="currentColor"
+  aria-hidden="true"
+  focusable="false"
+  class={className}
+>
+  {
+    rects.map((rect, i) => (
+      <rect
+        {...rect}
+        class={animated ? "animate-drop" : undefined}
+        style={animated ? `animation-delay: ${i * 70}ms` : undefined}
+      />
+    ))
+  }
+</svg>

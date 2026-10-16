@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Iván Ciudad — Portfolio (escritorio)</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&amp;family=Onest:wght@400..700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0;background:#0B1120}
+a{color:#E8ECF4;text-decoration:none}a:hover{color:#FFFFFF}
+@keyframes up{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+@keyframes spin{to{transform:rotate(1turn)}}
+@keyframes blink{50%{opacity:0}}
+@keyframes marquee{to{transform:translateX(-50%)}}
+@keyframes float{50%{transform:translateY(-10px)}}
+@keyframes drop{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.up{animation:up .9s cubic-bezier(.2,.7,.2,1) both}
+.logo rect{animation:drop .5s cubic-bezier(.2,.7,.2,1) both}
+.spin{animation:spin 7s linear infinite}
+.blink{animation:blink 1s steps(1) infinite}
+.marquee{animation:marquee 32s linear infinite}
+.marquee-wrap:hover .marquee{animation-play-state:paused}
+.float{animation:float 7s ease-in-out infinite}
+.navlink{transition:color .2s,background-color .2s}.navlink:hover{background:#121A2B;color:#FFFFFF}
+.lift{transition:transform .35s cubic-bezier(.2,.7,.2,1),border-color .35s,box-shadow .35s}
+.lift:hover{transform:translateY(-6px);border-color:#34406A;box-shadow:0 24px 48px -24px rgba(167,139,250,.45)}
+.lift .zoom{transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.lift:hover .zoom{transform:scale(1.05)}
+.arrow{transition:transform .25s}a:hover .arrow{transform:translateX(4px)}
+@supports (animation-timeline: view()){.reveal{animation:up linear both;animation-timeline:view();animation-range:entry 0% entry 100%}}
+:focus-visible{outline:2px solid #22D3EE;outline-offset:3px}
+.skip{position:absolute;left:16px;top:-80px;z-index:20;padding:12px 18px;border-radius:999px;background:#E8ECF4;color:#0B1120;font-weight:600}.skip:focus{top:12px}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+</style>
+</helmet>
+<div style="width: 100%; min-height: 100vh; background: #0B1120; color: #E8ECF4; font-family: 'Onest', system-ui, sans-serif; font-size: 17px; line-height: 1.6; overflow-x: hidden; position: relative">
+<a class="skip" href="#contenido">Saltar al contenido</a>
+
+<!-- NAV -->
+<header style="position: sticky; top: 0; z-index: 10; background: #0B1120; border-bottom: 1px solid #1A2338">
+<nav aria-label="Principal" style="max-width: 1200px; margin: 0 auto; padding: 16px clamp(16px, 4vw, 40px); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<a href="#inicio" style="display: flex; align-items: center; gap: 12px; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 19px">
+<svg class="logo" width="34" height="34" viewBox="0 0 32 32" aria-hidden="true" style="color: {{brand}}" fill="currentColor"><rect x="2" y="2" width="12.7" height="5.6" style="animation-delay: .05s"></rect><rect x="9.6" y="2" width="5.1" height="28" style="animation-delay: .12s"></rect><rect x="2" y="24.4" width="12.7" height="5.6" style="animation-delay: .19s"></rect><rect x="17.3" y="2" width="12.7" height="5.6" style="animation-delay: .26s"></rect><rect x="17.3" y="2" width="5.1" height="9.8" style="animation-delay: .33s"></rect><rect x="17.3" y="13.2" width="12.7" height="5.6" style="animation-delay: .40s"></rect><rect x="17.3" y="20.2" width="5.1" height="9.8" style="animation-delay: .47s"></rect><rect x="17.3" y="24.4" width="12.7" height="5.6" style="animation-delay: .54s"></rect></svg>
+Iván Ciudad
+</a>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 4px; font-size: 15px">
+<a class="navlink" href="Main.dc.html" aria-current="page" style="padding: 10px 14px; border-radius: 999px; background: #121A2B; color: #E8ECF4">Inicio</a>
+<a class="navlink" href="Proyectos.dc.html" style="padding: 10px 14px; border-radius: 999px; color: #A3AEC2">Proyectos</a>
+<a class="navlink" href="Trayectoria.dc.html" style="padding: 10px 14px; border-radius: 999px; color: #A3AEC2">Trayectoria</a>
+<a class="navlink" href="SobreMi.dc.html" style="padding: 10px 14px; border-radius: 999px; color: #A3AEC2">Sobre mí</a>
+</div>
+<div style="display: flex; align-items: center; gap: 12px">
+<div role="group" aria-label="Idioma" style="display: flex; border: 1px solid #1F2A40; border-radius: 999px; padding: 3px; font-family: 'JetBrains Mono', monospace; font-size: 12px">
+<a href="/" aria-current="true" style="padding: 8px 10px; border-radius: 999px; background: #1A2338; color: #E8ECF4">ES</a>
+<a href="/en" style="padding: 8px 10px; border-radius: 999px; color: #A3AEC2">EN</a>
+</div>
+<a href="#contacto" style="padding: 11px 18px; border-radius: 999px; background: {{accent}}; color: #0B1120; font-weight: 600; font-size: 15px">Contacto</a>
+</div>
+</nav>
+</header>
+
+<main id="contenido" tabindex="-1">
+<!-- HERO -->
+<section id="inicio" style="max-width: 1200px; margin: 0 auto; padding: clamp(56px, 8vw, 112px) clamp(16px, 4vw, 40px) 72px; display: flex; flex-wrap: wrap; align-items: center; gap: 64px">
+<div style="flex: 999 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 28px">
+<p class="up" style="margin: 0; display: inline-flex; align-self: flex-start; align-items: center; gap: 10px; padding: 8px 14px; border: 1px solid #1F2A40; border-radius: 999px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #A3AEC2">
+<span style="width: 8px; height: 8px; border-radius: 999px; background: {{brand}}"></span>
+Software Developer · Ingeniero Telemático
+</p>
+<h1 class="up" style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(46px, 6.4vw, 90px); line-height: 0.98; letter-spacing: -0.035em; animation-delay: .1s">Hola, soy Iván. Construyo <span style="background: linear-gradient(90deg, {{brand}}, {{accent}}); -webkit-background-clip: text; background-clip: text; color: transparent">software</span> para la web.</h1>
+<p class="up" style="margin: 0; max-width: 560px; font-size: clamp(17px, 1.5vw, 20px); color: #A3AEC2; animation-delay: .2s">Este es mi rincón de internet: donde codifico ideas, enseño lo que construyo y cuento lo que me gusta cuando cierro el editor.</p>
+<div class="up" style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px; animation-delay: .3s">
+<a href="#proyectos" style="display: flex; align-items: center; gap: 10px; padding: 15px 24px; border-radius: 999px; background: {{accent}}; color: #0B1120; font-weight: 700">
+Ver proyectos
+<svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 18l6-6M13 6l6 6"></path></svg>
+</a>
+<a href="SobreMi.dc.html" style="padding: 14px 22px; border-radius: 999px; border: 1px solid #2A3654; font-weight: 600">Conóceme</a>
+<div style="display: flex; gap: 4px; margin-left: 6px">
+<a class="navlink" href="https://www.linkedin.com/in/iv%C3%A1n-ciudad-espinar-2195191b2/" aria-label="LinkedIn" style="width: 46px; height: 46px; display: grid; place-items: center; border-radius: 999px; color: #A3AEC2">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"></rect><path d="M8 11v5M8 8v.01M12 16v-5M16 16v-3a2 2 0 0 0-4 0"></path></svg>
+</a>
+<a class="navlink" href="https://github.com/Srivix" aria-label="GitHub" style="width: 46px; height: 46px; display: grid; place-items: center; border-radius: 999px; color: #A3AEC2">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"></path></svg>
+</a>
+<a class="navlink" href="mailto:ivanciudad98@gmail.com" aria-label="Email" style="width: 46px; height: 46px; display: grid; place-items: center; border-radius: 999px; color: #A3AEC2">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg>
+</a>
+</div>
+</div>
+</div>
+
+<!-- Portrait with spinning brand ring + terminal card -->
+<div class="up" style="flex: 1 1 340px; max-width: 430px; margin: 0 auto; position: relative; padding-bottom: 72px; animation-delay: .25s">
+<div style="position: relative; border-radius: 32px; overflow: hidden; padding: 3px">
+<div class="spin" aria-hidden="true" style="position: absolute; left: -50%; top: -50%; width: 200%; height: 200%; background: conic-gradient(from 0deg, {{brand}}, {{accent}}, #0B1120 40%, #0B1120 60%, {{brand}})"></div>
+<img src="/_blob/3e7784fb59b4ce687cf685bba7b38eac" alt="Retrato de Iván Ciudad Espinar" style="position: relative; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 29px; display: block; background: #121A2B">
+</div>
+<div class="float" style="position: absolute; left: -32px; right: 32px; bottom: 0; padding: 18px 20px; border-radius: 18px; background: #0E1526; border: 1px solid #1F2A40; box-shadow: 0 24px 60px -20px rgba(0, 0, 0, .7); font-family: 'JetBrains Mono', monospace; font-size: 13px; line-height: 1.75">
+<div style="display: flex; gap: 6px; margin-bottom: 10px" aria-hidden="true"><span style="width: 10px; height: 10px; border-radius: 999px; background: #2A3654"></span><span style="width: 10px; height: 10px; border-radius: 999px; background: #2A3654"></span><span style="width: 10px; height: 10px; border-radius: 999px; background: #2A3654"></span></div>
+<div><span style="color: {{brand}}">~</span> <span style="color: #A3AEC2">$</span> whoami</div>
+<div style="color: #A3AEC2">iván ciudad — software developer</div>
+<div><span style="color: {{brand}}">~</span> <span style="color: #A3AEC2">$</span> hobbies --list</div>
+<div style="color: #A3AEC2">d&amp;d · lego · hardware · gym</div>
+<div><span style="color: {{brand}}">~</span> <span style="color: #A3AEC2">$</span> <span class="blink" style="display: inline-block; width: 8px; height: 15px; vertical-align: -2px; background: {{accent}}"></span></div>
+</div>
+</div>
+</section>
+
+<!-- STACK MARQUEE -->
+<section aria-label="Tecnologías que uso" class="marquee-wrap" style="border-top: 1px solid #1A2338; border-bottom: 1px solid #1A2338; overflow: hidden; padding: 22px 0">
+<ul class="marquee" style="margin: 0; padding: 0; list-style: none; display: flex; gap: 48px; width: max-content; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 600; font-size: 26px; color: #6F7C96; white-space: nowrap">
+<li>TypeScript</li><li style="color: {{brand}}">✦</li><li>React</li><li style="color: {{accent}}">✦</li><li>Next.js</li><li style="color: {{brand}}">✦</li><li>Astro</li><li style="color: {{accent}}">✦</li><li>Tailwind CSS</li><li style="color: {{brand}}">✦</li><li>Node.js</li><li style="color: {{accent}}">✦</li><li>Java · Spring Boot</li><li style="color: {{brand}}">✦</li><li>Kubernetes</li><li style="color: {{accent}}">✦</li><li>Google Cloud</li><li style="color: {{brand}}">✦</li><li>Core Web Vitals</li><li style="color: {{accent}}">✦</li><li>ArgoCD</li><li style="color: {{brand}}">✦</li><li>IA aplicada</li><li style="color: {{accent}}">✦</li>
+<li aria-hidden="true">TypeScript</li><li aria-hidden="true" style="color: {{brand}}">✦</li><li aria-hidden="true">React</li><li aria-hidden="true" style="color: {{accent}}">✦</li><li aria-hidden="true">Next.js</li><li aria-hidden="true" style="color: {{brand}}">✦</li><li aria-hidden="true">Astro</li><li aria-hidden="true" style="color: {{accent}}">✦</li><li aria-hidden="true">Tailwind CSS</li><li aria-hidden="true" style="color: {{brand}}">✦</li><li aria-hidden="true">Node.js</li><li aria-hidden="true" style="color: {{accent}}">✦</li><li aria-hidden="true">Java · Spring Boot</li><li aria-hidden="true" style="color: {{brand}}">✦</li><li aria-hidden="true">Kubernetes</li><li aria-hidden="true" style="color: {{accent}}">✦</li><li aria-hidden="true">Google Cloud</li><li aria-hidden="true" style="color: {{brand}}">✦</li><li aria-hidden="true">Core Web Vitals</li><li aria-hidden="true" style="color: {{accent}}">✦</li><li aria-hidden="true">ArgoCD</li><li aria-hidden="true" style="color: {{brand}}">✦</li><li aria-hidden="true">IA aplicada</li><li aria-hidden="true" style="color: {{accent}}">✦</li>
+</ul>
+</section>
+
+<!-- PROJECTS -->
+<section id="proyectos" aria-labelledby="proj-h" style="max-width: 1200px; margin: 0 auto; padding: 120px clamp(16px, 4vw, 40px) 0; display: flex; flex-direction: column; gap: 40px">
+<div class="reveal" style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px">
+<div style="display: flex; flex-direction: column; gap: 12px">
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: {{brand}}">01 — Proyectos</span>
+<h2 id="proj-h" style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: clamp(34px, 4vw, 54px); line-height: 1.05; letter-spacing: -0.03em">Cosas que he construido</h2>
+</div>
+<a href="Proyectos.dc.html" style="display: flex; align-items: center; gap: 8px; padding: 10px 0; font-weight: 600">Ver todos <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 18l6-6M13 6l6 6"></path></svg></a>
+</div>
+
+<article class="lift reveal" style="display: flex; flex-wrap: wrap; border-radius: 28px; background: #121A2B; border: 1px solid #1A2338; overflow: hidden">
+<div style="flex: 1 1 520px; min-width: 0; overflow: hidden">
+<img class="zoom" src="/_blob/cfa9387b7791b5b806161631008e841b" alt="Captura de eShop Cache Lab" style="width: 100%; height: 100%; aspect-ratio: 16 / 10; object-fit: cover; display: block; background: #1A2338">
+</div>
+<div style="flex: 1 1 360px; padding: clamp(24px, 3vw, 44px); display: flex; flex-direction: column; gap: 18px">
+<span style="align-self: flex-start; padding: 6px 12px; border-radius: 999px; border: 1px solid {{accent}}; color: {{accent}}; font-family: 'JetBrains Mono', monospace; font-size: 12px">Destacado</span>
+<h3 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 34px; line-height: 1.1; letter-spacing: -0.02em">eShop Cache Lab</h3>
+<p style="margin: 0; color: #A3AEC2">Laboratorio en Next.js para comparar SSR, ISR, SSG y Cache Components y ver cómo afectan al SEO y a la accesibilidad.</p>
+<ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 6px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #A3AEC2">
+<li style="padding: 5px 10px; border-radius: 8px; border: 1px solid #1F2A40">Next.js</li>
+<li style="padding: 5px 10px; border-radius: 8px; border: 1px solid #1F2A40">Nx</li>
+<li style="padding: 5px 10px; border-radius: 8px; border: 1px solid #1F2A40">SSR · ISR · SSG</li>
+<li style="padding: 5px 10px; border-radius: 8px; border: 1px solid #1F2A40">SEO</li>
+<li style="padding: 5px 10px; border-radius: 8px; border: 1px solid #1F2A40">A11y</li>
+</ul>
+<a href="/proyectos/public-pages" style="margin-top: auto; align-self: flex-start; display: flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 999px; background: #E8ECF4; color: #0B1120; font-weight: 600; font-size: 15px">Ver proyecto <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 18l6-6M13 6l6 6"></path></svg></a>
+</div>
+</article>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px">
+<article class="lift reveal" style="display: flex; flex-direction: column; border-radius: 24px; background: #121A2B; border: 1px solid #1A2338; overflow: hidden">
+<div style="overflow: hidden"><img class="zoom" src="/_blob/d65e58cd059addbf2718857d258880e1" alt="Captura del Buscaminas" style="width: 100%; aspect-ratio: 16 / 10; object-fit: cover; display: block; background: #1A2338"></div>
+<div style="padding: 24px; display: flex; flex-direction: column; gap: 12px; flex: 1">
+<h3 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 24px">Buscaminas</h3>
+<p style="margin: 0; color: #A3AEC2; font-size: 15px">El clásico en TypeScript, con apertura de celdas en cascada mediante recursividad.</p>
+<ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 6px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #A3AEC2">
+<li style="padding: 5px 10px; border-radius: 8px; border: 1px solid #1F2A40">TypeScript</li>
+<li style="padding: 5px 10px; border-radius: 8px; border: 1px solid #1F2A40">Algoritmia</li>
+</ul>
+<a href="/proyectos/buscaminas" style="margin-top: auto; display: flex; align-items: center; gap: 8px; padding-top: 8px; font-weight: 600; font-size: 15px; color: {{brand}}">Jugar <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 18l6-6M13 6l6 6"></path></svg></a>
+</div>
+</article>
+<article class="lift reveal" style="display: flex; flex-direction: column; border-radius: 24px; background: #121A2B; border: 1px solid #1A2338; overflow: hidden">
+<div style="overflow: hidden"><img class="zoom" src="/_blob/9060cc44794b614199594c39e0ce7ebc" alt="Captura de la Tabla de Tipos Pokémon" style="width: 100%; aspect-ratio: 16 / 10; object-fit: cover; display: block; background: #1A2338"></div>
+<div style="padding: 24px; display: flex; flex-direction: column; gap: 12px; flex: 1">
+<h3 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 24px">Tabla de Tipos Pokémon</h3>
+<p style="margin: 0; color: #A3AEC2; font-size: 15px">Fortalezas y debilidades de tipos con Drag &amp; Drop y SSR sobre la PokeAPI.</p>
+<ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 6px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #A3AEC2">
+<li style="padding: 5px 10px; border-radius: 8px; border: 1px solid #1F2A40">Next.js</li>
+<li style="padding: 5px 10px; border-radius: 8px; border: 1px solid #1F2A40">SSR</li>
+<li style="padding: 5px 10px; border-radius: 8px; border: 1px solid #1F2A40">Drag &amp; Drop</li>
+</ul>
+<a href="/proyectos/tabla-pokemon" style="margin-top: auto; display: flex; align-items: center; gap: 8px; padding-top: 8px; font-weight: 600; font-size: 15px; color: {{brand}}">Ver proyecto <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 18l6-6M13 6l6 6"></path></svg></a>
+</div>
+</article>
+<article class="lift reveal" style="display: flex; flex-direction: column; border-radius: 24px; background: #121A2B; border: 1px solid #1A2338; overflow: hidden">
+<div style="overflow: hidden"><img class="zoom" src="/_blob/06efd44e48bc0f38e87f6fb76325a85a" alt="Captura de GymTracker" style="width: 100%; aspect-ratio: 16 / 10; object-fit: cover; display: block; background: #1A2338"></div>
+<div style="padding: 24px; display: flex; flex-direction: column; gap: 12px; flex: 1">
+<h3 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 24px">GymTracker</h3>
+<p style="margin: 0; color: #A3AEC2; font-size: 15px">PWA para registrar kilos, repeticiones y RIR, con gráficas de progreso. Hecha con IA como copiloto.</p>
+<ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 6px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #A3AEC2">
+<li style="padding: 5px 10px; border-radius: 8px; border: 1px solid #1F2A40">React</li>
+<li style="padding: 5px 10px; border-radius: 8px; border: 1px solid #1F2A40">Supabase</li>
+<li style="padding: 5px 10px; border-radius: 8px; border: 1px solid #1F2A40">PWA</li>
+</ul>
+<a href="https://gym-app-gamma-hazel.vercel.app/" style="margin-top: auto; display: flex; align-items: center; gap: 8px; padding-top: 8px; font-weight: 600; font-size: 15px; color: {{brand}}">Abrir app <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 18l6-6M13 6l6 6"></path></svg></a>
+</div>
+</article>
+</div>
+</section>
+
+<!-- NOW (bento) -->
+<section id="ahora" aria-labelledby="now-h" style="max-width: 1200px; margin: 0 auto; padding: 120px clamp(16px, 4vw, 40px) 0; display: flex; flex-direction: column; gap: 40px">
+<div class="reveal" style="display: flex; flex-direction: column; gap: 12px">
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: {{brand}}">02 — Ahora mismo</span>
+<h2 id="now-h" style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: clamp(34px, 4vw, 54px); line-height: 1.05; letter-spacing: -0.03em">En qué ando estos días</h2>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px">
+<article class="lift reveal" style="padding: 32px; border-radius: 24px; background: #121A2B; border: 1px solid #1A2338; display: flex; flex-direction: column; gap: 14px">
+<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color: {{brand}}"><path d="M7 8l-4 4 4 4M17 8l4 4-4 4M14 4l-4 16"></path></svg>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #8A97B0; text-transform: uppercase; letter-spacing: 0.08em">Trabajando en</span>
+<p style="margin: 0; font-size: 20px; line-height: 1.45">La eShop de MasOrange, con Next.js, React y TypeScript.</p>
+<a href="Trayectoria.dc.html" style="margin-top: auto; display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 15px; color: {{brand}}">Mi trayectoria <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 18l6-6M13 6l6 6"></path></svg></a>
+</article>
+<article class="lift reveal" style="padding: 32px; border-radius: 24px; background: #121A2B; border: 1px solid #1A2338; display: flex; flex-direction: column; gap: 14px">
+<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color: {{accent}}"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 1.7 3h10.6a2 2 0 0 0 1.7-3l-5-9V3M7.5 14h9"></path></svg>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #8A97B0; text-transform: uppercase; letter-spacing: 0.08em">Experimentando con</span>
+<p style="margin: 0; font-size: 20px; line-height: 1.45">Desarrollo con agentes de IA (Claude Code, Opencode, Orca) y estrategias de caché en Next.js.</p>
+<a href="Proyectos.dc.html" style="margin-top: auto; display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 15px; color: {{accent}}">Ver experimentos <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 18l6-6M13 6l6 6"></path></svg></a>
+</article>
+<article class="lift reveal" style="padding: 32px; border-radius: 24px; background: #121A2B; border: 1px solid #1A2338; display: flex; flex-direction: column; gap: 14px">
+<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color: {{brand}}"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3zM12 12l8-4.5M12 12v9M12 12L4 7.5"></path></svg>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #8A97B0; text-transform: uppercase; letter-spacing: 0.08em">Fuera del código</span>
+<p style="margin: 0; font-size: 20px; line-height: 1.45">Campañas de D&amp;D, sets de LEGO y PCs montados por piezas.</p>
+<a href="SobreMi.dc.html" style="margin-top: auto; display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 15px; color: {{brand}}">Sobre mí <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 18l6-6M13 6l6 6"></path></svg></a>
+</article>
+</div>
+</section>
+
+<!-- ABOUT -->
+<section id="sobre-mi" aria-labelledby="about-h" style="max-width: 1200px; margin: 0 auto; padding: 120px clamp(16px, 4vw, 40px) 0; display: flex; flex-direction: column; gap: 40px">
+<div class="reveal" style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 24px">
+<div style="flex: 1 1 520px; display: flex; flex-direction: column; gap: 12px">
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: {{brand}}">03 — Sobre mí</span>
+<h2 id="about-h" style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: clamp(34px, 4vw, 54px); line-height: 1.05; letter-spacing: -0.03em">Dados, LEGO y PCs montados a mano</h2>
+</div>
+<p style="flex: 1 1 380px; margin: 0; color: #A3AEC2">Empecé programando un videojuego en el instituto y una calculadora de notas. Hoy los videojuegos son mi desconexión, junto a las partidas de rol, el gym y los sets de LEGO.</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px">
+<figure class="lift reveal" style="margin: 0; border-radius: 24px; overflow: hidden; position: relative; border: 1px solid #1A2338">
+<img class="zoom" src="/_blob/0248c094e2132cb5004e3cf2bfd4f030" alt="Iván en Japón frente al Kinkaku-ji" style="width: 100%; aspect-ratio: 4 / 5; object-fit: cover; display: block; background: #121A2B">
+<figcaption style="position: absolute; left: 14px; bottom: 14px; padding: 8px 12px; border-radius: 999px; background: #0B1120; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #E8ECF4">Kioto, Japón</figcaption>
+</figure>
+<figure class="lift reveal" style="margin: 0; border-radius: 24px; overflow: hidden; position: relative; border: 1px solid #1A2338">
+<img class="zoom" src="/_blob/c0b4c04bdc82dbc95cea832cce0d8bb6" alt="Cuenco de dados de rol" style="width: 100%; aspect-ratio: 4 / 5; object-fit: cover; display: block; background: #121A2B">
+<figcaption style="position: absolute; left: 14px; bottom: 14px; padding: 8px 12px; border-radius: 999px; background: #0B1120; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #E8ECF4">Dragones y Mazmorras</figcaption>
+</figure>
+<figure class="lift reveal" style="margin: 0; border-radius: 24px; overflow: hidden; position: relative; border: 1px solid #1A2338">
+<img class="zoom" src="/_blob/8b5c29c75c93d88fe498cf932d9210f6" alt="Figuras LEGO de Star Wars" style="width: 100%; aspect-ratio: 4 / 5; object-fit: cover; display: block; background: #121A2B">
+<figcaption style="position: absolute; left: 14px; bottom: 14px; padding: 8px 12px; border-radius: 999px; background: #0B1120; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #E8ECF4">LEGO · Star Wars</figcaption>
+</figure>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section id="contacto" aria-labelledby="contact-h" style="max-width: 1200px; margin: 0 auto; padding: 120px clamp(16px, 4vw, 40px) 0">
+<div class="reveal" style="position: relative; overflow: hidden; border-radius: 32px; background: #121A2B; border: 1px solid #1F2A40; padding: clamp(32px, 6vw, 80px); display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 32px">
+<svg class="float" width="220" height="220" viewBox="0 0 32 32" aria-hidden="true" fill="currentColor" style="position: absolute; right: -30px; top: -40px; color: #1A2338"><rect x="2" y="2" width="12.7" height="5.6"></rect><rect x="9.6" y="2" width="5.1" height="28"></rect><rect x="2" y="24.4" width="12.7" height="5.6"></rect><rect x="17.3" y="2" width="12.7" height="5.6"></rect><rect x="17.3" y="2" width="5.1" height="9.8"></rect><rect x="17.3" y="13.2" width="12.7" height="5.6"></rect><rect x="17.3" y="20.2" width="5.1" height="9.8"></rect><rect x="17.3" y="24.4" width="12.7" height="5.6"></rect></svg>
+<div style="position: relative; flex: 1 1 520px; display: flex; flex-direction: column; gap: 16px">
+<h2 id="contact-h" style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(40px, 5.5vw, 78px); line-height: 1; letter-spacing: -0.035em">¿Construimos <span style="background: linear-gradient(90deg, {{brand}}, {{accent}}); -webkit-background-clip: text; background-clip: text; color: transparent">algo juntos</span>?</h2>
+<p style="margin: 0; font-size: 19px; max-width: 520px; color: #A3AEC2">Proyectos, ideas o una charla sobre desarrollo de software. Contesto lo más rápido que puedo.</p>
+</div>
+<div style="position: relative; flex: 0 1 auto; display: flex; flex-direction: column; gap: 12px; min-width: 260px">
+<a href="mailto:ivanciudad98@gmail.com" style="display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 18px 24px; border-radius: 999px; background: {{accent}}; color: #0B1120; font-weight: 700">Escríbeme <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 18l6-6M13 6l6 6"></path></svg></a>
+<div style="display: flex; gap: 12px">
+<a href="https://www.linkedin.com/in/iv%C3%A1n-ciudad-espinar-2195191b2/" style="flex: 1; text-align: center; padding: 14px 18px; border-radius: 999px; border: 1px solid #2A3654; font-weight: 600">LinkedIn</a>
+<a href="https://github.com/Srivix" style="flex: 1; text-align: center; padding: 14px 18px; border-radius: 999px; border: 1px solid #2A3654; font-weight: 600">GitHub</a>
+</div>
+</div>
+</div>
+</section>
+</main>
+
+<!-- FOOTER -->
+<footer style="max-width: 1200px; margin: 0 auto; padding: 56px clamp(16px, 4vw, 40px) 40px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; color: #8A97B0; font-size: 14px">
+<span style="display: flex; align-items: center; gap: 10px"><svg width="20" height="20" viewBox="0 0 32 32" aria-hidden="true" fill="currentColor" style="color: {{brand}}"><rect x="2" y="2" width="12.7" height="5.6"></rect><rect x="9.6" y="2" width="5.1" height="28"></rect><rect x="2" y="24.4" width="12.7" height="5.6"></rect><rect x="17.3" y="2" width="12.7" height="5.6"></rect><rect x="17.3" y="2" width="5.1" height="9.8"></rect><rect x="17.3" y="13.2" width="12.7" height="5.6"></rect><rect x="17.3" y="20.2" width="5.1" height="9.8"></rect><rect x="17.3" y="24.4" width="12.7" height="5.6"></rect></svg>© 2026 Iván Ciudad Espinar · Hecho con Astro y Tailwind</span>
+<div style="display: flex; gap: 20px">
+<a href="https://github.com/Srivix" style="color: #8A97B0">GitHub</a>
+<a href="https://www.linkedin.com/in/iv%C3%A1n-ciudad-espinar-2195191b2/" style="color: #8A97B0">LinkedIn</a>
+<a href="mailto:ivanciudad98@gmail.com" style="color: #8A97B0">Email</a>
+</div>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#A78BFA","options":["#A78BFA","#C084FC","#818CF8","#60A5FA"]},"brand":{"editor":"color","default":"#22D3EE","options":["#22D3EE","#38BDF8","#67E8F9"]},"$preview":{"width":1440,"height":4300}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { accent: this.props.accent ?? '#A78BFA', brand: this.props.brand ?? '#22D3EE' };
+  }
+}
+</script>
+</body>
+</html>

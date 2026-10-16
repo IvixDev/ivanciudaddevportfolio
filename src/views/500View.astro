@@ -1,10 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Button from "../components/ui/Button.astro";
 import { useTranslations } from "../i18n/utils";
-
-interface Props {
-  error?: Error;
-}
 
 const lang = Astro.currentLocale;
 const t = useTranslations(lang);
@@ -14,6 +11,7 @@ const description = t("error_500.description");
 const url = t("error_500.url");
 const image = t("error_500.image");
 
+// Páginas de error: sin indexar y sin handles de redes.
 const infoSeo = {
   title,
   description,
@@ -29,33 +27,32 @@ const infoSeo = {
   twitter: {
     title,
     description,
-    creator: "@Mrivix",
     image,
   },
   extend: {
     link: [{ rel: "icon", href: "/favicon.svg" }],
-    meta: [],
+    meta: [{ name: "robots", content: "noindex" }],
   },
 };
-
-const errorMessage =
-  Astro.props.error?.message ?? t("error_500.unknown_error");
 ---
 
 <Layout infoSeo={infoSeo}>
-  <main class="flex flex-col items-center min-h-screen text-center gap-10">
-    <h1 class="text-2xl tablet:text-3xl laptop:text-5xl font-medium">
+  <section
+    class="mx-auto flex w-full max-w-(--container-content) flex-col items-start gap-5 px-4 py-20 tablet:gap-6 tablet:px-8 tablet:py-28 desktop:px-[clamp(16px,4vw,40px)] laptop:py-[clamp(96px,10vw,160px)]"
+  >
+    <h1
+      class="animate-up font-display text-[42px] leading-none font-extrabold tracking-[-0.035em] text-fg tablet:text-[68px] laptop:text-[clamp(46px,6.4vw,90px)]"
+    >
       {t("error_500.heading")}
     </h1>
-    <p class="mt-4 text-lg">
+    <p
+      class="animate-up max-w-[620px] text-[17px] text-muted tablet:text-[19px] laptop:text-[clamp(17px,1.5vw,20px)]"
+      style="animation-delay: 100ms"
+    >
       {t("error_500.body")}
     </p>
-    <pre
-      class="mt-4 p-4 bg-gray-100 text-red-600 rounded-lg">{errorMessage}</pre>
-    <a
-      href={t("error_500.home_url")}
-      class="p-2 border-4 border-solid bg-purple-950 border-purple-900 rounded-xl scale-on-hover"
-      >{t("error_500.return_home")}</a
-    >
-  </main>
+    <div class="animate-up pt-2" style="animation-delay: 200ms">
+      <Button href={t("error_500.home_url")} variant="primary">{t("error_500.return_home")}</Button>
+    </div>
+  </section>
 </Layout>

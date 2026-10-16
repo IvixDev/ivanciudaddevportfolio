@@ -1,50 +1,65 @@
-import es from './locales/es.json';
-import en from './locales/en.json';
+import es from "./locales/es.json";
+import en from "./locales/en.json";
 
-export const defaultLang = 'es';
+export type Messages = typeof es;
+export type Lang = "es" | "en";
+
+export const defaultLang: Lang = "es";
 
 export const ui = {
-    es,
-    en,
-};
+  es,
+  en: en satisfies Messages,
+} as const;
 
-type Lang = keyof typeof ui;
+/** Rutas de claves cuyo valor es un string (las listas se leen con getMessages). */
+type StringPaths<T> = {
+  [K in keyof T & string]: T[K] extends string
+    ? K
+    : T[K] extends readonly object[] | readonly string[]
+      ? never
+      : T[K] extends object
+        ? `${K}.${StringPaths<T[K]>}`
+        : never;
+}[keyof T & string];
 
-/** Shape of the translations, taken from the default locale. */
-export type Translations = typeof es;
+export type TranslationKey = StringPaths<Messages>;
 
-type TranslationNode = string | number | boolean | null | TranslationNode[] | { [key: string]: TranslationNode };
+type MessageNode = string | object;
 
-function isLang(lang: string): lang is Lang {
-    return lang in ui;
+export function getLang(lang: string | undefined): Lang {
+  return lang === "en" ? "en" : defaultLang;
 }
 
-function getChild(node: TranslationNode | undefined, key: string): TranslationNode | undefined {
-    if (node === null || typeof node !== 'object') return undefined;
-    return Array.isArray(node) ? node[Number(key)] : node[key];
+/** Devuelve el objeto de textos tipado del idioma. Preferido en componentes. */
+export function getMessages(lang: string | undefined): Messages {
+  return ui[getLang(lang)];
 }
 
+/** Traducción por ruta (p. ej. `t("home.title")`). Si falta la clave devuelve la propia clave. */
+function lookup(messages: MessageNode, key: string): string | undefined {
+  let node: MessageNode | undefined = messages;
+  for (const part of key.split(".")) {
+    if (typeof node === "string" || node === undefined) return undefined;
+    node = Object.entries(node).find(([name]) => name === part)?.[1];
+  }
+  return typeof node === "string" ? node : undefined;
+}
+
+/** Traductor por ruta de clave. Si falta en el idioma pedido usa el español; si tampoco existe, devuelve la clave. */
 export function useTranslations(lang: string | undefined) {
-    const currentLang: Lang = (lang && isLang(lang)) ? lang : defaultLang;
+  const messages: MessageNode = getMessages(lang);
+  const fallback: MessageNode = getMessages(defaultLang);
 
-    /** Top-level keys return their typed section (e.g. `t('experiences')`). */
-    function t<K extends keyof Translations>(key: K): Translations[K];
-    /** Dotted keys return a string by default; pass a type argument for other shapes. */
-    function t<T = string>(key: string): T;
-    function t(key: string) {
-        const keys = key.split('.');
-        let value: TranslationNode | undefined = ui[currentLang];
-        let fallback: TranslationNode | undefined = ui[defaultLang];
+  return function t(key: TranslationKey): string {
+    return lookup(messages, key) ?? lookup(fallback, key) ?? key;
+  };
+}
 
-        for (const k of keys) {
-            value = getChild(value, k);
-            fallback = getChild(fallback, k);
-        }
-
-        return value ?? fallback ?? key;
-    }
-
-    return t;
+/** Sustituye `{count}`, `{date}`, `{year}`… en una cadena. */
+export function format(template: string, vars: Record<string, string | number>): string {
+  return template.replace(/\{(\w+)\}/g, (match, name: string) =>
+    name in vars ? String(vars[name]) : match,
+  );
 }
 
 /**
@@ -52,26 +67,26 @@ export function useTranslations(lang: string | undefined) {
  * in both locales so that prefix matching always picks the most specific route.
  */
 function buildRouteMap(fromLang: Lang, toLang: Lang) {
-    const fromNav = ui[fromLang].nav;
-    const toNav = ui[toLang].nav;
+  const fromNav: Record<string, string> = ui[fromLang].nav;
+  const toNav: Record<string, string> = ui[toLang].nav;
 
-    return (Object.keys(fromNav) as (keyof typeof fromNav)[])
-        .map((key) => ({ from: fromNav[key], to: toNav[key] }))
-        .sort((a, b) => b.from.length - a.from.length);
+  return Object.keys(fromNav)
+    .map((key) => ({ from: fromNav[key], to: toNav[key] }))
+    .sort((a, b) => b.from.length - a.from.length);
 }
 
 export function getOppositeLocaleUrl(activePath: string, currentLang: string): string {
-    const fromLang: Lang = currentLang === 'en' ? 'en' : 'es';
-    const oppLang: Lang = fromLang === 'es' ? 'en' : 'es';
-    const routes = buildRouteMap(fromLang, oppLang);
+  const from = getLang(currentLang);
+  const oppLang: Lang = from === "es" ? "en" : "es";
+  const routes = buildRouteMap(from, oppLang);
 
-    for (const { from, to } of routes) {
-        if (activePath === from || activePath === from + '/') return to;
-        // Strip the trailing slash of '/' so '/en/500' maps to '/500' instead of '//500'.
-        if (activePath.startsWith(from + '/')) return to.replace(/\/$/, '') + activePath.slice(from.length);
-    }
+  for (const { from: fromPath, to } of routes) {
+    if (activePath === fromPath || activePath === fromPath + "/") return to;
+    // Quita la barra final de "/" para que "/en/500" lleve a "/500" y no a "//500".
+    if (activePath.startsWith(fromPath + "/")) return to.replace(/\/$/, "") + activePath.slice(fromPath.length);
+  }
 
-    return oppLang === 'en' ? '/en' : '/';
+  return oppLang === "en" ? "/en" : "/";
 }
 
 /**
@@ -79,6 +94,6 @@ export function getOppositeLocaleUrl(activePath: string, currentLang: string): s
  * to prevent them from lighting up on every sub-page (e.g. /en is prefix of /en/career).
  */
 export function isNavActive(activePath: string, href: string, isHome: boolean): boolean {
-    if (isHome) return activePath === href || activePath === href + '/';
-    return activePath === href || activePath.startsWith(href + '/');
+  if (isHome) return activePath === href || activePath === href + "/";
+  return activePath === href || activePath.startsWith(href + "/");
 }

@@ -1,0 +1,36 @@
+---
+import Button from "./Button.astro";
+
+interface Props {
+  eyebrow: string;
+  title: string;
+  description?: string;
+  linkHref?: string;
+  linkLabel?: string;
+  /** Muestra el enlace solo desde tablet (en móvil lo ofrece un CTA propio debajo de la sección). */
+  linkFromTablet?: boolean;
+  headingId?: string;
+}
+
+const { eyebrow, title, description, linkHref, linkLabel, linkFromTablet = false, headingId } = Astro.props;
+---
+
+<div class="reveal flex flex-col gap-4 tablet:flex-row tablet:items-end tablet:justify-between">
+  <div class="flex max-w-3xl flex-col gap-3">
+    <p class="font-mono text-xs font-medium tablet:text-[13px] text-brand">{eyebrow}</p>
+    <h2
+      id={headingId}
+      class="font-display text-[32px] leading-[1.05] font-bold tracking-[-0.03em] text-fg tablet:text-[44px] laptop:text-[clamp(44px,4vw,54px)]"
+    >
+      {title}
+    </h2>
+    {description && <p class="text-base text-muted tablet:text-[17px]">{description}</p>}
+  </div>
+  {
+    linkHref && linkLabel && (
+      <Button href={linkHref} variant="link" class={linkFromTablet ? "max-tablet:hidden shrink-0" : "shrink-0"}>
+        {linkLabel}
+      </Button>
+    )
+  }
+</div>
