@@ -36,17 +36,22 @@ export function getMessages(lang: string | undefined): Messages {
 }
 
 /** Traducción por ruta (p. ej. `t("home.title")`). Si falta la clave devuelve la propia clave. */
+function lookup(messages: MessageNode, key: string): string | undefined {
+  let node: MessageNode | undefined = messages;
+  for (const part of key.split(".")) {
+    if (typeof node === "string" || node === undefined) return undefined;
+    node = Object.entries(node).find(([name]) => name === part)?.[1];
+  }
+  return typeof node === "string" ? node : undefined;
+}
+
+/** Traductor por ruta de clave. Si falta en el idioma pedido usa el español; si tampoco existe, devuelve la clave. */
 export function useTranslations(lang: string | undefined) {
   const messages: MessageNode = getMessages(lang);
+  const fallback: MessageNode = getMessages(defaultLang);
 
   return function t(key: TranslationKey): string {
-    let node: MessageNode | undefined = messages;
-    for (const part of key.split(".")) {
-      if (typeof node === "string" || node === undefined) return key;
-      const next: MessageNode | undefined = Object.entries(node).find(([name]) => name === part)?.[1];
-      node = next;
-    }
-    return typeof node === "string" ? node : key;
+    return lookup(messages, key) ?? lookup(fallback, key) ?? key;
   };
 }
 
@@ -77,7 +82,8 @@ export function getOppositeLocaleUrl(activePath: string, currentLang: string): s
 
   for (const { from: fromPath, to } of routes) {
     if (activePath === fromPath || activePath === fromPath + "/") return to;
-    if (activePath.startsWith(fromPath + "/")) return to + activePath.slice(fromPath.length);
+    // Quita la barra final de "/" para que "/en/500" lleve a "/500" y no a "//500".
+    if (activePath.startsWith(fromPath + "/")) return to.replace(/\/$/, "") + activePath.slice(fromPath.length);
   }
 
   return oppLang === "en" ? "/en" : "/";
