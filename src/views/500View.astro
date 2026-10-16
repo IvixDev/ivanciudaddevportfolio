@@ -2,6 +2,10 @@
 import Layout from "../layouts/Layout.astro";
 import { useTranslations } from "../i18n/utils";
 
+interface Props {
+  error?: Error;
+}
+
 const lang = Astro.currentLocale;
 const t = useTranslations(lang);
 
@@ -35,7 +39,7 @@ const infoSeo = {
 };
 
 const errorMessage =
-  (Astro.props as any).error?.message ?? t("error_500.unknown_error");
+  Astro.props.error?.message ?? t("error_500.unknown_error");
 ---
 
 <Layout infoSeo={infoSeo}>

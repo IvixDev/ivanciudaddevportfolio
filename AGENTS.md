@@ -31,13 +31,17 @@
 - Accesibilidad no es opcional: HTML semántico, roles ARIA cuando aplique y foco gestionado
 
 ## Testing y calidad
-- Revisar los workflows de CI en `.github/workflows`.
+- Revisar los workflows de CI en `.github/workflows` (`ci.yml` ejecuta `pnpm lint`, `pnpm test` y `pnpm build` en cada PR).
 - Ejecutar los tests con:
-  `pnpm test` o `pnpm turbo run test --filter <project_name>`
+  `pnpm test` (una vez) o `pnpm test:watch` (modo watch)
 - Para Vitest:
   `pnpm vitest run -t "<nombre del test>"`
+- Los tests viven junto al código como `*.test.ts` dentro de `src`.
 - Tras mover archivos o cambiar imports, ejecutar:
-  `pnpm lint`
+  `pnpm lint` (o `pnpm lint:fix` para autocorregir)
+- ESLint usa flat config (`eslint.config.js`) con `typescript-eslint` estricto, `eslint-plugin-astro` y `eslint-plugin-jsx-a11y`. Nunca desactivar reglas de a11y sin un comentario que lo justifique.
+- `@typescript-eslint/no-explicit-any` es error. Para traducciones, usar el tipado de `useTranslations` en lugar de `as any`.
+- Mantener `eslint-plugin-astro` en 1.x mientras se use ESLint 9 (las versiones 2+ exigen ESLint 10).
 - No se acepta código con errores de tipos, lint o tests fallidos.
 - Añadir o actualizar tests cuando se cambie comportamiento, aunque no se pida explícitamente.
 

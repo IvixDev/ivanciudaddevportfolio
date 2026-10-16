@@ -5,7 +5,7 @@ import ProjectCardMobile from "./ProjectCardMobile";
 
 export interface TechItem {
     label: string;
-    icon?: string | TablerIcon | React.ComponentType<any>;
+    icon?: string | TablerIcon | React.ComponentType<{ className?: string }>;
     variant?: BadgeVariant;
 }
 

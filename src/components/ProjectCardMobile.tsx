@@ -4,7 +4,7 @@ import { TechBadge, type BadgeVariant } from "./TechBadge";
 
 export interface TechItem {
     label: string;
-    icon?: string | TablerIcon | React.ComponentType<any>;
+    icon?: string | TablerIcon | React.ComponentType<{ className?: string }>;
     variant?: BadgeVariant;
 }
 
@@ -78,6 +78,9 @@ export default function ProjectCardMobile({
     };
 
     return (
+        // TODO(a11y): the whole card acts as a two-step tap target (expand, then navigate) and is not keyboard reachable.
+        // Fixing it needs a semantic rework (real <a>/<button> + aria-expanded), planned for the redesign.
+        // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
         <div
             ref={cardRef}
             onClick={handleToggle}

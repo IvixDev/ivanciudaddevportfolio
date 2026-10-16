@@ -31,15 +31,15 @@ const TECHNOLOGIES = [
         category: "Herramientas",
         items: ["Git", "JIRA", "Gitflow", "Docker", "Figma"],
     },
-];
+] as const;
 
 const lang = Astro.currentLocale;
 const t = useTranslations(lang);
-const career = t("career") as any;
-const experiences = t("experiences") as any[];
-const educations = t("educations") as any[];
-const softskills = t("softskills") as any[];
-const techCategories = t("tech_categories") as any;
+const career = t("career");
+const experiences = t("experiences");
+const educations = t("educations");
+const softskills = t("softskills");
+const techCategories = t("tech_categories");
 ---
 
 <div class="relative w-full max-w-5xl mx-auto px-4 py-8 overflow-hidden">
