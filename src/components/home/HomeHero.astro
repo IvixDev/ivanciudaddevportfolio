@@ -1,0 +1,124 @@
+---
+import { Image } from "astro:assets";
+import { IconBrandGithub, IconBrandLinkedin, IconMail } from "@tabler/icons-react";
+import Button from "../ui/Button.astro";
+import GradientText from "../ui/GradientText.astro";
+import TerminalCard from "./TerminalCard.astro";
+import portrait from "../../assets/ivan-ciudad-hero.webp";
+import { socialMediaLinks } from "../../content/layout.consts";
+import { getMessages } from "../../i18n/utils";
+
+const m = getMessages(Astro.currentLocale);
+const h = m.home;
+
+const linkedin = socialMediaLinks.find((link) => link.name === "linkedin")?.href;
+const github = socialMediaLinks.find((link) => link.name === "github")?.href;
+const mailto = `mailto:${m.common.email_address}`;
+---
+
+<section
+  class="mx-auto grid w-full max-w-(--container-content) grid-cols-[minmax(0,1fr)] gap-y-[22px] px-4 pt-8 pb-10 tablet:grid-cols-[300px_minmax(0,1fr)] tablet:gap-x-5 tablet:gap-y-7 tablet:px-8 tablet:pt-16 tablet:pb-14 desktop:px-[clamp(16px,4vw,40px)] laptop:grid-cols-[minmax(0,1fr)_minmax(340px,430px)] laptop:gap-x-16 laptop:pt-[clamp(56px,8vw,112px)] laptop:pb-[72px]"
+>
+  <div
+    class="flex flex-col gap-[22px] tablet:col-span-2 tablet:row-start-1 tablet:gap-7 laptop:col-span-1 laptop:col-start-1 laptop:self-center"
+  >
+    <p
+      class="animate-up inline-flex items-center gap-2 self-start rounded-full border border-line px-3 py-[7px] font-mono text-xs text-muted tablet:gap-2.5 tablet:px-3.5 tablet:py-2 tablet:text-[13px]"
+    >
+      <span class="size-2 rounded-full bg-brand" aria-hidden="true"></span>
+      <span class="tablet:hidden">{h.eyebrow_short}</span>
+      <span class="hidden tablet:inline">{h.eyebrow}</span>
+    </p>
+
+    <h1
+      class="animate-up font-display text-[clamp(38px,11.8vw,46px)] leading-none font-extrabold tracking-[-0.035em] text-fg tablet:text-[72px] tablet:leading-[0.98] laptop:text-[clamp(46px,6.4vw,90px)]"
+      style="animation-delay: 0.1s"
+    >
+      {h.hero_title_before}<GradientText>{h.hero_title_highlight}</GradientText>{h.hero_title_after}
+    </h1>
+
+    <p
+      class="animate-up max-w-[620px] text-[17px] text-muted tablet:text-[19px] laptop:max-w-[560px] laptop:text-[clamp(17px,1.5vw,20px)]"
+      style="animation-delay: 0.2s"
+    >
+      <span class="tablet:hidden">{h.hero_subtitle_short}</span>
+      <span class="hidden tablet:inline">{h.hero_subtitle}</span>
+    </p>
+
+    <div
+      class="animate-up flex flex-col gap-2.5 tablet:flex-row tablet:flex-wrap tablet:items-center tablet:gap-3"
+      style="animation-delay: 0.3s"
+    >
+      <Button href="#proyectos" arrow class="w-full justify-center tablet:w-auto">{m.common.view_projects}</Button>
+      <div class="flex gap-2.5 tablet:contents">
+        <Button
+          href={m.nav.about_url}
+          variant="secondary"
+          class="flex-1 justify-center tablet:flex-none"
+        >
+          {m.common.know_me}
+        </Button>
+        {
+          linkedin && (
+            <Button
+              href={linkedin}
+              variant="icon"
+              external
+              ariaLabel={m.common.view_linkedin}
+              class="border border-line-strong tablet:ml-auto tablet:border-transparent laptop:ml-1.5"
+            >
+              <IconBrandLinkedin size={22} stroke={1.8} aria-hidden="true" />
+            </Button>
+          )
+        }
+        {
+          github && (
+            <Button
+              href={github}
+              variant="icon"
+              external
+              ariaLabel={m.common.view_github}
+              class="border border-line-strong tablet:border-transparent"
+            >
+              <IconBrandGithub size={22} stroke={1.8} aria-hidden="true" />
+            </Button>
+          )
+        }
+        <div class="hidden laptop:block">
+          <Button href={mailto} variant="icon" ariaLabel={m.footer.email}>
+            <IconMail size={22} stroke={1.8} aria-hidden="true" />
+          </Button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="animate-up order-first mx-auto w-full max-w-[420px] self-start tablet:order-none tablet:col-start-1 tablet:row-start-2 tablet:mx-0 tablet:max-w-none tablet:self-end laptop:col-start-2 laptop:row-start-1 laptop:mb-[72px] laptop:self-start"
+    style="animation-delay: 0.25s"
+  >
+    <div class="relative overflow-hidden rounded-[28px] p-[3px] tablet:rounded-[30px] laptop:rounded-[32px]">
+      <div
+        class="animate-spin-slow absolute -top-1/2 -left-1/2 size-[200%] bg-[conic-gradient(from_0deg,var(--color-brand),var(--color-accent),var(--color-ink)_40%,var(--color-ink)_60%,var(--color-brand))]"
+        aria-hidden="true"
+      >
+      </div>
+      <Image
+        src={portrait}
+        alt={h.portrait_alt}
+        widths={[300, 430, 600, 860]}
+        sizes="(min-width: 1024px) 430px, (min-width: 768px) 300px, (min-width: 480px) 420px, calc(100vw - 38px)"
+        loading="eager"
+        fetchpriority="high"
+        class="relative block aspect-square w-full rounded-[25px] bg-surface object-cover tablet:aspect-[4/5] tablet:rounded-[27px] laptop:rounded-[29px]"
+      />
+    </div>
+  </div>
+
+  <div
+    class="animate-up tablet:col-start-2 tablet:row-start-2 tablet:self-end laptop:z-10 laptop:col-start-2 laptop:row-start-1 laptop:self-end laptop:-ml-8 laptop:mr-8"
+    style="animation-delay: 0.35s"
+  >
+    <TerminalCard class="laptop:animate-float" />
+  </div>
+</section>

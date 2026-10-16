@@ -1,0 +1,54 @@
+---
+import HomeSection from "./HomeSection.astro";
+import SectionHeader from "../ui/SectionHeader.astro";
+import Button from "../ui/Button.astro";
+import FeaturedProject from "./FeaturedProject.astro";
+import ProjectCard from "./ProjectCard.astro";
+import { getLocalizedProjects } from "../../content/projects";
+import type { ProjectId } from "../../content/projects";
+import { getMessages } from "../../i18n/utils";
+
+const lang = Astro.currentLocale;
+const m = getMessages(lang);
+const projects = getLocalizedProjects(lang);
+
+const featured = projects.find((project) => project.featured);
+// Orden del diseño en las tarjetas; la última ocupa dos columnas en tablet.
+const cardOrder: readonly ProjectId[] = ["buscaminas", "pokemon", "gym"];
+const cards = cardOrder
+  .map((id) => projects.find((project) => project.id === id && !project.featured))
+  .filter((project) => project !== undefined);
+---
+
+<HomeSection id="proyectos" headingId="proyectos-titulo">
+  <SectionHeader
+    eyebrow={m.home.projects_eyebrow}
+    title={m.home.projects_title}
+    headingId="proyectos-titulo"
+    linkHref={m.nav.projects_url}
+    linkLabel={m.common.view_all}
+    linkFromTablet
+  />
+
+  {
+    featured && (
+      <div class="reveal">
+        <FeaturedProject project={featured} />
+      </div>
+    )
+  }
+
+  <ul class="grid gap-3 tablet:grid-cols-2 tablet:gap-5 laptop:grid-cols-3">
+    {
+      cards.map((project, i) => (
+        <li class:list={["reveal", i === cards.length - 1 && "tablet:max-laptop:col-span-2"]}>
+          <ProjectCard project={project} wide={i === cards.length - 1} />
+        </li>
+      ))
+    }
+  </ul>
+
+  <div class="flex justify-center tablet:hidden">
+    <Button href={m.nav.projects_url} variant="link" arrow>{m.common.view_all_projects}</Button>
+  </div>
+</HomeSection>

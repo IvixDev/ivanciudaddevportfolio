@@ -1,0 +1,63 @@
+---
+import { Image } from "astro:assets";
+import HomeSection from "./HomeSection.astro";
+import Button from "../ui/Button.astro";
+import japan from "../../assets/ivan-japon.webp";
+import dice from "../../assets/juegos-de-mesa-dados.webp";
+import lego from "../../assets/legos.webp";
+import { getMessages } from "../../i18n/utils";
+
+const m = getMessages(Astro.currentLocale);
+const h = m.home;
+const photos = [
+  { src: japan, alt: h.about_photos.japan_alt, caption: h.about_photos.japan_caption },
+  { src: dice, alt: h.about_photos.dice_alt, caption: h.about_photos.dice_caption },
+  { src: lego, alt: h.about_photos.lego_alt, caption: h.about_photos.lego_caption },
+];
+---
+
+<HomeSection id="sobre-mi" headingId="sobre-mi-titulo" class="tablet:gap-6">
+  <div class="reveal flex flex-col gap-4 tablet:gap-6 laptop:flex-row laptop:items-end laptop:justify-between">
+    <div class="flex flex-col gap-3 laptop:flex-[1_1_520px]">
+      <p class="font-mono text-xs font-medium text-brand tablet:text-[13px]">{h.about_eyebrow}</p>
+      <h2
+        id="sobre-mi-titulo"
+        class="font-display text-[clamp(32px,4vw,54px)] leading-[1.05] font-bold tracking-[-0.03em] text-fg"
+      >
+        {h.about_title}
+      </h2>
+    </div>
+    <p class="max-w-[640px] text-[15px] text-muted tablet:text-base laptop:flex-[1_1_380px] laptop:text-[17px]">
+      <span class="tablet:hidden">{h.about_text_short}</span>
+      <span class="hidden tablet:inline">{h.about_text}</span>
+    </p>
+  </div>
+
+  <ul class="grid grid-cols-2 gap-2.5 tablet:grid-cols-3 tablet:gap-3.5 laptop:gap-5">
+    {
+      photos.map(({ src, alt, caption }, i) => (
+        <li class:list={["reveal", i === 0 && "col-span-2 tablet:col-span-1"]}>
+          <figure class="lift relative overflow-hidden rounded-card-sm border border-line-subtle bg-surface tablet:rounded-card">
+            <Image
+              src={src}
+              alt={alt}
+              widths={[320, 480, 640, 900]}
+              sizes="(min-width: 1024px) 380px, (min-width: 768px) 245px, (min-width: 480px) 400px, calc(100vw - 32px)"
+              class:list={[
+                "zoom block w-full object-cover tablet:aspect-[3/4] laptop:aspect-[4/5]",
+                i === 0 ? "aspect-[16/10]" : "aspect-square",
+              ]}
+            />
+            <figcaption class="absolute bottom-3.5 left-3.5 hidden rounded-full bg-ink px-3 py-2 font-mono text-xs text-fg laptop:block">
+              {caption}
+            </figcaption>
+          </figure>
+        </li>
+      ))
+    }
+  </ul>
+
+  <div>
+    <Button href={m.nav.about_url} variant="link" arrow>{m.common.know_me_better}</Button>
+  </div>
+</HomeSection>

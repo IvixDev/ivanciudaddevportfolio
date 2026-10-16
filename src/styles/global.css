@@ -1,6 +1,10 @@
 @import "tailwindcss";
+@import "@fontsource-variable/onest";
+@import "@fontsource-variable/bricolage-grotesque";
+@import "@fontsource-variable/jetbrains-mono";
 
 @theme {
+  /* Breakpoints */
   --breakpoint-mobile: 0px;
   --breakpoint-small-tablet: 640px;
   --breakpoint-tablet: 768px;
@@ -8,126 +12,235 @@
   --breakpoint-desktop: 1280px;
   --breakpoint-big-desktop: 1536px;
 
-  --font-onest: "Onest", ui-sans-serif, system-ui, sans-serif;
-  --font-source-code: "Source Code Pro", monospace;
+  /* Color */
+  --color-ink: #0B1120;
+  --color-ink-raised: #0E1526;
+  --color-surface: #121A2B;
+  --color-line-subtle: #1A2338;
+  --color-line: #1F2A40;
+  --color-line-strong: #2A3654;
+  --color-line-hover: #34406A;
+  --color-fg: #E8ECF4;
+  --color-muted: #A3AEC2;
+  --color-subtle: #8A97B0;
+  --color-faint: #7D89A3;
+  --color-chip: #C9D1DE;
+  --color-brand: #22D3EE;
+  --color-accent: #A78BFA;
+
+  /* Tipografía (nombres de familia de @fontsource-variable/*) */
+  --font-display: "Bricolage Grotesque Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Onest Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono Variable", ui-monospace, monospace;
+
+  /* Layout y forma */
+  --container-content: 1200px;
+  --radius-tag: 8px;
+  --radius-card-sm: 20px;
+  --radius-card: 24px;
+  --radius-card-lg: 28px;
+  --radius-block: 32px;
+  --shadow-lift: 0 24px 48px -24px rgb(167 139 250 / 0.45);
+  --shadow-float: 0 24px 60px -20px rgb(0 0 0 / 0.7);
+
+  /* Movimiento */
+  --ease-out-soft: cubic-bezier(.2, .7, .2, 1);
+  --duration-fast: 200ms;
+  --duration-base: 350ms;
+  --duration-slow: 700ms;
+  --duration-enter: 900ms;
+  --animate-up: up 900ms var(--ease-out-soft) both;
+  --animate-drop: drop 500ms var(--ease-out-soft) both;
+  --animate-fade: fade 450ms var(--ease-out-soft) both;
+  --animate-spin-slow: spin 7s linear infinite;
+  --animate-blink: blink 1s steps(1) infinite;
+  --animate-marquee: marquee 30s linear infinite;
+  --animate-float: float 7s ease-in-out infinite;
+  --animate-pulse-ring: pulse-ring 2s ease-out infinite;
+
+  @keyframes up {
+    from { opacity: 0; transform: translateY(28px); }
+    to { opacity: 1; transform: none; }
+  }
+
+  @keyframes drop {
+    from { opacity: 0; transform: translateY(-6px); }
+    to { opacity: 1; transform: none; }
+  }
+
+  @keyframes fade {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: none; }
+  }
+
+  @keyframes spin {
+    to { transform: rotate(1turn); }
+  }
+
+  @keyframes blink {
+    50% { opacity: 0; }
+  }
+
+  @keyframes marquee {
+    to { transform: translateX(-50%); }
+  }
+
+  @keyframes float {
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes pulse-ring {
+    0% { box-shadow: 0 0 0 0 rgb(34 211 238 / .5); }
+    70% { box-shadow: 0 0 0 12px rgb(34 211 238 / 0); }
+    100% { box-shadow: 0 0 0 0 rgb(34 211 238 / 0); }
+  }
 }
 
 @layer base {
-  @font-face {
-    font-family: "Onest";
-    src: url("/fonts/Onest.woff2") format("woff2");
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: "Source Code Pro";
-    src: url("/fonts/SourceCodePro.woff2") format("woff2");
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-  }
-
   :root {
     color-scheme: dark;
-    --background-hex: #0f172a;
-    background-color: var(--background-hex);
-    color: white;
   }
 
   html {
-    font-family: var(--font-onest);
-    scroll-behavior: smooth;
-    background-color: var(--background-hex);
-    cursor: default;
-    /* Elimina la barra vertical | al clickar */
-    caret-color: transparent;
+    font-family: var(--font-sans);
+    background-color: var(--color-ink);
+    color: var(--color-fg);
+    scroll-padding-top: 88px; /* altura del header sticky (WCAG 2.4.11) */
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
   }
 
   body {
-    @apply min-h-screen text-white antialiased;
-    background-color: var(--background-hex);
-    /* Asegura que no aparezca el cursor en el body */
-    caret-color: transparent;
+    @apply min-h-screen antialiased;
+    background-color: var(--color-ink);
+    color: var(--color-fg);
   }
 
-  /* Prevent text selection cursor on non-text elements */
-  img,
-  video,
-  svg,
-  a,
-  button,
-  .no-select {
-    user-select: none;
-    -webkit-user-drag: none;
-    /* Evita que aparezca el caret en elementos de interacción */
-    caret-color: transparent;
+  :focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 3px;
   }
 
-  /* Keep selection enabled for actual readable content, but still no caret */
-  p,
-  span,
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  li,
-  article,
-  time {
-    user-select: text;
-    caret-color: transparent;
-  }
-
-  /* Si en el futuro añades un input, ahí sí querremos el caret original */
-  input,
-  textarea {
-    caret-color: auto;
-  }
-
-  /* Custom scrollbar styles */
+  /* Scrollbar con los tokens del tema */
   ::-webkit-scrollbar {
     width: 12px;
   }
 
   ::-webkit-scrollbar-track {
-    background: #0f172a;
+    background: var(--color-ink);
   }
 
   ::-webkit-scrollbar-thumb {
-    background-color: #334155;
+    background-color: var(--color-line-strong);
     border-radius: 10px;
-    border: 3px solid #0f172a;
+    border: 3px solid var(--color-ink);
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background-color: #64748b;
+    background-color: var(--color-subtle);
   }
 }
 
 @layer utilities {
-  .layout-container {
-    min-height: calc(100vh - 204px);
+  /* Degradado solo en palabras destacadas (una por titular como máximo) */
+  .text-gradient {
+    background-image: linear-gradient(90deg, var(--color-brand), var(--color-accent));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
 
-  .animate-shimmer {
-    background: linear-gradient(90deg,
-        rgba(255, 255, 255, 0) 0%,
-        rgba(255, 255, 255, 0.05) 50%,
-        rgba(255, 255, 255, 0) 100%);
-    background-size: 200% 100%;
-    animation: shimmer 2s infinite;
+  @media (forced-colors: active) {
+    .text-gradient {
+      background-image: none;
+      color: CanvasText;
+    }
   }
 
-  @keyframes shimmer {
-    0% {
-      background-position: -200% 0;
+  /* Entrada al hacer scroll; sin soporte, el contenido se ve sin animar */
+  @supports (animation-timeline: view()) {
+    /* Solo desplazamiento, sin opacidad: el texto mantiene siempre su contraste real (WCAG 1.4.3). */
+    @keyframes reveal-up {
+      from { transform: translateY(32px); }
+      to { transform: none; }
     }
+    .reveal {
+      animation: reveal-up linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 100%;
+    }
+  }
 
-    100% {
-      background-position: 200% 0;
-    }
+  /* Tarjetas: elevan en hover */
+  .lift {
+    transition:
+      transform var(--duration-base) var(--ease-out-soft),
+      border-color var(--duration-fast) ease,
+      box-shadow var(--duration-base) var(--ease-out-soft);
+  }
+
+  .lift:hover {
+    transform: translateY(-6px);
+    border-color: var(--color-line-hover);
+    box-shadow: var(--shadow-lift);
+  }
+
+  /* Imagen de tarjeta: zoom dentro de .lift */
+  .zoom {
+    transition: transform var(--duration-slow) var(--ease-out-soft);
+  }
+
+  .lift:hover .zoom {
+    transform: scale(1.05);
+  }
+
+  /* Flecha que se desplaza al hacer hover en el enlace o botón padre */
+  .arrow {
+    display: inline-block;
+    transition: transform var(--duration-fast) var(--ease-out-soft);
+  }
+
+  :is(a, button):hover > .arrow {
+    transform: translateX(4px);
+  }
+
+  /* Enlace "Saltar al contenido": oculto hasta recibir foco */
+  .skip-link {
+    position: absolute;
+    top: 8px;
+    left: 16px;
+    z-index: 50;
+    min-height: 44px;
+    padding: 10px 20px;
+    border-radius: 9999px;
+    background-color: var(--color-accent);
+    color: var(--color-ink);
+    font-weight: 700;
+    transform: translateY(-200%);
+    transition: transform var(--duration-fast) ease;
+  }
+
+  .skip-link:focus {
+    transform: none;
+  }
+}
+
+/* Movimiento reducido: sin animaciones, transiciones ni desplazamientos de hover */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .lift:hover,
+  .lift:hover .zoom,
+  :is(a, button):hover > .arrow {
+    transform: none;
   }
 }

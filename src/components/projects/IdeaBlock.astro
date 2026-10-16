@@ -1,0 +1,29 @@
+---
+import Button from "../ui/Button.astro";
+import { socialMediaLinks } from "../../content/layout.consts";
+import { getMessages } from "../../i18n/utils";
+
+const m = getMessages(Astro.currentLocale);
+const github = socialMediaLinks.find((link) => link.name === "github");
+---
+
+<section aria-labelledby="idea-heading" class="pt-12 tablet:pt-18 laptop:pt-24">
+  <div class="reveal flex flex-col gap-3.5 rounded-[24px] border border-dashed border-line-strong px-5 py-6 tablet:gap-4 tablet:rounded-card-lg tablet:p-9 laptop:flex-row laptop:items-center laptop:justify-between laptop:gap-6 laptop:p-[clamp(28px,4vw,48px)]">
+    <div class="flex flex-col gap-2">
+      <h2 id="idea-heading" class="font-display text-[26px] leading-[1.1] font-bold tracking-[-0.02em] text-fg tablet:text-[32px]">
+        {m.projects.idea_title}
+      </h2>
+      <p class="text-[15px] text-muted tablet:text-base">{m.projects.idea_text}</p>
+    </div>
+    <div class="flex flex-col gap-3 tablet:flex-row">
+      <Button href={`mailto:${m.common.email_address}`} class="justify-center">{m.common.write_me}</Button>
+      {
+        github && (
+          <Button variant="secondary" href={github.href} external class="justify-center">
+            {m.common.view_github}
+          </Button>
+        )
+      }
+    </div>
+  </div>
+</section>

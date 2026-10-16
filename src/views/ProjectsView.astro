@@ -1,158 +1,59 @@
 ---
-import { seoMapper } from "../helpers/seo.helper";
-import { buildProjectsPageSchema } from "../helpers/schema.helper";
 import Layout from "../layouts/Layout.astro";
-import ProjectCard from "../components/ProjectCard";
-
-import ScrollReveal from "../components/ScrollReveal";
-import buscaminasImg from "../assets/proyectos-buscaminas.webp";
-import pokemonTableImg from "../assets/proyectos-pokemon.webp";
-import publicPagesImg from "../assets/proyectos-public-pages.webp";
-import gymTrackerImg from "../assets/proyectos-gym-tracker.webp";
-import { useTranslations } from "../i18n/utils";
+import GradientText from "../components/ui/GradientText.astro";
+import ProjectFilter from "../components/projects/ProjectFilter.astro";
+import ProjectRow from "../components/projects/ProjectRow.astro";
+import IdeaBlock from "../components/projects/IdeaBlock.astro";
+import { getLocalizedProjects } from "../content/projects";
+import { seoMapper } from "../helpers/seo.helper";
+import { buildBreadcrumbSchema, buildProjectsPageSchema } from "../helpers/schema.helper";
+import { format, getLang, getMessages, useTranslations } from "../i18n/utils";
 
 const lang = Astro.currentLocale;
 const t = useTranslations(lang);
+const m = getMessages(lang).projects;
+const items = getLocalizedProjects(lang);
 
-const title = t("projects.title");
-const description = t("projects.description");
-const url = t("projects.url");
-const image = t("projects.image_url");
+const infoSeo = seoMapper(t("projects.title"), t("projects.description"), t("projects.url"), t("projects.image_url"), t("projects.image_alt"), undefined, getLang(lang));
 
-const infoSeo = seoMapper(
-  title,
-  description,
-  url,
-  image,
-  t("projects.image_alt"),
-);
-
-const projectsPageSchema = buildProjectsPageSchema(t);
+const schemas = [buildProjectsPageSchema(t, lang), buildBreadcrumbSchema(t, "projects")];
 ---
 
 <Layout infoSeo={infoSeo}>
-  <script
-    is:inline
-    type="application/ld+json"
-    set:html={JSON.stringify(projectsPageSchema)}
-  />
-  <section class="w-full max-w-4xl mx-auto tablet:py-6 laptop:py-12">
-    <h1
-      class="text-4xl tablet:text-5xl font-bold mb-8 bg-gradient-to-r from-white to-slate-400 bg-clip-text text-center tablet:text-left text-transparent pb-1"
-    >
-      {t("projects.page_heading")}
-    </h1>
+  {
+    schemas.map((schema) => (
+      <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />
+    ))
+  }
+  <div class="mx-auto w-full max-w-(--container-content) px-4 tablet:px-8 desktop:px-[clamp(16px,4vw,40px)]">
+    <section class="flex flex-col gap-[18px] pt-9 pb-7 tablet:gap-[22px] tablet:pt-16 tablet:pb-10 laptop:gap-6 laptop:pt-[clamp(56px,7vw,96px)] laptop:pb-12">
+      <p
+        data-project-count
+        aria-live="polite"
+        class="animate-up font-mono text-xs text-brand tablet:text-[13px]"
+      >
+        {format(m.eyebrow, { count: items.length })}
+      </p>
+      <h1
+        class="animate-up font-display text-[46px] leading-none font-extrabold tracking-[-0.035em] text-fg tablet:text-[72px] tablet:leading-[0.98] laptop:text-[clamp(46px,6.4vw,90px)]"
+        style="animation-delay: 100ms"
+      >
+        {m.heading_before}<GradientText>{m.heading_highlight}</GradientText>{m.heading_after}
+      </h1>
+      <p
+        class="animate-up max-w-[620px] text-[17px] text-muted tablet:text-[19px] laptop:text-[clamp(17px,1.5vw,20px)]"
+        style="animation-delay: 200ms"
+      >
+        <span class="tablet:hidden">{m.intro_short}</span>
+        <span class="hidden tablet:inline">{m.intro}</span>
+      </p>
+      <ProjectFilter />
+    </section>
 
-    <div class="grid grid-cols-1 tablet:grid-cols-2 gap-6">
-      {/* Minesweeper Card */}
-      <ScrollReveal client:visible once={false} delay={0.1}>
-        <ProjectCard
-          client:visible
-          title={t("projects.buscaminas_title")}
-          description={t("projects.buscaminas_desc")}
-          href={t("projects.buscaminas_url")}
-          ctaText={t("projects.cta_text")}
-          image={buscaminasImg.src}
-          imageAlt={t("projects.image_alt")}
-          shouldReload={true}
-          technologies={[
-            {
-              label: "TypeScript",
-              icon: "IconBrandTypescript",
-              variant: "blue",
-            },
-            {
-              label: t("projects.recursive_tech"),
-              icon: "IconBomb",
-              variant: "purple",
-            },
-          ]}
-        />
-      </ScrollReveal>
+    <section aria-label={m.list_label} class="flex flex-col gap-[18px] tablet:gap-6 laptop:gap-7">
+      {items.map((project, index) => <ProjectRow project={project} index={index} priority={index === 0} />)}
+    </section>
 
-      {/* Pokemon Table Card */}
-      <ScrollReveal client:visible once={false} delay={0.2}>
-        <ProjectCard
-          client:visible
-          title={t("projects.pokemon_title")}
-          description={t("projects.pokemon_desc")}
-          href={t("projects.pokemon_url")}
-          ctaText={t("projects.cta_text")}
-          image={pokemonTableImg.src}
-          imageAlt={t("projects.pokemon_img_alt")}
-          shouldReload={true}
-          technologies={[
-            { label: "Next.js", icon: "IconBrandNextjs", variant: "cyan" },
-            {
-              label: "TypeScript",
-              icon: "IconBrandTypescript",
-              variant: "blue",
-            },
-            { label: "MUI", variant: "blue" },
-            { label: "Drag & Drop", icon: "IconArrowsMove", variant: "purple" },
-            { label: "SSR", icon: "IconServer", variant: "green" },
-          ]}
-        />
-      </ScrollReveal>
-
-      {/* eShop Cache Lab Card */}
-      <ScrollReveal client:visible once={false} delay={0.3}>
-        <ProjectCard
-          client:visible
-          title={t("projects.eshop_title")}
-          description={t("projects.eshop_desc")}
-          href={t("projects.eshop_url")}
-          ctaText={t("projects.cta_text")}
-          image={publicPagesImg.src}
-          imageAlt={t("projects.eshop_img_alt")}
-          shouldReload={true}
-          technologies={[
-            {
-              label: "TypeScript",
-              icon: "IconBrandTypescript",
-              variant: "blue",
-            },
-            { label: "Nx", variant: "cyan" },
-            { label: "Next.js", icon: "IconBrandNextjs", variant: "cyan" },
-            { label: "SEO", icon: "IconSeo", variant: "purple" },
-            { label: "A11y", icon: "IconAccessible", variant: "green" },
-            { label: "SSR", icon: "IconServer", variant: "green" },
-            { label: "ISR", icon: "IconRefresh", variant: "green" },
-            { label: "SSG", icon: "IconStack2", variant: "green" },
-            {
-              label: "Cache Components",
-              icon: "IconDatabase",
-              variant: "purple",
-            },
-          ]}
-        />
-      </ScrollReveal>
-
-      {/* Gym Tracker Card */}
-      <ScrollReveal client:visible once={false} delay={0.4}>
-        <ProjectCard
-          client:visible
-          title={t("projects.gym_title")}
-          description={t("projects.gym_desc")}
-          href={t("projects.gym_url")}
-          ctaText={t("projects.cta_text")}
-          image={gymTrackerImg.src}
-          imageAlt={t("projects.gym_img_alt")}
-          shouldReload={true}
-          technologies={[
-            { label: "React", icon: "IconBrandReact", variant: "cyan" },
-            {
-              label: "TypeScript",
-              icon: "IconBrandTypescript",
-              variant: "blue",
-            },
-            { label: "Supabase", icon: "IconDatabase", variant: "green" },
-            { label: "OAuth2", icon: "IconBrandGoogle", variant: "purple" },
-            { label: "PWA", icon: "IconDeviceMobile", variant: "cyan" },
-            { label: "Vibecoding", icon: "IconSparkles", variant: "purple" },
-          ]}
-        />
-      </ScrollReveal>
-    </div>
-  </section>
+    <IdeaBlock />
+  </div>
 </Layout>

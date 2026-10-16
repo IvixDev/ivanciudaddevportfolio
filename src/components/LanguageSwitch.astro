@@ -1,0 +1,53 @@
+---
+import { IconLanguage } from "@tabler/icons-react";
+import { getLang, getMessages, getOppositeLocaleUrl } from "../i18n/utils";
+
+interface Props {
+  /** "group": ES | EN (tablet y escritorio). "compact": solo el idioma contrario (móvil). */
+  variant?: "group" | "compact";
+  currentPath: string;
+}
+
+const { variant = "group", currentPath } = Astro.props;
+const lang = getLang(Astro.currentLocale);
+const m = getMessages(lang);
+const otherLang = lang === "es" ? "en" : "es";
+const otherUrl = getOppositeLocaleUrl(currentPath, lang);
+
+const itemBase = "inline-flex min-h-11 min-w-11 items-center justify-center rounded-full px-3 font-mono text-sm font-medium uppercase";
+---
+
+{
+  variant === "compact" ? (
+    <a
+      href={otherUrl}
+      hreflang={otherLang}
+      lang={otherLang}
+      aria-label={m.a11y.switch_language}
+      class={`${itemBase} gap-1.5 text-muted transition-colors duration-(--duration-fast) hover:bg-surface hover:text-fg`}
+    >
+      <IconLanguage size={20} stroke={1.8} aria-hidden="true" />
+      {otherLang}
+    </a>
+  ) : (
+    <div role="group" aria-label={m.a11y.language_group} class="inline-flex items-center rounded-full border border-line p-0.5">
+      {(["es", "en"] as const).map((code) =>
+        code === lang ? (
+          <span aria-current="true" lang={code} class={`${itemBase} bg-surface text-fg`}>
+            {code}
+          </span>
+        ) : (
+          <a
+            href={otherUrl}
+            hreflang={code}
+            lang={code}
+            aria-label={m.a11y.switch_language}
+            class={`${itemBase} text-muted transition-colors duration-(--duration-fast) hover:text-fg`}
+          >
+            {code}
+          </a>
+        ),
+      )}
+    </div>
+  )
+}

@@ -1,0 +1,29 @@
+---
+import Chip from "../ui/Chip.astro";
+import { getMessages } from "../../i18n/utils";
+
+const { stack } = getMessages(Astro.currentLocale).career;
+---
+
+<div class="grid min-w-0 gap-4 tablet:grid-cols-2 laptop:grid-cols-[repeat(auto-fit,minmax(240px,1fr))] laptop:gap-5">
+  {
+    stack.map((group) => (
+      <div
+        class={[
+          "reveal flex flex-col gap-2.5 border-b border-line-subtle pb-4 tablet:rounded-[22px] tablet:border tablet:p-[22px] laptop:gap-3 laptop:rounded-card laptop:p-6",
+          "wide" in group && group.wide ? "col-span-full tablet:bg-surface" : "",
+        ].join(" ")}
+      >
+        <h3 class="font-mono text-xs font-medium tracking-[0.08em] text-brand uppercase tablet:text-[13px]">
+          {group.name}
+        </h3>
+        <p class="text-sm text-muted tablet:text-[15px]">{group.description}</p>
+        <ul class="flex flex-wrap gap-2">
+          {group.items.map((item) => (
+            <Chip as="li">{item}</Chip>
+          ))}
+        </ul>
+      </div>
+    ))
+  }
+</div>

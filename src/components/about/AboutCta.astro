@@ -1,0 +1,38 @@
+---
+import Button from "../ui/Button.astro";
+import GradientText from "../ui/GradientText.astro";
+import { socialMediaLinks } from "../../content/layout.consts";
+import { getMessages } from "../../i18n/utils";
+
+const m = getMessages(Astro.currentLocale);
+const a = m.about;
+const email = socialMediaLinks.find((link) => link.name === "gmail");
+---
+
+<section aria-labelledby="about-cta-title">
+  <div
+    class="reveal flex flex-col gap-3.5 rounded-card border border-line bg-surface px-5 py-6 tablet:gap-4 tablet:rounded-card-lg tablet:p-9 laptop:flex-row laptop:items-center laptop:justify-between laptop:gap-6 laptop:rounded-block laptop:p-[clamp(32px,5vw,64px)]"
+  >
+    <div class="flex flex-col gap-2">
+      <h2
+        id="about-cta-title"
+        class="font-display text-[30px] leading-[1.05] font-extrabold tracking-[-0.03em] text-fg tablet:text-[40px] laptop:text-[clamp(32px,4vw,52px)]"
+      >
+        {a.cta_title_before}<GradientText>{a.cta_title_highlight}</GradientText>{a.cta_title_after}
+      </h2>
+      <p class="hidden text-muted laptop:block">{a.cta_text}</p>
+    </div>
+    <div class="flex flex-col gap-3 tablet:flex-row">
+      {
+        email && (
+          <Button href={email.href} variant="primary" class="justify-center">
+            {m.common.write_me}
+          </Button>
+        )
+      }
+      <Button href={m.nav.projects_url} variant="secondary" class="justify-center">
+        {m.common.view_projects}
+      </Button>
+    </div>
+  </div>
+</section>

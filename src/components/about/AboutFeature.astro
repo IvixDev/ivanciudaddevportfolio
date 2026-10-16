@@ -1,0 +1,61 @@
+---
+import { Picture } from "astro:assets";
+import type { ImageMetadata } from "astro";
+import SectionHeader from "../ui/SectionHeader.astro";
+import RichText from "../ui/RichText.astro";
+
+interface Props {
+  headingId: string;
+  eyebrow: string;
+  title: string;
+  /** Texto largo (escritorio), un párrafo por elemento. */
+  paragraphs: string[];
+  /** Texto compacto (móvil y tablet). */
+  short: string;
+  image: ImageMetadata;
+  alt: string;
+  /** Imagen a la derecha en tablet y escritorio. */
+  reverse?: boolean;
+}
+
+const { headingId, eyebrow, title, paragraphs, short, image, alt, reverse = false } = Astro.props;
+
+const grid = reverse
+  ? "tablet:grid-cols-[1fr_300px] laptop:grid-cols-[1fr_minmax(0,480px)]"
+  : "tablet:grid-cols-[300px_1fr] laptop:grid-cols-[minmax(0,480px)_1fr]";
+const textCol = reverse ? "tablet:col-start-1" : "tablet:col-start-2";
+const imageCol = reverse ? "tablet:col-start-2" : "tablet:col-start-1";
+---
+
+<section
+  aria-labelledby={headingId}
+  class:list={["grid grid-cols-1 gap-y-3.5 tablet:gap-x-7 laptop:gap-x-16", grid]}
+>
+  <div class:list={["tablet:row-start-1 tablet:self-end", textCol]}>
+    <SectionHeader eyebrow={eyebrow} title={title} headingId={headingId} />
+  </div>
+
+  <div class:list={["reveal tablet:row-span-2 tablet:row-start-1 tablet:self-center", imageCol]}>
+    <Picture
+      src={image}
+      alt={alt}
+      width={960}
+      height={960}
+      widths={[300, 480, 720, 960]}
+      sizes="(min-width: 1024px) 480px, (min-width: 768px) 300px, calc(100vw - 32px)"
+      formats={["avif", "webp"]}
+      loading="lazy"
+      class="block aspect-[16/10] w-full rounded-card-sm border border-line bg-surface object-cover transition-[rotate,scale] duration-(--duration-slow) ease-(--ease-out-soft) tablet:aspect-square tablet:rounded-card tablet:hover:-rotate-2 tablet:hover:scale-[1.02] laptop:rounded-card-lg"
+    />
+  </div>
+
+  <div
+    class:list={[
+      "reveal flex flex-col gap-4.5 text-[15px] text-muted tablet:row-start-2 tablet:self-start tablet:text-base laptop:text-[17px]",
+      textCol,
+    ]}
+  >
+    <p class="laptop:hidden"><RichText text={short} /></p>
+    {paragraphs.map((text) => <p class="hidden laptop:block"><RichText text={text} /></p>)}
+  </div>
+</section>

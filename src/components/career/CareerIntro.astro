@@ -1,0 +1,71 @@
+---
+import { Image } from "astro:assets";
+import { IconDownload } from "@tabler/icons-react";
+import Button from "../ui/Button.astro";
+import GradientText from "../ui/GradientText.astro";
+import portrait from "../../assets/trayectoria-profesional.webp";
+import { socialMediaLinks } from "../../content/layout.consts";
+import { format, getMessages } from "../../i18n/utils";
+
+const { career, common } = getMessages(Astro.currentLocale);
+const linkedin = socialMediaLinks.find((link) => link.name === "linkedin");
+---
+
+<section
+  class="grid grid-cols-[72px_1fr] gap-x-3.5 gap-y-[18px] tablet:grid-cols-[1fr_220px] tablet:gap-x-7 tablet:gap-y-5 laptop:grid-cols-[1fr_340px] laptop:gap-x-12 laptop:gap-y-6"
+>
+  <p
+    class="animate-up col-start-2 row-start-1 self-center font-mono text-xs leading-normal text-brand tablet:col-span-2 tablet:col-start-1 tablet:text-[13px] laptop:col-span-1"
+  >
+    <span class="hidden tablet:inline">{format(career.eyebrow, { date: career.updated_date })}</span>
+    <span class="tablet:hidden">{format(career.eyebrow_short, { date: career.updated_date_short })}</span>
+  </p>
+
+  <Image
+    src={portrait}
+    alt={career.portrait_alt}
+    width={680}
+    height={850}
+    widths={[72, 144, 220, 340, 440, 680]}
+    sizes="(min-width: 1024px) 340px, (min-width: 768px) 220px, 72px"
+    loading="eager"
+    fetchpriority="high"
+    class="animate-up col-start-1 row-start-1 aspect-square w-[72px] rounded-card-sm border border-line bg-surface object-cover tablet:col-start-2 tablet:row-span-2 tablet:row-start-2 tablet:aspect-[4/5] tablet:w-[220px] tablet:self-end tablet:rounded-card laptop:row-span-4 laptop:row-start-1 laptop:w-[340px] laptop:rounded-card-lg"
+    style="animation-delay: 250ms"
+  />
+
+  <h1
+    class="animate-up col-span-2 row-start-2 font-display text-[46px] leading-none font-extrabold tracking-[-0.035em] text-fg tablet:col-span-1 tablet:text-[72px] tablet:leading-[0.98] laptop:text-[clamp(46px,6.4vw,90px)]"
+    style="animation-delay: 100ms"
+  >
+    {career.heading_before}<GradientText>{career.heading_highlight}</GradientText>{career.heading_after}
+  </h1>
+
+  <p
+    class="animate-up col-span-2 row-start-3 max-w-[600px] text-[17px] text-muted tablet:col-span-1 tablet:text-lg laptop:text-[clamp(17px,1.5vw,20px)]"
+    style="animation-delay: 200ms"
+  >
+    <span class="hidden tablet:inline">{career.intro}</span>
+    <span class="tablet:hidden">{career.intro_short}</span>
+  </p>
+
+  <div
+    class="animate-up col-span-2 row-start-4 flex flex-col gap-3 tablet:flex-row tablet:flex-wrap laptop:col-span-1"
+    style="animation-delay: 300ms"
+  >
+    <Button href={career.cv_url} fileType="application/pdf" hreflang="es" class="justify-center tablet:justify-start">
+      <IconDownload size={18} stroke={2.2} aria-hidden="true" />
+      <span>{common.download_cv_pdf}</span>
+      {common.cv_language_note && <span class="font-normal">{common.cv_language_note}</span>}
+    </Button>
+    {
+      linkedin && (
+        <div class="hidden tablet:block">
+          <Button href={linkedin.href} variant="secondary" external>
+            {common.view_linkedin}
+          </Button>
+        </div>
+      )
+    }
+  </div>
+</section>

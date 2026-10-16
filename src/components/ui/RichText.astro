@@ -1,0 +1,11 @@
+---
+// Convierte **texto** en <strong>; todo lo demás se escapa (Astro escapa las expresiones).
+interface Props {
+  text: string;
+}
+
+const { text } = Astro.props;
+const parts = text.split(/\*\*(.+?)\*\*/g);
+---
+
+{parts.map((part, i) => (i % 2 === 1 ? <strong class="font-semibold text-fg">{part}</strong> : part))}

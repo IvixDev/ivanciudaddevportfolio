@@ -1,6 +1,8 @@
 import { socialMediaLinks } from "../content/layout.consts";
+import { getLocalizedProjects } from "../content/projects";
+import type { TranslationKey } from "../i18n/utils";
 
-type TranslateFn = (key: string) => any;
+type TranslateFn = (key: TranslationKey) => string;
 
 const SITE = "https://www.ivanciudad.com";
 
@@ -113,69 +115,70 @@ export function buildWebsiteSchema(t: TranslateFn) {
     };
 }
 
-export function buildProfilePageSchema(t: TranslateFn, pageKey: "career_page" | "about_page") {
-    const pageData = t(pageKey) as {
-        title: string;
-        description: string;
-        url: string;
-        image_url: string;
-    };
+export function buildProfilePageSchema(t: TranslateFn, pageKey: "career" | "about") {
+    const url = t(`${pageKey}.url`);
 
     return {
         "@context": "https://schema.org",
         "@type": "ProfilePage",
-        "@id": pageData.url,
-        name: pageData.title,
-        description: pageData.description,
-        url: pageData.url,
+        "@id": url,
+        name: t(`${pageKey}.title`),
+        description: t(`${pageKey}.description`),
+        url,
         mainEntity: {
             "@id": `${SITE}/#person`,
         },
         primaryImageOfPage: {
             "@type": "ImageObject",
-            url: pageData.image_url,
+            url: t(`${pageKey}.image_url`),
         },
     };
 }
 
-export function buildProjectsPageSchema(t: TranslateFn) {
+export function buildProjectsPageSchema(t: TranslateFn, lang: string | undefined) {
+    const url = t("projects.url");
+
     return {
         "@context": "https://schema.org",
         "@type": "CollectionPage",
-        "@id": t("projects.title"),
+        "@id": url,
         name: t("projects.title"),
         description: t("projects.description"),
+        url,
         author: {
             "@id": `${SITE}/#person`,
         },
         mainEntity: {
             "@type": "ItemList",
-            itemListElement: [
-                {
-                    "@type": "ListItem",
-                    position: 1,
-                    name: t("projects.buscaminas_title"),
-                    url: `${SITE}${t("projects.buscaminas_url")}`,
-                },
-                {
-                    "@type": "ListItem",
-                    position: 2,
-                    name: t("projects.pokemon_title"),
-                    url: `${SITE}${t("projects.pokemon_url")}`,
-                },
-                {
-                    "@type": "ListItem",
-                    position: 3,
-                    name: t("projects.eshop_title"),
-                    url: `${SITE}${t("projects.eshop_url")}`,
-                },
-                {
-                    "@type": "ListItem",
-                    position: 4,
-                    name: t("projects.gym_title"),
-                    url: t("projects.gym_url"),
-                },
-            ],
+            itemListElement: getLocalizedProjects(lang).map((project, index) => ({
+                "@type": "ListItem",
+                position: index + 1,
+                name: project.title,
+                url: project.href.startsWith("http") ? project.href : `${SITE}${project.href}`,
+            })),
         },
+    };
+}
+
+export function buildBreadcrumbSchema(t: TranslateFn, pageKey: "projects" | "career" | "about") {
+    const homePath = t("nav.home_url");
+
+    return {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+            {
+                "@type": "ListItem",
+                position: 1,
+                name: t("header.home"),
+                item: homePath === "/" ? SITE : `${SITE}${homePath}`,
+            },
+            {
+                "@type": "ListItem",
+                position: 2,
+                name: t(`header.${pageKey}`),
+                item: t(`${pageKey}.url`),
+            },
+        ],
     };
 }

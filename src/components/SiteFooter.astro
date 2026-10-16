@@ -1,0 +1,80 @@
+---
+import { IconBrandGithub, IconBrandLinkedin, IconMail } from "@tabler/icons-react";
+import Logo from "./ui/Logo.astro";
+import { footerLinks, repositoryUrl, socialMediaLinks } from "../content/layout.consts";
+import { format, getLang, getMessages } from "../i18n/utils";
+
+const lang = getLang(Astro.currentLocale);
+const m = getMessages(lang);
+
+const pages = [
+  { href: m.nav.home_url, label: m.header.home },
+  ...footerLinks.map(({ tKey }) => ({ href: m.nav[`${tKey}_url`], label: m.header[tKey] })),
+];
+
+const social = [
+  { name: "github", label: m.footer.github, Icon: IconBrandGithub },
+  { name: "linkedin", label: m.footer.linkedin, Icon: IconBrandLinkedin },
+  { name: "gmail", label: m.footer.email, Icon: IconMail },
+].flatMap(({ name, label, Icon }) => {
+  const link = socialMediaLinks.find((item) => item.name === name);
+  return link ? [{ href: link.href, label, Icon, external: link.href.startsWith("http") }] : [];
+});
+
+const linkClass =
+  "inline-flex min-h-11 items-center gap-2 rounded-full px-3 text-[15px] text-subtle transition-colors duration-(--duration-fast) hover:text-fg";
+---
+
+<footer class="mt-auto border-t border-line-subtle">
+  <div class="mx-auto flex w-full max-w-(--container-content) flex-col gap-6 px-4 py-10 tablet:px-8 desktop:px-[clamp(16px,4vw,40px)]">
+    <nav aria-label={m.a11y.footer_nav} class="tablet:hidden">
+      <ul class="-mx-3 flex flex-wrap">
+        {
+          pages.map((page) => (
+            <li>
+              <a href={page.href} class={linkClass}>
+                {page.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class="flex flex-col gap-6 tablet:flex-row tablet:items-center tablet:justify-between">
+      <div class="flex items-center gap-3 text-sm text-subtle">
+        <Logo class="size-6 shrink-0 text-brand" />
+        <p>
+          {format(m.footer.copyright, { year: new Date().getFullYear() })}
+          <span aria-hidden="true"> · </span>
+          <span class="block tablet:inline">{m.footer.made_with}</span>
+        </p>
+      </div>
+
+      <ul class="-mx-3 flex flex-wrap items-center">
+        {
+          social.map(({ href, label, Icon, external }) => (
+            <li>
+              <a
+                href={href}
+                class={linkClass}
+                target={external ? "_blank" : undefined}
+                rel={external ? "noopener" : undefined}
+              >
+                <Icon size={18} stroke={1.8} aria-hidden="true" />
+                {label}
+                {external && <span class="sr-only">{m.a11y.new_tab}</span>}
+              </a>
+            </li>
+          ))
+        }
+        <li>
+          <a href={repositoryUrl} class={linkClass} target="_blank" rel="noopener">
+            {m.footer.source_code}
+            <span class="sr-only">{m.a11y.new_tab}</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>

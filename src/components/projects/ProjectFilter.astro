@@ -1,0 +1,75 @@
+---
+import { getMessages } from "../../i18n/utils";
+
+const m = getMessages(Astro.currentLocale);
+
+const filters = [
+  { id: "all", label: m.projects.filters.all },
+  { id: "app", label: m.projects.filters.app },
+  { id: "experiment", label: m.projects.filters.experiment },
+  { id: "game", label: m.projects.filters.game },
+] as const;
+---
+
+<!-- Oculto sin JS: el script lo muestra. Sin JS se ven todos los proyectos. -->
+<div
+  data-project-filter
+  data-count-template={m.projects.eyebrow}
+  data-count-template-one={m.projects.eyebrow_one}
+  role="group"
+  aria-label={m.projects.filter_label}
+  class="invisible animate-up flex flex-wrap gap-2 laptop:mt-2"
+  style="animation-delay: 300ms"
+>
+  {
+    filters.map((filter) => (
+      <button
+        type="button"
+        data-filter={filter.id}
+        aria-pressed={filter.id === "all" ? "true" : "false"}
+        class="min-h-11 cursor-pointer rounded-full border border-line bg-surface px-[18px] py-2.5 text-[15px] font-medium text-muted transition-colors duration-(--duration-fast) hover:border-line-hover hover:text-fg aria-pressed:border-accent aria-pressed:bg-accent aria-pressed:text-ink"
+      >
+        {filter.label}
+      </button>
+    ))
+  }
+</div>
+
+<script>
+  function initProjectFilter() {
+    const group = document.querySelector<HTMLElement>("[data-project-filter]");
+    if (!group) return;
+
+    const buttons = group.querySelectorAll<HTMLButtonElement>("button[data-filter]");
+    const rows = document.querySelectorAll<HTMLElement>("[data-project]");
+    const counter = document.querySelector<HTMLElement>("[data-project-count]");
+    const template = group.dataset.countTemplate ?? "{count}";
+    const templateOne = group.dataset.countTemplateOne ?? template;
+
+    // Reserva su hueco desde el HTML (invisible) para no provocar layout shift al activarse.
+    group.classList.remove("invisible");
+
+    function apply(filter: string) {
+      let visible = 0;
+      rows.forEach((row) => {
+        const show = filter === "all" || row.dataset.category === filter;
+        row.hidden = !show;
+        if (!show) return;
+        const number = row.querySelector<HTMLElement>("[data-project-number]");
+        if (number) number.textContent = String(visible + 1).padStart(2, "0");
+        row.dataset.reverse = visible % 2 === 1 ? "true" : "false";
+        visible += 1;
+      });
+      if (counter) counter.textContent = (visible === 1 ? templateOne : template).replace("{count}", String(visible));
+    }
+
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => {
+        buttons.forEach((other) => other.setAttribute("aria-pressed", String(other === button)));
+        apply(button.dataset.filter ?? "all");
+      });
+    });
+  }
+
+  document.addEventListener("astro:page-load", initProjectFilter);
+</script>

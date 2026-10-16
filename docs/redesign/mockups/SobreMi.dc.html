@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Sobre mí — Iván Ciudad (escritorio)</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&amp;family=Onest:wght@400..700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0;background:#0B1120}
+a{color:#E8ECF4;text-decoration:none}a:hover{color:#FFFFFF}
+@keyframes up{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+@keyframes drop{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.up{animation:up .9s cubic-bezier(.2,.7,.2,1) both}
+.logo rect{animation:drop .5s cubic-bezier(.2,.7,.2,1) both}
+.fade{animation:fade .45s cubic-bezier(.2,.7,.2,1) both}
+.navlink{transition:color .2s,background-color .2s}.navlink:hover{background:#121A2B;color:#FFFFFF}
+.tilt{transition:transform .6s cubic-bezier(.2,.7,.2,1)}.tilt:hover{transform:rotate(-2deg) scale(1.02)}
+.lift{transition:transform .35s cubic-bezier(.2,.7,.2,1),border-color .35s}.lift:hover{transform:translateY(-4px);border-color:#34406A}
+@supports (animation-timeline: view()){.reveal{animation:up linear both;animation-timeline:view();animation-range:entry 0% entry 100%}}
+:focus-visible{outline:2px solid #22D3EE;outline-offset:3px}
+.skip{position:absolute;left:16px;top:-80px;z-index:20;padding:12px 18px;border-radius:999px;background:#E8ECF4;color:#0B1120;font-weight:600}.skip:focus{top:12px}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+</style>
+</helmet>
+<div style="width: 100%; min-height: 100vh; background: #0B1120; color: #E8ECF4; font-family: 'Onest', system-ui, sans-serif; font-size: 17px; line-height: 1.65; overflow-x: hidden; display: flex; flex-direction: column; position: relative">
+<a class="skip" href="#contenido">Saltar al contenido</a>
+
+<header style="position: sticky; top: 0; z-index: 10; background: #0B1120; border-bottom: 1px solid #1A2338">
+<nav aria-label="Principal" style="max-width: 1200px; margin: 0 auto; padding: 16px clamp(16px, 4vw, 40px); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<a href="Main.dc.html" style="display: flex; align-items: center; gap: 12px; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 19px">
+<svg class="logo" width="34" height="34" viewBox="0 0 32 32" aria-hidden="true" fill="currentColor" style="color: {{brand}}"><rect x="2" y="2" width="12.7" height="5.6" style="animation-delay: .05s"></rect><rect x="9.6" y="2" width="5.1" height="28" style="animation-delay: .12s"></rect><rect x="2" y="24.4" width="12.7" height="5.6" style="animation-delay: .19s"></rect><rect x="17.3" y="2" width="12.7" height="5.6" style="animation-delay: .26s"></rect><rect x="17.3" y="2" width="5.1" height="9.8" style="animation-delay: .33s"></rect><rect x="17.3" y="13.2" width="12.7" height="5.6" style="animation-delay: .40s"></rect><rect x="17.3" y="20.2" width="5.1" height="9.8" style="animation-delay: .47s"></rect><rect x="17.3" y="24.4" width="12.7" height="5.6" style="animation-delay: .54s"></rect></svg>
+Iván Ciudad
+</a>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 4px; font-size: 15px">
+<a class="navlink" href="Main.dc.html" style="padding: 10px 14px; border-radius: 999px; color: #A3AEC2">Inicio</a>
+<a class="navlink" href="Proyectos.dc.html" style="padding: 10px 14px; border-radius: 999px; color: #A3AEC2">Proyectos</a>
+<a class="navlink" href="Trayectoria.dc.html" style="padding: 10px 14px; border-radius: 999px; color: #A3AEC2">Trayectoria</a>
+<a class="navlink" href="SobreMi.dc.html" aria-current="page" style="padding: 10px 14px; border-radius: 999px; background: #121A2B; color: #E8ECF4">Sobre mí</a>
+</div>
+<div style="display: flex; align-items: center; gap: 12px">
+<div role="group" aria-label="Idioma" style="display: flex; border: 1px solid #1F2A40; border-radius: 999px; padding: 3px; font-family: 'JetBrains Mono', monospace; font-size: 12px">
+<a href="/sobre-mi" aria-current="true" style="padding: 8px 10px; border-radius: 999px; background: #1A2338; color: #E8ECF4">ES</a>
+<a href="/en/about-me" style="padding: 8px 10px; border-radius: 999px; color: #A3AEC2">EN</a>
+</div>
+<a href="Main.dc.html" style="padding: 11px 18px; border-radius: 999px; background: {{accent}}; color: #0B1120; font-weight: 600; font-size: 15px">Contacto</a>
+</div>
+</nav>
+</header>
+
+<main id="contenido" tabindex="-1" style="flex: 1; width: 100%; max-width: 1200px; box-sizing: border-box; margin: 0 auto; padding: clamp(56px, 7vw, 96px) clamp(16px, 4vw, 40px) 0; display: flex; flex-direction: column; gap: 120px">
+
+<!-- Intro -->
+<section style="display: flex; flex-wrap: wrap; align-items: center; gap: 64px">
+<div style="flex: 999 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 24px">
+<span class="up" style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: {{brand}}">~/sobre-mi</span>
+<h1 class="up" style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(46px, 6.4vw, 90px); line-height: 0.98; letter-spacing: -0.035em; animation-delay: .1s">Soy <span style="background: linear-gradient(90deg, {{brand}}, {{accent}}); -webkit-background-clip: text; background-clip: text; color: transparent">Iván</span>, y esto es lo que no sale en el CV.</h1>
+<p class="up" style="margin: 0; max-width: 600px; font-size: clamp(17px, 1.5vw, 19px); color: #A3AEC2; animation-delay: .2s"><strong style="color: #E8ECF4; font-weight: 600">Mi origen como programador</strong> está en el instituto: en clase de informática nos retaron a crear un pequeño videojuego. Esa chispa me llevó a mi primera aplicación real, una calculadora de notas. Ver que el código servía para algo fue lo que me terminó de enganchar.</p>
+<p class="up" style="margin: 0; max-width: 600px; font-size: clamp(17px, 1.5vw, 19px); color: #A3AEC2; animation-delay: .25s"><strong style="color: #E8ECF4; font-weight: 600">En el trabajo</strong> soy comunicativo y proactivo. Asumo el liderazgo cuando toca y disfruto compartiendo lo que sé para que el equipo crezca.</p>
+</div>
+<figure class="up" style="flex: 1 1 320px; max-width: 420px; margin: 0 auto; animation-delay: .3s">
+<img class="tilt" src="/_blob/0248c094e2132cb5004e3cf2bfd4f030" alt="Iván Ciudad Espinar en Kioto, con el templo dorado Kinkaku-ji de fondo" style="width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 28px; display: block; background: #121A2B; border: 1px solid #1F2A40">
+<figcaption style="margin-top: 12px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #8A97B0">Kinkaku-ji · Kioto, Japón</figcaption>
+</figure>
+</section>
+
+<!-- Passions -->
+<section aria-labelledby="pas-h" style="display: flex; flex-wrap: wrap; align-items: center; gap: 64px">
+<img class="reveal tilt" src="/_blob/c0b4c04bdc82dbc95cea832cce0d8bb6" alt="Cuenco con dados de rol y juegos de mesa" style="flex: 1 1 360px; max-width: 480px; min-width: 0; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 28px; display: block; background: #121A2B; border: 1px solid #1F2A40">
+<div class="reveal" style="flex: 999 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: {{brand}}">01 — Desconexión</span>
+<h2 id="pas-h" style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: clamp(32px, 3.6vw, 48px); line-height: 1.05; letter-spacing: -0.03em">Pasiones y desconexión</h2>
+<p style="margin: 0; color: #A3AEC2">Los <strong style="color: #E8ECF4; font-weight: 600">videojuegos</strong> son una de mis grandes pasiones. Decidí no dedicarme a desarrollarlos para que siguieran siendo mi espacio para desconectar.</p>
+<p style="margin: 0; color: #A3AEC2">Mi forma favorita de desconectar es una mesa con amigos: <strong style="color: #E8ECF4; font-weight: 600">juegos de mesa</strong> y largas campañas de <strong style="color: #E8ECF4; font-weight: 600">Dragones y Mazmorras</strong>. Para equilibrar, caminar y el gym.</p>
+</div>
+</section>
+
+<!-- Building -->
+<section aria-labelledby="build-h" style="display: flex; flex-wrap: wrap-reverse; align-items: center; gap: 64px">
+<div class="reveal" style="flex: 999 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: {{brand}}">02 — Construir</span>
+<h2 id="build-h" style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: clamp(32px, 3.6vw, 48px); line-height: 1.05; letter-spacing: -0.03em">Hardware y LEGO</h2>
+<p style="margin: 0; color: #A3AEC2">La curiosidad por cómo funcionan las cosas llega al <strong style="color: #E8ECF4; font-weight: 600">hardware</strong>: monto mis ordenadores por piezas, los limpio, mido tensiones y los exprimo con overclocking.</p>
+<p style="margin: 0; color: #A3AEC2">Mi pasatiempo favorito es montar sets de <strong style="color: #E8ECF4; font-weight: 600">LEGO</strong>, sobre todo de Star Wars. Me gustan tanto las estructuras que llegué a plantearme estudiar arquitectura.</p>
+</div>
+<img class="reveal tilt" src="/_blob/8b5c29c75c93d88fe498cf932d9210f6" alt="Figuras LEGO de Grogu, R2-D2 y C-3PO" style="flex: 1 1 360px; max-width: 480px; min-width: 0; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 28px; display: block; background: #121A2B; border: 1px solid #1F2A40">
+</section>
+
+<!-- Favourites (tabs) -->
+<section aria-labelledby="fav-h" style="display: flex; flex-direction: column; gap: 28px">
+<div class="reveal" style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 20px">
+<div style="display: flex; flex-direction: column; gap: 12px">
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: {{brand}}">03 — Favoritos</span>
+<h2 id="fav-h" style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: clamp(32px, 3.6vw, 48px); line-height: 1.05; letter-spacing: -0.03em">Mi lista de guardados</h2>
+</div>
+<div role="tablist" aria-label="Categorías de favoritos" style="display: flex; flex-wrap: wrap; gap: 8px; padding: 4px; border-radius: 999px; border: 1px solid #1F2A40">
+<sc-for list="{{tabs}}" as="t" hint-placeholder-count="3">
+<button type="button" role="tab" id="{{t.tabId}}" aria-controls="fav-panel" aria-selected="{{t.selected}}" onClick="{{t.pick}}" style="{{t.style}}">{{t.label}}</button>
+</sc-for>
+</div>
+</div>
+<div id="fav-panel" role="tabpanel" aria-labelledby="{{panelLabel}}" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px">
+<sc-for list="{{items}}" as="it" hint-placeholder-count="4">
+<article class="lift fade" style="{{it.cardStyle}}">
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: {{it.color}}">{{it.num}}</span>
+<h3 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 24px; line-height: 1.15">{{it.name}}</h3>
+<sc-if value="{{it.hasNote}}" hint-placeholder-val="{{ true }}"><p style="margin: 0; color: #A3AEC2; font-size: 15px">{{it.note}}</p></sc-if>
+</article>
+</sc-for>
+</div>
+</section>
+
+<!-- CTA -->
+<section aria-labelledby="cta-h">
+<div class="reveal" style="border-radius: 32px; background: #121A2B; border: 1px solid #1F2A40; padding: clamp(32px, 5vw, 64px); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<h2 id="cta-h" style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(32px, 4vw, 52px); line-height: 1.05; letter-spacing: -0.03em">¿Hablamos de <span style="background: linear-gradient(90deg, {{brand}}, {{accent}}); -webkit-background-clip: text; background-clip: text; color: transparent">código</span>… o de rol?</h2>
+<p style="margin: 0; color: #A3AEC2">Me vale cualquiera de los dos temas.</p>
+</div>
+<div style="display: flex; gap: 12px">
+<a href="mailto:ivanciudad98@gmail.com" style="padding: 15px 24px; border-radius: 999px; background: {{accent}}; color: #0B1120; font-weight: 700">Escríbeme</a>
+<a href="Proyectos.dc.html" style="padding: 14px 22px; border-radius: 999px; border: 1px solid #2A3654; font-weight: 600">Ver proyectos</a>
+</div>
+</div>
+</section>
+</main>
+
+<footer style="width: 100%; max-width: 1200px; box-sizing: border-box; margin: 0 auto; padding: 56px clamp(16px, 4vw, 40px) 40px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; color: #8A97B0; font-size: 14px">
+<span style="display: flex; align-items: center; gap: 10px"><svg width="20" height="20" viewBox="0 0 32 32" aria-hidden="true" fill="currentColor" style="color: {{brand}}"><rect x="2" y="2" width="12.7" height="5.6"></rect><rect x="9.6" y="2" width="5.1" height="28"></rect><rect x="2" y="24.4" width="12.7" height="5.6"></rect><rect x="17.3" y="2" width="12.7" height="5.6"></rect><rect x="17.3" y="2" width="5.1" height="9.8"></rect><rect x="17.3" y="13.2" width="12.7" height="5.6"></rect><rect x="17.3" y="20.2" width="5.1" height="9.8"></rect><rect x="17.3" y="24.4" width="12.7" height="5.6"></rect></svg>© 2026 Iván Ciudad Espinar · Hecho con Astro y Tailwind</span>
+<div style="display: flex; gap: 20px">
+<a href="https://github.com/Srivix" style="color: #8A97B0">GitHub</a>
+<a href="https://www.linkedin.com/in/iv%C3%A1n-ciudad-espinar-2195191b2/" style="color: #8A97B0">LinkedIn</a>
+<a href="mailto:ivanciudad98@gmail.com" style="color: #8A97B0">Email</a>
+</div>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#A78BFA","options":["#A78BFA","#C084FC","#818CF8","#60A5FA"]},"brand":{"editor":"color","default":"#22D3EE","options":["#22D3EE","#38BDF8","#67E8F9"]},"$preview":{"width":1440,"height":3300}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { tab: 'games' };
+  }
+  renderVals() {
+    const accent = this.props.accent ?? '#A78BFA';
+    const brand = this.props.brand ?? '#22D3EE';
+    const data = {
+      games: { label: 'Videojuegos', items: [
+        { name: 'World of Warcraft', note: '' },
+        { name: 'The Witcher 3', note: '' },
+        { name: 'Dark Souls', note: '' },
+        { name: 'League of Legends', note: '' }
+      ] },
+      series: { label: 'Series', items: [
+        { name: 'Juego de Tronos', note: '' },
+        { name: 'Breaking Bad', note: '' },
+        { name: 'Naruto', note: '' },
+        { name: 'Clone Wars', note: '' }
+      ] },
+      films: { label: 'Películas', items: [
+        { name: 'Star Wars', note: 'Fan incondicional.' },
+        { name: 'El Señor de los Anillos', note: 'Fan incondicional.' },
+        { name: 'Harry Potter', note: 'Maratón navideño obligatorio.' }
+      ] }
+    };
+    const keys = ['games', 'series', 'films'];
+    const tabs = keys.map((k) => {
+      const on = this.state.tab === k;
+      return {
+        label: data[k].label,
+        tabId: 'tab-' + k,
+        selected: on ? 'true' : 'false',
+        pick: () => this.setState({ tab: k }),
+        style: 'min-height: 44px; padding: 10px 18px; border-radius: 999px; border: 0; cursor: pointer; font: 500 15px Onest, system-ui, sans-serif; background: ' + (on ? accent : 'transparent') + '; color: ' + (on ? '#0B1120' : '#A3AEC2')
+      };
+    });
+    const items = data[this.state.tab].items.map((it, i) => ({
+      ...it,
+      num: String(i + 1).padStart(2, '0'),
+      hasNote: it.note !== '',
+      color: i % 2 === 0 ? brand : accent,
+      cardStyle: 'padding: 24px; border-radius: 22px; background: #121A2B; border: 1px solid #1A2338; display: flex; flex-direction: column; gap: 10px; animation-delay: ' + (i * 0.06) + 's'
+    }));
+    return { accent, brand, tabs, items, panelLabel: 'tab-' + this.state.tab };
+  }
+}
+</script>
+</body>
+</html>

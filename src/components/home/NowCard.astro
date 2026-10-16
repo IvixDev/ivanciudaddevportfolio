@@ -1,0 +1,57 @@
+---
+import { IconArrowRight } from "@tabler/icons-react";
+import type { Icon } from "@tabler/icons-react";
+import Button from "../ui/Button.astro";
+
+interface Props {
+  icon: Icon;
+  tone: "brand" | "accent";
+  label: string;
+  text: string;
+  /** Texto reducido solo para móvil. */
+  textShort?: string;
+  linkLabel: string;
+  href: string;
+  /** En tablet ocupa dos columnas, con el icono a la izquierda. */
+  wide?: boolean;
+}
+
+const { icon: IconComponent, tone, label, text, textShort, linkLabel, href, wide = false } = Astro.props;
+
+const toneIcon = { brand: "text-brand", accent: "text-accent" } as const;
+---
+
+<!-- Toda la tarjeta es clicable (enlace extendido). El texto del enlace solo se ve en escritorio. -->
+<article
+  class:list={[
+    "lift relative flex h-full gap-4 rounded-card-sm border border-line-subtle bg-surface p-5 tablet:flex-col tablet:gap-3 tablet:rounded-card tablet:p-7 laptop:gap-3.5 laptop:p-8",
+    wide && "tablet:max-laptop:flex-row tablet:max-laptop:items-center tablet:max-laptop:gap-5",
+  ]}
+>
+  <IconComponent size={28} stroke={1.8} aria-hidden="true" className={`shrink-0 ${toneIcon[tone]}`} />
+  <div class="flex min-w-0 flex-1 flex-col gap-1 tablet:gap-3 laptop:gap-3.5">
+    <p class="font-mono text-[11px] tracking-[0.08em] text-subtle uppercase tablet:text-xs">{label}</p>
+    <p class="text-[17px] leading-[1.45] text-fg tablet:text-lg laptop:text-xl">
+      {
+        textShort ? (
+          <>
+            <span class="tablet:hidden">{textShort}</span>
+            <span class="hidden tablet:inline">{text}</span>
+          </>
+        ) : (
+          text
+        )
+      }
+    </p>
+  </div>
+  <Button
+    href={href}
+    variant="link"
+    arrow={false}
+    tone={tone}
+    class="after:absolute after:inset-0 max-laptop:absolute max-laptop:inset-0 max-laptop:rounded-card-sm laptop:mt-auto laptop:text-[15px]"
+  >
+    <span class="max-laptop:sr-only">{linkLabel}</span>
+    <IconArrowRight className="arrow hidden laptop:block" size={16} stroke={2.2} aria-hidden="true" />
+  </Button>
+</article>

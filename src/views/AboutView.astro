@@ -1,39 +1,54 @@
 ---
-import { seoMapper } from "../helpers/seo.helper";
-import { buildProfilePageSchema } from "../helpers/schema.helper";
-import { useTranslations } from "../i18n/utils";
 import Layout from "../layouts/Layout.astro";
-import ScrollReveal from "../components/ScrollReveal";
-import AboutMe from "../components/AboutMe.astro";
+import AboutIntro from "../components/about/AboutIntro.astro";
+import AboutFeature from "../components/about/AboutFeature.astro";
+import FavoritesTabs from "../components/about/FavoritesTabs.astro";
+import AboutCta from "../components/about/AboutCta.astro";
+import juegosDeMesa from "../assets/juegos-de-mesa-dados.webp";
+import legos from "../assets/legos.webp";
+import { seoMapper } from "../helpers/seo.helper";
+import { buildBreadcrumbSchema, buildProfilePageSchema } from "../helpers/schema.helper";
+import { getLang, getMessages, useTranslations } from "../i18n/utils";
 
 const lang = Astro.currentLocale;
 const t = useTranslations(lang);
-const pageData = t("about_page") as {
-  title: string;
-  description: string;
-  url: string;
-  image_url: string;
-  image_alt: string;
-};
-const title = pageData.title;
-const description = pageData.description;
-const url = pageData.url;
-const image = pageData.image_url;
+const m = getMessages(lang).about;
 
-const infoSeo = seoMapper(title, description, url, image, pageData.image_alt);
+const infoSeo = seoMapper(t("about.title"), t("about.description"), t("about.url"), t("about.image_url"), t("about.image_alt"), undefined, getLang(lang));
 
-const aboutPageSchema = buildProfilePageSchema(t, "about_page");
+const schemas = [buildProfilePageSchema(t, "about"), buildBreadcrumbSchema(t, "about")];
 ---
 
 <Layout infoSeo={infoSeo}>
-  <script
-    is:inline
-    type="application/ld+json"
-    set:html={JSON.stringify(aboutPageSchema)}
-  />
-  <main class="w-full max-w-7xl mx-auto px-6 py-12 flex flex-col gap-12">
-    <ScrollReveal client:visible>
-      <AboutMe />
-    </ScrollReveal>
-  </main>
+  {
+    schemas.map((schema) => (
+      <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />
+    ))
+  }
+  <div
+    class="mx-auto flex w-full max-w-(--container-content) flex-col gap-15 px-4 pt-8 pb-16 tablet:gap-22 tablet:px-8 tablet:pt-16 tablet:pb-20 laptop:gap-30 laptop:px-[clamp(16px,4vw,40px)] laptop:pt-[clamp(56px,7vw,96px)] laptop:pb-24"
+  >
+    <AboutIntro />
+    <AboutFeature
+      headingId="passions-title"
+      eyebrow={m.passions_eyebrow}
+      title={m.passions_title}
+      paragraphs={[m.passions_p1, m.passions_p2]}
+      short={m.passions_short}
+      image={juegosDeMesa}
+      alt={m.dice_alt}
+    />
+    <AboutFeature
+      headingId="build-title"
+      eyebrow={m.build_eyebrow}
+      title={m.build_title}
+      paragraphs={[m.build_p1, m.build_p2]}
+      short={m.build_short}
+      image={legos}
+      alt={m.lego_alt}
+      reverse
+    />
+    <FavoritesTabs />
+    <AboutCta />
+  </div>
 </Layout>
