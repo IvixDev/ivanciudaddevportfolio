@@ -1,6 +1,7 @@
 import { socialMediaLinks } from "../content/layout.consts";
+import type { useTranslations } from "../i18n/utils";
 
-type TranslateFn = (key: string) => any;
+type TranslateFn = ReturnType<typeof useTranslations>;
 
 const SITE = "https://www.ivanciudad.com";
 

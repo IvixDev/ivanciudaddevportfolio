@@ -49,7 +49,7 @@ export type BadgeVariant = "default" | "cyan" | "purple" | "green" | "blue" | "o
 
 interface TechBadgeProps {
     label: string;
-    icon?: string | TablerIcon | React.ComponentType<any>;
+    icon?: string | TablerIcon | React.ComponentType<{ className?: string }>;
     variant?: BadgeVariant;
     className?: string;
 }
