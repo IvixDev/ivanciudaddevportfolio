@@ -1,5 +1,5 @@
 ---
-import { IconSchool } from "@tabler/icons-react";
+import IconSchool from "@tabler/icons/outline/school.svg";
 import { getMessages } from "../../i18n/utils";
 
 const { educations } = getMessages(Astro.currentLocale).career;
@@ -10,10 +10,11 @@ const { educations } = getMessages(Astro.currentLocale).career;
     educations.map((education, index) => (
       <article class="lift reveal flex flex-col gap-1.5 rounded-card-sm border border-line-subtle bg-surface p-5 tablet:gap-2 tablet:rounded-[22px] tablet:p-6 laptop:gap-2.5 laptop:rounded-card laptop:p-7">
         <IconSchool
-          size={28}
-          stroke={1.8}
+          width={28}
+          height={28}
+          stroke-width={1.8}
           aria-hidden="true"
-          className={index === 0 ? "hidden text-accent laptop:block" : "hidden text-brand laptop:block"}
+          class={index === 0 ? "hidden text-accent laptop:block" : "hidden text-brand laptop:block"}
         />
         <p class="font-mono text-xs text-subtle tablet:text-[13px]">
           {education.date} · {education.institution}

@@ -26,7 +26,7 @@ Leyenda del salto: **patch** / **minor** / **major**. En los paquetes `0.x`, cam
 | @tabler/icons-react | 3.36.1 | 3.49.0 | 3.49.0 | minor | Bajo | ✅ |
 | @fontsource-variable/onest | 5.2.11 | 5.3.1 | 5.3.1 | minor | Bajo | ✅ |
 | @fontsource-variable/source-code-pro | 5.2.7 | 5.3.1 | 5.3.1 | minor | — | ⏭️ lo quita el rediseño |
-| typescript | 5.9.3 | 5.9.3 | 7.0.2 | major ×2 | Medio (6) / **Bloqueado** (7) | Propuesto 6.0 |
+| typescript | 5.9.3 | 5.9.3 | 7.0.2 | major ×2 | Medio (6) / **Bloqueado** (7) | ✅ 6.0.3 (rama `chore/typescript-6`, ver [resultados](./migracion-astro-7/results.md#fase-2--typescript-60)) |
 | eslint / @eslint/js | 9.39.5 | 9.39.5 | 10.13.0 / 10.0.1 | major | **Bloqueado** por jsx-a11y | Esperar |
 | eslint-plugin-astro | 1.7.0 | 1.7.0 | 3.2.1 | major ×2 | Necesita ESLint 10 | Esperar |
 | typescript-eslint, vitest, globals, eslint-plugin-jsx-a11y | 8.71.2, 5.0.5, 17.13.0, 6.10.2 | = | = | — | — | Al día |
@@ -108,10 +108,10 @@ Exige Node 22+. `minimumReleaseAge` pasa a 1 día por defecto (bueno contra ataq
 
 | # | Mejora | Beneficio | Esfuerzo | Depende de |
 |---|---|---|---|---|
-| P1 | Quitar React: iconos de `@tabler/icons` en SVG | Alto (bundle, mantenimiento, desbloquea Astro 6/7) | Medio | Rediseño fusionado |
+| P1 | ✅ Hecho (rama `chore/remove-react`, ver [resultados](./migracion-astro-7/results.md#quitar-react-iconos-svg)): quitar React, iconos de `@tabler/icons` en SVG | Alto (bundle, mantenimiento, desbloquea Astro 6/7) | Medio | Rediseño fusionado |
 | P2 | Quitar `@astrojs/vercel` y sacar `vercel` de `dependencies` | Medio (instalación, superficie) | Bajo | — |
 | P3 | Astro 7, en dos pasos (6 → 7) | Alto (build, HTML válido, fuentes, CSP) | Alto | P1 recomendado |
-| P4 | API de fuentes de Astro (`fonts` + `<Font preload>`) | Medio-alto (CLS/LCP) | Bajo-medio | Astro 6 |
+| P4 | ❌ Descartada tras medir (FCP +0,14 s, ver [resultados](./migracion-astro-7/results.md#api-de-fuentes-de-astro-descartada)): API de fuentes de Astro (`fonts` + `<Font preload>`) | Medio-alto (CLS/LCP) | Bajo-medio | Astro 6 |
 | P5 | astro-seo 1.x y @vercel/* 2.x | Bajo-medio | Bajo | — |
 | P6 | Fijar la versión de Node en local (`.node-version`) | Medio (DX) | Muy bajo | — |
 | P7 | Unificar la barra de la home en canonical, sitemap y hreflang | Bajo-medio (SEO) | Bajo | P5 |
@@ -119,6 +119,8 @@ Exige Node 22+. `minimumReleaseAge` pasa a 1 día por defecto (bueno contra ataq
 | P9 | CSP con `security.csp` | Medio (seguridad) | Alto | Astro 6, quitar `ClientRouter` |
 
 ### P1. Quitar React: iconos de tabler en SVG
+
+> **Hecho** en la rama `chore/remove-react`: ver [resultados](./migracion-astro-7/results.md#quitar-react-iconos-svg).
 
 Tras el rediseño, React solo sirve para pintar en servidor los iconos de `@tabler/icons-react`, con el hack `reactServerOnly()` en `astro.config.mjs`. `@tabler/icons` 3.49 expone los SVG con `"./*": "./icons/*"`, y Astro importa SVG como componentes desde 5.7: se insertan en línea y aceptan `width`, `height`, `stroke` y cualquier atributo de `<svg>` ([docs](https://docs.astro.build/en/guides/images/)). Por ejemplo:
 
@@ -149,6 +151,8 @@ Plan: primero 5 → 6 (Vite 7, imágenes, orden de estilos, Vitest), y en otro P
 ### P4. API de fuentes (Astro 6+)
 
 El rediseño carga Onest, Bricolage Grotesque y JetBrains Mono con `@fontsource-variable/*` y precarga a mano con `?url`. Con `fonts: [{ provider: fontProviders.fontsource(), name: "Onest", cssVariable: "--font-onest" }]` y `<Font cssVariable="--font-onest" preload />`, Astro descarga y sirve las fuentes desde el propio sitio, añade los preload y **genera fallbacks optimizados** a partir de la familia genérica ([docs](https://docs.astro.build/en/guides/fonts/)). Eso reduce el CLS al cambiar de fuente. La guía v6 confirma que se quitó el flag `experimental.fonts`. Se podrían eliminar las dependencias de Fontsource y los imports `?url`. Hay que medir el CLS y el LCP con Speed Insights antes y después.
+
+**Resultado (17-10-2026): descartada.** Con Astro 7.4, el CLS baja a 0 y el LCP se mantiene usando `local()` para Bricolage, pero el FCP empeora de 1,06 a 1,20 s en todas las rutas. Detalle en [resultados](./migracion-astro-7/results.md#api-de-fuentes-de-astro-descartada).
 
 ### P5. astro-seo 1.x y @vercel/* 2.x
 

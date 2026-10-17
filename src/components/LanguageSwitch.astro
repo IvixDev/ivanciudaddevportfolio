@@ -1,5 +1,5 @@
 ---
-import { IconLanguage } from "@tabler/icons-react";
+import IconLanguage from "@tabler/icons/outline/language.svg";
 import { getLang, getMessages, getOppositeLocaleUrl } from "../i18n/utils";
 
 interface Props {
@@ -26,7 +26,7 @@ const itemBase = "inline-flex min-h-11 min-w-11 items-center justify-center roun
       aria-label={m.a11y.switch_language}
       class={`${itemBase} gap-1.5 text-muted transition-colors duration-(--duration-fast) hover:bg-surface hover:text-fg`}
     >
-      <IconLanguage size={20} stroke={1.8} aria-hidden="true" />
+      <IconLanguage width={20} height={20} stroke-width={1.8} aria-hidden="true" />
       {otherLang}
     </a>
   ) : (
