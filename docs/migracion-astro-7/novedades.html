@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Migración a Astro 7</title>
+<meta name="description" content="Qué aporta migrar ivanciudad.com a Astro 7.4, qué pasa con React 19.1 y TypeScript 7, y cómo se hará." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=JetBrains+Mono:wght@400;600&family=Onest:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ink: #F6F8FC; --raised: #FFFFFF; --surface: #EEF2F8; --line: #D8DEEA;
+    --fg: #0B1120; --muted: #445069; --subtle: #5A6782;
+    --brand: #0E7490; --accent: #6D28D9;
+    --ok: #047857; --warn: #B45309; --stop: #B91C1C;
+    --ok-bg: #ECFDF5; --warn-bg: #FFFBEB; --stop-bg: #FEF2F2;
+    --shadow: 0 18px 40px -24px rgb(30 41 59 / .35);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ink: #0B1120; --raised: #0E1526; --surface: #121A2B; --line: #1F2A40;
+      --fg: #E8ECF4; --muted: #A3AEC2; --subtle: #8A97B0;
+      --brand: #22D3EE; --accent: #A78BFA;
+      --ok: #34D399; --warn: #FBBF24; --stop: #F87171;
+      --ok-bg: rgb(52 211 153 / .1); --warn-bg: rgb(251 191 36 / .1); --stop-bg: rgb(248 113 113 / .1);
+      --shadow: 0 24px 48px -24px rgb(167 139 250 / .35);
+    }
+  }
+  :root[data-theme="dark"] {
+    --ink: #0B1120; --raised: #0E1526; --surface: #121A2B; --line: #1F2A40;
+    --fg: #E8ECF4; --muted: #A3AEC2; --subtle: #8A97B0;
+    --brand: #22D3EE; --accent: #A78BFA;
+    --ok: #34D399; --warn: #FBBF24; --stop: #F87171;
+    --ok-bg: rgb(52 211 153 / .1); --warn-bg: rgb(251 191 36 / .1); --stop-bg: rgb(248 113 113 / .1);
+    --shadow: 0 24px 48px -24px rgb(167 139 250 / .35);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; animation: none !important; } }
+  body {
+    margin: 0; background: var(--ink); color: var(--fg);
+    font: 400 16px/1.6 "Onest", ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
+  @media (min-width: 768px) { .wrap { padding: 0 32px; } }
+  h1, h2, h3 { font-family: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif; line-height: 1.1; margin: 0; }
+  h2 { font-size: clamp(26px, 4vw, 36px); font-weight: 800; letter-spacing: -.02em; }
+  h3 { font-size: 19px; font-weight: 600; }
+  p { margin: 0; }
+  code, .mono { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: .88em; }
+  code { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 1px 6px; overflow-wrap: anywhere; }
+  a { color: var(--brand); }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--brand); outline-offset: 3px; border-radius: 6px; }
+  .grad { background: linear-gradient(90deg, var(--brand), var(--accent)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  @media (forced-colors: active) { .grad { background: none; color: CanvasText; } }
+  .eyebrow { font-family: "JetBrains Mono", monospace; font-size: 13px; color: var(--brand); letter-spacing: .04em; }
+
+  header.top { border-bottom: 1px solid var(--line); }
+  header.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 64px; }
+  .brand { font-family: "JetBrains Mono", monospace; font-weight: 600; font-size: 14px; color: var(--muted); }
+  .theme { min-height: 44px; padding: 0 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--fg); font: 500 14px "Onest", sans-serif; cursor: pointer; }
+
+  .hero { padding: 56px 0 40px; }
+  .hero h1 { font-size: clamp(36px, 7vw, 68px); font-weight: 800; letter-spacing: -.03em; margin: 12px 0 18px; }
+  .hero .lead { font-size: clamp(17px, 2.2vw, 20px); color: var(--muted); max-width: 680px; }
+
+  .versions { display: grid; gap: 14px; grid-template-columns: 1fr; margin-top: 36px; }
+  @media (min-width: 640px) { .versions { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1024px) { .versions { grid-template-columns: repeat(4, 1fr); } }
+  .ver { background: var(--raised); border: 1px solid var(--line); border-radius: 20px; padding: 18px; box-shadow: var(--shadow); }
+  .ver .name { font-family: "JetBrains Mono", monospace; font-size: 13px; color: var(--subtle); }
+  .ver .jump { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; margin: 8px 0 10px; font-family: "Bricolage Grotesque", sans-serif; }
+  .ver .from { font-size: 18px; color: var(--subtle); text-decoration: line-through; text-decoration-thickness: 1px; }
+  .ver .to { font-size: 30px; font-weight: 800; }
+  .ver .same { font-size: 30px; font-weight: 800; }
+  .pill { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; padding: 3px 10px; border-radius: 999px; }
+  .pill.ok { color: var(--ok); background: var(--ok-bg); }
+  .pill.warn { color: var(--warn); background: var(--warn-bg); }
+  .pill.stop { color: var(--stop); background: var(--stop-bg); }
+  .ver p { color: var(--muted); font-size: 14px; margin-top: 10px; }
+
+  nav.toc { position: sticky; top: 0; z-index: 5; background: var(--ink); border-bottom: 1px solid var(--line); }
+  nav.toc ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 4px 6px; }
+  nav.toc a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 12px; border-radius: 999px; color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 500; }
+  nav.toc a:hover { color: var(--fg); background: var(--surface); }
+
+  section { padding: 56px 0; scroll-margin-top: 56px; }
+  section + section { border-top: 1px solid var(--line); }
+  .sec-head { display: grid; gap: 10px; margin-bottom: 28px; max-width: 720px; }
+  .sec-head p { color: var(--muted); }
+
+  .cards { display: grid; gap: 14px; grid-template-columns: 1fr; }
+  @media (min-width: 640px) { .cards { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1024px) { .cards.three { grid-template-columns: repeat(3, 1fr); } }
+  .card { background: var(--raised); border: 1px solid var(--line); border-radius: 20px; padding: 20px; display: grid; gap: 10px; align-content: start; transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s; }
+  .card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+  .card p { color: var(--muted); font-size: 15px; }
+  .card .tag { font-family: "JetBrains Mono", monospace; font-size: 12px; color: var(--accent); }
+  .card .gain { font-size: 14px; color: var(--fg); border-top: 1px dashed var(--line); padding-top: 10px; }
+  .card .gain strong { color: var(--brand); }
+
+  .decision { display: grid; gap: 14px; grid-template-columns: 1fr; }
+  @media (min-width: 900px) { .decision { grid-template-columns: 1fr 1fr; } }
+  .callout { border-radius: 20px; padding: 22px; border: 1px solid var(--line); background: var(--raised); display: grid; gap: 12px; align-content: start; }
+  .callout.warn { border-left: 4px solid var(--warn); }
+  .callout.stop { border-left: 4px solid var(--stop); }
+  .callout ul { margin: 0; padding-left: 20px; color: var(--muted); display: grid; gap: 6px; }
+  .callout .verdict { font-weight: 700; }
+
+  .table-wrap { border: 1px solid var(--line); border-radius: 16px; background: var(--raised); }
+  table { width: 100%; border-collapse: collapse; font-size: 15px; }
+  caption { text-align: left; padding: 14px 16px 0; color: var(--subtle); font-size: 13px; }
+  th, td { text-align: left; padding: 12px 16px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-size: 13px; color: var(--subtle); font-weight: 600; }
+  tr:last-child td { border-bottom: 0; }
+  td:first-child { font-weight: 500; }
+  /* Tabla apilada en móvil: sin scroll horizontal */
+  @media (max-width: 719px) {
+    table, thead, tbody, tr, th, td { display: block; }
+    thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+    tr { border-bottom: 1px solid var(--line); padding: 10px 0; }
+    tr:last-child { border-bottom: 0; }
+    td { border: 0; padding: 4px 16px; }
+    td::before { content: attr(data-label); display: block; font-size: 12px; color: var(--subtle); font-weight: 600; }
+  }
+
+  .timeline { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; counter-reset: fase; }
+  .timeline li { position: relative; background: var(--raised); border: 1px solid var(--line); border-radius: 20px; padding: 20px 20px 20px 72px; }
+  .timeline li::before { counter-increment: fase; content: counter(fase, decimal) ""; position: absolute; left: 20px; top: 20px; width: 36px; height: 36px; border-radius: 12px; display: grid; place-items: center; font: 700 15px "JetBrains Mono", monospace; color: var(--ink); background: linear-gradient(135deg, var(--brand), var(--accent)); }
+  .timeline li.opt::before { background: var(--surface); color: var(--muted); border: 1px solid var(--line); }
+  .timeline .branch { font-family: "JetBrains Mono", monospace; font-size: 13px; color: var(--accent); overflow-wrap: anywhere; }
+  .timeline ul { margin: 10px 0 0; padding-left: 20px; color: var(--muted); display: grid; gap: 4px; }
+  .who { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  .who span { font-size: 13px; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); }
+  .who b { color: var(--fg); }
+
+  .checks { display: grid; gap: 10px; grid-template-columns: 1fr; list-style: none; margin: 0; padding: 0; }
+  @media (min-width: 768px) { .checks { grid-template-columns: repeat(2, 1fr); } }
+  .checks li { display: flex; gap: 12px; align-items: flex-start; background: var(--raised); border: 1px solid var(--line); border-radius: 14px; padding: 14px; color: var(--muted); font-size: 15px; }
+  .checks li::before { content: "✓"; flex: none; width: 24px; height: 24px; border-radius: 8px; display: grid; place-items: center; background: var(--ok-bg); color: var(--ok); font-weight: 700; }
+
+  footer { border-top: 1px solid var(--line); padding: 28px 0 40px; color: var(--subtle); font-size: 14px; }
+  footer p + p { margin-top: 6px; }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <span class="brand">ivanciudad.com · docs/migracion-astro-7</span>
+    <button class="theme" type="button" id="theme" aria-pressed="false">Cambiar tema</button>
+  </div>
+</header>
+
+<main>
+  <div class="wrap hero">
+    <p class="eyebrow">Plan de migración · 17-10-2026</p>
+    <h1>Astro <span class="grad">7.4</span>: qué gana tu portfolio</h1>
+    <p class="lead">Builds más rápidos, HTML válido obligatorio y una cadena de herramientas al día. Para React y TypeScript, la recomendación cambia respecto a lo que pediste, y aquí se explica por qué.</p>
+
+    <div class="versions">
+      <article class="ver">
+        <p class="name">astro</p>
+        <p class="jump"><span class="from">5.18.2</span><span class="to grad">7.4.0</span></p>
+        <span class="pill ok">✓ Migrar</span>
+        <p>Pasando por 6.4.8 como paso intermedio verificado.</p>
+      </article>
+      <article class="ver">
+        <p class="name">@astrojs/react + Vite</p>
+        <p class="jump"><span class="from">4.4 · Vite 6</span><span class="to">7.1 · Vite 8</span></p>
+        <span class="pill ok">✓ Va con Astro 7</span>
+        <p>Vite 8 usa Rolldown, un bundler escrito en Rust.</p>
+      </article>
+      <article class="ver">
+        <p class="name">react / react-dom</p>
+        <p class="jump"><span class="same">19.2.9</span></p>
+        <span class="pill warn">⚠ 19.1 sería bajar</span>
+        <p>Ya estás por encima. Se mantiene 19.2.x.</p>
+      </article>
+      <article class="ver">
+        <p class="name">typescript</p>
+        <p class="jump"><span class="from">5.9.3</span><span class="to">6.0.3</span></p>
+        <span class="pill stop">✕ 7.0 bloqueado</span>
+        <p><code>astro check</code> todavía no soporta TS 7.</p>
+      </article>
+    </div>
+  </div>
+
+  <nav class="toc" aria-label="Secciones">
+    <div class="wrap">
+      <ul>
+        <li><a href="#mejoras">Mejoras</a></li>
+        <li><a href="#decisiones">React y TS</a></li>
+        <li><a href="#cambios">Cambios incompatibles</a></li>
+        <li><a href="#fases">Fases</a></li>
+        <li><a href="#verificacion">Verificación</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section id="mejoras" aria-labelledby="h-mejoras">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">01 · Lo que te aporta</p>
+        <h2 id="h-mejoras">Novedades que <span class="grad">sí</span> notarás</h2>
+        <p>Solo las que tienen sentido en un sitio estático de 12 páginas, sin servidor ni contenido en Markdown.</p>
+      </div>
+      <div class="cards three">
+        <article class="card">
+          <span class="tag">Astro 7.0 · Vite 8</span>
+          <h3>Builds más rápidos</h3>
+          <p>El compilador de <code>.astro</code> pasa de Go a Rust y Vite 8 empaqueta con Rolldown. Astro midió en su web (unas 300 páginas) una bajada de 62,7 s a 24,2 s.</p>
+          <p class="gain"><strong>Para ti:</strong> CI y despliegues de Vercel más cortos. Lo mediremos con 12 páginas; no se asume la misma cifra.</p>
+        </article>
+        <article class="card">
+          <span class="tag">Astro 7.0</span>
+          <h3>HTML válido obligatorio</h3>
+          <p>El nuevo compilador ya no “arregla” etiquetas sin cerrar ni un <code>&lt;div&gt;</code> dentro de un <code>&lt;p&gt;</code>: falla el build.</p>
+          <p class="gain"><strong>Para ti:</strong> el HTML que leen Google y los lectores de pantalla es el que escribiste. Encaja con tu prioridad de SEO y accesibilidad.</p>
+        </article>
+        <article class="card">
+          <span class="tag">Astro 7.4</span>
+          <h3><code>astro build --timings</code></h3>
+          <p>Un resumen al final del build que dice qué tarda: integraciones, imágenes, sitemap…</p>
+          <p class="gain"><strong>Para ti:</strong> cumple la regla de AGENTS.md: medir antes de optimizar.</p>
+        </article>
+        <article class="card">
+          <span class="tag">Astro 6+ · opcional</span>
+          <h3>API de fuentes</h3>
+          <p><code>fonts</code> y <code>&lt;Font preload /&gt;</code> descargan y sirven Onest, Bricolage y JetBrains Mono desde tu dominio, con preload automático y fuentes de reserva ajustadas a sus métricas.</p>
+          <p class="gain"><strong>Para ti:</strong> menos saltos de layout al cargar la fuente (CLS) y 3 dependencias menos.</p>
+        </article>
+        <article class="card">
+          <span class="tag">Astro 7.2 – 7.3</span>
+          <h3>Dev y preview más cómodos</h3>
+          <p><code>astro preview --background</code> e <code>--ignore-lock</code>, HMR de estilos más estable y un dev server que no reevalúa todo en cada petición.</p>
+          <p class="gain"><strong>Para ti:</strong> Lighthouse y pruebas en local sin pelearte con procesos y puertos.</p>
+        </article>
+        <article class="card">
+          <span class="tag">Mantenimiento</span>
+          <h3>Al día y con soporte</h3>
+          <p>Astro 5 ya no recibe novedades. Con 7.4, <code>sharp</code> 0.35 (mejor AVIF), Vite 8 y Zod 4 vuelves a la rama con soporte y arreglos de seguridad.</p>
+          <p class="gain"><strong>Para ti:</strong> las próximas actualizaciones son minor, no otro salto de dos majors.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="decisiones" aria-labelledby="h-decisiones">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">02 · Lo que cambia respecto a tu petición</p>
+        <h2 id="h-decisiones">React 19.1 y TypeScript 7.0</h2>
+        <p>Entiendo que el “7.0” se refiere a TypeScript 7.0, la versión nativa. Ninguno de los dos saltos conviene ahora.</p>
+      </div>
+      <div class="decision">
+        <article class="callout warn">
+          <span class="pill warn">⚠ React 19.1</span>
+          <h3>Ya tienes una versión más nueva</h3>
+          <ul>
+            <li>El proyecto usa <strong>React 19.2.9</strong>. Pasar a 19.1 sería un <em>downgrade</em>.</li>
+            <li>Tras el rediseño, React solo pinta en servidor los iconos de tabler. No hay islas <code>client:*</code>, así que el visitante no descarga React.</li>
+            <li><code>@astrojs/react</code> 7.1 acepta cualquier React 19.</li>
+          </ul>
+          <p class="verdict">Recomendación: mantener 19.2.x. Mejor aún, en un PR aparte, quitar React y usar los SVG de <code>@tabler/icons</code> directamente en Astro.</p>
+        </article>
+        <article class="callout stop">
+          <span class="pill stop">✕ TypeScript 7.0</span>
+          <h3>Bloqueado por las herramientas de Astro</h3>
+          <ul>
+            <li><code>@astrojs/check</code> 0.9.10 solo admite TS 5 y 6. Desde Astro 7.3.4, <code>astro check</code> avisa de que TS 7 no está soportado.</li>
+            <li>Solo hay una vía experimental con TS <strong>7.1</strong>, que aún está en desarrollo, y <code>@astrojs/ts-content-mapper</code>.</li>
+            <li><code>typescript-eslint</code> pide <code>&lt;6.1</code>.</li>
+          </ul>
+          <p class="verdict">Recomendación: TypeScript 6.0.3 ahora y TS 7.1 cuando lo soporten Astro y typescript-eslint.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="cambios" aria-labelledby="h-cambios">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">03 · Riesgos</p>
+        <h2 id="h-cambios">Cambios incompatibles que nos tocan</h2>
+        <p>Revisados contra el código actual del rediseño.</p>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <caption>Cambios de Astro 6 y 7 aplicados a este repositorio</caption>
+          <thead><tr><th scope="col">Cambio</th><th scope="col">Desde</th><th scope="col">Impacto</th><th scope="col">Qué haremos</th></tr></thead>
+          <tbody>
+            <tr><td data-label="Cambio">Node ≥ 22.22</td><td data-label="Desde">7.0</td><td data-label="Impacto"><span class="pill warn">En local</span></td><td data-label="Qué haremos">CI y Vercel ya usan Node 24. En local tienes Node 20.18: añadir <code>.node-version</code>.</td></tr>
+            <tr><td data-label="Cambio"><code>compressHTML: 'jsx'</code></td><td data-label="Desde">7.0</td><td data-label="Impacto"><span class="pill warn">Medio</span></td><td data-label="Qué haremos">Revisar espacios entre texto, enlaces e iconos. Si algo se pega: <code>compressHTML: true</code>.</td></tr>
+            <tr><td data-label="Cambio">Compilador en Rust</td><td data-label="Desde">7.0</td><td data-label="Impacto"><span class="pill warn">Bajo-medio</span></td><td data-label="Qué haremos">Arreglar el HTML inválido que aparezca.</td></tr>
+            <tr><td data-label="Cambio">Vite 8 + <code>reactServerOnly()</code></td><td data-label="Desde">7.0</td><td data-label="Impacto"><span class="pill ok">Bajo</span></td><td data-label="Qué haremos">El renderer de <code>@astrojs/react</code> 7.1 mantiene la forma. Comprobar que no aparece <code>client.*.js</code>.</td></tr>
+            <tr><td data-label="Cambio">Imágenes: recorte y sin ampliar</td><td data-label="Desde">6.0</td><td data-label="Impacto"><span class="pill warn">Medio</span></td><td data-label="Qué haremos">Comparar dimensiones en <code>dist/</code> y revisar a 320, 768 y 1440 px.</td></tr>
+            <tr><td data-label="Cambio"><code>&lt;script&gt;</code>/<code>&lt;style&gt;</code> en orden de escritura</td><td data-label="Desde">6.0</td><td data-label="Impacto"><span class="pill ok">Bajo</span></td><td data-label="Qué haremos">Revisar el <code>&lt;head&gt;</code> de <code>Layout.astro</code>.</td></tr>
+            <tr><td data-label="Cambio">APIs obsoletas de <code>astro:transitions</code></td><td data-label="Desde">7.0</td><td data-label="Impacto"><span class="pill ok">Ninguno</span></td><td data-label="Qué haremos">Solo usamos <code>&lt;ClientRouter /&gt;</code> y eventos por nombre.</td></tr>
+            <tr><td data-label="Cambio"><code>types: []</code> por defecto</td><td data-label="Desde">TS 6</td><td data-label="Impacto"><span class="pill warn">Medio</span></td><td data-label="Qué haremos">Añadir <code>"types": ["node"]</code> si desaparecen los globales de Node.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="fases" aria-labelledby="h-fases">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">04 · Cómo se hará</p>
+        <h2 id="h-fases">Tres PRs pequeños, uno detrás de otro</h2>
+        <p><b>Sonnet</b> implementa cada fase en su rama. <b>Opus</b> revisa, verifica y abre el PR cuando lo apruebes.</p>
+      </div>
+      <ol class="timeline">
+        <li>
+          <h3>Preparación</h3>
+          <p class="branch">chore/astro7-prep</p>
+          <ul>
+            <li><code>.node-version</code> con 24.</li>
+            <li>Quitar <code>@astrojs/vercel</code> y la CLI <code>vercel</code>, que no se usan.</li>
+            <li>Línea base: tiempo de build, tamaño de <code>dist/</code>, Lighthouse de las 8 rutas y copia del HTML.</li>
+          </ul>
+          <div class="who"><span>Implementa: <b>Sonnet</b></span><span>Revisa: <b>Opus</b></span></div>
+        </li>
+        <li>
+          <h3>Astro 7.4</h3>
+          <p class="branch">chore/astro-7</p>
+          <ul>
+            <li>Commit 1: Astro 6.4.8 en verde (imágenes y orden del <code>&lt;head&gt;</code>).</li>
+            <li>Commit 2: Astro 7.4, <code>@astrojs/react</code> 7.1 y <code>sharp</code> 0.35; arreglar los errores del compilador.</li>
+            <li>Commit 3: <code>compressHTML</code>, solo si hace falta.</li>
+            <li>Actualizar <code>AGENTS.md</code> y <code>upgrades.md</code>.</li>
+          </ul>
+          <div class="who"><span>Implementa: <b>Sonnet</b></span><span>Revisa: <b>Opus</b></span></div>
+        </li>
+        <li>
+          <h3>TypeScript 6.0</h3>
+          <p class="branch">chore/typescript-6</p>
+          <ul>
+            <li><code>typescript@^6.0.3</code>.</li>
+            <li>Revisar <code>types: []</code> y <code>noUncheckedSideEffectImports</code>.</li>
+            <li><code>astro check</code> con 0 errores y 0 avisos.</li>
+          </ul>
+          <div class="who"><span>Implementa: <b>Sonnet</b></span><span>Revisa: <b>Opus</b></span></div>
+        </li>
+        <li class="opt">
+          <h3>Opcional, más adelante</h3>
+          <ul>
+            <li>API de fuentes de Astro en lugar de Fontsource.</li>
+            <li>Quitar React: iconos SVG de <code>@tabler/icons</code>.</li>
+            <li>TypeScript 7.1 cuando esté soportado.</li>
+          </ul>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="verificacion" aria-labelledby="h-verificacion">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">05 · Antes de cada PR</p>
+        <h2 id="h-verificacion">Cómo sabremos que nada se ha roto</h2>
+        <p>Todo con Node 24, el mismo que usan la CI y Vercel.</p>
+      </div>
+      <ul class="checks">
+        <li><span><code>pnpm lint</code>, <code>pnpm test</code> (29 tests) y <code>pnpm build</code> con <code>astro check</code> limpio.</span></li>
+        <li><span>Diff del HTML de <code>dist/</code> contra la línea base: canonical, hreflang, JSON-LD y preloads intactos.</span></li>
+        <li><span>Sitemap idéntico y sin JS de React en el cliente (≈ 5 kB gzip en total).</span></li>
+        <li><span>Lighthouse en las 8 rutas: Accesibilidad 100, SEO 100 y Performance ≥ 98.</span></li>
+        <li><span>Revisión visual a 320, 768, 834 y 1440 px en ES y EN, sin scroll horizontal.</span></li>
+        <li><span>Cambio de idioma: sin animaciones repetidas, header estable y scroll conservado.</span></li>
+        <li><span><code>astro build --timings</code> y tiempo de build frente a la línea base.</span></li>
+        <li><span><code>pnpm install --frozen-lockfile</code> sin avisos de dependencias <em>peer</em>.</span></li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Plan completo en <code>docs/migracion-astro-7/PLAN.md</code>. Análisis previo en <code>docs/upgrades.md</code>.</p>
+    <p>Fuentes: <a href="https://github.com/withastro/astro/blob/astro%407.4.0/packages/astro/CHANGELOG.md">CHANGELOG de astro@7.4.0</a>, <a href="https://docs.astro.build/en/guides/upgrade-to/v7/">guía de Astro 7</a>, <a href="https://astro.build/blog/astro-7/">blog de Astro 7</a> y versiones de <code>pnpm view</code> del 17-10-2026.</p>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    var btn = document.getElementById("theme");
+    var stored = null;
+    try { stored = localStorage.getItem("theme"); } catch (e) {}
+    if (stored === "light" || stored === "dark") root.dataset.theme = stored;
+    function current() {
+      return root.dataset.theme || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    }
+    function sync() {
+      var dark = current() === "dark";
+      btn.setAttribute("aria-pressed", String(dark));
+      btn.textContent = dark ? "Tema claro" : "Tema oscuro";
+    }
+    btn.addEventListener("click", function () {
+      var next = current() === "dark" ? "light" : "dark";
+      root.dataset.theme = next;
+      try { localStorage.setItem("theme", next); } catch (e) {}
+      sync();
+    });
+    sync();
+  })();
+</script>
+</body>
+</html>
