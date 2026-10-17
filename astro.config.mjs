@@ -72,6 +72,10 @@ const pageImages = {
 // https://astro.build/config
 export default defineConfig({
   trailingSlash: 'never',
+  // Astro 7 pasó el valor por defecto a 'jsx', que elimina el espacio entre texto y elementos en línea
+  // (p. ej. "© 2026 Iván Ciudad Espinar" + <span>, o el "~ $" + cursor del terminal) y cambia el aspecto
+  // respecto a Astro 5. `true` conserva el espacio donde hace falta para el renderizado.
+  compressHTML: true,
   integrations: [
     sitemap({
       filter: (page) => !page.includes('/404') && !page.includes('/500'),

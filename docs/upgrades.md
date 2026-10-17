@@ -15,10 +15,10 @@ Leyenda del salto: **patch** / **minor** / **major**. En los paquetes `0.x`, cam
 
 | Paquete | Actual | Último en su major | Último | Salto | Riesgo | Estado |
 |---|---|---|---|---|---|---|
-| astro | 5.16.7 | 5.18.2 | 7.4.0 | minor / major ×2 | Bajo / **Alto** | ✅ 5.18.2 · 7.x propuesto |
+| astro | 5.16.7 | 5.18.2 | 7.4.0 | minor / major ×2 | Bajo / **Alto** | ✅ 7.4.0 (rama `chore/astro-7`, ver [resultados](./migracion-astro-7/results.md)) |
 | @astrojs/check | 0.9.6 | 0.9.10 | 0.9.10 | patch | Bajo (requiere Node ≥ 20.19, ver nota) | ✅ |
 | @astrojs/sitemap | 3.6.1 | 3.7.4 | 3.7.4 | minor | Bajo (cambia la URL de la home) | ✅ |
-| @astrojs/react | 4.4.2 | 4.4.2 | 7.1.0 | major ×3 | Alto (va con Astro 6/7) | Propuesto con Astro, o eliminar (P1) |
+| @astrojs/react | 4.4.2 | 4.4.2 | 7.1.0 | major ×3 | Alto (va con Astro 6/7) | ✅ 7.1.0 con Astro 7.4 · o eliminar (P1) |
 | @astrojs/vercel | 9.0.3 | 9.0.5 | 11.0.15 | patch / major | — | ✅ 9.0.5 · **no se usa**: proponer eliminarlo |
 | tailwindcss / @tailwindcss/vite | 4.1.18 | 4.3.3 | 4.3.3 | minor | Bajo | ✅ |
 | react / react-dom | 19.2.3 | 19.3.1 | 19.3.1 | patch (19.2.9) / minor | Medio (+8,6 kB gz medidos) | ✅ 19.2.9, fijado con `~` · 19.3 no |
@@ -34,7 +34,7 @@ Leyenda del salto: **patch** / **minor** / **major**. En los paquetes `0.x`, cam
 | @vercel/analytics | 1.6.1 | 1.6.1 | 2.0.1 | major | Bajo | Propuesto |
 | @vercel/speed-insights | 1.3.1 | 1.3.1 | 2.0.0 | major | Bajo (sin notas publicadas) | Propuesto |
 | vercel (CLI) | 50.1.6 | 50.44.0 | 64.3.1 | major | — | Proponer sacarlo de `dependencies` |
-| sharp | 0.34.5 | 0.34.5 | 0.35.5 | major (0.x) | Ligado a Astro | Esperar a Astro 6/7 |
+| sharp | 0.34.5 | 0.34.5 | 0.35.5 | major (0.x) | Ligado a Astro | ✅ 0.35.5 con Astro 7.4 |
 | @types/node | 16.18.11 (transitivo, por el peer de vite) | — | 26.6.5 | — | Bajo | ✅ añadido `^24.19.2` en dev |
 | framer-motion, clsx, tailwind-merge, autoprefixer, postcss | 12.24.10, 2.1.1, 3.4.0, 10.4.23, 8.5.6 | — | 14.3.0, 2.1.1, 3.7.0, 10.6.1, 8.5.30 | — | — | ⏭️ los quita el rediseño |
 | Node (`engines`) | 24.x | — | — | — | — | Sin cambios (Astro 6/7 piden ≥ 22.12 / ≥ 22.22) |
