@@ -3,7 +3,7 @@
 - Node 24.x (definido en `engines` de `package.json`; lo usan Vercel y la CI). En local lo fija `.node-version` (fnm con `--use-on-cd`). Si cambia la versión, actualizar los dos a la vez
 - TypeScript es obligatorio
 - Usa siempre Tailwind CSS para estilos
-- Iconos de tabler-icons. Importación explícita, nunca barrels
+- Iconos de `@tabler/icons` como SVG, importados por ruta (`import IconX from "@tabler/icons/outline/x.svg"`), uno a uno, nunca barrels. Sin React
 - Preferir ESM y sintaxis moderna del navegador
 
 ## Creación de proyectos

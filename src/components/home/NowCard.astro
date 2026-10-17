@@ -1,10 +1,10 @@
 ---
-import { IconArrowRight } from "@tabler/icons-react";
-import type { Icon } from "@tabler/icons-react";
+import IconArrowRight from "@tabler/icons/outline/arrow-right.svg";
+import type { SvgComponent } from "astro/types";
 import Button from "../ui/Button.astro";
 
 interface Props {
-  icon: Icon;
+  icon: SvgComponent;
   tone: "brand" | "accent";
   label: string;
   text: string;
@@ -28,7 +28,7 @@ const toneIcon = { brand: "text-brand", accent: "text-accent" } as const;
     wide && "tablet:max-laptop:flex-row tablet:max-laptop:items-center tablet:max-laptop:gap-5",
   ]}
 >
-  <IconComponent size={28} stroke={1.8} aria-hidden="true" className={`shrink-0 ${toneIcon[tone]}`} />
+  <IconComponent width={28} height={28} stroke-width={1.8} aria-hidden="true" class={`shrink-0 ${toneIcon[tone]}`} />
   <div class="flex min-w-0 flex-1 flex-col gap-1 tablet:gap-3 laptop:gap-3.5">
     <p class="font-mono text-[11px] tracking-[0.08em] text-subtle uppercase tablet:text-xs">{label}</p>
     <p class="text-[17px] leading-[1.45] text-fg tablet:text-lg laptop:text-xl">
@@ -52,6 +52,6 @@ const toneIcon = { brand: "text-brand", accent: "text-accent" } as const;
     class="after:absolute after:inset-0 max-laptop:absolute max-laptop:inset-0 max-laptop:rounded-card-sm laptop:mt-auto laptop:text-[15px]"
   >
     <span class="max-laptop:sr-only">{linkLabel}</span>
-    <IconArrowRight className="arrow hidden laptop:block" size={16} stroke={2.2} aria-hidden="true" />
+    <IconArrowRight class="arrow hidden laptop:block" width={16} height={16} stroke-width={2.2} aria-hidden="true" />
   </Button>
 </article>
