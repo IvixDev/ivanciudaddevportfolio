@@ -50,6 +50,8 @@
   --duration-slow: 700ms;
   --duration-enter: 900ms;
   --animate-up: up 900ms var(--ease-out-soft) both;
+  /* Como `up` pero sin opacidad: para el LCP (retrato del hero), que debe pintarse desde el primer frame. */
+  --animate-rise: rise 900ms var(--ease-out-soft) both;
   --animate-drop: drop 500ms var(--ease-out-soft) both;
   --animate-fade: fade 450ms var(--ease-out-soft) both;
   --animate-spin-slow: spin 7s linear infinite;
@@ -61,6 +63,11 @@
   @keyframes up {
     from { opacity: 0; transform: translateY(28px); }
     to { opacity: 1; transform: none; }
+  }
+
+  @keyframes rise {
+    from { transform: translateY(28px); }
+    to { transform: none; }
   }
 
   @keyframes drop {
@@ -255,6 +262,7 @@ html[data-nav] .animate-drop {
 
 /* Cambio de idioma: misma página, solo cambia el texto. Sin entradas ni fundido de la vista. */
 html[data-nav="lang"] .animate-up,
+html[data-nav="lang"] .animate-rise,
 html[data-nav="lang"] .animate-fade {
   animation: none;
 }

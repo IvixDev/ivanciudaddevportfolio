@@ -236,6 +236,7 @@ Contenedor `rounded-[32px] overflow-hidden p-[3px]` con un `div` absoluto de 200
 | Utilidad | Efecto | Dónde |
 |---|---|---|
 | `.animate-up` (+ `animation-delay` 0/100/200/300 ms) | Entrada escalonada al cargar | Hero de cada página |
+| `.animate-rise` | Como `.animate-up` pero solo con desplazamiento, sin opacidad. Para el elemento LCP: si empieza invisible, Chrome retrasa el LCP hasta que aparece | Retrato del hero de inicio |
 | `.reveal` | Entrada al hacer scroll, solo desplazamiento sin opacidad para no bajar el contraste (`reveal-up`, `animation-timeline: view(); animation-range: entry 0% entry 100%`) dentro de `@supports (animation-timeline: view())`; sin soporte, el contenido se ve sin animar | Cabeceras de sección y tarjetas |
 | `.lift` | `translateY(-6px)`, borde `line-hover`, `shadow-lift` en hover | Tarjetas |
 | `.zoom` (dentro de `.lift`) | Imagen `scale(1.05)` en hover | Imágenes de tarjeta |
@@ -321,6 +322,7 @@ Contenedor `rounded-[32px] overflow-hidden p-[3px]` con un `div` absoluto de 200
   /* Movimiento */
   --ease-out-soft: cubic-bezier(.2, .7, .2, 1);
   --animate-up: up 900ms var(--ease-out-soft) both;
+  --animate-rise: rise 900ms var(--ease-out-soft) both;
   --animate-drop: drop 500ms var(--ease-out-soft) both;
   --animate-fade: fade 450ms var(--ease-out-soft) both;
   --animate-spin-slow: spin 7s linear infinite;

@@ -7,6 +7,7 @@ import SpeedInsights from "@vercel/speed-insights/astro";
 import Analytics from "@vercel/analytics/astro";
 import onestLatin from "@fontsource-variable/onest/files/onest-latin-wght-normal.woff2?url";
 import bricolageLatin from "@fontsource-variable/bricolage-grotesque/files/bricolage-grotesque-latin-wght-normal.woff2?url";
+import jetbrainsLatin from "@fontsource-variable/jetbrains-mono/files/jetbrains-mono-latin-wght-normal.woff2?url";
 import type { InfoSeoProps } from "../types/types";
 import { getLang, getMessages, getOppositeLocaleUrl } from "../i18n/utils";
 import "../styles/global.css";
@@ -47,6 +48,7 @@ const enUrl = toAbsolute(lang === "en" ? currentUrl : otherUrl);
 
     <link rel="preload" href={onestLatin} as="font" type="font/woff2" crossorigin />
     <link rel="preload" href={bricolageLatin} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={jetbrainsLatin} as="font" type="font/woff2" crossorigin />
 
     <!-- Hreflang Tags for SEO -->
     <link rel="alternate" hreflang="es" href={esUrl} />
