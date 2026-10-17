@@ -130,7 +130,7 @@ const linkBase =
       if (!open && returnFocus) toggle.focus();
     };
 
-    toggle.addEventListener("click", () => setOpen(panel.hidden));
+    toggle.addEventListener("click", () => setOpen(panel.hidden === true));
 
     const onKeydown = (event: KeyboardEvent) => {
       if (event.key === "Escape" && !panel.hidden) setOpen(false, true);
