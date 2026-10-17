@@ -1,5 +1,6 @@
 ---
-import { IconMenu2, IconX } from "@tabler/icons-react";
+import IconMenu2 from "@tabler/icons/outline/menu-2.svg";
+import IconX from "@tabler/icons/outline/x.svg";
 import Logo from "./ui/Logo.astro";
 import Button from "./ui/Button.astro";
 import LanguageSwitch from "./LanguageSwitch.astro";
@@ -81,8 +82,8 @@ const linkBase =
         data-label-close={m.a11y.menu_close}
         class="inline-flex size-11 items-center justify-center rounded-full text-muted transition-colors duration-(--duration-fast) hover:bg-surface hover:text-fg"
       >
-        <span data-icon="open"><IconMenu2 size={24} stroke={1.8} aria-hidden="true" /></span>
-        <span data-icon="close" class="hidden"><IconX size={24} stroke={1.8} aria-hidden="true" /></span>
+        <span data-icon="open"><IconMenu2 width={24} height={24} stroke-width={1.8} aria-hidden="true" /></span>
+        <span data-icon="close" class="hidden"><IconX width={24} height={24} stroke-width={1.8} aria-hidden="true" /></span>
       </button>
     </div>
   </div>
@@ -130,7 +131,7 @@ const linkBase =
       if (!open && returnFocus) toggle.focus();
     };
 
-    toggle.addEventListener("click", () => setOpen(panel.hidden));
+    toggle.addEventListener("click", () => setOpen(panel.hidden === true));
 
     const onKeydown = (event: KeyboardEvent) => {
       if (event.key === "Escape" && !panel.hidden) setOpen(false, true);

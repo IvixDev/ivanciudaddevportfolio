@@ -1,5 +1,7 @@
 ---
-import { IconBrandGithub, IconBrandLinkedin, IconMail } from "@tabler/icons-react";
+import IconBrandGithub from "@tabler/icons/outline/brand-github.svg";
+import IconBrandLinkedin from "@tabler/icons/outline/brand-linkedin.svg";
+import IconMail from "@tabler/icons/outline/mail.svg";
 import Logo from "./ui/Logo.astro";
 import { footerLinks, repositoryUrl, socialMediaLinks } from "../content/layout.consts";
 import { format, getLang, getMessages } from "../i18n/utils";
@@ -61,7 +63,7 @@ const linkClass =
                 target={external ? "_blank" : undefined}
                 rel={external ? "noopener" : undefined}
               >
-                <Icon size={18} stroke={1.8} aria-hidden="true" />
+                <Icon width={18} height={18} stroke-width={1.8} aria-hidden="true" />
                 {label}
                 {external && <span class="sr-only">{m.a11y.new_tab}</span>}
               </a>

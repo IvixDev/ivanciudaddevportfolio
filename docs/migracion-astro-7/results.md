@@ -118,3 +118,164 @@ Notas del paso intermedio (Astro 6.4.8), ya sin efecto en Astro 7:
 - Revisión visual manual a 320, 768, 834 y 1440 px en ES y EN y comprobación del cambio de idioma (puntos 7 y 8 de la verificación del plan): solo se hizo la comparación automática de layout descrita arriba, sin JavaScript.
 - `AGENTS.md` no cambia: no ha surgido ninguna regla nueva.
 - Fase 2 (TypeScript 6) y Fase 3, según el plan.
+
+## Fase 2 · TypeScript 6.0
+
+Rama `chore/typescript-6`, apilada sobre `chore/astro-7`.
+
+| Paquete | Antes | Después |
+|---|---|---|
+| typescript | 5.9.3 | 6.0.3 |
+
+### Compatibilidad de peers
+
+`@astrojs/check` 0.9.10 y `typescript-eslint` 8.71.2 aceptan TypeScript 6.0.3 sin avisos. Único aviso de `pnpm install`: `astro-seo` 0.8.4 arrastra un `@astrojs/check` 0.5.10 propio cuyo peer es `typescript@^5.0.0` (`unmet peer typescript@^5.0.0: found 6.0.3`). Es una dependencia transitiva que no usamos para comprobar tipos; no afecta a `astro check` (usa el 0.9.10 directo).
+
+### Resultados
+
+| Comprobación | Resultado |
+|---|---|
+| `astro check` | 0 errores, 0 avisos, 0 hints (69 archivos) |
+| `pnpm exec tsc --noEmit -p .` | sin salida (exit 0) |
+| `pnpm lint` | limpio |
+| `pnpm test` | 29 de 29 |
+| `pnpm install --frozen-lockfile` | OK |
+
+Sin cambios necesarios en `tsconfig.json`: ni `types: []` (los globales de Node en `astro.config.mjs`, `vitest.config.ts`, `scripts/check-i18n.mjs` y `eslint.config.js` no dan error), ni `noUncheckedSideEffectImports` (imports de CSS y Fontsource), ni obsoletos (`baseUrl`, `moduleResolution: node10`) aparecieron.
+
+### Único cambio en el código
+
+`astro check` dio 1 error con los tipos DOM de TS 6: en `src/components/SiteHeader.astro`, `panel.hidden` es `string | boolean` y `setOpen` espera `boolean`. Se pasa `panel.hidden === true`, que mantiene el comportamiento (el panel solo usa `true`/`false`).
+
+### `dist` frente a la Fase 1
+
+Los 13 HTML son idénticos salvo el script inline del menú móvil, que ahora contiene `t.hidden===!0` en lugar de `t.hidden` (mismo comportamiento). Sitemaps idénticos salvo `lastmod`.
+
+### Tiempo de build
+
+`pnpm build` (con `astro check`), `dist` borrado antes de cada ejecución:
+
+| Ejecución | Fase 1 (Astro 7.4) | Fase 2 (TS 6.0) |
+|---|---|---|
+| 1 | | 8 247 ms |
+| 2 | | 8 257 ms |
+| 3 | | 8 237 ms |
+| **Mediana** | **8 265 ms** | **8 247 ms** |
+
+## Quitar React (iconos SVG)
+
+Rama `chore/remove-react`, apilada sobre `chore/typescript-6`. Corresponde a P1 de [upgrades.md](../upgrades.md).
+
+### Qué cambia
+
+React solo pintaba en servidor los iconos de `@tabler/icons-react`. Ahora cada icono se importa por ruta desde `@tabler/icons` (3.49.0) y Astro lo inserta en línea como componente SVG:
+
+```astro
+import IconDownload from "@tabler/icons/outline/download.svg";
+<IconDownload width={18} height={18} stroke-width={2.2} aria-hidden="true" />
+```
+
+| Paquete | Antes | Después |
+|---|---|---|
+| @tabler/icons | | 3.49.0 (nuevo) |
+| @tabler/icons-react, @astrojs/react, react, react-dom, @types/react, @types/react-dom | 3.49.0, 7.1.0, 19.2.9, 19.2.9, 19.2.18, 19.2.7 | eliminados |
+
+| Archivo | Cambio |
+|---|---|
+| 10 componentes `.astro` (13 iconos) | Importación por ruta; `size` pasa a `width`/`height`, `stroke` a `stroke-width`, `className` a `class` |
+| `src/components/home/NowCard.astro` | La prop `icon` pasa de `Icon` (tabler-react) a `SvgComponent` de `astro/types`; sin `any` ni `unknown` |
+| `astro.config.mjs` | Fuera la integración de React y el wrapper `reactServerOnly()` |
+| `tsconfig.json` | Fuera `jsx` y `jsxImportSource` (no queda ningún `.tsx`) |
+| `AGENTS.md` | La regla de iconos pide `@tabler/icons` en SVG por ruta, sin React |
+| `eslint.config.js` | Sin cambios: el bloque `**/*.tsx` es inofensivo y `jsx-a11y-recommended` de Astro queda intacto |
+
+### Resultados
+
+| Comprobación | Resultado |
+|---|---|
+| `pnpm install --frozen-lockfile` | OK, sin avisos de peers |
+| `pnpm lint` | limpio |
+| `pnpm test` | 29 de 29 |
+| `pnpm build` (`astro check`) | 0 errores, 0 avisos, 0 hints (69 archivos); 12 páginas |
+
+### SVG en `dist` frente a la Fase 1 (Astro 7.4, con React)
+
+Se compararon los 150 `<svg>` de los 13 HTML (script propio, atributo a atributo). `width`, `height`, `stroke-width`, `stroke`, `fill`, `viewBox`, `stroke-linecap`, `stroke-linejoin` y `aria-hidden` son idénticos en todos: el `stroke-width` pasado al componente sustituye al del archivo SVG. Las únicas diferencias:
+
+- Falta `xmlns` (124 SVG): innecesario en HTML en línea.
+- La clase `tabler-icon tabler-icon-<nombre>` desaparece (queda solo la clase que se pasa, p. ej. `arrow hidden laptop:block`, que sigue funcionando). Ningún CSS ni JS del proyecto la usaba (`grep` sin resultados).
+- Cada SVG lleva un `<path stroke="none" fill="none" d="M0 0h24v24H0z"/>` inicial, propio de los archivos de tabler, que no se ve.
+
+### `dist`, instalación y build
+
+| Métrica | Antes | Después |
+|---|---|---|
+| `dist/_astro` JS | 16 365 B | 16 365 B (ya se evitaba `client.*.js` con el wrapper) |
+| `dist/_astro` CSS | 52 282 B | 52 282 B |
+| HTML de las 13 páginas | 487 487 B | 484 963 B |
+| `pnpm-lock.yaml` | 232 003 B | 227 643 B |
+| Paquetes en el lockfile | 1 253 | 1 240 |
+| `node_modules/.pnpm` (instalación limpia) | 617 carpetas, 397 686 kB | 609 carpetas, 349 233 kB |
+
+`pnpm build` (con `astro check`), `dist` borrado antes de cada ejecución:
+
+| Ejecución | Fase 2 (TS 6.0) | Sin React |
+|---|---|---|
+| 1 | 8 247 ms | 8 062 ms |
+| 2 | 8 257 ms | 7 743 ms |
+| 3 | 8 237 ms | 7 855 ms |
+| **Mediana** | **8 247 ms** | **7 855 ms** |
+
+### Lighthouse 12.2.1 (móvil, una pasada por ruta)
+
+Rendimiento / accesibilidad / buenas prácticas / SEO: 99 / 100 / 96 / 100 en las 8 rutas, antes y después. LCP, TBT y bytes totales:
+
+| Ruta | LCP antes → después | TBT antes → después | Bytes antes → después |
+|---|---|---|---|
+| / | 2,19 → 2,26 s | 39 → 35 ms | 527 291 → 527 290 |
+| /proyectos | 2,18 → 2,18 s | 8 → 4 ms | 240 834 → 240 834 |
+| /trayectoria-profesional | 1,96 → 1,96 s | 16 → 14 ms | 148 210 → 148 220 |
+| /sobre-mi | 2,26 → 2,26 s | 13 → 16 ms | 290 905 → 290 912 |
+| /en | 2,26 → 2,11 s | 39 → 43 ms | 527 158 → 527 164 |
+| /en/projects | 2,18 → 2,18 s | 6 → 4 ms | 240 693 → 240 698 |
+| /en/career | 1,95 → 1,96 s | 14 → 14 ms | 148 162 → 148 173 |
+| /en/about-me | 2,25 → 2,25 s | 23 → 18 ms | 290 794 → 290 803 |
+
+CLS sin cambios (0,000 a 0,018). Las diferencias están dentro del ruido de una sola pasada.
+
+### Conclusión
+
+El beneficio está en mantenimiento y en la instalación, no en el peso servido: el wrapper `reactServerOnly()` ya evitaba enviar React al cliente. Se eliminan 6 dependencias directas, 13 paquetes del lockfile y el riesgo de las versiones de `@astrojs/react`.
+
+## API de fuentes de Astro (descartada)
+
+Probada el 17-10-2026 sobre `chore/remove-react`, en las mismas condiciones (Lighthouse 12.2.1 móvil, 2 pasadas por ruta). **No se aplica:** empeora el FCP y apenas aporta, porque el CLS ya era prácticamente 0.
+
+### Intento 1: `fontProviders.fontsource()` para las tres familias
+
+El proveedor no permite elegir la variante variable. Para Bricolage Grotesque descarga el archivo con los ejes `opsz`, `wdth` y `wght` (131 548 B) en lugar del de solo `wght` de `@fontsource-variable` (41 344 B). Como Bricolage se precarga, empeora el LCP:
+
+- **LCP:** +0,3 a +1,0 s según la ruta (por ejemplo, `/en` pasa de 2,11 a 3,15 s).
+- **FCP:** de 1,06 a 1,20 s.
+- **Performance:** de 99 a 93–98.
+- **Transferencia de fuentes:** de 116 468 a 206 674 B.
+
+### Intento 2: mixto
+
+`fontProviders.local()` con el woff2 `wght` de Bricolage y `fontsource()` para Onest y JetBrains Mono.
+
+| Métrica | Antes | Después |
+|---|---|---|
+| Bytes de fuentes | 116 468 B | 116 468 B |
+| LCP | 1,96–2,26 s | 1,80–2,25 s (igual o hasta 0,16 s mejor) |
+| CLS | 0–0,018 | 0 en todas las rutas (fallbacks con `size-adjust`) |
+| **FCP** | **1,05–1,06 s** | **1,20–1,21 s** en las 16 pasadas |
+| Performance | 99 | 98–99 |
+| CSS (gzip -9) | 12 994 B | 8 873 B |
+| HTML (13 páginas) | 487 487 B | ~513 KB |
+
+El FCP empeora en todas las pasadas, con menos de 0,01 s de variación entre ellas, así que no es ruido. Lo reproduce también el intento 1, por lo que no depende del tamaño de Bricolage. La causa probable, sin confirmar, es que Astro incrusta en el `<head>` de cada página las reglas `@font-face` y las variables (~2,1 KB) que antes iban en el CSS externo.
+
+### Decisión
+
+Se mantiene `@fontsource-variable/*` con la precarga manual de Onest y Bricolage. Merecerá la pena repetir la prueba si una versión futura de Astro o de unifont permite elegir los ejes de la fuente variable o servir el CSS de fuentes en un archivo externo.
