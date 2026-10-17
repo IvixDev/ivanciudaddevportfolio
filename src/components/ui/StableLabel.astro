@@ -1,0 +1,15 @@
+---
+interface Props {
+  /** Texto visible. */
+  text: string;
+  /** Texto equivalente en el otro idioma: reserva su ancho para que nada se mueva al cambiar de idioma. */
+  reserve: string;
+}
+
+const { text, reserve } = Astro.props;
+---
+
+<span class="inline-grid whitespace-nowrap">
+  <span class="[grid-area:1/1]">{text}</span>
+  <span aria-hidden="true" class="invisible [grid-area:1/1]">{reserve}</span>
+</span>

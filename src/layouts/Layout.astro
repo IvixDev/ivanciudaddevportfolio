@@ -71,10 +71,28 @@ const enUrl = toAbsolute(lang === "en" ? currentUrl : otherUrl);
       }
     </style>
 
-    <script is:inline>
-      // Ciclo de vida de View Transitions
-      document.addEventListener("astro:before-swap", () => {
+    <script>
+      import { isLanguageSwitch } from "../i18n/utils";
+
+      // Ciclo de vida de View Transitions.
+      // data-nav marca las navegaciones en cliente: "page" (otra página) o "lang" (misma página en otro idioma).
+      // global.css lo usa para no repetir animaciones de entrada; en "lang" se conserva además el scroll.
+      let navKind: "page" | "lang" = "page";
+      let savedScroll = 0;
+
+      document.addEventListener("astro:before-preparation", (event) => {
+        navKind = isLanguageSwitch(event.from.pathname, event.to.pathname) ? "lang" : "page";
+        savedScroll = window.scrollY;
+        document.documentElement.dataset.nav = navKind;
+      });
+
+      document.addEventListener("astro:before-swap", (event) => {
         document.documentElement.classList.add("no-transitions");
+        event.newDocument.documentElement.dataset.nav = navKind;
+      });
+
+      document.addEventListener("astro:after-swap", () => {
+        if (navKind === "lang") window.scrollTo({ top: savedScroll, behavior: "instant" });
       });
 
       document.addEventListener("astro:page-load", () => {

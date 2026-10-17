@@ -3,6 +3,7 @@ import { IconMenu2, IconX } from "@tabler/icons-react";
 import Logo from "./ui/Logo.astro";
 import Button from "./ui/Button.astro";
 import LanguageSwitch from "./LanguageSwitch.astro";
+import StableLabel from "./ui/StableLabel.astro";
 import { headerLinks } from "../content/layout.consts";
 import { getLang, getMessages, isNavActive } from "../i18n/utils";
 
@@ -13,16 +14,24 @@ interface Props {
 const { currentPath } = Astro.props;
 const lang = getLang(Astro.currentLocale);
 const m = getMessages(lang);
+// Textos del otro idioma: reservan su ancho para que el header no se mueva al cambiar de idioma.
+const other = getMessages(lang === "es" ? "en" : "es");
 
 const links = headerLinks.map(({ tKey }) => {
   const href = m.nav[`${tKey}_url`];
   const isHome = tKey === "home";
-  return { tKey, href, label: m.header[tKey], active: isNavActive(currentPath, href, isHome) };
+  return {
+    tKey,
+    href,
+    label: m.header[tKey],
+    reserve: other.header[tKey],
+    active: isNavActive(currentPath, href, isHome),
+  };
 });
 const contactHref = `${m.nav.home_url}#contacto`;
 
 const linkBase =
-  "inline-flex min-h-11 items-center rounded-full px-4 text-[15px] font-medium transition-colors duration-(--duration-fast)";
+  "inline-flex min-h-11 items-center rounded-full px-3 text-[15px] font-medium transition-colors duration-(--duration-fast) laptop:px-4";
 ---
 
 <header class="sticky top-0 z-40 border-b border-line-subtle bg-ink">
@@ -43,9 +52,9 @@ const linkBase =
               <a
                 href={link.href}
                 aria-current={link.active ? "page" : undefined}
-                class={`${linkBase} ${link.active ? "bg-surface text-fg" : "text-muted hover:text-fg"}`}
+                class={`${linkBase} justify-center ${link.active ? "bg-surface text-fg" : "text-muted hover:text-fg"}`}
               >
-                {link.label}
+                <StableLabel text={link.label} reserve={link.reserve} />
               </a>
             </li>
           ))
@@ -55,7 +64,9 @@ const linkBase =
 
     <div class="hidden items-center gap-3 tablet:flex">
       <LanguageSwitch currentPath={currentPath} />
-      <Button href={contactHref} variant="primary" class="!py-2.5">{m.header.contact}</Button>
+      <Button href={contactHref} variant="primary" class="!py-2.5">
+        <StableLabel text={m.header.contact} reserve={other.header.contact} />
+      </Button>
     </div>
 
     <div class="flex items-center gap-1 tablet:hidden">

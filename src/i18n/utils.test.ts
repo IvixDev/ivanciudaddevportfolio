@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest';
-import { format, getMessages, getOppositeLocaleUrl, isNavActive, useTranslations, type TranslationKey } from './utils';
+import { format, getMessages, getOppositeLocaleUrl, isLanguageSwitch, isNavActive, useTranslations, type TranslationKey } from './utils';
 import es from './locales/es.json';
 
 // Claves fuera del tipo a propósito, para probar el comportamiento ante claves inválidas.
@@ -100,5 +100,25 @@ describe('isNavActive', () => {
     it('does not match routes that only share a prefix', () => {
         expect(isNavActive('/proyectos-viejos', '/proyectos', false)).toBe(false);
         expect(isNavActive('/sobre-mi', '/proyectos', false)).toBe(false);
+    });
+});
+
+describe('isLanguageSwitch', () => {
+    it.each([
+        ['/', '/en'],
+        ['/en', '/'],
+        ['/trayectoria-profesional', '/en/career'],
+        ['/en/about-me', '/sobre-mi'],
+    ])('detects %s → %s as a language switch', (from, to) => {
+        expect(isLanguageSwitch(from, to)).toBe(true);
+    });
+
+    it.each([
+        ['/', '/proyectos'],
+        ['/en', '/en/projects'],
+        ['/en/career', '/en/about-me'],
+        ['/english-page', '/proyectos'],
+    ])('treats %s → %s as a normal page change', (from, to) => {
+        expect(isLanguageSwitch(from, to)).toBe(false);
     });
 });

@@ -97,3 +97,13 @@ export function isNavActive(activePath: string, href: string, isHome: boolean): 
   if (isHome) return activePath === href || activePath === href + "/";
   return activePath === href || activePath.startsWith(href + "/");
 }
+
+/** Idioma de una ruta según su prefijo (las rutas en inglés cuelgan de /en). */
+function routeLang(pathname: string): Lang {
+  return pathname === "/en" || pathname.startsWith("/en/") ? "en" : "es";
+}
+
+/** Indica si una navegación solo cambia de idioma (de /x a /en/x o al revés). */
+export function isLanguageSwitch(fromPath: string, toPath: string): boolean {
+  return routeLang(fromPath) !== routeLang(toPath);
+}

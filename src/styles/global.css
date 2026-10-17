@@ -198,9 +198,9 @@
     transform: scale(1.05);
   }
 
-  /* Flecha que se desplaza al hacer hover en el enlace o botón padre */
+  /* Flecha que se desplaza al hacer hover en el enlace o botón padre.
+     Sin `display`: los SVG ya son block por preflight y así `hidden`/`laptop:block` siguen funcionando. */
   .arrow {
-    display: inline-block;
     transition: transform var(--duration-fast) var(--ease-out-soft);
   }
 
@@ -243,4 +243,24 @@
   :is(a, button):hover > .arrow {
     transform: none;
   }
+}
+
+/* Navegación en cliente (data-nav lo pone Layout.astro).
+   Fuera de capas para ganar a las utilidades animate-*. */
+
+/* El logo solo se anima en la primera carga, no en cada cambio de página. */
+html[data-nav] .animate-drop {
+  animation: none;
+}
+
+/* Cambio de idioma: misma página, solo cambia el texto. Sin entradas ni fundido de la vista. */
+html[data-nav="lang"] .animate-up,
+html[data-nav="lang"] .animate-fade {
+  animation: none;
+}
+
+html[data-nav="lang"]::view-transition-old(*),
+html[data-nav="lang"]::view-transition-new(*),
+html[data-nav="lang"]::view-transition-group(*) {
+  animation: none;
 }
