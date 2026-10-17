@@ -1,5 +1,5 @@
 ---
-import { IconArrowRight } from "@tabler/icons-react";
+import IconArrowRight from "@tabler/icons/outline/arrow-right.svg";
 import { getMessages } from "../../i18n/utils";
 
 interface Props {
@@ -72,13 +72,13 @@ const classes = [
       data-astro-reload={reload || undefined}
     >
       <slot />
-      {arrow && <IconArrowRight className="arrow" size={18} stroke={2} aria-hidden="true" />}
+      {arrow && <IconArrowRight class="arrow" width={18} height={18} stroke-width={2} aria-hidden="true" />}
       {external && <span class="sr-only">{m.a11y.new_tab}</span>}
     </a>
   ) : (
     <button type={type} class={classes} aria-label={ariaLabel}>
       <slot />
-      {arrow && <IconArrowRight className="arrow" size={18} stroke={2} aria-hidden="true" />}
+      {arrow && <IconArrowRight class="arrow" width={18} height={18} stroke-width={2} aria-hidden="true" />}
     </button>
   )
 }

@@ -1,27 +1,8 @@
 import { defineConfig } from 'astro/config';
 import tailwind from "@tailwindcss/vite";
 import sitemap from "@astrojs/sitemap";
-import react from "@astrojs/react";
 
 const SITE = 'https://www.ivanciudad.com';
-
-// React solo renderiza en servidor los iconos de @tabler/icons-react (no hay islas con hidratación).
-// Se quita el clientEntrypoint del renderer para que Astro no emita client.*.js (~194 kB) sin uso.
-function reactServerOnly() {
-  const integration = react();
-  const setup = integration.hooks["astro:config:setup"];
-  return {
-    ...integration,
-    hooks: {
-      ...integration.hooks,
-      "astro:config:setup": (options) =>
-        setup({
-          ...options,
-          addRenderer: (renderer) => options.addRenderer({ ...renderer, clientEntrypoint: undefined }),
-        }),
-    },
-  };
-}
 
 // Image map: associate each page URL with its relevant images for the image sitemap
 const pageImages = {
@@ -112,8 +93,7 @@ export default defineConfig({
         news: false,
         video: false,
       },
-    }),
-    reactServerOnly()
+    })
   ],
   output: 'static',
   site: SITE,
