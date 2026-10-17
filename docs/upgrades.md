@@ -26,7 +26,7 @@ Leyenda del salto: **patch** / **minor** / **major**. En los paquetes `0.x`, cam
 | @tabler/icons-react | 3.36.1 | 3.49.0 | 3.49.0 | minor | Bajo | ✅ |
 | @fontsource-variable/onest | 5.2.11 | 5.3.1 | 5.3.1 | minor | Bajo | ✅ |
 | @fontsource-variable/source-code-pro | 5.2.7 | 5.3.1 | 5.3.1 | minor | — | ⏭️ lo quita el rediseño |
-| typescript | 5.9.3 | 5.9.3 | 7.0.2 | major ×2 | Medio (6) / **Bloqueado** (7) | Propuesto 6.0 |
+| typescript | 5.9.3 | 5.9.3 | 7.0.2 | major ×2 | Medio (6) / **Bloqueado** (7) | ✅ 6.0.3 (rama `chore/typescript-6`, ver [resultados](./migracion-astro-7/results.md#fase-2--typescript-60)) |
 | eslint / @eslint/js | 9.39.5 | 9.39.5 | 10.13.0 / 10.0.1 | major | **Bloqueado** por jsx-a11y | Esperar |
 | eslint-plugin-astro | 1.7.0 | 1.7.0 | 3.2.1 | major ×2 | Necesita ESLint 10 | Esperar |
 | typescript-eslint, vitest, globals, eslint-plugin-jsx-a11y | 8.71.2, 5.0.5, 17.13.0, 6.10.2 | = | = | — | — | Al día |
