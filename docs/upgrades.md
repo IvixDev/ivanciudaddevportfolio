@@ -108,7 +108,7 @@ Exige Node 22+. `minimumReleaseAge` pasa a 1 día por defecto (bueno contra ataq
 
 | # | Mejora | Beneficio | Esfuerzo | Depende de |
 |---|---|---|---|---|
-| P1 | Quitar React: iconos de `@tabler/icons` en SVG | Alto (bundle, mantenimiento, desbloquea Astro 6/7) | Medio | Rediseño fusionado |
+| P1 | ✅ Hecho (rama `chore/remove-react`, ver [resultados](./migracion-astro-7/results.md#quitar-react-iconos-svg)): quitar React, iconos de `@tabler/icons` en SVG | Alto (bundle, mantenimiento, desbloquea Astro 6/7) | Medio | Rediseño fusionado |
 | P2 | Quitar `@astrojs/vercel` y sacar `vercel` de `dependencies` | Medio (instalación, superficie) | Bajo | — |
 | P3 | Astro 7, en dos pasos (6 → 7) | Alto (build, HTML válido, fuentes, CSP) | Alto | P1 recomendado |
 | P4 | API de fuentes de Astro (`fonts` + `<Font preload>`) | Medio-alto (CLS/LCP) | Bajo-medio | Astro 6 |
@@ -119,6 +119,8 @@ Exige Node 22+. `minimumReleaseAge` pasa a 1 día por defecto (bueno contra ataq
 | P9 | CSP con `security.csp` | Medio (seguridad) | Alto | Astro 6, quitar `ClientRouter` |
 
 ### P1. Quitar React: iconos de tabler en SVG
+
+> **Hecho** en la rama `chore/remove-react`: ver [resultados](./migracion-astro-7/results.md#quitar-react-iconos-svg).
 
 Tras el rediseño, React solo sirve para pintar en servidor los iconos de `@tabler/icons-react`, con el hack `reactServerOnly()` en `astro.config.mjs`. `@tabler/icons` 3.49 expone los SVG con `"./*": "./icons/*"`, y Astro importa SVG como componentes desde 5.7: se insertan en línea y aceptan `width`, `height`, `stroke` y cualquier atributo de `<svg>` ([docs](https://docs.astro.build/en/guides/images/)). Por ejemplo:
 
