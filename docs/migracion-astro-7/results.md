@@ -118,3 +118,46 @@ Notas del paso intermedio (Astro 6.4.8), ya sin efecto en Astro 7:
 - Revisión visual manual a 320, 768, 834 y 1440 px en ES y EN y comprobación del cambio de idioma (puntos 7 y 8 de la verificación del plan): solo se hizo la comparación automática de layout descrita arriba, sin JavaScript.
 - `AGENTS.md` no cambia: no ha surgido ninguna regla nueva.
 - Fase 2 (TypeScript 6) y Fase 3, según el plan.
+
+## Fase 2 · TypeScript 6.0
+
+Rama `chore/typescript-6`, apilada sobre `chore/astro-7`.
+
+| Paquete | Antes | Después |
+|---|---|---|
+| typescript | 5.9.3 | 6.0.3 |
+
+### Compatibilidad de peers
+
+`@astrojs/check` 0.9.10 y `typescript-eslint` 8.71.2 aceptan TypeScript 6.0.3 sin avisos. Único aviso de `pnpm install`: `astro-seo` 0.8.4 arrastra un `@astrojs/check` 0.5.10 propio cuyo peer es `typescript@^5.0.0` (`unmet peer typescript@^5.0.0: found 6.0.3`). Es una dependencia transitiva que no usamos para comprobar tipos; no afecta a `astro check` (usa el 0.9.10 directo).
+
+### Resultados
+
+| Comprobación | Resultado |
+|---|---|
+| `astro check` | 0 errores, 0 avisos, 0 hints (69 archivos) |
+| `pnpm exec tsc --noEmit -p .` | sin salida (exit 0) |
+| `pnpm lint` | limpio |
+| `pnpm test` | 29 de 29 |
+| `pnpm install --frozen-lockfile` | OK |
+
+Sin cambios necesarios en `tsconfig.json`: ni `types: []` (los globales de Node en `astro.config.mjs`, `vitest.config.ts`, `scripts/check-i18n.mjs` y `eslint.config.js` no dan error), ni `noUncheckedSideEffectImports` (imports de CSS y Fontsource), ni obsoletos (`baseUrl`, `moduleResolution: node10`) aparecieron.
+
+### Único cambio en el código
+
+`astro check` dio 1 error con los tipos DOM de TS 6: en `src/components/SiteHeader.astro`, `panel.hidden` es `string | boolean` y `setOpen` espera `boolean`. Se pasa `panel.hidden === true`, que mantiene el comportamiento (el panel solo usa `true`/`false`).
+
+### `dist` frente a la Fase 1
+
+Los 13 HTML son idénticos salvo el script inline del menú móvil, que ahora contiene `t.hidden===!0` en lugar de `t.hidden` (mismo comportamiento). Sitemaps idénticos salvo `lastmod`.
+
+### Tiempo de build
+
+`pnpm build` (con `astro check`), `dist` borrado antes de cada ejecución:
+
+| Ejecución | Fase 1 (Astro 7.4) | Fase 2 (TS 6.0) |
+|---|---|---|
+| 1 | | 8 247 ms |
+| 2 | | 8 257 ms |
+| 3 | | 8 237 ms |
+| **Mediana** | **8 265 ms** | **8 247 ms** |
