@@ -52,23 +52,23 @@
         "cv_language_note": ""
     },
     "home": {
-        "title": "Iván Ciudad Espinar - Software Developer e Ingeniero Telemático",
-        "description": "Portfolio de Iván Ciudad Espinar, Software Developer e Ingeniero Telemático. Proyectos web, experimentos con IA, trayectoria profesional y lo que hago fuera del código.",
+        "title": "Iván Ciudad Espinar - Senior Frontend Developer e Ingeniero Telemático",
+        "description": "Portfolio de Iván Ciudad Espinar, Senior Frontend Developer e Ingeniero Telemático. Proyectos web, experimentos con IA, trayectoria profesional y lo que hago fuera del código.",
         "image_url": "https://www.ivanciudad.com/trayectoria-profesional.webp",
-        "image_alt": "Iván Ciudad Espinar en traje, Software Developer e Ingeniero Telemático",
-        "eyebrow": "Software Developer · Ingeniero Telemático",
-        "eyebrow_short": "Software Developer",
+        "image_alt": "Iván Ciudad Espinar en traje, Senior Frontend Developer e Ingeniero Telemático",
+        "eyebrow": "Senior Frontend Developer · Ingeniero Telemático",
+        "eyebrow_short": "Senior Frontend Developer",
         "hero_title_before": "Hola, soy Iván. Construyo ",
         "hero_title_highlight": "software",
         "hero_title_after": " para la web.",
-        "hero_subtitle": "Este es mi rincón de internet: donde codifico ideas, enseño lo que construyo y cuento lo que me gusta cuando cierro el editor.",
-        "hero_subtitle_short": "Mi rincón de internet: proyectos, experimentos y lo que me gusta cuando cierro el editor.",
+        "hero_subtitle": "Desarrollador frontend senior con visión de plataforma: renderizado, rendimiento web y todo el camino de una petición, del navegador al clúster. Aquí enseño lo que construyo y lo que me gusta cuando cierro el editor.",
+        "hero_subtitle_short": "Frontend senior con visión de plataforma: rendimiento web, del navegador al clúster.",
         "portrait_alt": "Retrato de Iván Ciudad Espinar",
         "marquee_ai": "IA aplicada",
         "terminal": {
             "label": "Presentación en formato terminal",
             "cmd_whoami": "whoami",
-            "out_whoami": "iván ciudad — software developer",
+            "out_whoami": "iván ciudad — senior frontend developer",
             "cmd_hobbies": "hobbies --list",
             "out_hobbies": "d&d · lego · hardware · gym"
         },
@@ -78,11 +78,11 @@
         "now_title": "En qué ando estos días",
         "now": {
             "work_label": "Trabajando en",
-            "work_text": "La eShop de MasOrange, con Next.js, React y TypeScript.",
+            "work_text": "La eShop multimarca de Orange: 11 marcas con Next.js, React y TypeScript.",
             "work_link": "Mi trayectoria",
             "lab_label": "Experimentando con",
-            "lab_text": "Desarrollo con agentes de IA (Claude Code, Opencode, Orca) y estrategias de caché en Next.js.",
-            "lab_text_short": "Desarrollo con agentes de IA (Claude Code, Orca) y caché en Next.js.",
+            "lab_text": "Partial Prerendering con Cache Components en Next.js y desarrollo con agentes de IA (Claude Code, Opencode, Orca).",
+            "lab_text_short": "PPR con Cache Components en Next.js y agentes de IA.",
             "lab_link": "Ver experimentos",
             "life_label": "Fuera del código",
             "life_text": "Campañas de D&D, sets de LEGO y PCs montados por piezas.",
@@ -109,7 +109,7 @@
     },
     "projects": {
         "title": "Iván Ciudad Espinar - Proyectos de Desarrollo de Software",
-        "description": "Proyectos de Iván Ciudad Espinar, Software Developer: aplicaciones web, experimentos con Next.js y juegos hechos con TypeScript.",
+        "description": "Proyectos de Iván Ciudad Espinar, Senior Frontend Developer: aplicaciones web, experimentos con Next.js y juegos hechos con TypeScript.",
         "url": "https://www.ivanciudad.com/proyectos",
         "image_url": "https://www.ivanciudad.com/proyectos-buscaminas.webp",
         "image_alt": "Captura del juego Buscaminas, proyecto de desarrollo web de Iván Ciudad Espinar",
@@ -136,8 +136,8 @@
         "items": {
             "eshop": {
                 "title": "eShop Cache Lab",
-                "description": "Laboratorio en Next.js para comparar SSR, ISR, SSG y Cache Components y medir su impacto en SEO y accesibilidad. Montado como monorepo con Nx.",
-                "description_short": "SSR, ISR, SSG y Cache Components en Next.js, comparados por su impacto en SEO y accesibilidad.",
+                "description": "Laboratorio en Next.js para comparar SSR, ISR, SSG y Cache Components por su impacto en rendimiento, SEO y accesibilidad. Montado como monorepo con Nx, sirvió de spike para migrar la eShop de Orange a Partial Prerendering.",
+                "description_short": "SSR, ISR, SSG y Cache Components en Next.js. Spike de la migración a PPR de la eShop de Orange.",
                 "img_alt": "Captura del proyecto eShop Cache Lab de Iván Ciudad Espinar para probar métodos de caché de Next.js",
                 "tags": [
                     "Next.js",
@@ -145,6 +145,7 @@
                     "Nx",
                     "SSR · ISR · SSG",
                     "Cache Components",
+                    "PPR",
                     "SEO",
                     "A11y"
                 ],
@@ -195,14 +196,14 @@
     },
     "career": {
         "title": "Iván Ciudad Espinar - Mi Trayectoria Profesional y CV",
-        "description": "Trayectoria profesional de Iván Ciudad Espinar, Software Developer: experiencia, estudios, stack técnico de frontend a Kubernetes y CV descargable.",
+        "description": "Trayectoria profesional de Iván Ciudad Espinar, Senior Frontend Developer: experiencia, estudios, stack técnico de frontend a Kubernetes y CV descargable.",
         "url": "https://www.ivanciudad.com/trayectoria-profesional",
         "image_url": "https://www.ivanciudad.com/trayectoria-profesional.webp",
-        "image_alt": "Iván Ciudad Espinar en traje, Software Developer e Ingeniero Telemático",
+        "image_alt": "Iván Ciudad Espinar en traje, Senior Frontend Developer e Ingeniero Telemático",
         "eyebrow": "~/trayectoria · actualizado en {date}",
         "eyebrow_short": "actualizado {date}",
-        "updated_date": "febrero de 2026",
-        "updated_date_short": "feb. 2026",
+        "updated_date": "octubre de 2026",
+        "updated_date_short": "oct. 2026",
         "heading_before": "Mi ",
         "heading_highlight": "trayectoria",
         "heading_after": ".",
@@ -211,21 +212,25 @@
         "portrait_alt": "Iván Ciudad Espinar con traje",
         "cv_url": "/CV_IvanCiudadEspinar.pdf",
         "experience_title": "Experiencia",
-        "experience_intro": "Cuatro años en el ecosistema MasMovil y MasOrange, del backend al producto en producción.",
+        "experience_intro": "Más de cuatro años en la misma eShop, de MasMovil a Orange: del backend al frontend y a la plataforma en producción.",
         "experiences": [
             {
-                "id": "masorange",
+                "id": "orange",
                 "date": "Nov 2024 — hoy",
-                "company": "MasOrange",
+                "company": "Orange",
                 "title": "Senior Frontend Developer",
-                "description": "Desarrollo de la eShop multimarca, con la IA integrada en el flujo de trabajo del equipo.",
+                "description": "Plataforma que genera las eShops de 11 marcas. Creé un generador de proxies (Helm + Nginx) para cientos de redirects y reverse proxies entre microfrontales, y participo en el enrutado con Istio, la migración de SSR a PPR con Cache Components y el seguimiento de Core Web Vitals en cada versión.",
                 "tags": [
                     "Next.js",
                     "React",
                     "TypeScript",
                     "Tailwind",
-                    "IA",
-                    "Claude"
+                    "Kubernetes",
+                    "Helm",
+                    "Nginx",
+                    "Istio",
+                    "Prometheus",
+                    "Grafana"
                 ]
             },
             {
@@ -233,26 +238,28 @@
                 "date": "Ene 2023 — Oct 2024",
                 "company": "Capgemini",
                 "title": "Ingeniero de Software",
-                "description": "Proyecto MasMovil: aplicación multimarca para Euskaltel, Telecable, R, Guuk, Racctel, MasMovil, Yoigo, Lyca y Lebara.",
+                "description": "Consultor para MasMovil: creación desde cero en Next.js de la plataforma multimarca para Euskaltel, Telecable, R, Guuk, Racctel, MasMovil, Yoigo, Lyca y Lebara, en un monorepo Nx. Participé en la mayoría de las salidas a producción sin pérdida de ventas ni disponibilidad, y después el cliente me contrató.",
                 "tags": [
                     "Next.js",
                     "React",
                     "TypeScript",
-                    "JIRA",
-                    "Gitflow"
+                    "Nx",
+                    "Kubernetes",
+                    "ArgoCD",
+                    "Contentful"
                 ]
             },
             {
                 "id": "capgemini-yoigo",
-                "date": "Sep 2022 — Sep 2023",
+                "date": "Sep 2022 — Dic 2022",
                 "company": "Capgemini",
                 "title": "Ingeniero de Software",
-                "description": "Mantenimiento y evolución de Yoigo.",
+                "description": "Paso de backend a frontend por necesidad del equipo: eShop de Yoigo en Angular con SSR, apoyando también al backend.",
                 "tags": [
                     "Angular",
                     "TypeScript",
-                    "JIRA",
-                    "Gitflow"
+                    "Spring Boot",
+                    "Kubernetes"
                 ]
             },
             {
@@ -260,11 +267,12 @@
                 "date": "Feb 2022 — Jul 2022",
                 "company": "Capgemini",
                 "title": "Prácticas de Backend",
-                "description": "Proyecto MasMovil: mantenimiento de Yoigo con microservicios.",
+                "description": "Microservicios con Spring Boot para la eShop de Yoigo: tarifas desde MongoDB y el CRM, y datos de ventas a BigQuery para informes.",
                 "tags": [
                     "Java",
                     "Spring Boot",
-                    "MySQL",
+                    "MongoDB",
+                    "BigQuery",
                     "Microservicios"
                 ]
             }
@@ -275,7 +283,7 @@
                 "id": "edem",
                 "date": "2023 — 2024",
                 "institution": "EDEM",
-                "title": "Máster High Potential Technical Leader",
+                "title": "Máster High Potential Technical Booster",
                 "description": "Liderazgo, gestión de equipos, resolución de conflictos y Google Cloud."
             },
             {
@@ -301,7 +309,9 @@
                     "Astro",
                     "Tailwind CSS",
                     "MUI",
-                    "PWA"
+                    "PWA",
+                    "Microfrontends",
+                    "Nx"
                 ]
             },
             {
@@ -310,9 +320,10 @@
                 "description": "Core Web Vitals, SEO técnico y accesibilidad.",
                 "items": [
                     "Core Web Vitals",
-                    "SSR · ISR · SSG",
+                    "SSR · ISR · SSG · PPR",
                     "SEO técnico",
-                    "Accesibilidad"
+                    "Accesibilidad",
+                    "Lighthouse"
                 ]
             },
             {
@@ -324,20 +335,25 @@
                     "Java",
                     "Spring Boot",
                     "Microservicios",
-                    "MySQL",
-                    "Supabase"
+                    "MongoDB",
+                    "Supabase",
+                    "BigQuery"
                 ]
             },
             {
                 "id": "infra",
                 "name": "Cloud e infraestructura",
-                "description": "Servidores, proxies y clústeres en Google Cloud.",
+                "description": "Proxies, enrutado, clústeres y observabilidad en Google Cloud.",
                 "items": [
                     "Google Cloud",
                     "Kubernetes",
                     "Docker",
                     "Nginx",
-                    "Proxy inverso"
+                    "Proxy inverso",
+                    "Helm",
+                    "Istio",
+                    "Prometheus",
+                    "Grafana"
                 ]
             },
             {
@@ -400,8 +416,8 @@
         "heading_after": ", y esto es lo que no sale en el CV.",
         "origin": "**Mi origen como programador** está en el instituto: en clase de informática nos retaron a crear un pequeño videojuego. Esa chispa me llevó a mi primera aplicación real, una calculadora de notas. Ver que el código servía para algo fue lo que me terminó de enganchar.",
         "origin_short": "**Mi origen como programador** está en el instituto, con un pequeño videojuego de clase y mi primera app real: una calculadora de notas.",
-        "work": "**En el trabajo** soy comunicativo y proactivo. Asumo el liderazgo cuando toca y disfruto compartiendo lo que sé para que el equipo crezca.",
-        "work_short": "**En el trabajo** soy comunicativo y proactivo, y disfruto ayudando a que el equipo crezca.",
+        "work": "**En el trabajo** soy comunicativo y proactivo. Me adapto rápido a proyectos nuevos, me atrevo con lo que nadie domina todavía y suelo ser a quien acuden los compañeros con dudas. Disfruto compartiendo lo que sé para que el equipo crezca.",
+        "work_short": "**En el trabajo** me adapto rápido, me atrevo con lo nuevo y disfruto ayudando a que el equipo crezca.",
         "japan_alt": "Iván Ciudad Espinar en Kioto, con el templo dorado Kinkaku-ji de fondo",
         "japan_caption": "Kinkaku-ji · Kioto, Japón",
         "passions_eyebrow": "01 — Desconexión",
@@ -501,14 +517,14 @@
         "home_url": "/"
     },
     "schema": {
-        "person_caption": "Iván Ciudad Espinar, Software Developer e Ingeniero Telemático",
+        "person_caption": "Iván Ciudad Espinar, Senior Frontend Developer e Ingeniero Telemático",
         "job_title": "Senior Frontend Developer",
         "nationality": "España",
         "lang_spanish": "Español",
         "lang_english": "English",
         "edem_name": "EDEM Escuela de Empresarios",
         "credential_degree": "Grado en Ingeniería Telemática",
-        "credential_master": "Máster High Potential Technical Leader",
+        "credential_master": "Máster High Potential Technical Booster",
         "website_name": "Iván Ciudad Espinar - Portfolio"
     }
 }

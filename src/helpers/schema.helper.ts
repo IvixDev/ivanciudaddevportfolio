@@ -40,8 +40,8 @@ export function buildPersonSchema(t: TranslateFn) {
         ],
         worksFor: {
             "@type": "Organization",
-            name: "MasOrange",
-            url: "https://www.masorange.es",
+            name: "Orange",
+            url: "https://www.orange.es",
         },
         alumniOf: [
             {
@@ -89,6 +89,12 @@ export function buildPersonSchema(t: TranslateFn) {
             "Node.js",
             "Java",
             "Spring Boot",
+            "Web Performance Optimization",
+            "Core Web Vitals",
+            "Micro Frontends",
+            "Kubernetes",
+            "Nginx",
+            "Istio",
         ],
         mainEntityOfPage: {
             "@type": "WebPage",

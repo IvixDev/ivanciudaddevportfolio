@@ -10,7 +10,7 @@ const pageImages = {
   [`${SITE}`]: [
     { url: `${SITE}/ivan-ciudad-hero.webp`, title: 'Iván Ciudad Espinar - Software Developer', caption: 'Retrato de Iván Ciudad Espinar' },
     { url: `${SITE}/proyectos-buscaminas.webp`, title: 'Buscaminas - Proyecto Web', caption: 'Captura del juego Buscaminas, proyecto de desarrollo web de Iván Ciudad Espinar' },
-    { url: `${SITE}/trayectoria-profesional.webp`, title: 'Trayectoria Profesional', caption: 'Iván Ciudad Espinar en traje, Software Developer e Ingeniero Telemático' },
+    { url: `${SITE}/trayectoria-profesional.webp`, title: 'Trayectoria Profesional', caption: 'Iván Ciudad Espinar en traje, Senior Frontend Developer e Ingeniero Telemático' },
     { url: `${SITE}/ivan-japon.webp`, title: 'Iván Ciudad en Japón', caption: 'Iván Ciudad Espinar en Kioto, con el templo dorado Kinkaku-ji de fondo' },
   ],
   [`${SITE}/proyectos`]: [
@@ -25,13 +25,13 @@ const pageImages = {
     { url: `${SITE}/legos.webp`, title: 'Colección LEGO Star Wars', caption: 'Figuras LEGO de Grogu, R2-D2 y C-3PO' },
   ],
   [`${SITE}/trayectoria-profesional`]: [
-    { url: `${SITE}/trayectoria-profesional.webp`, title: 'Trayectoria Profesional', caption: 'Iván Ciudad Espinar en traje, Software Developer e Ingeniero Telemático' },
+    { url: `${SITE}/trayectoria-profesional.webp`, title: 'Trayectoria Profesional', caption: 'Iván Ciudad Espinar en traje, Senior Frontend Developer e Ingeniero Telemático' },
   ],
   // — English pages —
   [`${SITE}/en`]: [
     { url: `${SITE}/ivan-ciudad-hero.webp`, title: 'Iván Ciudad Espinar - Software Developer', caption: 'Portrait of Iván Ciudad Espinar' },
     { url: `${SITE}/proyectos-buscaminas.webp`, title: 'Minesweeper - Web Project', caption: 'Screenshot of the Minesweeper game, web development project by Iván Ciudad Espinar' },
-    { url: `${SITE}/trayectoria-profesional.webp`, title: 'Professional Career', caption: 'Iván Ciudad Espinar in a suit, Software Developer and Telematics Engineer' },
+    { url: `${SITE}/trayectoria-profesional.webp`, title: 'Professional Career', caption: 'Iván Ciudad Espinar in a suit, Senior Frontend Developer & Telematics Engineer' },
     { url: `${SITE}/ivan-japon.webp`, title: 'Iván Ciudad in Japan', caption: 'Iván Ciudad Espinar in Kyoto, with the golden Kinkaku-ji temple in the background' },
   ],
   [`${SITE}/en/projects`]: [
@@ -46,7 +46,7 @@ const pageImages = {
     { url: `${SITE}/legos.webp`, title: 'LEGO Star Wars Collection', caption: 'LEGO figures of Grogu, R2-D2 and C-3PO' },
   ],
   [`${SITE}/en/career`]: [
-    { url: `${SITE}/trayectoria-profesional.webp`, title: 'Professional Career', caption: 'Iván Ciudad Espinar in a suit, Software Developer and Telematics Engineer' },
+    { url: `${SITE}/trayectoria-profesional.webp`, title: 'Professional Career', caption: 'Iván Ciudad Espinar in a suit, Senior Frontend Developer & Telematics Engineer' },
   ],
 };
 
