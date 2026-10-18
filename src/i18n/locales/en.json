@@ -52,23 +52,23 @@
         "cv_language_note": "(in Spanish)"
     },
     "home": {
-        "title": "Iván Ciudad Espinar - Software Developer & Telematics Engineer",
+        "title": "Iván Ciudad Espinar - Senior Frontend Developer & Telematics Engineer",
         "description": "Portfolio of Iván Ciudad Espinar, Software Developer and Telematics Engineer. Web projects, AI experiments, professional career and what I do away from the keyboard.",
         "image_url": "https://www.ivanciudad.com/trayectoria-profesional.webp",
         "image_alt": "Iván Ciudad Espinar in a suit, Software Developer and Telematics Engineer",
-        "eyebrow": "Software Developer · Telematics Engineer",
-        "eyebrow_short": "Software Developer",
+        "eyebrow": "Senior Frontend Developer · Telematics Engineer",
+        "eyebrow_short": "Senior Frontend Developer",
         "hero_title_before": "Hi, I'm Iván. I build ",
         "hero_title_highlight": "software",
         "hero_title_after": " for the web.",
-        "hero_subtitle": "This is my corner of the internet: where I code ideas, show what I build and talk about what I enjoy once the editor is closed.",
-        "hero_subtitle_short": "My corner of the internet: projects, experiments and what I enjoy once the editor is closed.",
+        "hero_subtitle": "Senior frontend developer with a platform mindset: rendering, web performance and the whole path of a request, from the browser to the cluster. Here I show what I build and what I enjoy when I close the editor.",
+        "hero_subtitle_short": "Senior frontend with a platform mindset: web performance, from the browser to the cluster.",
         "portrait_alt": "Portrait of Iván Ciudad Espinar",
         "marquee_ai": "Applied AI",
         "terminal": {
             "label": "Introduction in terminal format",
             "cmd_whoami": "whoami",
-            "out_whoami": "iván ciudad — software developer",
+            "out_whoami": "iván ciudad — senior frontend developer",
             "cmd_hobbies": "hobbies --list",
             "out_hobbies": "d&d · lego · hardware · gym"
         },
@@ -78,11 +78,11 @@
         "now_title": "What I'm up to these days",
         "now": {
             "work_label": "Working on",
-            "work_text": "MasOrange's eShop, with Next.js, React and TypeScript.",
+            "work_text": "Orange's multi-brand eShop: 11 brands with Next.js, React and TypeScript.",
             "work_link": "My career",
             "lab_label": "Experimenting with",
-            "lab_text": "Development with AI agents (Claude Code, Opencode, Orca) and caching strategies in Next.js.",
-            "lab_text_short": "Development with AI agents (Claude Code, Orca) and caching in Next.js.",
+            "lab_text": "Partial Prerendering with Cache Components in Next.js and development with AI agents (Claude Code, Opencode, Orca).",
+            "lab_text_short": "PPR with Cache Components in Next.js and AI agents.",
             "lab_link": "See experiments",
             "life_label": "Away from code",
             "life_text": "D&D campaigns, LEGO sets and PCs built from parts.",
@@ -109,7 +109,7 @@
     },
     "projects": {
         "title": "Iván Ciudad Espinar - Software Development Projects",
-        "description": "Projects by Iván Ciudad Espinar, Software Developer: web applications, Next.js experiments and games built with TypeScript.",
+        "description": "Projects by Iván Ciudad Espinar, Senior Frontend Developer: web applications, Next.js experiments and games built with TypeScript.",
         "url": "https://www.ivanciudad.com/en/projects",
         "image_url": "https://www.ivanciudad.com/proyectos-buscaminas.webp",
         "image_alt": "Screenshot of the Minesweeper game, web development project by Iván Ciudad Espinar",
@@ -136,8 +136,8 @@
         "items": {
             "eshop": {
                 "title": "eShop Cache Lab",
-                "description": "A Next.js lab to compare SSR, ISR, SSG and Cache Components and measure their impact on SEO and accessibility. Set up as an Nx monorepo.",
-                "description_short": "SSR, ISR, SSG and Cache Components in Next.js, compared by their impact on SEO and accessibility.",
+                "description": "A Next.js lab to compare SSR, ISR, SSG and Cache Components by their impact on performance, SEO and accessibility. Set up as an Nx monorepo, it served as the spike for migrating Orange's eShop to Partial Prerendering.",
+                "description_short": "SSR, ISR, SSG and Cache Components in Next.js. Spike for the PPR migration of Orange's eShop.",
                 "img_alt": "Screenshot of the eShop Cache Lab project by Iván Ciudad Espinar to test Next.js caching methods",
                 "tags": [
                     "Next.js",
@@ -145,6 +145,7 @@
                     "Nx",
                     "SSR · ISR · SSG",
                     "Cache Components",
+                    "PPR",
                     "SEO",
                     "A11y"
                 ],
@@ -195,14 +196,14 @@
     },
     "career": {
         "title": "Iván Ciudad Espinar - My Professional Career and CV",
-        "description": "Professional career of Iván Ciudad Espinar, Software Developer: experience, education, tech stack from frontend to Kubernetes and a downloadable CV.",
+        "description": "Professional career of Iván Ciudad Espinar, Senior Frontend Developer: experience, education, tech stack from frontend to Kubernetes and a downloadable CV.",
         "url": "https://www.ivanciudad.com/en/career",
         "image_url": "https://www.ivanciudad.com/trayectoria-profesional.webp",
         "image_alt": "Iván Ciudad Espinar in a suit, Software Developer and Telematics Engineer",
         "eyebrow": "~/career · updated {date}",
         "eyebrow_short": "updated {date}",
-        "updated_date": "February 2026",
-        "updated_date_short": "Feb 2026",
+        "updated_date": "October 2026",
+        "updated_date_short": "Oct 2026",
         "heading_before": "My ",
         "heading_highlight": "career",
         "heading_after": ".",
@@ -211,21 +212,25 @@
         "portrait_alt": "Iván Ciudad Espinar in a suit",
         "cv_url": "/CV_IvanCiudadEspinar.pdf",
         "experience_title": "Experience",
-        "experience_intro": "Four years in the MasMovil and MasOrange ecosystem, from the backend to the product in production.",
+        "experience_intro": "Over four years on the same eShop, from MasMovil to Orange: from the backend to the frontend and the platform in production.",
         "experiences": [
             {
-                "id": "masorange",
+                "id": "orange",
                 "date": "Nov 2024 — present",
-                "company": "MasOrange",
+                "company": "Orange",
                 "title": "Senior Frontend Developer",
-                "description": "Building the multi-brand eShop, with AI built into the team's workflow.",
+                "description": "Platform that generates the eShops of 11 brands. I built a proxy generator (Helm + Nginx) for hundreds of redirects and reverse proxies between microfrontends, and I take part in Istio routing, the migration from SSR to PPR with Cache Components, and Core Web Vitals tracking on every release.",
                 "tags": [
                     "Next.js",
                     "React",
                     "TypeScript",
                     "Tailwind",
-                    "AI",
-                    "Claude"
+                    "Kubernetes",
+                    "Helm",
+                    "Nginx",
+                    "Istio",
+                    "Prometheus",
+                    "Grafana"
                 ]
             },
             {
@@ -233,26 +238,28 @@
                 "date": "Jan 2023 — Oct 2024",
                 "company": "Capgemini",
                 "title": "Software Engineer",
-                "description": "MasMovil project: multi-brand application for Euskaltel, Telecable, R, Guuk, Racctel, MasMovil, Yoigo, Lyca and Lebara.",
+                "description": "Consultant for MasMovil: built from scratch in Next.js the multi-brand platform for Euskaltel, Telecable, R, Guuk, Racctel, MasMovil, Yoigo, Lyca and Lebara, in an Nx monorepo. I took part in most production releases with no lost sales or downtime, and the client later hired me.",
                 "tags": [
                     "Next.js",
                     "React",
                     "TypeScript",
-                    "JIRA",
-                    "Gitflow"
+                    "Nx",
+                    "Kubernetes",
+                    "ArgoCD",
+                    "Contentful"
                 ]
             },
             {
                 "id": "capgemini-yoigo",
-                "date": "Sep 2022 — Sep 2023",
+                "date": "Sep 2022 — Dec 2022",
                 "company": "Capgemini",
                 "title": "Software Engineer",
-                "description": "Maintenance and evolution of Yoigo.",
+                "description": "Moved from backend to frontend out of the team's need: Yoigo's eShop in Angular with SSR, while also supporting the backend.",
                 "tags": [
                     "Angular",
                     "TypeScript",
-                    "JIRA",
-                    "Gitflow"
+                    "Spring Boot",
+                    "Kubernetes"
                 ]
             },
             {
@@ -260,11 +267,12 @@
                 "date": "Feb 2022 — Jul 2022",
                 "company": "Capgemini",
                 "title": "Backend Intern",
-                "description": "MasMovil project: maintaining Yoigo with microservices.",
+                "description": "Microservices with Spring Boot for Yoigo's eShop: rates from MongoDB and the CRM, and sales data into BigQuery for reporting.",
                 "tags": [
                     "Java",
                     "Spring Boot",
-                    "MySQL",
+                    "MongoDB",
+                    "BigQuery",
                     "Microservices"
                 ]
             }
@@ -275,7 +283,7 @@
                 "id": "edem",
                 "date": "2023 — 2024",
                 "institution": "EDEM",
-                "title": "Master High Potential Technical Leader",
+                "title": "Master High Potential Technical Booster",
                 "description": "Leadership, team management, conflict resolution and Google Cloud."
             },
             {
@@ -301,7 +309,9 @@
                     "Astro",
                     "Tailwind CSS",
                     "MUI",
-                    "PWA"
+                    "PWA",
+                    "Microfrontends",
+                    "Nx"
                 ]
             },
             {
@@ -310,9 +320,10 @@
                 "description": "Core Web Vitals, technical SEO and accessibility.",
                 "items": [
                     "Core Web Vitals",
-                    "SSR · ISR · SSG",
+                    "SSR · ISR · SSG · PPR",
                     "Technical SEO",
-                    "Accessibility"
+                    "Accessibility",
+                    "Lighthouse"
                 ]
             },
             {
@@ -324,20 +335,25 @@
                     "Java",
                     "Spring Boot",
                     "Microservices",
-                    "MySQL",
-                    "Supabase"
+                    "MongoDB",
+                    "Supabase",
+                    "BigQuery"
                 ]
             },
             {
                 "id": "infra",
                 "name": "Cloud and infrastructure",
-                "description": "Servers, proxies and clusters on Google Cloud.",
+                "description": "Proxies, routing, clusters and observability on Google Cloud.",
                 "items": [
                     "Google Cloud",
                     "Kubernetes",
                     "Docker",
                     "Nginx",
-                    "Reverse proxy"
+                    "Reverse proxy",
+                    "Helm",
+                    "Istio",
+                    "Prometheus",
+                    "Grafana"
                 ]
             },
             {
@@ -400,8 +416,8 @@
         "heading_after": ", and this is what my CV leaves out.",
         "origin": "**My start as a programmer** goes back to high school: in IT class we were challenged to build a small video game. That spark led me to my first real application, a grade calculator. Seeing that code could actually be useful is what got me hooked.",
         "origin_short": "**My start as a programmer** goes back to high school, with a small class video game and my first real app: a grade calculator.",
-        "work": "**At work** I'm communicative and proactive. I take the lead when needed and enjoy sharing what I know so the team can grow.",
-        "work_short": "**At work** I'm communicative and proactive, and I enjoy helping the team grow.",
+        "work": "**At work** I'm communicative and proactive. I adapt quickly to new projects, I dare to take on what nobody has mastered yet, and I'm often the person colleagues come to with questions. I enjoy sharing what I know so the team can grow.",
+        "work_short": "**At work** I adapt quickly, I dare to try new things and I enjoy helping the team grow.",
         "japan_alt": "Iván Ciudad Espinar in Kyoto, with the golden Kinkaku-ji temple in the background",
         "japan_caption": "Kinkaku-ji · Kyoto, Japan",
         "passions_eyebrow": "01 — Unwinding",
@@ -501,14 +517,14 @@
         "home_url": "/en"
     },
     "schema": {
-        "person_caption": "Iván Ciudad Espinar, Software Developer & Telematics Engineer",
+        "person_caption": "Iván Ciudad Espinar, Senior Frontend Developer & Telematics Engineer",
         "job_title": "Senior Frontend Developer",
         "nationality": "Spain",
         "lang_spanish": "Spanish",
         "lang_english": "English",
         "edem_name": "EDEM Business School",
         "credential_degree": "Bachelor's Degree in Telematics Engineering",
-        "credential_master": "Master High Potential Technical Leader",
+        "credential_master": "Master High Potential Technical Booster",
         "website_name": "Iván Ciudad Espinar - Portfolio"
     }
 }
