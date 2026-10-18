@@ -50,6 +50,7 @@
 - No adivinar rendimiento, tamaño de bundle o tiempos de carga: medir.
 - Si algo parece lento, añadir instrumentación antes de optimizar.
 - Validar primero en pequeño antes de escalar cambios a todo el proyecto.
+- Al sustituir `public/CV_IvanCiudadEspinar.pdf`, cambiar el `?v=AAAA-MM` de `career.cv_url` en `es.json` y `en.json`. El archivo mantiene su nombre, pero los navegadores guardan el PDF anterior y, sin cambiar la URL, pueden seguir mostrándolo.
 
 ## Commits y Pull Requests
 - Título del PR: [<project_name>] Descripción clara y concisa.
