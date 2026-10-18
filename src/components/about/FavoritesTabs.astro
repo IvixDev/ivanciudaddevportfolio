@@ -52,9 +52,6 @@ const favorites = a.favorites;
                   class="lift animate-fade [animation-fill-mode:backwards] flex items-center gap-4 rounded-card-sm border border-line-subtle bg-surface px-[18px] py-4 tablet:flex-col tablet:items-start tablet:gap-2 tablet:p-[22px] laptop:gap-2.5 laptop:rounded-card laptop:p-6"
                   style={`animation-delay: ${i * 60}ms`}
                 >
-                  <span class:list={["font-mono text-xs", i % 2 === 0 ? "text-brand" : "text-accent"]}>
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
                   <span class="flex flex-col">
                     <span class="font-display text-[19px] leading-tight font-bold text-fg tablet:text-[22px] tablet:leading-[1.15] laptop:text-2xl">
                       {item.name}

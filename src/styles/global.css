@@ -182,7 +182,8 @@
     }
   }
 
-  /* Tarjetas: elevan en hover */
+  /* Tarjetas: elevan en hover. Solo con puntero que hace hover (como las variantes hover: de Tailwind 4):
+     en pantallas táctiles un toque activa :hover y deja el elemento "seleccionado". */
   .lift {
     transition:
       transform var(--duration-base) var(--ease-out-soft),
@@ -190,19 +191,21 @@
       box-shadow var(--duration-base) var(--ease-out-soft);
   }
 
-  .lift:hover {
-    transform: translateY(-6px);
-    border-color: var(--color-line-hover);
-    box-shadow: var(--shadow-lift);
-  }
-
   /* Imagen de tarjeta: zoom dentro de .lift */
   .zoom {
     transition: transform var(--duration-slow) var(--ease-out-soft);
   }
 
-  .lift:hover .zoom {
-    transform: scale(1.05);
+  @media (hover: hover) {
+    .lift:hover {
+      transform: translateY(-6px);
+      border-color: var(--color-line-hover);
+      box-shadow: var(--shadow-lift);
+    }
+
+    .lift:hover .zoom {
+      transform: scale(1.05);
+    }
   }
 
   /* Flecha que se desplaza al hacer hover en el enlace o botón padre.
